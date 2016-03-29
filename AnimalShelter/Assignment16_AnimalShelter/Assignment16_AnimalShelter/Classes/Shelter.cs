@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment16_AnimalShelter.Classes
 {
-    class Shelter
+    public class Shelter
     {
         private string name;
         private int phoneNumber;

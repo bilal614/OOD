@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment16_AnimalShelter.Classes
 {
-    abstract class Animal
+    public abstract class Animal
     {
 
         private string chipNumber;

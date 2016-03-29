@@ -8,20 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assignment16_AnimalShelter.Classes;
-<<<<<<< HEAD
 
-=======
->>>>>>> 488223cfb69d73208b281b5291d26df63169330a
 namespace Assignment16_AnimalShelter
 {
     public partial class AddAnimal : Form
     {
         //Variables
-        Shelter LShelter = new Shelter("LoopIT", 268809, "I don't know", "loopITemail@gmail.com");
-        
+        Shelter animShelter; 
+        private Main main;
         public AddAnimal()
         {
             InitializeComponent();
+            animShelter = main.AnimalShelter;
         }
 
         private void btnAddAnimal_Click(object sender, EventArgs e)
@@ -32,8 +30,8 @@ namespace Assignment16_AnimalShelter
             if(radioCat.Checked)
             {
                 string habit = tbHabit.Text;
-                Cat cat = new Cat(LShelter.CreateChipNr(), entryDate, pedegree, locationFound, habit);
-                if (LShelter.AddAnimal(cat))
+                Cat cat = new Cat(animShelter.CreateChipNr(), entryDate, pedegree, locationFound, habit);
+                if (animShelter.AddAnimal(cat))
                 {
                     MessageBox.Show("Your cat is added");
                 }
