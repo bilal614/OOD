@@ -56,9 +56,9 @@ namespace Assignment16_AnimalShelter.Classes
             DateTime d1 = new DateTime(2015, 11, 17, 10, 16, 18);
             DateTime d2 = new DateTime(2016, 2, 28, 16, 28, 7);
             DateTime d3 = new DateTime(2016, 4, 8);
-            Animal a1 = new Dog("145", d1, "Mastiff", "Kerplein, Eindhoven", d2);
-            Animal a2 = new Dog("188", d2, "Jack-Russel", "Talent Square, Tilburg", d2);
-            Animal a3 = new Cat("218", d3, "Siamese", "Strijp-S, Eindhoven","scratches furniture");
+            Animal a1 = new Dog("A10000", d1, "Mastiff", "Kerplein, Eindhoven", d2);
+            Animal a2 = new Dog("A10001", d2, "Jack-Russel", "Talent Square, Tilburg", d2);
+            Animal a3 = new Cat("A10002", d3, "Siamese", "Strijp-S, Eindhoven","scratches furniture");
             
             animalList.Add(a1);
             animalList.Add(a2);
@@ -71,7 +71,8 @@ namespace Assignment16_AnimalShelter.Classes
         }
 
         public void Backup(string fileName)
-        { }
+        { 
+        }
 
         public bool reserveAnimal(string chipNumber, int ownerId)
         {
@@ -184,6 +185,25 @@ namespace Assignment16_AnimalShelter.Classes
             return added;
         }
 
+        /// <summary>
+        /// This method adds an Animal to the list of Animals in the shelter. This will be an overloaded method and will allow to add a dog
+        /// or a cat to the shelter in which case the parameters of the method would be different according to the type of Animal --Thanh
+        /// </summary>
+        /// <param name="animal"></param>
+        /// <returns></returns>
+        public bool AddAnimal(Animal animal)
+        {
+            bool added = false;
+            string chipNr = animal.ChipNumber;
+            Animal temp = FindAnimal(chipNr);
+            if (temp == null)
+            {
+                animalList.Add(animal);
+                added = true;
+            }
+            return added;
+        }
+
         public bool RemoveAnimal(String chipNmbr)
         {
             bool removed = false;
@@ -197,5 +217,13 @@ namespace Assignment16_AnimalShelter.Classes
             return removed;
         }
 
+        public string CreateChipNr()
+        {
+            string ChipNr = animalList[animalList.Count - 1].ChipNumber;
+            string numberPart = ChipNr.Substring(1);
+            int newNrPart = Convert.ToInt32(numberPart) + 1;
+            newNrPart++;
+            return 'A' + newNrPart.ToString();
+        }
     }
 }

@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioCat = new System.Windows.Forms.RadioButton();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbHabit = new System.Windows.Forms.TextBox();
+            this.tbPedigree = new System.Windows.Forms.TextBox();
             this.radioDog = new System.Windows.Forms.RadioButton();
             this.tbLocataion = new System.Windows.Forms.TextBox();
             this.dateTimePickerEntryDate = new System.Windows.Forms.DateTimePicker();
@@ -41,8 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.listBoxAnimal = new System.Windows.Forms.ListBox();
             this.btnAddAnimal = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnShowAnimals = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,8 +58,8 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioCat);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tbHabit);
+            this.groupBox1.Controls.Add(this.tbPedigree);
             this.groupBox1.Controls.Add(this.radioDog);
             this.groupBox1.Controls.Add(this.tbLocataion);
             this.groupBox1.Controls.Add(this.dateTimePickerEntryDate);
@@ -75,7 +73,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General information";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // radioCat
             // 
@@ -88,19 +85,19 @@
             this.radioCat.Text = "Cat";
             this.radioCat.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // tbHabit
             // 
-            this.textBox3.Location = new System.Drawing.Point(129, 157);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(221, 20);
-            this.textBox3.TabIndex = 2;
+            this.tbHabit.Location = new System.Drawing.Point(129, 157);
+            this.tbHabit.Name = "tbHabit";
+            this.tbHabit.Size = new System.Drawing.Size(221, 20);
+            this.tbHabit.TabIndex = 2;
             // 
-            // textBox2
+            // tbPedigree
             // 
-            this.textBox2.Location = new System.Drawing.Point(129, 88);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(221, 20);
-            this.textBox2.TabIndex = 2;
+            this.tbPedigree.Location = new System.Drawing.Point(129, 88);
+            this.tbPedigree.Name = "tbPedigree";
+            this.tbPedigree.Size = new System.Drawing.Size(221, 20);
+            this.tbPedigree.TabIndex = 2;
             // 
             // radioDog
             // 
@@ -112,7 +109,6 @@
             this.radioDog.TabStop = true;
             this.radioDog.Text = "Dog";
             this.radioDog.UseVisualStyleBackColor = true;
-            this.radioDog.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // tbLocataion
             // 
@@ -168,34 +164,17 @@
             // 
             // btnAddAnimal
             // 
-            this.btnAddAnimal.Location = new System.Drawing.Point(430, 22);
+            this.btnAddAnimal.Location = new System.Drawing.Point(424, 73);
             this.btnAddAnimal.Name = "btnAddAnimal";
             this.btnAddAnimal.Size = new System.Drawing.Size(147, 35);
             this.btnAddAnimal.TabIndex = 3;
             this.btnAddAnimal.Text = "Add animal";
             this.btnAddAnimal.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(430, 180);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(147, 41);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Show a list cat";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(430, 128);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 37);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Show list of dogs";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddAnimal.Click += new System.EventHandler(this.btnAddAnimal_Click);
             // 
             // btnShowAnimals
             // 
-            this.btnShowAnimals.Location = new System.Drawing.Point(430, 73);
+            this.btnShowAnimals.Location = new System.Drawing.Point(424, 124);
             this.btnShowAnimals.Name = "btnShowAnimals";
             this.btnShowAnimals.Size = new System.Drawing.Size(147, 37);
             this.btnShowAnimals.TabIndex = 3;
@@ -207,9 +186,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(673, 443);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnShowAnimals);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnAddAnimal);
             this.Controls.Add(this.listBoxAnimal);
             this.Controls.Add(this.groupBox1);
@@ -226,18 +203,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioCat;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbPedigree;
         private System.Windows.Forms.RadioButton radioDog;
         private System.Windows.Forms.TextBox tbLocataion;
         private System.Windows.Forms.DateTimePicker dateTimePickerEntryDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbHabit;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listBoxAnimal;
         private System.Windows.Forms.Button btnAddAnimal;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnShowAnimals;
     }
 }

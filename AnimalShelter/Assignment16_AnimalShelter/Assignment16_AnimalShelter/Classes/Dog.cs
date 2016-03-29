@@ -30,5 +30,9 @@ namespace Assignment16_AnimalShelter.Classes
         {
             return lastWalkDate;
         }
+        public void setLastWalkDate(DateTime lastWalk)
+        {
+            this.lastWalkDate = lastWalk;
+        }
     }
 }
