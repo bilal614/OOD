@@ -30,6 +30,10 @@ namespace Assignment16_AnimalShelter.Classes
             }
         }
 
+        public bool Reserve
+        {
+            get { return reserve; }
+        }
         /// <summary>
         /// The constructor of animal class
         /// </summary>

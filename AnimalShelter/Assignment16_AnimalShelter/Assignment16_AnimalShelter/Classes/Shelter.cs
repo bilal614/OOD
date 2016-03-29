@@ -37,6 +37,11 @@ namespace Assignment16_AnimalShelter.Classes
             get { return email; }
             set { email= value; }
         }
+      
+        public Shelter (string name)
+        {
+
+        }
 
         public void Backup(string fileName)
         { }
@@ -48,7 +53,14 @@ namespace Assignment16_AnimalShelter.Classes
 
         public List<Animal> GetListOfNonReserved()
         { 
-        
+            List<Animal> nonReserveAnimalList = new List<Animal>();
+
+            foreach(Animal x in animalList)
+            {
+                if (x.Reserve == false)
+                    nonReserveAnimalList.Add(x);
+            }
+            return nonReserveAnimalList;
         }
 
         public List<Animal> GetListOfReserved()
@@ -62,7 +74,7 @@ namespace Assignment16_AnimalShelter.Classes
 
             foreach(Animal x in animalList)
             {
-                if (x)
+                if (x.)
             }
         }
     }
