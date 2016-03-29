@@ -18,3 +18,6 @@ C:\Users\ThanhPC\Dropbox\OOD1\AnimalShelterProject\Assignment16_AnimalShelter\As
 C:\Users\ThanhPC\Dropbox\OOD1\AnimalShelterProject\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.Main.resources
 C:\Users\ThanhPC\Dropbox\OOD1\AnimalShelterProject\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.Properties.Resources.resources
 C:\Users\ThanhPC\Dropbox\OOD1\AnimalShelterProject\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.csproj.GenerateResource.Cache
+E:\GIT\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\bin\Debug\Assignment16_AnimalShelter.exe.config
+E:\GIT\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.exe
+E:\GIT\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.pdb

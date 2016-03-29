@@ -59,6 +59,7 @@
     <Compile Include="Classes\Animal.cs" />
     <Compile Include="Classes\Cat.cs" />
     <Compile Include="Classes\Dog.cs" />
+    <Compile Include="Classes\Owner.cs" />
     <Compile Include="Classes\Shelter.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
