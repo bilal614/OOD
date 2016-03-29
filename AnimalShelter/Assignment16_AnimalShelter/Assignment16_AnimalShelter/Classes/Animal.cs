@@ -16,6 +16,7 @@ namespace Assignment16_AnimalShelter.Classes
         private string pedigree;
         private string foundLocation;
         private bool reserve;
+        private Owner animalOwner;
 
         public string ChipNumber
         {
@@ -55,14 +56,6 @@ namespace Assignment16_AnimalShelter.Classes
 
         }
 
-        public Animal(int p1, DateTime d1, string p2, string p3)
-        {
-            // TODO: Complete member initialization
-            this.p1 = p1;
-            this.d1 = d1;
-            this.p2 = p2;
-            this.p3 = p3;
-        }
 
         /// <summary>
         /// Method return the string contains all information about the animals
