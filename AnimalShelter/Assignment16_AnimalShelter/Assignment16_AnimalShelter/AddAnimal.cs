@@ -16,10 +16,11 @@ namespace Assignment16_AnimalShelter
         //Variables
         Shelter animShelter; 
         private Main main;
+
         public AddAnimal()
         {
             InitializeComponent();
-            animShelter = main.AnimalShelter;
+            //animShelter = main.animalShelter;
         }
 
         private void btnAddAnimal_Click(object sender, EventArgs e)
@@ -42,9 +43,18 @@ namespace Assignment16_AnimalShelter
             }
             else
             {
-
+                Dog dog = new Dog(animShelter.CreateChipNr(), entryDate, pedegree, locationFound, DateTime.Now);
+                if (animShelter.AddAnimal(dog))
+                {
+                    MessageBox.Show("Your dog is added");
+                }
+                else
+                {
+                    MessageBox.Show("Fail to add this dog");
+                }
             }
 
         }
+
     }
 }
