@@ -113,8 +113,10 @@ namespace Assignment16_AnimalShelter.Classes
 
             foreach(Animal x in animalList)
             {
-                if (x.Reserve == false)
+                if (x.Reserve == false && x.getOwner() == null)
+                {
                     nonReserveAnimalList.Add(x);
+                }
             }
             return nonReserveAnimalList;
         }

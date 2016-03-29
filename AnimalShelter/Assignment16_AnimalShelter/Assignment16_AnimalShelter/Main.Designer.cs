@@ -1,4 +1,6 @@
-﻿namespace Assignment16_AnimalShelter
+﻿using Assignment16_AnimalShelter;
+
+namespace Assignment16_AnimalShelter
 {
     partial class Main
     {
@@ -62,7 +64,6 @@
             this.Name = "Main";
             this.Text = "Animal Shelter";
             this.ResumeLayout(false);
-
         }
 
         #endregion

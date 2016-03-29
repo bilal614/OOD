@@ -40,6 +40,7 @@ namespace Assignment16_AnimalShelter
             }
             else
             {
+
                 Dog dog = new Dog(animalShelter.CreateChipNr(), entryDate, pedegree, locationFound, entryDate);
                 if (animalShelter.AddAnimal(dog))
                 {
@@ -63,5 +64,6 @@ namespace Assignment16_AnimalShelter
             }
 
         }
+
     }
 }

@@ -14,9 +14,26 @@ namespace Assignment16_AnimalShelter
     public partial class AssignAnimalToOwner : Form
     {
         Shelter animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
+
         public AssignAnimalToOwner()
         {
             InitializeComponent();
+            //animShelter = main.AnimalShelter;
+        }
+
+        private void FillListBox(List<Animal> animals)
+        {
+            listBoxAnimal.Items.Clear();
+            foreach (Animal a in animals)
+            {
+                listBoxAnimal.Items.Add(a.AsString());
+            }
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FillListBox(animalShelter.GetListOfNonReserved());
         }
 
         private void btnAssign_Click(object sender, EventArgs e)
