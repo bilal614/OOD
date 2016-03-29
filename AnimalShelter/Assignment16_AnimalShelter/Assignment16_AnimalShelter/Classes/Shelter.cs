@@ -12,8 +12,8 @@ namespace Assignment16_AnimalShelter.Classes
         private int phoneNumber;
         private string address;
         private string email;
-        private List<Animal> animalList;
-        private List<Owner> ownerList;
+        private List<Animal> animalList = new List<Animal>();
+        private List<Owner> ownerList = new List<Owner>();
 
         public string Name
         {
@@ -136,16 +136,25 @@ namespace Assignment16_AnimalShelter.Classes
         public List<Animal> GetListOfNotWalkingDog()
         {
             DateTime comparison = DateTime.Now;
+            DateTime tempDate;
+            TimeSpan timeSpan;
             List<Animal> tempList = new List<Animal>();
             for (int i = 0; i < animalList.Count; i++)
             {
                 if (animalList[i] is Dog)
                 {
-                    animalList[i] = (Dog)animalList[i];
+                    Dog tempDog = (Dog)animalList[i];
+                    tempDate = tempDog.getLastWalkDate();
+                    //timeSpan = comparison - tempDate;
+                    timeSpan = comparison.Subtract(tempDate);
+                    if (timeSpan.TotalHours > 24)
+                    {
+                        tempList.Add(animalList[i]);
+                    }
                 }
             }
-
-                return tempList;
+            
+            return tempList;
         }
 
         public Animal FindAnimal(string chipNr)
