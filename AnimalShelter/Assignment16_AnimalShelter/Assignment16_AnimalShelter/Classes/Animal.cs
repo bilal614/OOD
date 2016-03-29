@@ -63,8 +63,17 @@ namespace Assignment16_AnimalShelter.Classes
         /// <returns></returns>
         public virtual string AsString()
         {
-            return String.Format("Animal's infor: Chip number: {0}, Entry date: {1}, Pedigree: {2}, Found Location: {3}, Price: {4}, The number of days in shelter: {5}, Revered: {6}, Owner: {7}"
-                , this.ChipNumber, this.entryDate.ToString(), this.pedigree, this.pedigree, this.foundLocation, this.price.ToString(), this.days, this.reserve, this.animalOwner.AsString());//animalOwner.AsString();
+            string owner = "";
+            if (this.animalOwner == null)
+            {
+                owner = "unknown";
+            }
+            else
+            {
+                owner = this.animalOwner.AsString();
+            }
+            return String.Format("ChipNr: {0}, Entry date: {1}, Pedigree: {2}, Found Location: {3}, Price: {4}, Days in shelter: {5}, Revered: {6}, Owner: {7}"
+                , this.ChipNumber, this.entryDate.ToString(), this.pedigree, this.foundLocation, this.price.ToString(), this.days, this.reserve, owner);//animalOwner.AsString();
         }
 
         /// <summary>

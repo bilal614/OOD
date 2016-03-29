@@ -12,8 +12,8 @@ namespace Assignment16_AnimalShelter.Classes
         private int phoneNumber;
         private string address;
         private string email;
-        private List<Animal> animalList;
-        private List<Owner> ownerList;
+        private List<Animal> animalList = new List<Animal>();
+        private List<Owner> ownerList = new List<Owner>();
 
         public string Name
         {
@@ -217,6 +217,11 @@ namespace Assignment16_AnimalShelter.Classes
             return removed;
         }
 
+        /// <summary>
+        /// Auto-generated the ChipNr - only for the purpose of doing this assignment 
+        /// Further implementation is done by RFID-chips
+        /// </summary>
+        /// <returns></returns>
         public string CreateChipNr()
         {
             string ChipNr = animalList[animalList.Count - 1].ChipNumber;
@@ -224,6 +229,36 @@ namespace Assignment16_AnimalShelter.Classes
             int newNrPart = Convert.ToInt32(numberPart) + 1;
             newNrPart++;
             return 'A' + newNrPart.ToString();
+        }
+
+        /// <summary>
+        /// Return the list of all animals in the shelter
+        /// </summary>
+        /// <returns></returns>
+        public List<Animal> GetListOfAnimals()
+        {
+            return this.animalList;
+        }
+
+        public List<Animal> GetListOfAnimals(Owner owner)
+        {
+            List<Animal> assignedAnimals = GetListOfReserved();
+            List<Animal> ownerAnimals = new List<Animal>();
+            foreach(var a in assignedAnimals)
+            {
+                if(a.getOwner().OwnerId == owner.OwnerId)
+                {
+                    ownerAnimals.Add(a);
+                }
+            }
+            if(ownerAnimals.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return ownerAnimals;
+            }
         }
     }
 }

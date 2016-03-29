@@ -156,10 +156,11 @@
             // 
             // listBoxAnimal
             // 
+            this.listBoxAnimal.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxAnimal.FormattingEnabled = true;
-            this.listBoxAnimal.Location = new System.Drawing.Point(12, 234);
+            this.listBoxAnimal.Location = new System.Drawing.Point(0, 244);
             this.listBoxAnimal.Name = "listBoxAnimal";
-            this.listBoxAnimal.Size = new System.Drawing.Size(647, 199);
+            this.listBoxAnimal.Size = new System.Drawing.Size(927, 199);
             this.listBoxAnimal.TabIndex = 2;
             // 
             // btnAddAnimal
@@ -180,12 +181,13 @@
             this.btnShowAnimals.TabIndex = 3;
             this.btnShowAnimals.Text = "Show list of animals";
             this.btnShowAnimals.UseVisualStyleBackColor = true;
+            this.btnShowAnimals.Click += new System.EventHandler(this.btnShowAnimals_Click);
             // 
             // AddAnimal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 443);
+            this.ClientSize = new System.Drawing.Size(927, 443);
             this.Controls.Add(this.btnShowAnimals);
             this.Controls.Add(this.btnAddAnimal);
             this.Controls.Add(this.listBoxAnimal);

@@ -14,7 +14,7 @@ namespace Assignment16_AnimalShelter
     {
         //Variables
         Shelter LShelter = new Shelter("LoopIT", 268809, "I don't know", "loopITemail@gmail.com");
-        
+
         public AddAnimal()
         {
             InitializeComponent();
@@ -40,7 +40,26 @@ namespace Assignment16_AnimalShelter
             }
             else
             {
+                Dog dog = new Dog(LShelter.CreateChipNr(), entryDate, pedegree, locationFound, entryDate);
+                if (LShelter.AddAnimal(dog))
+                {
+                    MessageBox.Show("Your dog is added");
+                }
+                else
+                {
+                    MessageBox.Show("Fail to add this dog");
+                }
+            }
 
+        }
+
+        private void btnShowAnimals_Click(object sender, EventArgs e)
+        {
+            listBoxAnimal.Items.Clear();
+            List<Animal> animals = LShelter.GetListOfAnimals();
+            foreach(var a in animals)
+            {
+                listBoxAnimal.Items.Add(a.AsString());
             }
 
         }

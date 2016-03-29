@@ -23,7 +23,7 @@ namespace Assignment16_AnimalShelter.Classes
 
         public override string AsString()
         {
-            return base.AsString() + string.Format("Habit: {0}", this.habit);
+            return base.AsString() + string.Format("\n Habit: {0}", this.habit);
         }
 
     }
