@@ -38,9 +38,19 @@ namespace Assignment16_AnimalShelter.Classes
             set { email= value; }
         }
       
-        public Shelter (string name)
+        /// <summary>
+        /// The shelter constructor
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="address"></param>
+        /// <param name="email"></param>
+        public Shelter (string name, int phoneNumber, string address, string email)
         {
-
+            this.Name = name;
+            this.PhoneNumber = phoneNumber;
+            this.Address = address;
+            this.Email = email;
         }
 
         public void Backup(string fileName)
