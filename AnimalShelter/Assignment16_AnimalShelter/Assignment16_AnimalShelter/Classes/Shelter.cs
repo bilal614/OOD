@@ -76,12 +76,18 @@ namespace Assignment16_AnimalShelter.Classes
         public bool reserveAnimal(string chipNumber, int ownerId)
         {
             Owner tempOwner;
+            Animal tempAnimal;
             foreach (Owner o in ownerList)
             {
                 if (o.OwnerId == ownerId)
                 {
                     tempOwner = o;
                 }
+            }
+
+            foreach (Animal a in animalList)
+            { 
+                
             }
             return false;
         }
