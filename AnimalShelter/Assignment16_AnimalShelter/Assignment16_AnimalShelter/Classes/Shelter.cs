@@ -75,8 +75,8 @@ namespace Assignment16_AnimalShelter.Classes
 
         public bool reserveAnimal(string chipNumber, int ownerId)
         {
-            Owner tempOwner;
-            Animal tempAnimal;
+            Animal tempAnimal = null;
+            Owner tempOwner = null;
             foreach (Owner o in ownerList)
             {
                 if (o.OwnerId == ownerId)
@@ -85,9 +85,11 @@ namespace Assignment16_AnimalShelter.Classes
                 }
             }
 
-            foreach (Animal a in animalList)
-            { 
-                
+            tempAnimal = FindAnimal(chipNumber);
+            bool ok = tempAnimal.assignOwner(tempOwner);
+            if (ok)
+            {
+                return true;
             }
             return false;
         }
@@ -126,5 +128,74 @@ namespace Assignment16_AnimalShelter.Classes
         {
             return ownerList;
         }
+
+        /// <summary>
+        /// Gets a list of all the dogs that have not been walked for more than 24 hours.
+        /// </summary>
+        /// <returns></returns>
+        public List<Animal> GetListOfNotWalkingDog()
+        {
+            DateTime comparison = DateTime.Now;
+            List<Animal> tempList = new List<Animal>();
+            for (int i = 0; i < animalList.Count; i++)
+            {
+                if (animalList[i] is Dog)
+                {
+                    animalList[i] = (Dog)animalList[i];
+                }
+            }
+
+                return tempList;
+        }
+
+        public Animal FindAnimal(string chipNr)
+        {
+            Animal temp = null;
+            foreach (Animal a in animalList)
+            {
+                if (a.ChipNumber == chipNr)
+                {
+                    temp = a;
+                }
+            }
+            return temp;
+        }
+
+        /// <summary>
+        /// This method adds an Animal to the list of Animals in the shelter. This will be an overloaded method and will allow to add a dog
+        /// or a cat to the shelter in which case the parameters of the method would be different according to the type of Animal.
+        /// </summary>
+        /// <param name="chipNr"></param>
+        /// <param name="entryDate"></param>
+        /// <param name="pedigree"></param>
+        /// <param name="foundLocation"></param>
+        /// <param name="dogOrCat"></param>
+        /// <returns></returns>
+        public bool AddAnimal(String chipNr, DateTime entryDate, String pedigree, String foundLocation, DateTime lastWalkDate)
+        {
+            bool added = false;
+            Animal temp = FindAnimal(chipNr);
+            if (temp == null)
+            {
+                Animal a = new Dog(chipNr, entryDate, pedigree, foundLocation, lastWalkDate);
+                animalList.Add(a);
+                added = true;
+            }
+            return added;
+        }
+
+        public bool RemoveAnimal(String chipNmbr)
+        {
+            bool removed = false;
+            Animal a = FindAnimal(chipNmbr);
+            if (a != null)
+            {
+                animalList.Remove(a);
+                removed = true;
+            }
+
+            return removed;
+        }
+
     }
 }

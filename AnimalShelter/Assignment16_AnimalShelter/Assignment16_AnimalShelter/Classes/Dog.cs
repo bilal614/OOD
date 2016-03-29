@@ -25,5 +25,10 @@ namespace Assignment16_AnimalShelter.Classes
         {
             return base.AsString() + string.Format("{Last walk date: {0}",lastWalkDate.ToString());
         }
+
+        public DateTime getLastWalkDate()
+        {
+            return lastWalkDate;
+        }
     }
 }
