@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Assignment16_AnimalShelter.Classes
 {
-    class Dog
+    class Dog : Animal
     {
+        private DateTime lastWalkDate;
+           
     }
 }
