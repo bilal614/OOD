@@ -10,7 +10,7 @@ namespace Assignment16_AnimalShelter.Classes
     {
         private string habit;
 
-        public Cat(string chipNumber, DateTime entryDate, string pedigree, string foundLocation, String habit)
+        public Cat(string chipNumber, DateTime entryDate, string pedigree, string foundLocation, string habit)
             :base(chipNumber,entryDate,pedigree,foundLocation)
         {
             this.habit = habit;
