@@ -13,7 +13,7 @@ namespace Assignment16_AnimalShelter
 {
     public partial class AssignAnimalToOwner : Form
     {
-        Shelter LShelter = new Shelter("LoopIT", 268809, "I don't know", "loopITemail@gmail.com");
+        Shelter animalShelter = new Shelter("LoopIT", 268809, "I don't know", "loopITemail@gmail.com");
         public AssignAnimalToOwner()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace Assignment16_AnimalShelter
             string chipNr = tbChipNr.Text;
             int OwnerId = Convert.ToInt32(tbOwnerID.Text);
 
-            if(LShelter.reserveAnimal(chipNr,OwnerId))
+            if (animalShelter.reserveAnimal(chipNr, OwnerId))
             {
                 MessageBox.Show(String.Format("Animal {0} is assigned successfully to owner {1}", chipNr, OwnerId.ToString()));
             }

@@ -13,9 +13,14 @@ namespace Assignment16_AnimalShelter
 {
     public partial class Main : Form
     {
+        Shelter animalShelter;
+
+        public Shelter AnimalShelter { get { return animalShelter; } }
+
         public Main()
         {
             InitializeComponent();
+            animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
         }
 
         private void btnAddAnimal_Click(object sender, EventArgs e)

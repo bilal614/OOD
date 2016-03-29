@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Assignment16_AnimalShelter.Classes;
+
 namespace Assignment16_AnimalShelter
 {
     public partial class AddAnimal : Form
     {
         //Variables
-        Shelter LShelter = new Shelter("LoopIT", 268809, "I don't know", "loopITemail@gmail.com");
-
+        Shelter animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
         public AddAnimal()
         {
             InitializeComponent();
@@ -28,8 +28,8 @@ namespace Assignment16_AnimalShelter
             if(radioCat.Checked)
             {
                 string habit = tbHabit.Text;
-                Cat cat = new Cat(LShelter.CreateChipNr(), entryDate, pedegree, locationFound, habit);
-                if (LShelter.AddAnimal(cat))
+                Cat cat = new Cat(animalShelter.CreateChipNr(), entryDate, pedegree, locationFound, habit);
+                if (animalShelter.AddAnimal(cat))
                 {
                     MessageBox.Show("Your cat is added");
                 }
@@ -40,8 +40,8 @@ namespace Assignment16_AnimalShelter
             }
             else
             {
-                Dog dog = new Dog(LShelter.CreateChipNr(), entryDate, pedegree, locationFound, entryDate);
-                if (LShelter.AddAnimal(dog))
+                Dog dog = new Dog(animalShelter.CreateChipNr(), entryDate, pedegree, locationFound, entryDate);
+                if (animalShelter.AddAnimal(dog))
                 {
                     MessageBox.Show("Your dog is added");
                 }
@@ -56,7 +56,7 @@ namespace Assignment16_AnimalShelter
         private void btnShowAnimals_Click(object sender, EventArgs e)
         {
             listBoxAnimal.Items.Clear();
-            List<Animal> animals = LShelter.GetListOfAnimals();
+            List<Animal> animals = animalShelter.GetListOfAnimals();
             foreach(var a in animals)
             {
                 listBoxAnimal.Items.Add(a.AsString());
