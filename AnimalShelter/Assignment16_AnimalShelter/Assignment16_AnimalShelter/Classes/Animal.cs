@@ -70,7 +70,7 @@ namespace Assignment16_AnimalShelter.Classes
             }
             else
             {
-                owner = this.animalOwner.AsString();
+                owner = this.animalOwner.Name;
             }
             return String.Format("ChipNr: {0}, Entry date: {1}, Pedigree: {2}, Found Location: {3}, Price: {4}, Days in shelter: {5}, Revered: {6}, Owner: {7}"
                 , this.ChipNumber, this.entryDate.ToString(), this.pedigree, this.foundLocation, this.price.ToString(), this.days, this.reserve, owner);//animalOwner.AsString();
@@ -114,6 +114,7 @@ namespace Assignment16_AnimalShelter.Classes
             if(this.reserve == false && this.animalOwner == null)
             {
                 animalOwner = owner;
+                this.reserve = true;
                 return true;
             }
             return false;

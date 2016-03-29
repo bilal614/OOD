@@ -62,10 +62,11 @@
             // 
             // listBoxAnimal
             // 
+            this.listBoxAnimal.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxAnimal.FormattingEnabled = true;
-            this.listBoxAnimal.Location = new System.Drawing.Point(12, 240);
+            this.listBoxAnimal.Location = new System.Drawing.Point(0, 253);
             this.listBoxAnimal.Name = "listBoxAnimal";
-            this.listBoxAnimal.Size = new System.Drawing.Size(736, 199);
+            this.listBoxAnimal.Size = new System.Drawing.Size(771, 199);
             this.listBoxAnimal.TabIndex = 5;
             // 
             // groupBox1

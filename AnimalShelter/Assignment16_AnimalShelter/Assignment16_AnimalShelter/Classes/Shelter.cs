@@ -74,9 +74,13 @@ namespace Assignment16_AnimalShelter.Classes
         { 
         }
 
-        public bool reserveAnimal(string chipNumber, int ownerId)
+        /// <summary>
+        /// Return owner base on his id
+        /// </summary>
+        /// <param name="ownerId"></param>
+        /// <returns></returns>
+        public Owner GetOwner(int ownerId)
         {
-            Animal tempAnimal = null;
             Owner tempOwner = null;
             foreach (Owner o in ownerList)
             {
@@ -85,12 +89,20 @@ namespace Assignment16_AnimalShelter.Classes
                     tempOwner = o;
                 }
             }
-
-            tempAnimal = FindAnimal(chipNumber);
-            bool ok = tempAnimal.assignOwner(tempOwner);
-            if (ok)
+            return tempOwner;
+        }
+        public bool reserveAnimal(string chipNumber, int ownerId)
+        {
+            Animal tempAnimal = null;
+            Owner tempOwner = GetOwner(ownerId);
+            if(tempOwner != null)
             {
-                return true;
+                tempAnimal = FindAnimal(chipNumber);
+                bool ok = tempAnimal.assignOwner(tempOwner);
+                if (ok)
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -248,7 +260,11 @@ namespace Assignment16_AnimalShelter.Classes
         {
             return this.animalList;
         }
-
+        /// <summary>
+        /// Return a list of animal own by certain owner
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <returns></returns>
         public List<Animal> GetListOfAnimals(Owner owner)
         {
             List<Animal> assignedAnimals = GetListOfReserved();
@@ -260,14 +276,9 @@ namespace Assignment16_AnimalShelter.Classes
                     ownerAnimals.Add(a);
                 }
             }
-            if(ownerAnimals.Count == 0)
-            {
-                return null;
-            }
-            else
-            {
-                return ownerAnimals;
-            }
+           
+             return ownerAnimals;
+            
         }
     }
 }

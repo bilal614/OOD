@@ -13,7 +13,7 @@ namespace Assignment16_AnimalShelter
 {
     public partial class AssignAnimalToOwner : Form
     {
-        Shelter animalShelter = new Shelter("LoopIT", 268809, "I don't know", "loopITemail@gmail.com");
+        Shelter animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
         public AssignAnimalToOwner()
         {
             InitializeComponent();
@@ -38,8 +38,20 @@ namespace Assignment16_AnimalShelter
         {
             listBoxAnimal.Items.Clear();
             List<Animal> ownerAnimals = new List<Animal>();
-
-            //ownerAnimals = LShelter.GetListOfAnimals();
+            Owner owner = animalShelter.GetOwner(Convert.ToInt32(tbOwnerID.Text));
+            if(owner == null)
+            {
+                MessageBox.Show("Cannot find this owner");
+            }
+            else
+            {
+                ownerAnimals = animalShelter.GetListOfAnimals(owner);
+                foreach (var a in ownerAnimals)
+                {
+                    listBoxAnimal.Items.Add(a.AsString());
+                }
+            }
+           
         }
     }
 }
