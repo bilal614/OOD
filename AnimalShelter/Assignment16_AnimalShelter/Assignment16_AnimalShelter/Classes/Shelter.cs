@@ -56,8 +56,9 @@ namespace Assignment16_AnimalShelter.Classes
         public void Backup(string fileName)
         { }
 
-        public bool reservedAnimal(string chipNumber, Owner owner)
+        public bool reserveAnimal(string chipNumber, Owner owner)
         {
+
             return false;
         }
 
@@ -73,19 +74,27 @@ namespace Assignment16_AnimalShelter.Classes
             return nonReserveAnimalList;
         }
 
+        /// <summary>
+        /// For all animals whose reserve value is true, which means that the animals are not open for
+        /// reservation meaning that they are reserved by someone.
+        /// </summary>
+        /// <returns></returns>
         public List<Animal> GetListOfReserved()
         {
-
+            List<Animal> temp = new List<Animal>();
+            foreach (Animal a in animalList)
+            {
+                if (a.Reserve)
+                {
+                    temp.Add(a);
+                }
+            }
+            return temp;
         }
 
         public List<Owner> GetListOfOwners()
         {
-            animalList = new List<Animal>();
-
-            foreach(Animal x in animalList)
-            {
-                if (x.)
-            }
+            return ownerList;
         }
     }
 }
