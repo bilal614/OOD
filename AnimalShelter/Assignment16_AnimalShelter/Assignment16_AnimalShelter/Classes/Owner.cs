@@ -11,6 +11,7 @@ namespace Assignment16_AnimalShelter.Classes
         private string name;
         private int phoneNumber;
         private string address;
+        private static int idCounter = 0;
         private int ownerId;
 
         public string Name
@@ -36,12 +37,12 @@ namespace Assignment16_AnimalShelter.Classes
             set { ownerId = value; }
         }
 
-        public Owner(string Name, int PhoneNumber, string Address, int OwnerId)
+        public Owner(string Name, int PhoneNumber, string Address)
         {
             this.Name = Name;
             this.PhoneNumber = PhoneNumber;
             this.Address = Address;
-            this.OwnerId = OwnerId;
+            this.OwnerId = idCounter++;
         }
 
         public string AsString()

@@ -51,14 +51,37 @@ namespace Assignment16_AnimalShelter.Classes
             this.PhoneNumber = phoneNumber;
             this.Address = address;
             this.Email = email;
+
+            //---default animals and owners added to the shelter class animal list and owner list
+            DateTime d1 = new DateTime(2015, 11, 17);
+            DateTime d2 = new DateTime(2016, 2, 28);
+            DateTime d3 = new DateTime(2016, 4, 8);
+            Animal a1 = new Animal(145, d1, "Mastiff", "Kerplein, Eindhoven");
+            Animal a2 = new Animal(188, d2, "Jack-Russel", "Talent Square, Tilburg");
+            Animal a3 = new Animal(218, d3, "Siamese", "Strijp-S, Eindhoven");
+            animalList.Add(a1);
+            animalList.Add(a2);
+            animalList.Add(a3);
+
+            Owner o1 = new Owner("Bruce Wayne", 111222333, "Wayne Manor");
+            Owner o2 = new Owner("Wally West", 101010101, "Central City");
+            ownerList.Add(o1);
+            ownerList.Add(o2);
         }
 
         public void Backup(string fileName)
         { }
 
-        public bool reserveAnimal(string chipNumber, Owner owner)
+        public bool reserveAnimal(string chipNumber, int ownerId)
         {
-
+            Owner tempOwner;
+            foreach (Owner o in ownerList)
+            {
+                if (o.OwnerId == ownerId)
+                {
+                    tempOwner = o;
+                }
+            }
             return false;
         }
 
