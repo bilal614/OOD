@@ -53,12 +53,13 @@ namespace Assignment16_AnimalShelter.Classes
             this.Email = email;
 
             //---default animals and owners added to the shelter class animal list and owner list
-            DateTime d1 = new DateTime(2015, 11, 17);
-            DateTime d2 = new DateTime(2016, 2, 28);
+            DateTime d1 = new DateTime(2015, 11, 17, 10, 16, 18);
+            DateTime d2 = new DateTime(2016, 2, 28, 16, 28, 7);
             DateTime d3 = new DateTime(2016, 4, 8);
-            Animal a1 = new Animal(145, d1, "Mastiff", "Kerplein, Eindhoven");
-            Animal a2 = new Animal(188, d2, "Jack-Russel", "Talent Square, Tilburg");
-            Animal a3 = new Animal(218, d3, "Siamese", "Strijp-S, Eindhoven");
+            Animal a1 = new Dog("145", d1, "Mastiff", "Kerplein, Eindhoven", d2);
+            Animal a2 = new Dog("188", d2, "Jack-Russel", "Talent Square, Tilburg", d2);
+            Animal a3 = new Cat("218", d3, "Siamese", "Strijp-S, Eindhoven","scratches furniture");
+            
             animalList.Add(a1);
             animalList.Add(a2);
             animalList.Add(a3);
