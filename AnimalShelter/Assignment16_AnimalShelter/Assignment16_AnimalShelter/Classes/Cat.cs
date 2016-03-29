@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace Assignment16_AnimalShelter.Classes
 {
-    class Cat
+    class Cat : Animal
     {
+        private string habit;
+
+        public Cat(string chipNumber, DateTime entryDate, string pedigree, string foundLocation, String habit)
+            :base(chipNumber,entryDate,pedigree,foundLocation)
+        {
+            this.habit = habit;
+        }
+
+        public override int setPrice()
+        {
+            return 20;
+        }
+
+        public override string AsString()
+        {
+            return base.AsString() + string.Format("Habit: {0}", this.habit);
+        }
+
     }
 }

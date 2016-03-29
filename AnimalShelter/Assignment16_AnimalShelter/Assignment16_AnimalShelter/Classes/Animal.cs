@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment16_AnimalShelter.Classes
 {
-    class Animal
+    abstract class Animal
     {
 
         private string chipNumber;
@@ -60,10 +60,10 @@ namespace Assignment16_AnimalShelter.Classes
         /// Method return the string contains all information about the animals
         /// </summary>
         /// <returns></returns>
-        public override string AsString()
+        public virtual string AsString()
         {
             return String.Format("Animal's infor: Chip number: {0}, Entry date: {1}, Pedigree: {2}, Found Location: {3}, Price: {4}, The number of days in shelter: {5}, Revered: {6}, Owner: {7}"
-                , this.ChipNumber, this.entryDate.ToString(), this.pedigree, this.pedigree, this.foundLocation, this.price.ToString(), this.days, this.reserve, this.animalOwner.ToString());//animalOwner.AsString();
+                , this.ChipNumber, this.entryDate.ToString(), this.pedigree, this.pedigree, this.foundLocation, this.price.ToString(), this.days, this.reserve, this.animalOwner.AsString());//animalOwner.AsString();
         }
 
         /// <summary>
@@ -84,10 +84,30 @@ namespace Assignment16_AnimalShelter.Classes
             return (DateTime.Now - this.entryDate).Days;
         }
 
+        public int getDays()
+        {
+            return days;
+        }
+
         public abstract int setPrice();
         public int getPrice()
         {
             return this.price;
         }
+        /// <summary>
+        /// Assign this animal to the owner given from the parametter
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <returns></returns>
+        public bool assignOwner(Owner owner)
+        {
+            if(this.reserve == false && this.animalOwner == null)
+            {
+                animalOwner = owner;
+                return true;
+            }
+            return false;
+        }
+
     }
 }
