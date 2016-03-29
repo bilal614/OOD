@@ -23,7 +23,7 @@ namespace Assignment16_AnimalShelter.Classes
 
         public override string AsString()
         {
-            return base.AsString() + string.Format("{Last walk date: {0}",lastWalkDate.ToString());
+            return base.AsString() + string.Format("\n Last walk date: {0}",lastWalkDate.ToString());
         }
 
         public DateTime getLastWalkDate()

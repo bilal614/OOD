@@ -32,11 +32,19 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.listBoxAnimal = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+<<<<<<< HEAD
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnAnimalOfOwner = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+=======
+            this.tbOwnerID = new System.Windows.Forms.TextBox();
+            this.btnAnimalOfOwner = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbChipNr = new System.Windows.Forms.TextBox();
+>>>>>>> 18ab2ea4b81559a5fdc2898c7d40155a74fd5b6e
             this.lbChipNr = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +57,7 @@
             this.btnAssign.TabIndex = 6;
             this.btnAssign.Text = "Assign animal to owner";
             this.btnAssign.UseVisualStyleBackColor = true;
+            this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
             // btnSearch
             // 
@@ -70,11 +79,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnAssign);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tbOwnerID);
             this.groupBox1.Controls.Add(this.btnAnimalOfOwner);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbChipNr);
             this.groupBox1.Controls.Add(this.lbChipNr);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -84,12 +93,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
-            // textBox2
+            // tbOwnerID
             // 
-            this.textBox2.Location = new System.Drawing.Point(129, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(169, 20);
-            this.textBox2.TabIndex = 2;
+            this.tbOwnerID.Location = new System.Drawing.Point(129, 51);
+            this.tbOwnerID.Name = "tbOwnerID";
+            this.tbOwnerID.Size = new System.Drawing.Size(169, 20);
+            this.tbOwnerID.TabIndex = 2;
+            // 
+            // btnAnimalOfOwner
+            // 
+            this.btnAnimalOfOwner.Location = new System.Drawing.Point(28, 159);
+            this.btnAnimalOfOwner.Name = "btnAnimalOfOwner";
+            this.btnAnimalOfOwner.Size = new System.Drawing.Size(270, 44);
+            this.btnAnimalOfOwner.TabIndex = 6;
+            this.btnAnimalOfOwner.Text = "Show animals of owner";
+            this.btnAnimalOfOwner.UseVisualStyleBackColor = true;
+            this.btnAnimalOfOwner.Click += new System.EventHandler(this.btnAnimalOfOwner_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(28, 92);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(270, 42);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Show non-assigned animal";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // btnAnimalOfOwner
             // 
@@ -116,16 +144,17 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Owner number";
+            this.label1.Text = "Owner ID";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // textBox1
+            // tbChipNr
             // 
-            this.textBox1.Location = new System.Drawing.Point(129, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 20);
-            this.textBox1.TabIndex = 2;
+            this.tbChipNr.Location = new System.Drawing.Point(129, 25);
+            this.tbChipNr.Name = "tbChipNr";
+            this.tbChipNr.Size = new System.Drawing.Size(169, 20);
+            this.tbChipNr.TabIndex = 2;
             // 
             // lbChipNr
             // 
@@ -158,9 +187,9 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ListBox listBoxAnimal;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbOwnerID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbChipNr;
         private System.Windows.Forms.Label lbChipNr;
         private System.Windows.Forms.Button btnAnimalOfOwner;
         private System.Windows.Forms.Button button1;
