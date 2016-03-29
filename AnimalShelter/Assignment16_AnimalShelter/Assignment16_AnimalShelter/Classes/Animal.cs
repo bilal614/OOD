@@ -15,6 +15,8 @@ namespace Assignment16_AnimalShelter.Classes
         private string pedigree;
         private string foundLocation;
         private bool reverse;
-        private 
+        private Owner animalOwner;
+
+     
     }
 }

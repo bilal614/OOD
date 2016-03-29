@@ -21,3 +21,6 @@ C:\Users\ThanhPC\Dropbox\OOD1\AnimalShelterProject\Assignment16_AnimalShelter\As
 E:\GIT\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\bin\Debug\Assignment16_AnimalShelter.exe.config
 E:\GIT\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.exe
 E:\GIT\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.pdb
+C:\Users\Stal\Documents\GitHub\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\bin\Debug\Assignment16_AnimalShelter.exe.config
+C:\Users\Stal\Documents\GitHub\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.exe
+C:\Users\Stal\Documents\GitHub\OOD\AnimalShelter\Assignment16_AnimalShelter\Assignment16_AnimalShelter\obj\Debug\Assignment16_AnimalShelter.pdb

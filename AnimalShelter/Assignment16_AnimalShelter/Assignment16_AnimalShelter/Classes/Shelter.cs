@@ -8,5 +8,62 @@ namespace Assignment16_AnimalShelter.Classes
 {
     class Shelter
     {
+        private string name;
+        private int phoneNumber;
+        private string address;
+        private string email;
+        private List<Animal> animalList;
+        private List<Owner> ownerList;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int PhoneNumber
+        {
+            get { return phoneNumber; }
+            set { phoneNumber = value; }
+        }
+
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+        public string Email
+        {
+            get { return email; }
+            set { email= value; }
+        }
+
+        public void Backup(string fileName)
+        { }
+
+        public bool reservedAnimal(string chipNumber, Owner owner)
+        {
+            return false;
+        }
+
+        public List<Animal> GetListOfNonReserved()
+        { 
+        
+        }
+
+        public List<Animal> GetListOfReserved()
+        {
+
+        }
+
+        public List<Owner> GetListOfOwners()
+        {
+            animalList = new List<Animal>();
+
+            foreach(Animal x in animalList)
+            {
+                if (x)
+            }
+        }
     }
 }
