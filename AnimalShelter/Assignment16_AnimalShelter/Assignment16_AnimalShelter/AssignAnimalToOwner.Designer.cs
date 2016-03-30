@@ -92,6 +92,7 @@
             this.tbOwnerID.Name = "tbOwnerID";
             this.tbOwnerID.Size = new System.Drawing.Size(169, 20);
             this.tbOwnerID.TabIndex = 2;
+            this.tbOwnerID.Text = "1";
             // 
             // btnAnimalOfOwner
             // 
@@ -102,24 +103,6 @@
             this.btnAnimalOfOwner.Text = "Show animals of owner";
             this.btnAnimalOfOwner.UseVisualStyleBackColor = true;
             this.btnAnimalOfOwner.Click += new System.EventHandler(this.btnAnimalOfOwner_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(28, 92);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(270, 42);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Show non-assigned animal";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnAnimalOfOwner
-            // 
-            this.btnAnimalOfOwner.Location = new System.Drawing.Point(28, 159);
-            this.btnAnimalOfOwner.Name = "btnAnimalOfOwner";
-            this.btnAnimalOfOwner.Size = new System.Drawing.Size(270, 44);
-            this.btnAnimalOfOwner.TabIndex = 6;
-            this.btnAnimalOfOwner.Text = "Show animals of owner";
-            this.btnAnimalOfOwner.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -148,6 +131,7 @@
             this.tbChipNr.Name = "tbChipNr";
             this.tbChipNr.Size = new System.Drawing.Size(169, 20);
             this.tbChipNr.TabIndex = 2;
+            this.tbChipNr.Text = "A10000";
             // 
             // lbChipNr
             // 

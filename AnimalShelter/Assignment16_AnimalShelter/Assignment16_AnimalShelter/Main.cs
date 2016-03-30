@@ -13,26 +13,26 @@ namespace Assignment16_AnimalShelter
 {
     public partial class Main : Form
     {
-        //public Shelter animalShelter;
+        public Shelter animalShelter;
 
         //public Shelter AnimalShelter { get { return animalShelter; } }
 
         public Main()
         {
             InitializeComponent();
-            //animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
+            animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
         }
 
         private void btnAddAnimal_Click(object sender, EventArgs e)
         {
-            Form addform = new AddAnimal();
+            Form addform = new AddAnimal(animalShelter);
             
             addform.Show();
         }
 
         private void btnAssignAnimal_Click(object sender, EventArgs e)
         {
-            Form assignForm = new AssignAnimalToOwner();
+            Form assignForm = new AssignAnimalToOwner(animalShelter);
             assignForm.Show();
         }
 

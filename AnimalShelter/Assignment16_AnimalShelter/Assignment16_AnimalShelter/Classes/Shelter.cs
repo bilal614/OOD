@@ -207,7 +207,28 @@ namespace Assignment16_AnimalShelter.Classes
             }
             return added;
         }
-
+        /// <summary>
+        /// This method adds an Animal to the list of Animals in the shelter. This will be an overloaded method and will allow to add a dog
+        /// or a cat to the shelter in which case the parameters of the method would be different according to the type of Animal.
+        /// </summary>
+        /// <param name="chipNr"></param>
+        /// <param name="entryDate"></param>
+        /// <param name="pedigree"></param>
+        /// <param name="foundLocation"></param>
+        /// <param name="dogOrCat"></param>
+        /// <returns></returns>
+        public bool AddAnimal(String chipNr, DateTime entryDate, String pedigree, String foundLocation, String habit)
+        {
+            bool added = false;
+            Animal temp = FindAnimal(chipNr);
+            if (temp == null)
+            {
+                Animal a = new Cat(chipNr, entryDate, pedigree, foundLocation, habit);
+                animalList.Add(a);
+                added = true;
+            }
+            return added;
+        }
         /// <summary>
         /// This method adds an Animal to the list of Animals in the shelter. This will be an overloaded method and will allow to add a dog
         /// or a cat to the shelter in which case the parameters of the method would be different according to the type of Animal --Thanh

@@ -13,12 +13,12 @@ namespace Assignment16_AnimalShelter
 {
     public partial class AssignAnimalToOwner : Form
     {
-        Shelter animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
+        Shelter animalShelter;
 
-        public AssignAnimalToOwner()
+        public AssignAnimalToOwner(Shelter s)
         {
             InitializeComponent();
-            //animShelter = main.AnimalShelter;
+            animalShelter = s;
         }
 
         private void FillListBox(List<Animal> animals)
@@ -38,17 +38,25 @@ namespace Assignment16_AnimalShelter
 
         private void btnAssign_Click(object sender, EventArgs e)
         {
-            string chipNr = tbChipNr.Text;
-            int OwnerId = Convert.ToInt32(tbOwnerID.Text);
+            try
+            {
+                string chipNr = tbChipNr.Text;
+                int OwnerId = Convert.ToInt32(tbOwnerID.Text);
 
-            if (animalShelter.reserveAnimal(chipNr, OwnerId))
-            {
-                MessageBox.Show(String.Format("Animal {0} is assigned successfully to owner {1}", chipNr, OwnerId.ToString()));
+                if (animalShelter.reserveAnimal(chipNr, OwnerId))
+                {
+                    MessageBox.Show(String.Format("Animal {0} is assigned successfully to owner {1}", chipNr, OwnerId.ToString()));
+                }
+                else
+                {
+                    MessageBox.Show("Fail to assign - Check your input again");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Fail to assign - Check your input again");
+                MessageBox.Show("Invalid input");
             }
+            
         }
 
         private void btnAnimalOfOwner_Click(object sender, EventArgs e)

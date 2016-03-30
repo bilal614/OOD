@@ -14,43 +14,52 @@ namespace Assignment16_AnimalShelter
     public partial class AddAnimal : Form
     {
         //Variables
-        Shelter animalShelter = new Shelter("Eindhoven Animal Shelter", 999000999, "Fontys, Eindhoven", "example@example.com");
-        public AddAnimal()
+        Shelter animalShelter;
+        public AddAnimal(Shelter s)
         {
             InitializeComponent();
+            animalShelter = s;
         }
 
         private void btnAddAnimal_Click(object sender, EventArgs e)
         {
-            DateTime entryDate = dateTimePickerEntryDate.Value;
-            string locationFound = tbLocataion.Text;
-            string pedegree = tbPedigree.Text;
-            if(radioCat.Checked)
+            try
             {
-                string habit = tbHabit.Text;
-                Cat cat = new Cat(animalShelter.CreateChipNr(), entryDate, pedegree, locationFound, habit);
-                if (animalShelter.AddAnimal(cat))
+                DateTime entryDate = dateTimePickerEntryDate.Value;
+                string locationFound = tbLocataion.Text;
+                string pedegree = tbPedigree.Text;
+                if (radioCat.Checked)
                 {
-                    MessageBox.Show("Your cat is added");
+                    string habit = tbHabit.Text;
+                    Cat cat = new Cat(animalShelter.CreateChipNr(), entryDate, pedegree, locationFound, habit);
+                    if (animalShelter.AddAnimal(cat))
+                    {
+                        MessageBox.Show("Your cat is added");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fail to add this cat");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Fail to add this cat");
-                }
-            }
-            else
-            {
 
-                Dog dog = new Dog(animalShelter.CreateChipNr(), entryDate, pedegree, locationFound, entryDate);
-                if (animalShelter.AddAnimal(dog))
-                {
-                    MessageBox.Show("Your dog is added");
-                }
-                else
-                {
-                    MessageBox.Show("Fail to add this dog");
+                    Dog dog = new Dog(animalShelter.CreateChipNr(), entryDate, pedegree, locationFound, entryDate);
+                    if (animalShelter.AddAnimal(dog))
+                    {
+                        MessageBox.Show("Your dog is added");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fail to add this dog");
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Invalid input");
+            }
+           
 
         }
 
