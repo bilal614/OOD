@@ -46,6 +46,9 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.panelRightFill = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSaveAs = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.panelRightFill.SuspendLayout();
@@ -194,6 +197,9 @@
             // 
             this.panelTop.BackColor = System.Drawing.SystemColors.MenuBar;
             this.panelTop.Controls.Add(this.panelLine);
+            this.panelTop.Controls.Add(this.btnExit);
+            this.panelTop.Controls.Add(this.btnClose);
+            this.panelTop.Controls.Add(this.btnSaveAs);
             this.panelTop.Controls.Add(this.btnSave);
             this.panelTop.Controls.Add(this.btnNew);
             this.panelTop.Controls.Add(this.btnOpen);
@@ -210,12 +216,12 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(521, 5);
+            this.btnSave.Location = new System.Drawing.Point(328, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(50, 69);
+            this.btnSave.Size = new System.Drawing.Size(54, 69);
             this.btnSave.TabIndex = 18;
-            this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnSave, "Save drawing network");
             this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnNew
@@ -225,12 +231,12 @@
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(411, 5);
+            this.btnNew.Location = new System.Drawing.Point(206, 5);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(49, 69);
+            this.btnNew.Size = new System.Drawing.Size(54, 69);
             this.btnNew.TabIndex = 18;
-            this.btnNew.Text = "New";
             this.btnNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnNew, "New drawing network");
             this.btnNew.UseVisualStyleBackColor = true;
             // 
             // btnOpen
@@ -240,12 +246,12 @@
             this.btnOpen.FlatAppearance.BorderSize = 0;
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(466, 5);
+            this.btnOpen.Location = new System.Drawing.Point(266, 5);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(49, 69);
+            this.btnOpen.Size = new System.Drawing.Size(56, 69);
             this.btnOpen.TabIndex = 18;
-            this.btnOpen.Text = "Open";
             this.btnOpen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnOpen, "Open drawing network form file");
             this.btnOpen.UseVisualStyleBackColor = true;
             // 
             // panelRightFill
@@ -257,6 +263,51 @@
             this.panelRightFill.Name = "panelRightFill";
             this.panelRightFill.Size = new System.Drawing.Size(583, 518);
             this.panelRightFill.TabIndex = 5;
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveAs.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnSaveAs.FlatAppearance.BorderSize = 0;
+            this.btnSaveAs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
+            this.btnSaveAs.Location = new System.Drawing.Point(388, 5);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(57, 69);
+            this.btnSaveAs.TabIndex = 18;
+            this.btnSaveAs.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnSaveAs, "Save as ");
+            this.btnSaveAs.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(451, 5);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(57, 69);
+            this.btnClose.TabIndex = 18;
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnClose, "Close current drawing network");
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.Location = new System.Drawing.Point(514, 5);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(57, 69);
+            this.btnExit.TabIndex = 18;
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnExit, "Exit application");
+            this.btnExit.UseVisualStyleBackColor = true;
             // 
             // PineLine
             // 
@@ -295,6 +346,9 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnLine;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnSaveAs;
 
     }
 }
