@@ -55,12 +55,26 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.panelRightFill = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+<<<<<<< HEAD
+=======
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+>>>>>>> origin/master
             this.panelLeft.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panelTop.SuspendLayout();
             this.panelRightFill.SuspendLayout();
+<<<<<<< HEAD
+=======
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+>>>>>>> origin/master
             this.SuspendLayout();
             // 
             // panelLine
@@ -69,12 +83,13 @@
             this.panelLine.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelLine.Location = new System.Drawing.Point(0, 88);
             this.panelLine.Name = "panelLine";
-            this.panelLine.Size = new System.Drawing.Size(555, 3);
+            this.panelLine.Size = new System.Drawing.Size(586, 3);
             this.panelLine.TabIndex = 1;
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panelLeft.Controls.Add(this.groupBox2);
             this.panelLeft.Controls.Add(this.groupBox1);
             this.panelLeft.Controls.Add(this.button1);
             this.panelLeft.Controls.Add(this.btnLine);
@@ -86,7 +101,7 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(135, 406);
+            this.panelLeft.Size = new System.Drawing.Size(135, 506);
             this.panelLeft.TabIndex = 2;
             // 
             // groupBox1
@@ -100,7 +115,11 @@
             this.groupBox1.Size = new System.Drawing.Size(126, 85);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
+<<<<<<< HEAD
             this.groupBox1.Text = "Setting";
+=======
+            this.groupBox1.Text = " Pump Setting";
+>>>>>>> origin/master
             // 
             // numericUpDown2
             // 
@@ -115,9 +134,15 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 55);
             this.label1.Name = "label1";
+<<<<<<< HEAD
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "Max:";
+=======
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Current:";
+>>>>>>> origin/master
             // 
             // numericUpDown1
             // 
@@ -250,7 +275,7 @@
             this.panelLineLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLineLeft.Location = new System.Drawing.Point(135, 0);
             this.panelLineLeft.Name = "panelLineLeft";
-            this.panelLineLeft.Size = new System.Drawing.Size(3, 406);
+            this.panelLineLeft.Size = new System.Drawing.Size(3, 506);
             this.panelLineLeft.TabIndex = 3;
             // 
             // panelDrawing
@@ -260,7 +285,7 @@
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawing.Location = new System.Drawing.Point(0, 0);
             this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(555, 406);
+            this.panelDrawing.Size = new System.Drawing.Size(586, 506);
             this.panelDrawing.TabIndex = 4;
             this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
             this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
@@ -278,7 +303,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(555, 91);
+            this.panelTop.Size = new System.Drawing.Size(586, 91);
             this.panelTop.TabIndex = 0;
             // 
             // btnExit
@@ -288,7 +313,7 @@
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(486, 18);
+            this.btnExit.Location = new System.Drawing.Point(517, 18);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(57, 52);
             this.btnExit.TabIndex = 18;
@@ -304,7 +329,7 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(423, 18);
+            this.btnClose.Location = new System.Drawing.Point(454, 18);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(57, 52);
             this.btnClose.TabIndex = 18;
@@ -319,7 +344,7 @@
             this.btnSaveAs.FlatAppearance.BorderSize = 0;
             this.btnSaveAs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
-            this.btnSaveAs.Location = new System.Drawing.Point(360, 18);
+            this.btnSaveAs.Location = new System.Drawing.Point(391, 18);
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.Size = new System.Drawing.Size(57, 52);
             this.btnSaveAs.TabIndex = 18;
@@ -334,7 +359,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(300, 18);
+            this.btnSave.Location = new System.Drawing.Point(331, 18);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(54, 52);
             this.btnSave.TabIndex = 18;
@@ -349,7 +374,7 @@
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(178, 18);
+            this.btnNew.Location = new System.Drawing.Point(209, 18);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(54, 52);
             this.btnNew.TabIndex = 18;
@@ -364,7 +389,7 @@
             this.btnOpen.FlatAppearance.BorderSize = 0;
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(238, 18);
+            this.btnOpen.Location = new System.Drawing.Point(269, 18);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(56, 52);
             this.btnOpen.TabIndex = 18;
@@ -373,6 +398,7 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             // 
             // panelRightFill
+<<<<<<< HEAD
             // 
             this.panelRightFill.Controls.Add(this.panelTop);
             this.panelRightFill.Controls.Add(this.panelDrawing);
@@ -381,14 +407,75 @@
             this.panelRightFill.Name = "panelRightFill";
             this.panelRightFill.Size = new System.Drawing.Size(555, 406);
             this.panelRightFill.TabIndex = 5;
+=======
+            // 
+            this.panelRightFill.Controls.Add(this.panelTop);
+            this.panelRightFill.Controls.Add(this.panelDrawing);
+            this.panelRightFill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRightFill.Location = new System.Drawing.Point(135, 0);
+            this.panelRightFill.Name = "panelRightFill";
+            this.panelRightFill.Size = new System.Drawing.Size(586, 506);
+            this.panelRightFill.TabIndex = 5;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.numericUpDown3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.numericUpDown4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(3, 409);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(126, 85);
+            this.groupBox2.TabIndex = 21;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Adjustable Spliter ";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Enabled = false;
+            this.numericUpDown3.Location = new System.Drawing.Point(60, 52);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown3.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Lower:";
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Enabled = false;
+            this.numericUpDown4.Location = new System.Drawing.Point(60, 26);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown4.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Upper:";
+>>>>>>> origin/master
             // 
             // PineLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(690, 406);
             this.ControlBox = false;
+=======
+            this.ClientSize = new System.Drawing.Size(721, 506);
+>>>>>>> origin/master
             this.Controls.Add(this.panelLineLeft);
             this.Controls.Add(this.panelRightFill);
             this.Controls.Add(this.panelLeft);
@@ -404,6 +491,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelRightFill.ResumeLayout(false);
+<<<<<<< HEAD
+=======
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+>>>>>>> origin/master
             this.ResumeLayout(false);
 
         }
@@ -435,5 +529,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label lbMax;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label label3;
     }
 }
