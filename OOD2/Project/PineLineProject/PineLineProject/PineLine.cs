@@ -75,6 +75,19 @@ namespace PineLineProject
         {
             btnSink.DoDragDrop(btnSink.Image, DragDropEffects.Move);
         }
-        
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult Exit = MessageBox.Show("Are you sure you want to close the program?",
+            "PipeLine", MessageBoxButtons.YesNo);
+            if (Exit == DialogResult.Yes)
+                this.Close();
+            else
+                return;
+        }
+        private void btnSink_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

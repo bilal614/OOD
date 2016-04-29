@@ -141,6 +141,7 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnExit, "Exit application");
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnClose
             // 
@@ -245,6 +246,7 @@
             this.btnSink.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSink, "Sink");
             this.btnSink.UseVisualStyleBackColor = true;
+            this.btnSink.Click += new System.EventHandler(this.btnSink_Click);
             this.btnSink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSink_MouseDown);
             // 
             // btnAdjustSpliter
