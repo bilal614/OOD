@@ -85,5 +85,19 @@ namespace PineLineProject
             else
                 return;
         }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdjustSpliter_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

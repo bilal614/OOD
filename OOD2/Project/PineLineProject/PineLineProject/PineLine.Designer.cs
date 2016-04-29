@@ -32,6 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PineLine));
             this.panelLine = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,26 +60,15 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.panelRightFill = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-<<<<<<< HEAD
-=======
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
->>>>>>> origin/master
             this.panelLeft.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panelTop.SuspendLayout();
             this.panelRightFill.SuspendLayout();
-<<<<<<< HEAD
-=======
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
->>>>>>> origin/master
             this.SuspendLayout();
             // 
             // panelLine
@@ -104,6 +98,54 @@
             this.panelLeft.Size = new System.Drawing.Size(135, 506);
             this.panelLeft.TabIndex = 2;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.numericUpDown3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.numericUpDown4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Location = new System.Drawing.Point(3, 409);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(126, 85);
+            this.groupBox2.TabIndex = 21;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Adjustable Spliter ";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Enabled = false;
+            this.numericUpDown3.Location = new System.Drawing.Point(60, 52);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown3.TabIndex = 23;
+            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Lower:";
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Enabled = false;
+            this.numericUpDown4.Location = new System.Drawing.Point(60, 26);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown4.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Upper:";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.numericUpDown2);
@@ -115,11 +157,7 @@
             this.groupBox1.Size = new System.Drawing.Size(126, 85);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
-<<<<<<< HEAD
-            this.groupBox1.Text = "Setting";
-=======
             this.groupBox1.Text = " Pump Setting";
->>>>>>> origin/master
             // 
             // numericUpDown2
             // 
@@ -134,15 +172,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 55);
             this.label1.Name = "label1";
-<<<<<<< HEAD
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Max:";
-=======
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 22;
             this.label1.Text = "Current:";
->>>>>>> origin/master
             // 
             // numericUpDown1
             // 
@@ -188,6 +220,7 @@
             this.btnLine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnLine, "Pineline");
             this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // btnSink
             // 
@@ -219,6 +252,7 @@
             this.btnAdjustSpliter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnAdjustSpliter, "Adjustable spliter");
             this.btnAdjustSpliter.UseVisualStyleBackColor = true;
+            this.btnAdjustSpliter.Click += new System.EventHandler(this.btnAdjustSpliter_Click);
             this.btnAdjustSpliter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAdjustSpliter_MouseDown);
             // 
             // btnSpliter
@@ -398,16 +432,6 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             // 
             // panelRightFill
-<<<<<<< HEAD
-            // 
-            this.panelRightFill.Controls.Add(this.panelTop);
-            this.panelRightFill.Controls.Add(this.panelDrawing);
-            this.panelRightFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRightFill.Location = new System.Drawing.Point(135, 0);
-            this.panelRightFill.Name = "panelRightFill";
-            this.panelRightFill.Size = new System.Drawing.Size(555, 406);
-            this.panelRightFill.TabIndex = 5;
-=======
             // 
             this.panelRightFill.Controls.Add(this.panelTop);
             this.panelRightFill.Controls.Add(this.panelDrawing);
@@ -417,65 +441,13 @@
             this.panelRightFill.Size = new System.Drawing.Size(586, 506);
             this.panelRightFill.TabIndex = 5;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.numericUpDown3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.numericUpDown4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(3, 409);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(126, 85);
-            this.groupBox2.TabIndex = 21;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Adjustable Spliter ";
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Enabled = false;
-            this.numericUpDown3.Location = new System.Drawing.Point(60, 52);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDown3.TabIndex = 23;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Lower:";
-            // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.Enabled = false;
-            this.numericUpDown4.Location = new System.Drawing.Point(60, 26);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDown4.TabIndex = 21;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Upper:";
->>>>>>> origin/master
-            // 
             // PineLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(690, 406);
-            this.ControlBox = false;
-=======
             this.ClientSize = new System.Drawing.Size(721, 506);
->>>>>>> origin/master
+            this.ControlBox = false;
             this.Controls.Add(this.panelLineLeft);
             this.Controls.Add(this.panelRightFill);
             this.Controls.Add(this.panelLeft);
@@ -485,19 +457,16 @@
             this.Text = "PineLine";
             this.Load += new System.EventHandler(this.PineLine_Load);
             this.panelLeft.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelRightFill.ResumeLayout(false);
-<<<<<<< HEAD
-=======
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
->>>>>>> origin/master
             this.ResumeLayout(false);
 
         }
