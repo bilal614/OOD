@@ -50,23 +50,32 @@
             this.btnMerger = new System.Windows.Forms.Button();
             this.btnPump = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.lbMax = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelLeft.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.panelRightFill.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLine
             // 
             this.panelLine.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelLine.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelLine.Location = new System.Drawing.Point(0, 80);
+            this.panelLine.Location = new System.Drawing.Point(0, 88);
             this.panelLine.Name = "panelLine";
-            this.panelLine.Size = new System.Drawing.Size(583, 3);
+            this.panelLine.Size = new System.Drawing.Size(555, 3);
             this.panelLine.TabIndex = 1;
             // 
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panelLeft.Controls.Add(this.groupBox1);
             this.panelLeft.Controls.Add(this.button1);
             this.panelLeft.Controls.Add(this.btnLine);
             this.panelLeft.Controls.Add(this.btnSink);
@@ -77,16 +86,16 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(107, 518);
+            this.panelLeft.Size = new System.Drawing.Size(135, 406);
             this.panelLeft.TabIndex = 2;
             // 
             // panelLineLeft
             // 
             this.panelLineLeft.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelLineLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLineLeft.Location = new System.Drawing.Point(107, 0);
+            this.panelLineLeft.Location = new System.Drawing.Point(135, 0);
             this.panelLineLeft.Name = "panelLineLeft";
-            this.panelLineLeft.Size = new System.Drawing.Size(3, 518);
+            this.panelLineLeft.Size = new System.Drawing.Size(3, 406);
             this.panelLineLeft.TabIndex = 3;
             // 
             // panelDrawing
@@ -96,7 +105,7 @@
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawing.Location = new System.Drawing.Point(0, 0);
             this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(583, 518);
+            this.panelDrawing.Size = new System.Drawing.Size(555, 406);
             this.panelDrawing.TabIndex = 4;
             this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
             this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
@@ -114,7 +123,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(583, 83);
+            this.panelTop.Size = new System.Drawing.Size(555, 91);
             this.panelTop.TabIndex = 0;
             // 
             // panelRightFill
@@ -122,9 +131,9 @@
             this.panelRightFill.Controls.Add(this.panelTop);
             this.panelRightFill.Controls.Add(this.panelDrawing);
             this.panelRightFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRightFill.Location = new System.Drawing.Point(107, 0);
+            this.panelRightFill.Location = new System.Drawing.Point(135, 0);
             this.panelRightFill.Name = "panelRightFill";
-            this.panelRightFill.Size = new System.Drawing.Size(583, 518);
+            this.panelRightFill.Size = new System.Drawing.Size(555, 406);
             this.panelRightFill.TabIndex = 5;
             // 
             // btnExit
@@ -134,9 +143,9 @@
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(514, 5);
+            this.btnExit.Location = new System.Drawing.Point(486, 18);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(57, 69);
+            this.btnExit.Size = new System.Drawing.Size(57, 52);
             this.btnExit.TabIndex = 18;
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnExit, "Exit application");
@@ -150,9 +159,9 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(451, 5);
+            this.btnClose.Location = new System.Drawing.Point(423, 18);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(57, 69);
+            this.btnClose.Size = new System.Drawing.Size(57, 52);
             this.btnClose.TabIndex = 18;
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnClose, "Close current drawing network");
@@ -165,9 +174,9 @@
             this.btnSaveAs.FlatAppearance.BorderSize = 0;
             this.btnSaveAs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
-            this.btnSaveAs.Location = new System.Drawing.Point(388, 5);
+            this.btnSaveAs.Location = new System.Drawing.Point(360, 18);
             this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(57, 69);
+            this.btnSaveAs.Size = new System.Drawing.Size(57, 52);
             this.btnSaveAs.TabIndex = 18;
             this.btnSaveAs.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSaveAs, "Save as ");
@@ -180,9 +189,9 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(328, 5);
+            this.btnSave.Location = new System.Drawing.Point(300, 18);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(54, 69);
+            this.btnSave.Size = new System.Drawing.Size(54, 52);
             this.btnSave.TabIndex = 18;
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSave, "Save drawing network");
@@ -195,9 +204,9 @@
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(206, 5);
+            this.btnNew.Location = new System.Drawing.Point(178, 18);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(54, 69);
+            this.btnNew.Size = new System.Drawing.Size(54, 52);
             this.btnNew.TabIndex = 18;
             this.btnNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnNew, "New drawing network");
@@ -210,9 +219,9 @@
             this.btnOpen.FlatAppearance.BorderSize = 0;
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(266, 5);
+            this.btnOpen.Location = new System.Drawing.Point(238, 18);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(56, 69);
+            this.btnOpen.Size = new System.Drawing.Size(56, 52);
             this.btnOpen.TabIndex = 18;
             this.btnOpen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnOpen, "Open drawing network form file");
@@ -224,9 +233,9 @@
             this.btnLine.FlatAppearance.BorderSize = 0;
             this.btnLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLine.Image = ((System.Drawing.Image)(resources.GetObject("btnLine.Image")));
-            this.btnLine.Location = new System.Drawing.Point(21, 355);
+            this.btnLine.Location = new System.Drawing.Point(21, 235);
             this.btnLine.Name = "btnLine";
-            this.btnLine.Size = new System.Drawing.Size(69, 64);
+            this.btnLine.Size = new System.Drawing.Size(92, 40);
             this.btnLine.TabIndex = 18;
             this.btnLine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnLine, "Pineline");
@@ -239,14 +248,13 @@
             this.btnSink.FlatAppearance.BorderSize = 0;
             this.btnSink.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSink.Image = ((System.Drawing.Image)(resources.GetObject("btnSink.Image")));
-            this.btnSink.Location = new System.Drawing.Point(21, 285);
+            this.btnSink.Location = new System.Drawing.Point(21, 189);
             this.btnSink.Name = "btnSink";
-            this.btnSink.Size = new System.Drawing.Size(69, 64);
+            this.btnSink.Size = new System.Drawing.Size(92, 40);
             this.btnSink.TabIndex = 18;
             this.btnSink.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSink, "Sink");
             this.btnSink.UseVisualStyleBackColor = true;
-            this.btnSink.Click += new System.EventHandler(this.btnSink_Click);
             this.btnSink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSink_MouseDown);
             // 
             // btnAdjustSpliter
@@ -256,9 +264,9 @@
             this.btnAdjustSpliter.FlatAppearance.BorderSize = 0;
             this.btnAdjustSpliter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdjustSpliter.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjustSpliter.Image")));
-            this.btnAdjustSpliter.Location = new System.Drawing.Point(21, 215);
+            this.btnAdjustSpliter.Location = new System.Drawing.Point(21, 143);
             this.btnAdjustSpliter.Name = "btnAdjustSpliter";
-            this.btnAdjustSpliter.Size = new System.Drawing.Size(69, 64);
+            this.btnAdjustSpliter.Size = new System.Drawing.Size(92, 40);
             this.btnAdjustSpliter.TabIndex = 18;
             this.btnAdjustSpliter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnAdjustSpliter, "Adjustable spliter");
@@ -272,9 +280,9 @@
             this.btnSpliter.FlatAppearance.BorderSize = 0;
             this.btnSpliter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpliter.Image = ((System.Drawing.Image)(resources.GetObject("btnSpliter.Image")));
-            this.btnSpliter.Location = new System.Drawing.Point(21, 145);
+            this.btnSpliter.Location = new System.Drawing.Point(21, 97);
             this.btnSpliter.Name = "btnSpliter";
-            this.btnSpliter.Size = new System.Drawing.Size(69, 64);
+            this.btnSpliter.Size = new System.Drawing.Size(92, 40);
             this.btnSpliter.TabIndex = 18;
             this.btnSpliter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSpliter, "Spliter");
@@ -288,9 +296,9 @@
             this.btnMerger.FlatAppearance.BorderSize = 0;
             this.btnMerger.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMerger.Image = ((System.Drawing.Image)(resources.GetObject("btnMerger.Image")));
-            this.btnMerger.Location = new System.Drawing.Point(21, 78);
+            this.btnMerger.Location = new System.Drawing.Point(21, 54);
             this.btnMerger.Name = "btnMerger";
-            this.btnMerger.Size = new System.Drawing.Size(69, 61);
+            this.btnMerger.Size = new System.Drawing.Size(92, 37);
             this.btnMerger.TabIndex = 18;
             this.btnMerger.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnMerger, "Merger");
@@ -305,7 +313,7 @@
             this.btnPump.Image = ((System.Drawing.Image)(resources.GetObject("btnPump.Image")));
             this.btnPump.Location = new System.Drawing.Point(21, 12);
             this.btnPump.Name = "btnPump";
-            this.btnPump.Size = new System.Drawing.Size(69, 60);
+            this.btnPump.Size = new System.Drawing.Size(92, 36);
             this.btnPump.TabIndex = 18;
             this.btnPump.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnPump, "Pump");
@@ -319,29 +327,82 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(21, 425);
+            this.button1.Location = new System.Drawing.Point(21, 281);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 31);
+            this.button1.Size = new System.Drawing.Size(92, 31);
             this.button1.TabIndex = 19;
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.button1, "Pineline");
+            this.toolTip.SetToolTip(this.button1, "Delete Pipeline / component");
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lbMax
+            // 
+            this.lbMax.AutoSize = true;
+            this.lbMax.Location = new System.Drawing.Point(7, 29);
+            this.lbMax.Name = "lbMax";
+            this.lbMax.Size = new System.Drawing.Size(30, 13);
+            this.lbMax.TabIndex = 20;
+            this.lbMax.Text = "Max:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.lbMax);
+            this.groupBox1.Location = new System.Drawing.Point(3, 318);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(126, 85);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Setting";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown1.Location = new System.Drawing.Point(60, 26);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown1.TabIndex = 21;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Enabled = false;
+            this.numericUpDown2.Location = new System.Drawing.Point(60, 52);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown2.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Max:";
             // 
             // PineLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(690, 518);
+            this.ClientSize = new System.Drawing.Size(690, 406);
             this.Controls.Add(this.panelLineLeft);
             this.Controls.Add(this.panelRightFill);
             this.Controls.Add(this.panelLeft);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "PineLine";
             this.Text = "PineLine";
             this.Load += new System.EventHandler(this.PineLine_Load);
             this.panelLeft.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
             this.panelRightFill.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -368,5 +429,10 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label lbMax;
     }
 }

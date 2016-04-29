@@ -85,9 +85,5 @@ namespace PineLineProject
             else
                 return;
         }
-        private void btnSink_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
