@@ -1,0 +1,23 @@
+This document is the user requirements specification for building a flow network application. 
+This application allows the user to make a drawing sketch of a network for fuel transportion system. 
+This application allows the user to simulate a network containing components including pump, 
+sink, splitter, adjustable splitter and merger. 
+
+Each of the components have their own attributes and functionalities and are meant to give a true
+representation of components in an actual fuel transportation system. The pump represents the source
+for such a system and has a maximum capacity and the currently utilized capacity set by the user in 
+her simulation for the system. The sink similarly acts as a consumption point for the fuel network.
+The other two remaining components are the splitter and merger. The splitter has two types, the adjustable
+splitter and the regular splitter. The splitter acts as an objects that divides the flow in two separate
+directions in the system. Whereas the regular splitter divides the flow evenly between two directions the
+adjustable splitter allow the user to assign the fraction of the total flow in each direction. The merger
+on the other hand combines the flow of two different pipelines into one single pipeline.
+
+Together the components and their associated pipelines would allow the user to create a simulation for 
+a network for the transportation of fuel. The application will help users connect and manage the amount of 
+fuel of every pipeline. The application will give constant feedback on the flow of the system for each
+pipeline, including checks on occurences of overflow. 
+
+In the first section of this document, the functional requirements are represented by use-cases. 
+The second section indicated user interface design of application. The last section introduces 
+some non-functional requirements of this application.
