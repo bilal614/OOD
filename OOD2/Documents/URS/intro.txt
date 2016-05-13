@@ -23,7 +23,12 @@ The second section indicated user interface design of application. The last sect
 some non-functional requirements of this application.
 
 
-Form Description:
-The red area highlighted in the left side of the form is the toolbox. The toolbox gives the user access
-to all the drawing tools that are available for creating a sketch of the fuel transport system. The user
-may click on any of the buttons in the toolbox which activates the 
+
+USER INTERFACE
+- On the left hand side of the form (the red area) is the toolbox containing seven button
+and two group boxes. Their functionalities are explained in table 1.
+- On the top right corner of the form, is a group of buttons which are related to file management. 
+Their functionalities are explained in table 1.
+- The light blue area is the drawing screen.
+- Every button contains the tool tip indicating its name. The tooltip is show up when the
+user hover the mouse on it, which allows user to easily get the meaning of its function.
