@@ -21,3 +21,9 @@ pipeline, including checks on occurences of overflow.
 In the first section of this document, the functional requirements are represented by use-cases. 
 The second section indicated user interface design of application. The last section introduces 
 some non-functional requirements of this application.
+
+
+Form Description:
+The red area highlighted in the left side of the form is the toolbox. The toolbox gives the user access
+to all the drawing tools that are available for creating a sketch of the fuel transport system. The user
+may click on any of the buttons in the toolbox which activates the 
