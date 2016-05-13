@@ -430,7 +430,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(721, 506);
-            this.ControlBox = false;
             this.Controls.Add(this.panelLineLeft);
             this.Controls.Add(this.panelRightFill);
             this.Controls.Add(this.panelLeft);
