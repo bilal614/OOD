@@ -33,9 +33,8 @@
             this.panelLine = new System.Windows.Forms.Panel();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -59,15 +58,17 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.panelRightFill = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelLeft.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panelTop.SuspendLayout();
             this.panelRightFill.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLine
@@ -76,7 +77,7 @@
             this.panelLine.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelLine.Location = new System.Drawing.Point(0, 88);
             this.panelLine.Name = "panelLine";
-            this.panelLine.Size = new System.Drawing.Size(586, 3);
+            this.panelLine.Size = new System.Drawing.Size(578, 3);
             this.panelLine.TabIndex = 1;
             // 
             // panelLeft
@@ -94,56 +95,50 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(135, 506);
+            this.panelLeft.Size = new System.Drawing.Size(143, 517);
             this.panelLeft.TabIndex = 2;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.numericUpDown3);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.numericUpDown4);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(3, 409);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(126, 85);
+            this.groupBox2.Size = new System.Drawing.Size(126, 101);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adjustable Spliter ";
             // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Enabled = false;
-            this.numericUpDown3.Location = new System.Drawing.Point(60, 52);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDown3.TabIndex = 23;
-            this.numericUpDown3.ValueChanged += new System.EventHandler(this.numericUpDown3_ValueChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 55);
+            this.label2.Location = new System.Drawing.Point(13, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Lower:";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Up:";
             // 
-            // numericUpDown4
+            // label4
             // 
-            this.numericUpDown4.Enabled = false;
-            this.numericUpDown4.Location = new System.Drawing.Point(60, 26);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDown4.TabIndex = 21;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(64, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "100";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 29);
+            this.label3.Location = new System.Drawing.Point(19, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 20;
-            this.label3.Text = "Upper:";
+            this.label3.Text = "Totall: ";
             // 
             // groupBox1
             // 
@@ -306,9 +301,9 @@
             // 
             this.panelLineLeft.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelLineLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLineLeft.Location = new System.Drawing.Point(135, 0);
+            this.panelLineLeft.Location = new System.Drawing.Point(143, 0);
             this.panelLineLeft.Name = "panelLineLeft";
-            this.panelLineLeft.Size = new System.Drawing.Size(3, 506);
+            this.panelLineLeft.Size = new System.Drawing.Size(3, 517);
             this.panelLineLeft.TabIndex = 3;
             // 
             // panelDrawing
@@ -318,7 +313,7 @@
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawing.Location = new System.Drawing.Point(0, 0);
             this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(586, 506);
+            this.panelDrawing.Size = new System.Drawing.Size(578, 517);
             this.panelDrawing.TabIndex = 4;
             this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
             this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
@@ -335,7 +330,7 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(586, 91);
+            this.panelTop.Size = new System.Drawing.Size(578, 91);
             this.panelTop.TabIndex = 0;
             // 
             // btnExit
@@ -345,7 +340,7 @@
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(517, 18);
+            this.btnExit.Location = new System.Drawing.Point(509, 18);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(57, 52);
             this.btnExit.TabIndex = 18;
@@ -361,7 +356,7 @@
             this.btnSaveAs.FlatAppearance.BorderSize = 0;
             this.btnSaveAs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
-            this.btnSaveAs.Location = new System.Drawing.Point(454, 18);
+            this.btnSaveAs.Location = new System.Drawing.Point(446, 18);
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.Size = new System.Drawing.Size(57, 52);
             this.btnSaveAs.TabIndex = 18;
@@ -376,7 +371,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(394, 18);
+            this.btnSave.Location = new System.Drawing.Point(386, 18);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(54, 52);
             this.btnSave.TabIndex = 18;
@@ -391,7 +386,7 @@
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(272, 18);
+            this.btnNew.Location = new System.Drawing.Point(264, 18);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(54, 52);
             this.btnNew.TabIndex = 18;
@@ -406,7 +401,7 @@
             this.btnOpen.FlatAppearance.BorderSize = 0;
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(332, 18);
+            this.btnOpen.Location = new System.Drawing.Point(324, 18);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(56, 52);
             this.btnOpen.TabIndex = 18;
@@ -419,17 +414,41 @@
             this.panelRightFill.Controls.Add(this.panelTop);
             this.panelRightFill.Controls.Add(this.panelDrawing);
             this.panelRightFill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRightFill.Location = new System.Drawing.Point(135, 0);
+            this.panelRightFill.Location = new System.Drawing.Point(143, 0);
             this.panelRightFill.Name = "panelRightFill";
-            this.panelRightFill.Size = new System.Drawing.Size(586, 506);
+            this.panelRightFill.Size = new System.Drawing.Size(578, 517);
             this.panelRightFill.TabIndex = 5;
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Location = new System.Drawing.Point(60, 40);
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(50, 20);
+            this.numericUpDown3.TabIndex = 24;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Down:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(60, 68);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(50, 20);
+            this.textBox1.TabIndex = 27;
             // 
             // PineLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(721, 506);
+            this.ClientSize = new System.Drawing.Size(721, 517);
             this.Controls.Add(this.panelLineLeft);
             this.Controls.Add(this.panelRightFill);
             this.Controls.Add(this.panelLeft);
@@ -441,14 +460,13 @@
             this.panelLeft.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelRightFill.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -480,9 +498,11 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label lbMax;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
