@@ -99,5 +99,22 @@ namespace PineLineProject
         {
             
         }
+
+        private void numericUpDown3_ValueChanged_1(object sender, EventArgs e)
+        {
+            //decimal up = 100; I was just testing to see how it works
+            decimal down = 100;
+            tb_DownValue.Text = down + "";
+
+            decimal counter = ASpiter_UpValue.Value;
+            
+           
+             if(ASpiter_UpValue.Value <= down)
+            {
+                down = down - counter;
+                tb_DownValue.Text = down.ToString();
+            }
+          
+        }
     }
 }
