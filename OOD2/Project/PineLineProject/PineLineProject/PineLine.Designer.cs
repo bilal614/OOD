@@ -126,9 +126,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 71);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 26;
-            this.label5.Text = "Down:";
+            this.label5.Text = "Lower:";
             // 
             // ASpiter_UpValue
             // 
@@ -143,9 +143,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 25;
-            this.label2.Text = "Up:";
+            this.label2.Text = "Upper:";
             // 
             // label4
             // 
