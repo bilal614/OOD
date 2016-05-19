@@ -1,0 +1,11 @@
+Non-functional requirements:
+-Application should work most optimally in the Windows environment. This applications should work
+ best on the Windows platform as it was designed for such.
+-The application should be user friendly and incorporate elements of good user interface design. For
+instance the the icons for the button are easily recognizeable and familiar to the user in terms of 
+expressing what function the button serves. Also the toolbox and the important buttons are placed 
+on the edges and corners of the screen, which according to Fitt's law makes items more easily accessible
+to the user. The applications user interface design tries to incorporate such prinicples of design as well.
+-The application should respond as swiftly as possible to the users actions. Application response time
+may depend on the PC the user uses the application on. However the software design attempts to maximize
+the throughput time for all the processes and computations in the application.    
