@@ -1,0 +1,5 @@
+This document is the design document for building an application that simulates an oil pipe-line network.  
+
+In the first section of this document, the class diagram of the application are presented in the form of
+diagrams along with their brief descriptions. The second section presents selected sequence diagrams for
+some of the more complex and important methods related to various classes.
