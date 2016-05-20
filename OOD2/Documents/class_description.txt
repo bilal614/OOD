@@ -1,10 +1,40 @@
+System Class:
+
 The System class is the main class in our class heirarchy, which is a static class and has two properties
 of type Network and FileHandler. This class is the main class in our application and uses the two objects
 in its property. 
+
+In addition the Sytem class has two important properties called the tempComponent and tempPipeLine 
+properties. These two properties help the System verify and know which component the user is trying to
+draw or whether the user is trying to draw a pipe-line.
+
+The System class has several methods including most importantly the methods drawComponent and drawPipeLine.
+These methods essentially are what would allow the user to draw the various components and pipe-lines on
+the drawing screen depending on which button from the toolbox the user has selected. 
+ 
+Network Class:
 
 The Network class has two main properties both of which are lists. One is a list of Component objects
 and the other is a list of Pipeline objects. These properties are kept private and are accessible through
 their respective getList methods. There are other methods in the class related to adding or removing 
 components or pipelines. 
 
-The Component class is the parent class for various component child classes. The component class has   
+The Network class also has other useful methods including and not limited to the checkEmptyLocation method,
+which would browse through its list of components to see if the location area of any of the components in 
+the list are occupied or not. In addition this class has other general methods such as getListOfComponents
+and getListOfPipeLines which return the list of components and pipe-lines respectively. Since the list of
+components and pipe-line properties are private these methods allow access to those lists and keeps the
+lists encapsulated within the class. 
+
+FileHandler Class:   
+
+The FileHandler Class is one of the most important classes in the application and has mainly a single 
+property called the path which is of type String. The path property indicates the file path where the 
+text file storing the Network objects related information is stored. 
+
+This class has primarily two methods called the WriteToFile which takes a Network object as a parameter
+and a method called ReadFromFile. The WriteToFile method writes the list of components and pipe-lines
+from the lists of the given Network object to a text file in a pre-determined convention for writing such 
+objects to file. The ReadFromFile method reads a text file that has components and pipelines written to it
+in a pre-determined convention and then takes those components and pipe-lines and assigns them to a 
+Network object which it returns.  
