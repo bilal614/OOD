@@ -1,0 +1,27 @@
+drawComponent(gr: Graphic, image: ImageList,component: Component): void
+
+This method belongs to the System class and is used to draw a component to the drawing screen and add 
+that component to the list of components belonging to the object currentNetwork. The drawComponent method
+has three argument parameters which include objects of type Graphic, ImageList and Component. The Graphic
+object can come from the Form's PaintEventArgs or otherwise by creating the Graphic object of the form or
+a control. The ImageList consists of the images for each of the images for the components that the user 
+would like to place on the drawing screen. 
+
+The component object comes from the temComponent property of the System class. This property changes its
+reference to a new Component object whenever the user clicks on a button for different components on the
+toolbox. Clicking on a specific component button would create a Component of that type and change the 
+tempComponents reference to that newly created Component object. The component argument in the method is
+then used to call the method addComponent on the currentNetwork property of the static System class. 
+
+The method addComponent takes an argument of type Component which would be the same as tempComponent in 
+this case. The method addComponent then adds the Component to the List of Components property of Network 
+class. However when the addComponent method is called there is another method call within this method to 
+the method for checkOverlap method which would return a boolean. If the return value is true then the 
+component would be successfully added to the list of components.
+
+Once the component is successfully added to the list of components the Graphic object of the method will
+use the location property of the component to draw the image from the ImageList corresponding to the 
+component that needs to be drawn on the drawing screen.  
+
+drawPipeLine(gr: Graphic, image: ImageList,component: Component): void
+      
