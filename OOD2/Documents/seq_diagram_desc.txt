@@ -23,5 +23,27 @@ Once the component is successfully added to the list of components the Graphic o
 use the location property of the component to draw the image from the ImageList corresponding to the 
 component that needs to be drawn on the drawing screen.  
 
-drawPipeLine(gr: Graphic, image: ImageList,component: Component): void
+drawPipeLine(gr: Graphic, pipeLine: PipeLine): void
+
+The drawPipeLine method works in a similar manner to the drawComponent method with a few notable 
+differences. The drawPipeLine method takes two argument parameters, a Graphics object type and a PipeLine
+object. 
+
+The PipeLine object is created whenever the click on pipe-line button in form event is raised. In this event
+the tempPipeLine property of System class is assigned a new PipeLine object without that PipeLine object 
+having any start and end Component properties assigned. 
+
+The next time whenever the user clicks on the screen the event for screeen click goes through various checks
+that first include to check if the tempPipeLine is empty and if not the nested statements check for the 
+following: whether the startComponent of the tempPipeLine is null and assigns a startComponent to it via 
+the method findComponent, if startComponent is not null and endComponent is null and calling the method
+findComponent returns a null then the point from the EventArgs is added to that tempPipeLines list of 
+clickLocations and finally if startComponent is not null and endComponent is null and calling the method
+findComponent returns a non-null value then the startComponent is assigned whichever component is returned 
+by findComponent function unless that component is the same as the startComponent. 
+
+Once the PipeLine object given in the drawPipeLines argument is complete in that it at least has a start 
+and end Components that are non-null, then the Graphic object is used to draw the PipeLine according to 
+the startComponent and endComponent locations as well as the locations given in the list of clickLocations
+of the PipeLine object from the parameter.     
       
