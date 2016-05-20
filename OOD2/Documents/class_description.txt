@@ -1,0 +1,10 @@
+The System class is the main class in our class heirarchy, which is a static class and has two properties
+of type Network and FileHandler. This class is the main class in our application and uses the two objects
+in its property. 
+
+The Network class has two main properties both of which are lists. One is a list of Component objects
+and the other is a list of Pipeline objects. These properties are kept private and are accessible through
+their respective getList methods. There are other methods in the class related to adding or removing 
+components or pipelines. 
+
+The Component class is the parent class for various component child classes. The component class has   
