@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Component.cs" />
     <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="PineLine.cs">
       <SubType>Form</SubType>
