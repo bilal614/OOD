@@ -456,7 +456,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "PineLine";
-            this.Text = "PineLine";
+            this.Text = "PipeLine";
             this.Load += new System.EventHandler(this.PineLine_Load);
             this.panelLeft.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
