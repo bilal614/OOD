@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Classes\Component.cs" />
     <Compile Include="Classes\FileHandler.cs" />
+    <Compile Include="Component.cs" />
     <Compile Include="PineLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +55,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pump.cs" />
+    <Compile Include="Sink.cs" />
     <EmbeddedResource Include="PineLine.resx">
       <DependentUpon>PineLine.cs</DependentUpon>
     </EmbeddedResource>
