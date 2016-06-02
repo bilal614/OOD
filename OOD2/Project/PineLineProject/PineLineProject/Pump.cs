@@ -18,7 +18,9 @@ namespace PineLineProject
          * out of the pump component. Also all the attributes for thic class have been kept private and would be accessed via various 
          * methods 
          */
-        private double capacity; 
+        private double capacity;
+        private double overFlow;
+        private Component comEnd;
         //private PipeLine outPipeLine;
     }
 }

@@ -1,22 +1,120 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PineLineProject
 {
-    class PipeLine
+    public partial class PineLine : Form
     {
-        /*The PipeLine is a special class, even though it is in many ways similar to the Component class and shares a few attributes with 
-         * the Component class. The PipeLine class represents the pipe-lines that connect the various components in the pipe-line network.
-         * The reason we distinguish the PipeLine class from the conventional Component class is because it includes a List which presents
-         * the various locations that the pipe-line touches on the drawing screen. 
-         */
+        public PineLine()
+        {
+            InitializeComponent();
+        }
 
-        /*PROPERTIES:
-         * The PipeLine class has several properties including a few in common with the Component class such as the currentFlow, and the id.
-         * The other properties include a List of locations that the user wants the pipe-line to pass through on the drawing screen. 
-         */
+        private void PineLine_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPump_Click(object sender, EventArgs e)
+        {
+
+        }
+        #region Drag and drop components implementation
+
+        private void btnPump_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Drag the image of the button
+            btnPump.DoDragDrop(btnPump.Image, DragDropEffects.Move);
+        }
+
+        private void panelDrawing_DragEnter(object sender, DragEventArgs e)
+        {
+            //Allow every types of objects. Need to be improved. Only allow Bitmap object
+            e.Effect = e.AllowedEffect;
+        }
+
+        private void panelDrawing_DragDrop(object sender, DragEventArgs e)
+        {
+            //Get the image from data and set it to picture box
+            PictureBox pic = new PictureBox();
+            pic.Image = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
+            //Draw the image in the position of the cursor
+            int xPos = e.X;
+            int yPos = e.Y;
+
+            Point clientPoint = panelDrawing.PointToClient(new Point(e.X, e.Y));
+
+            Graphics gr = panelDrawing.CreateGraphics();
+            gr.DrawImage(pic.Image, clientPoint.X, clientPoint.Y);
+        }
+
+        private void btnMerger_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnMerger.DoDragDrop(btnMerger.Image, DragDropEffects.Move);
+        }
+        #endregion
+
+        private void btnSpliter_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnSpliter.DoDragDrop(btnSpliter.Image, DragDropEffects.Move);
+        }
+
+        private void btnAdjustSpliter_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnAdjustSpliter.DoDragDrop(btnAdjustSpliter.Image, DragDropEffects.Move);
+        }
+
+        private void btnSink_MouseDown(object sender, MouseEventArgs e)
+        {
+            btnSink.DoDragDrop(btnSink.Image, DragDropEffects.Move);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult Exit = MessageBox.Show("Are you sure you want to close the program?",
+            "PipeLine", MessageBoxButtons.YesNo);
+            if (Exit == DialogResult.Yes)
+                this.Close();
+            else
+                return;
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdjustSpliter_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void numericUpDown3_ValueChanged_1(object sender, EventArgs e)
+        {
+            //decimal up = 100; I was just testing to see how it works
+            decimal down = 100;
+            tb_DownValue.Text = down + "";
+
+            decimal counter = ASpiter_UpValue.Value;
+            
+           
+             if(ASpiter_UpValue.Value <= down)
+            {
+                down = down - counter;
+                tb_DownValue.Text = down.ToString();
+            }
+          
+        }
     }
 }
