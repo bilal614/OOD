@@ -58,6 +58,7 @@
     <Compile Include="PipeLine.Designer.cs">
       <DependentUpon>PipeLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="PipeLine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pump.cs" />
