@@ -53,7 +53,7 @@
     <Compile Include="Classes\Pump.cs" />
     <Compile Include="Classes\Sink.cs" />
     <Compile Include="Classes\Spliter.cs" />
-    <Compile Include="Classes\System.cs" />
+    <Compile Include="Classes\PipeLineSystem.cs" />
     <Compile Include="PipeLineApp.cs">
       <SubType>Form</SubType>
     </Compile>

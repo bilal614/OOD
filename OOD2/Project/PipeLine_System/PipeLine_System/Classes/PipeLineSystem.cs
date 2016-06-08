@@ -1,5 +1,4 @@
-﻿using PipeLineProject.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PipeLine_System.Classes
 {
-    class System
+    class PipeLineSystem
     {
         public static bool saved = false;
         public static Network currentNetwork = null;
@@ -18,6 +17,7 @@ namespace PipeLine_System.Classes
 
         public bool OpenNetwork()
         {
+            return false;
         }
         public void SaveNetwork() { }
         public void DrawComponent() { }

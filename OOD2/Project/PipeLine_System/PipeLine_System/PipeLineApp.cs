@@ -24,11 +24,11 @@ namespace PipeLine_System
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                textBox1.Text = openFileDialog1.FileName;
+                FileHandler temp = new FileHandler(openFileDialog1.FileName);
             }
             else
             {
-                MessageBox.Show("You choose Cancel");
+                MessageBox.Show("You choose cancel");
             }
         }
     }
