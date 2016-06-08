@@ -61,6 +61,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lbMax = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ASpiter_UpValue)).BeginInit();
             this.panelRightFill.SuspendLayout();
@@ -130,6 +131,7 @@
             this.btnSaveAs.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSaveAs, "Save as ");
             this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
             // btnSave
             // 
@@ -432,6 +434,10 @@
             this.panelLeft.Size = new System.Drawing.Size(143, 517);
             this.panelLeft.TabIndex = 6;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // PipeLineApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,6 +495,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label lbMax;
         private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

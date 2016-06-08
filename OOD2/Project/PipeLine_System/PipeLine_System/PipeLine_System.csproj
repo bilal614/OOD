@@ -89,6 +89,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="NetworkFiles\Network_01.txt" />
+    <Content Include="NetworkFiles\PatternOfTextFile.txt" />
     <Content Include="Pictures\Add File Filled-32.png" />
     <Content Include="Pictures\AdjustableSpliter.png" />
     <Content Include="Pictures\Cancel File-32.png" />

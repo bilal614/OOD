@@ -18,6 +18,6 @@ namespace PipeLine_System
          * only include a incoming pipe-line component
          */
         
-        //private PipeLine inPipeLine;
+        private PipeLine inPipeLine;
     }
 }

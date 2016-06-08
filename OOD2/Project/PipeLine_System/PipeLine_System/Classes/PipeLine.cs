@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,5 +19,17 @@ namespace PipeLine_System
          * The PipeLine class has several properties including a few in common with the Component class such as the currentFlow, and the id.
          * The other properties include a List of locations that the user wants the pipe-line to pass through on the drawing screen. 
          */
+
+        //Instance variables
+        private int id;
+        private Point startLocation;
+        private Point endLocation;
+        private double currentFlow;
+        private double safeLimit;
+        private List<Point> clickLocation;
+        private Component compStart;
+        private Component compEnd;
+        private bool danger;
+        //Constructors
     }
 }

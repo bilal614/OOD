@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,14 @@ namespace PipeLine_System
          * which include the 2 starting Component properties to indicate the PipeLines that constitute the input of the current flow to the
          * Merger and an outgoing PipeLine as well. 
          */
-        private PipeLine comStart1;
-        private PipeLine comStart2;
-        private PipeLine comEnd;
-        public Merger() { }
+        private PipeLine inPipeline1;
+        private PipeLine inPipeline2;
+        private PipeLine outPipeline;
+        private Point upperLocation;
+        private Point lowerLocation;
+        public Merger() 
+        {
+
+        }
     }
 }

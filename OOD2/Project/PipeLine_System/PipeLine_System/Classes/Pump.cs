@@ -19,8 +19,7 @@ namespace PipeLine_System
          * methods 
          */
         private double capacity;
-        private double overFlow;
-        private Component comEnd;
+        private PipeLine outPipeLine;
         //private PipeLine outPipeLine;
     }
 }

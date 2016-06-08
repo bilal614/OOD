@@ -8,5 +8,6 @@ namespace PipeLine_System
 {
     class AdjustableSpliter : Spliter
     {
+        int upperPercent;
     }
 }

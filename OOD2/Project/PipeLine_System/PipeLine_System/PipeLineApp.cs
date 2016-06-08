@@ -16,5 +16,20 @@ namespace PipeLine_System
         {
             InitializeComponent();
         }
+
+        //Global variables
+        
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = openFileDialog1.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                textBox1.Text = openFileDialog1.FileName;
+            }
+            else
+            {
+                MessageBox.Show("You choose Cancel");
+            }
+        }
     }
 }
