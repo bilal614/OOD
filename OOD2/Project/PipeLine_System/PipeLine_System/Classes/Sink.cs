@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PineLineProject
+namespace PipeLine_System
 {
     class Sink: Component
     {

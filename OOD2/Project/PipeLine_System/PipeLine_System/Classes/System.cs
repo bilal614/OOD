@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PineLineProject.Classes
+namespace PipeLine_System.Classes
 {
     class System : Network
     {
@@ -13,7 +13,7 @@ namespace PineLineProject.Classes
         private Network currentNetwork;
         private FileHandler fileHandler;
         private Component tempComponent;
-        private PineLine tempPipeLine;
+        private PipeLine tempPipeLine;
 
         public System() { }
 

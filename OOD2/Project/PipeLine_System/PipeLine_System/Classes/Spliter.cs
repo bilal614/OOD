@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PipeLineProject.Classes
+namespace PipeLine_System
 {
-    class Component
+    class Spliter : Component
     {
     }
 }

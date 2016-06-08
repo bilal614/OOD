@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 
-namespace PineLineProject
+namespace PipeLine_System
 {
     class Component
     {
@@ -29,7 +29,7 @@ namespace PineLineProject
          * by invoking their current-flow change event as well. 
          */
         void updateCurrentFlow()
-        { 
+        {
             //needs to be implemented 
         }
     }
