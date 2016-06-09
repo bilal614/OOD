@@ -28,5 +28,27 @@ namespace PipeLine_System
         { 
         
         }
+
+        //METHODS:
+        /*The following methods return the outgoing pipeline neighbor of the Pump.*/
+        public PipeLine getOutPipeLine()
+        {
+            return outPipeLine;
+        }
+
+        /*The following methods adds an outgoing pipeline neighbor to the Pump. If successful, it returns true otherwise
+         * it returns a false.*/
+        public bool addOutPipeLine(PipeLine OutPipeLine)
+        {
+            if (OutPipeLine != null)
+            {
+                outPipeLine = OutPipeLine;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

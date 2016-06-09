@@ -23,5 +23,60 @@ namespace PipeLine_System
         { 
         
         }
+
+        //METHODS
+        /*The following methods return the outgoing and incoming pipeline neighbors of the Splitter.*/
+        public PipeLine getOutPipeLine1()
+        {
+            return outPipeLine1;
+        }
+        public PipeLine getOutPipeLine2()
+        {
+            return outPipeLine2;
+        }
+        public PipeLine getInPipeLine()
+        {
+            return inPipeline;
+        }
+        /*The following methods add incoming and outgoing pipeline neighbors to the Merger. If successful, it returns true otherwise
+        * it returns a false.*/
+        public bool addOutPipeLine1(PipeLine OutPipeLine1)
+        {
+            if (OutPipeLine1 != null)
+            {
+                outPipeLine1 = OutPipeLine1;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool addOutPipeLine1(PipeLine OutPipeLine2)
+        {
+            if (OutPipeLine2 != null)
+            {
+                outPipeLine2 = OutPipeLine2;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool addInPipeLine1(PipeLine InPipeLine)
+        {
+            if (InPipeLine != null)
+            {
+                inPipeline = InPipeLine;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

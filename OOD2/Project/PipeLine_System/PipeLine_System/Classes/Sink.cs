@@ -28,5 +28,27 @@ namespace PipeLine_System
         
         }
 
+        //METHODS
+        /*The following methods return the outgoing pipeline neighbor of the Sink.*/
+        public PipeLine getInPipeLine1()
+        {
+            return inPipeLine;
+        }
+
+        /*The following method adds an incoming pipeline neighbor to the Sink. If successful, it returns true otherwise
+         * it returns a false.*/
+        public bool addInPipeLine1(PipeLine InPipeLine)
+        {
+            if (InPipeLine != null)
+            {
+                inPipeLine = InPipeLine;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

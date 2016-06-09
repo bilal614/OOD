@@ -16,11 +16,13 @@ namespace PipeLine_System
         /*PROPERTIES:
          * Properties of the Component class include those properties which are common to all the Component child classes and include 
          * attributes including the location, an id and a current-flow for each component. Moreover all the properties for the Component
-         * class have been kept private and can be accessed via various methods. 
+         * class have been kept private and can be accessed via various methods. Area is the length x width of the Component picture on the
+         * drawing screen.
          */
         private int id;
         private Point location;
         private double currentFlow;
+        private int Area;
 
         /*
          * CONSTRUCTOR
@@ -40,6 +42,19 @@ namespace PipeLine_System
         {
             //needs to be implemented 
             return true;
+        }
+
+        /// <summary>
+        /// checks if the point (xmouse,ymouse) is on this Component.
+        /// In other words: it checks if the distance between the center of this plate and the point (xmouse,ymouse)
+        /// is less than or equal to the radius.
+        /// </summary>
+        /// <param name="xmouse"></param>
+        /// <param name="ymouse"></param>
+        /// <returns></returns>
+        public virtual bool ContainsPoint(int xmouse, int ymouse)
+        {
+            return (this.location.X - xmouse) * (this.location.Y - ymouse)  <= Area;
         }
     }
 }
