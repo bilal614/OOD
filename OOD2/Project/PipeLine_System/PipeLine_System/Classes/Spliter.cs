@@ -17,6 +17,11 @@ namespace PipeLine_System
         private Point upperLocation;
         private Point lowerLocation;
 
-
+        //CONSTRUCTOR
+        public Spliter(int ID, Point componentLocation, double CurrentFlow) :
+            base(ID, componentLocation, CurrentFlow)
+        { 
+        
+        }
     }
 }

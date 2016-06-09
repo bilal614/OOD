@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace PipeLine_System
 {
@@ -20,6 +21,12 @@ namespace PipeLine_System
          */
         private double capacity;
         private PipeLine outPipeLine;
-        //private PipeLine outPipeLine;
+     
+        //CONSTRUCTOR
+        public Pump(int ID, Point componentLocation, double CurrentFlow) :
+            base(ID, componentLocation, CurrentFlow)
+        { 
+        
+        }
     }
 }

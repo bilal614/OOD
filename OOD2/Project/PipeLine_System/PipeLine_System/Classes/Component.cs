@@ -23,14 +23,23 @@ namespace PipeLine_System
         private double currentFlow;
 
         /*
-         METHODS:
+         * CONSTRUCTOR
+        */
+        public Component(int ID, Point componentLocation, double CurrentFlow)
+        {
+            id = ID;
+            location = componentLocation;
+            currentFlow = CurrentFlow;
+        }
+         /*METHODS:
          * The Component class has the method updateCurrentFlow which takes no parameters and returns nothing. This method would be tied to 
          * an event which would be raised if the current-flow of the Component is changed. If so the current-flow of the neighbors are changed
          * by invoking their current-flow change event as well. 
          */
-        void updateCurrentFlow()
+        bool updateCurrentFlow()
         {
             //needs to be implemented 
+            return true;
         }
     }
 }
