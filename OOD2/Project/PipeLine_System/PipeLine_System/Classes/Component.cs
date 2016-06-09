@@ -22,7 +22,8 @@ namespace PipeLine_System
         private int id;
         private Point location;
         private double currentFlow;
-        private int Area;
+        public static const int Radius = 40; /*the radius of every Component (that is why it is static), because the relative size of the
+        Components on the drawing screen is similar so we can use this value as Radius for all Components*/
 
         /*
          * CONSTRUCTOR
@@ -46,15 +47,15 @@ namespace PipeLine_System
 
         /// <summary>
         /// checks if the point (xmouse,ymouse) is on this Component.
-        /// In other words: it checks if the distance between the center of this plate and the point (xmouse,ymouse)
-        /// is less than or equal to the radius.
+        /// In other words: it checks if the distance between the center of this Component and the point (xmouse,ymouse)
+        /// is less than or equal to the Radius of the Component.
         /// </summary>
         /// <param name="xmouse"></param>
         /// <param name="ymouse"></param>
         /// <returns></returns>
         public virtual bool ContainsPoint(int xmouse, int ymouse)
         {
-            return (this.location.X - xmouse) * (this.location.Y - ymouse)  <= Area;
+            return (this.location.X - xmouse) * (this.location.X - xmouse) + (this.location.Y - ymouse) * (this.location.Y - ymouse) <= Radius * Radius;
         }
     }
 }
