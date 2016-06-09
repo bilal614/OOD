@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace PineLineProject
 {
-    public partial class PineLine : Form
+    public partial class PipeLine : Form
     {
-        public PineLine()
+        public PipeLine()
         {
             InitializeComponent();
         }
 
-        private void PineLine_Load(object sender, EventArgs e)
+        private void PipeLine_Load(object sender, EventArgs e)
         {
 
         }

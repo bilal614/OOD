@@ -24,6 +24,5 @@ namespace PipeLineProject.Classes
         public List<PipeLine> GetExceedPipeline() { return null; }
         public List<Component> GetListOfComponents() { return null; }
         public List<PipeLine> GetListOfPipeline() { return null; }
-        
     }
 }
