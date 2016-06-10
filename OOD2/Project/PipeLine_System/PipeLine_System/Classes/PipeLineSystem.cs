@@ -15,7 +15,6 @@ namespace PipeLine_System
         public static Component tempComponent = null;
         public static PipeLine tempPipeLine = null;
 
-
         public bool OpenNetwork()
         {
             return false;
