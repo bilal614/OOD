@@ -106,12 +106,14 @@ namespace PipeLine_System
         /// <returns>True or False</returns>
         public bool UpperContainsPoint(int xmouse, int ymouse)
         {
-            return (xmouse - upperLocation.X) * (upperLocation.Y - ymouse) <= upperArea;
+            int temp = (xmouse - upperLocation.X) * (upperLocation.Y - ymouse);
+            return temp <= upperArea && temp > 0;
         }
 
         public bool LowerContainsPoint(int xmouse, int ymouse)
         {
-            return (xmouse - lowerLocation.X) * (lowerLocation.Y - ymouse) <= upperArea;
+            int temp = (xmouse - lowerLocation.X) * (lowerLocation.Y - ymouse);
+            return temp <= lowerArea && temp > 0;
         }
 
         public override string ToString()

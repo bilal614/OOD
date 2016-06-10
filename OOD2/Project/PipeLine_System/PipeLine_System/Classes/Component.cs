@@ -67,7 +67,8 @@ namespace PipeLine_System
         /// <returns></returns>
         public virtual bool ContainsPoint(int xmouse, int ymouse)
         {
-            return (xmouse - this.location.X) * (this.location.Y - ymouse) <= Area;
+            int temp = (xmouse - this.location.X) * (this.location.Y - ymouse);
+            return temp <= Area && temp > 0;
         }
         /// <summary>
         /// Override the ToString methods 
