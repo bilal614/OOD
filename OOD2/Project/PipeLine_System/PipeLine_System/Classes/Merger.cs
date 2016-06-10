@@ -27,8 +27,8 @@ namespace PipeLine_System
         //identify clicks by user within the top left quadrant of the Merger Component.
         private Point lowerLocation;//This is the location relevant to the lower-left corner of the Merger and component and is used to 
         //identify clicks by user within the lower left quadrant of the Merger Component.
-        private const int upperArea = 20;
-        private const int lowerArea = 20;
+        private const int upperArea = 300;
+        private const int lowerArea = 300;
 
         //CONSTRUCTOR
         public Merger(int ID, Point componentLocation, double CurrentFlow)
