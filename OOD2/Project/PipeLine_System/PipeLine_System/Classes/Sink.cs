@@ -37,7 +37,7 @@ namespace PipeLine_System
 
         /*The following method adds an incoming pipeline neighbor to the Sink. If successful, it returns true otherwise
          * it returns a false.*/
-        public bool addInPipeLine1(PipeLine InPipeLine)
+        public bool addInPipeLine(PipeLine InPipeLine)
         {
             if (InPipeLine != null)
             {

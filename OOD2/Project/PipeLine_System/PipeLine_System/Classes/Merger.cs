@@ -27,14 +27,17 @@ namespace PipeLine_System
         //identify clicks by user within the top left quadrant of the Merger Component.
         private Point lowerLocation;//This is the location relevant to the lower-left corner of the Merger and component and is used to 
         //identify clicks by user within the lower left quadrant of the Merger Component.
-        private const int upperArea = 300;
-        private const int lowerArea = 300;
+        private const int upperArea = 350;
+        private const int lowerArea = 350;
 
         //CONSTRUCTOR
         public Merger(int ID, Point componentLocation, double CurrentFlow)
             : base(ID,componentLocation,CurrentFlow)
         {
-
+            upperLocation = componentLocation;
+            lowerLocation = new Point(componentLocation.X, componentLocation.Y - 12);
+            //the reason we create the lowerLocation reference point with Y component with -12 is because the images roughly have
+            //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
         }
 
         //METHODS:
@@ -93,6 +96,14 @@ namespace PipeLine_System
             }
         }
 
+        /// <summary>
+        /// The UpperContainsPoint and LowerContainsPoint methods return a true if the given input parameters which are mouse-clicks
+        /// are located in the top left quadrant of the image for the UpperContainsPoint method and if they are located in the lower
+        /// left quadrant of the image in the LowerContainsPoint method. Otherwise they return a false.
+        /// </summary>
+        /// <param name="xmouse"></param>
+        /// <param name="ymouse"></param>
+        /// <returns>True or False</returns>
         public bool UpperContainsPoint(int xmouse, int ymouse)
         {
             return (xmouse - upperLocation.X) * (upperLocation.Y - ymouse) <= upperArea;

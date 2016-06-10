@@ -40,12 +40,17 @@ namespace PipeLine_System
          * an event which would be raised if the current-flow of the Component is changed. If so the current-flow of the neighbors are changed
          * by invoking their current-flow change event as well. 
          */
+        public int GetComponentId()
+        {
+            return id;
+        }
+
         public Point GetLocation()
         {
             return location;
         }
 
-        bool updateCurrentFlow()
+        public bool updateCurrentFlow()
         {
             //needs to be implemented 
             return true;
