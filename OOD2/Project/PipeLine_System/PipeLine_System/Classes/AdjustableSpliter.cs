@@ -17,5 +17,10 @@ namespace PipeLine_System
         {
             this.upperPercent = upperPercent;
         }
+
+        public override string ToString()
+        {
+            return "A" + base.ToString() + String.Format("_{0}", upperPercent.ToString());
+        }
     }
 }
