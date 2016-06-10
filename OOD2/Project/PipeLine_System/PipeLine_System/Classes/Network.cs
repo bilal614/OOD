@@ -33,7 +33,7 @@ namespace PipeLine_System
         {
             foreach (var item in components)
             {
-                GetListOfComponents().Add(item);
+                components.Add(item);
                 return true;
             }
             return false;
@@ -88,6 +88,17 @@ namespace PipeLine_System
         public List<PipeLine> GetListOfPipeline()
         {
             return pipelines; 
+        }
+        public bool AddPipeLine(PipeLine p)
+        {
+            //foreach (var item in pipelines)
+            //{
+                //item.startLocation =  
+                //item.endLocation = 
+                pipelines.Add(p);
+                return true;
+            //}
+            //return false;
         }
         
     }
