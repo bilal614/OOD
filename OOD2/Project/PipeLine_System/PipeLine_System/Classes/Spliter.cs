@@ -53,7 +53,7 @@ namespace PipeLine_System
             }
         }
 
-        public bool addOutPipeLine1(PipeLine OutPipeLine2)
+        public bool addOutPipeLine2(PipeLine OutPipeLine2)
         {
             if (OutPipeLine2 != null)
             {

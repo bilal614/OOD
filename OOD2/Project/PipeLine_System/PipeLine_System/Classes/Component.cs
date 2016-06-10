@@ -22,9 +22,9 @@ namespace PipeLine_System
         private int id;
         private Point location;
         private double currentFlow;
-        public static const int Radius = 40; /*the radius of every Component (that is why it is static), because the relative size of the
+        /*the radius of every Component (that is why it is static), because the relative size of the
         Components on the drawing screen is similar so we can use this value as Radius for all Components*/
-
+        public const int Radius = 40; //The const can not be masked as static?? Please checked again --- Thanh
         /*
          * CONSTRUCTOR
         */
