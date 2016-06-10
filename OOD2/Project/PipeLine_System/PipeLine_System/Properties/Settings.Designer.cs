@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PineLineProject.Properties
+namespace PipeLine_System.Properties
 {
 
 

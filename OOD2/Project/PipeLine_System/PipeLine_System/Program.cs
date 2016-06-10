@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PineLineProject
+namespace PipeLine_System
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace PineLineProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PineLine());
+            Application.Run(new PipeLineApp());
         }
     }
 }
