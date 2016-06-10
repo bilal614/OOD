@@ -21,9 +21,18 @@ namespace PipeLine_System
         public bool RemoveComponent(Component c) { return false; }
         public bool CheckOverLap(Component c)    { return false; }
         public bool RemovePipeline(PipeLine P)    { return false; }
-        public List<PipeLine> GetExceedPipeline() { return null; }
-        public List<Component> GetListOfComponents() { return null; }
-        public List<PipeLine> GetListOfPipeline() { return null; }
+        public List<PipeLine> GetExceedPipeline() 
+        {
+            return null;
+        }
+        public List<Component> GetListOfComponents() 
+        {
+            return components; 
+        }
+        public List<PipeLine> GetListOfPipeline()
+        {
+            return pipelines; 
+        }
         
     }
 }
