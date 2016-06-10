@@ -10,6 +10,9 @@ namespace UnitTestProject_Pipeline
         [TestMethod]
         public void TestWriteToFile()
         {
+            FileHandler f = new FileHandler("../../PipeLine_System/NetworkFiles/Network_02.txt");
+
+
         }
             
     }

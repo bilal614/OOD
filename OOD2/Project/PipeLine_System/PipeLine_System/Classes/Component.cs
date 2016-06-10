@@ -64,5 +64,14 @@ namespace PipeLine_System
         {
             return (xmouse - this.location.X) * (this.location.Y - ymouse) <= Area;
         }
+        /// <summary>
+        /// Override the ToString methods 
+        /// This is used for file handler
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return string.Format("{0}-{1}-{2}-{3}", this.id.ToString(), this.location.X.ToString(), this.location.Y.ToString(), this.currentFlow.ToString());
+        }
     }
 }
