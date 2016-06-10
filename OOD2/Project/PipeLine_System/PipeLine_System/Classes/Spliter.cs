@@ -73,7 +73,7 @@ namespace PipeLine_System
             }
         }
 
-        public virtual bool addInPipeLine1(PipeLine InPipeLine)
+        public virtual bool addInPipeLine(PipeLine InPipeLine)
         {
             if (InPipeLine != null)
             {
