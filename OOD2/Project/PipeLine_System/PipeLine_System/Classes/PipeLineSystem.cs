@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PipeLine_System.Classes
+namespace PipeLine_System
 {
-    class PipeLineSystem
+    public class PipeLineSystem
     {
         public static bool saved = false;
         public static Network currentNetwork = null;

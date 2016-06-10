@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PipeLine_System
 {
-    class Network
+    public class Network
     {
         private List<Component> components;
         private List<PipeLine> pipelines;

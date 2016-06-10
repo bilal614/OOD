@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PipeLine_System
 {
-    class PipeLine
+    public class PipeLine
     {
         /*The PipeLine is a special class, even though it is in many ways similar to the Component class and shares a few attributes with 
          * the Component class. The PipeLine class represents the pipe-lines that connect the various components in the pipe-line network.

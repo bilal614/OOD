@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace PipeLine_System
 {
-    class Sink: Component
+    public class Sink: Component
     {
         private Component startComponent;
         /*The Sink class is a child class of the Component class and inherits the properties and methods of the Component class. This class

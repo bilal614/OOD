@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PipeLine_System
 {
-    class Merger : Component
+    public class Merger : Component
     {
         /*The Merger class is the child class for the Component class and represents one of the Component type items that may be drawn on
          * the drawing screen. The Merger class serves as the Component which can connect two PipeLine flows into a single PipeLine in 

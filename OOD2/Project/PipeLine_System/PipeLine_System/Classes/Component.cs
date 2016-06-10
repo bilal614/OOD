@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PipeLine_System
 {
-    class Component
+    public class Component
     {
         /*The Component class is the parent class for all the different child Component classes including Pump, Splitter, Merger, Sink and 
         the Pump class. The Component class serves as the blueprint for each of the different kind of components that are needed in the 

@@ -4,10 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PipeLine_System
 {
-    class FileHandler
+    public class FileHandler
     {
         private string path;
 
@@ -37,7 +38,7 @@ namespace PipeLine_System
             }
             catch (IOException)
             {
-                listBox1.Items.Add("Something went wrong, IOException was thrown");
+                MessageBox.Show("Something went wrong, IOException was thrown");
             }
             finally
             {
@@ -53,12 +54,12 @@ namespace PipeLine_System
         }
         private String convertComponentToString(Component component)
         {
-            string returnResult;
+            string result = null;
             if(component is Pump)
             {
                 Sink sk = (Sink)component;
-
             }
+            return result;
         }
     }
 }

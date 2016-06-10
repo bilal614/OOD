@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace PipeLine_System
 {
-    class Pump: Component
+    public class Pump: Component
     {
         /*The Pump class is a child class of the Component class and inherits the properties and methods of the Component class. This class
          * represents the pump component in the pipe-line network. 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PipeLine_System
 {
-    class Spliter : Component
+    public class Spliter : Component
     {
         private double upperOut;
         private double lowerOut;

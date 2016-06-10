@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace PipeLine_System
 {
-    class AdjustableSpliter : Spliter
+    public class AdjustableSpliter : Spliter
     {
         int upperPercent;
 
