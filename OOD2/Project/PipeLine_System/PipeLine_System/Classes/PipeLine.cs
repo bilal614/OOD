@@ -31,7 +31,45 @@ namespace PipeLine_System
         private Component compEnd;
         private bool danger;
         //Constructors
+        public PipeLine(int id, double safeLimit)
+        {
+            this.id = id;
+            this.safeLimit = safeLimit;
+        }
 
+        /// <summary>
+        /// set the start location from the screen.
+        /// The overlaped need to be checked before this method is call
+        /// </summary>
+        /// <param name="location"></param>
+        public void setStartLocation(Point location)
+        {
+            this.startLocation.X = location.X;
+            this.startLocation.Y = location.Y;
+        }
+
+        /// <summary>
+        /// Set the end location
+        /// </summary>
+        /// <param name="location"></param>
+        public void setEndLocation(Point location)
+        {
+            this.endLocation.X = location.X;
+            this.startLocation.Y = location.Y;
+        }
+
+        /// <summary>
+        /// Added the clicked point in the middle of the line
+        /// </summary>
+        /// <param name="points"></param>
+        public void setMiddleLocations(List<Point> points)
+        {
+            foreach (var p in points)
+            {
+                clickLocation.Add(p);
+            }
+        }
+        
         /// <summary>
         /// get the id of the pipeline for reference in the files
         /// </summary>

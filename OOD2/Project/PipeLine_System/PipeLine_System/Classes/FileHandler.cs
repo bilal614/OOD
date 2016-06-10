@@ -29,10 +29,15 @@ namespace PipeLine_System
                 fs = new FileStream(this.path, FileMode.Append, FileAccess.Write);
                 //try for FileMode : Open, Create, Truncate, Append
                 sw = new StreamWriter(fs);
-                sw.WriteLine("Component");
+                sw.WriteLine("Components");
                 foreach (var c in nw.GetListOfComponents())
                 {
-                    
+                    sw.WriteLine(convertComponentToString(c));
+                }
+                sw.WriteLine("Pipelines");
+                foreach (var p in nw.GetListOfPipeline())
+                {
+                    sw.WriteLine(p.ToString());
                 }
 
             }
@@ -57,7 +62,28 @@ namespace PipeLine_System
             string result = null;
             if(component is Pump)
             {
+                Pump pu = (Pump)component;
+                result = pu.ToString();
+            }
+            if (component is Sink)
+            {
                 Sink sk = (Sink)component;
+                result = sk.ToString();
+            }
+            if (component is Merger)
+            {
+                Merger mg = (Merger)component;
+                result = mg.ToString();
+            }
+            if (component is Spliter)
+            {
+                Spliter spt = (Spliter)component;
+                result = spt.ToString();
+            }
+            if (component is AdjustableSpliter)
+            {
+                AdjustableSpliter aspt = (AdjustableSpliter)component;
+                result = aspt.ToString();
             }
             return result;
         }
