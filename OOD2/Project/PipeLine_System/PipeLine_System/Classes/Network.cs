@@ -17,10 +17,54 @@ namespace PipeLine_System
             components = new List<Component>();
             pipelines = new List<PipeLine>();
         }
-        public bool Addcomponent(Component c)    { return false; }
-        public bool RemoveComponent(Component c) { return false; }
-        public bool CheckOverLap(Component c)    { return false; }
-        public bool RemovePipeline(PipeLine P)    { return false; }
+        public bool Addcomponent(Component c)
+        {
+            foreach (var item in components)
+            {
+                GetListOfComponents().Add(item);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveComponent(Component c)
+        {
+            foreach (var item in components)
+            {
+                if (c.GetComponentId() == item.GetComponentId())
+                {
+                    GetListOfComponents().Remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CheckOverLap(Component c)
+        {
+            foreach (var item in components)
+            {
+                if (c.GetLocation() == item.GetLocation())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool RemovePipeline(PipeLine P)
+        {
+            foreach (var item in pipelines)
+            {
+                if (P.getId() == item.getId())
+                {
+                    GetExceedPipeline().Remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public List<PipeLine> GetExceedPipeline() 
         {
             return null;
