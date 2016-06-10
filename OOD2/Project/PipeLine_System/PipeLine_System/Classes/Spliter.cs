@@ -53,18 +53,18 @@ namespace PipeLine_System
             }
         }
 
-        public bool addOutPipeLine1(PipeLine OutPipeLine2)
-        {
-            if (OutPipeLine2 != null)
-            {
-                outPipeLine2 = OutPipeLine2;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public bool addOutPipeLine1(PipeLine OutPipeLine2)
+        //{
+        //    if (OutPipeLine2 != null)
+        //    {
+        //        outPipeLine2 = OutPipeLine2;
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         public bool addInPipeLine1(PipeLine InPipeLine)
         {

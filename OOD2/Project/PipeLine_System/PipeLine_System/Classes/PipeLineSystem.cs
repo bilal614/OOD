@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace PipeLine_System.Classes
 {
@@ -20,7 +21,7 @@ namespace PipeLine_System.Classes
             return false;
         }
         public void SaveNetwork() { }
-        public void DrawComponent() { }
-        public void drawLine() { }
+        public void DrawComponent(Graphics gr, List<Image> image, Component compnt) { }
+        public void drawLine(Graphics gr) { }
     }
 }

@@ -190,6 +190,7 @@
             this.btnSink.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSink, "Sink");
             this.btnSink.UseVisualStyleBackColor = true;
+            this.btnSink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSink_MouseDown);
             // 
             // btnAdjustSpliter
             // 
@@ -205,6 +206,7 @@
             this.btnAdjustSpliter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnAdjustSpliter, "Adjustable spliter");
             this.btnAdjustSpliter.UseVisualStyleBackColor = true;
+            this.btnAdjustSpliter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAdjustSpliter_MouseDown);
             // 
             // btnSpliter
             // 
@@ -220,6 +222,7 @@
             this.btnSpliter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSpliter, "Spliter");
             this.btnSpliter.UseVisualStyleBackColor = true;
+            this.btnSpliter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSpliter_MouseDown);
             // 
             // btnMerger
             // 
@@ -235,6 +238,7 @@
             this.btnMerger.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnMerger, "Merger");
             this.btnMerger.UseVisualStyleBackColor = true;
+            this.btnMerger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMerger_MouseDown);
             // 
             // btnPump
             // 
@@ -249,6 +253,7 @@
             this.btnPump.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnPump, "Pump");
             this.btnPump.UseVisualStyleBackColor = true;
+            this.btnPump.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPump_MouseDown);
             // 
             // groupBox2
             // 
@@ -288,6 +293,7 @@
             this.ASpiter_UpValue.Name = "ASpiter_UpValue";
             this.ASpiter_UpValue.Size = new System.Drawing.Size(50, 20);
             this.ASpiter_UpValue.TabIndex = 24;
+            this.ASpiter_UpValue.ValueChanged += new System.EventHandler(this.ASpiter_UpValue_ValueChanged);
             // 
             // label2
             // 
@@ -325,6 +331,8 @@
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(590, 517);
             this.panelDrawing.TabIndex = 4;
+            this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
+            this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
             // 
             // panelLineLeft
             // 

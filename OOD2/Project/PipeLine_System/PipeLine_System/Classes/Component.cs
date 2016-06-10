@@ -22,7 +22,7 @@ namespace PipeLine_System
         private int id;
         private Point location;
         private double currentFlow;
-        public static const int Radius = 40; /*the radius of every Component (that is why it is static), because the relative size of the
+        public const int Radius = 40; /*the radius of every Component (that is why it is static), because the relative size of the
         Components on the drawing screen is similar so we can use this value as Radius for all Components*/
 
         /*
