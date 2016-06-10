@@ -12,10 +12,10 @@ namespace PipeLine_System
         int upperPercent;
 
         //CONSTRUCTOR
-        public AdjustableSpliter(int ID, Point componentLocation, double CurrentFlow) :
+        public AdjustableSpliter(int ID, Point componentLocation, double CurrentFlow, int upperPercent) :
             base(ID, componentLocation, CurrentFlow)
-        { 
-        
+        {
+            this.upperPercent = upperPercent;
         }
     }
 }
