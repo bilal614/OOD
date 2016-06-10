@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PipeLine_System
 {
-    class Merger : Component
+    public class Merger : Component
     {
         /*The Merger class is the child class for the Component class and represents one of the Component type items that may be drawn on
          * the drawing screen. The Merger class serves as the Component which can connect two PipeLine flows into a single PipeLine in 
@@ -23,14 +23,21 @@ namespace PipeLine_System
         private PipeLine inPipeline1;
         private PipeLine inPipeline2;
         private PipeLine outPipeline;
-        private Point upperLocation;
-        private Point lowerLocation;
-        
+        private Point upperLocation;//This is the location relevant to the upper-left corner of the Merger and component and is used to 
+        //identify clicks by user within the top left quadrant of the Merger Component.
+        private Point lowerLocation;//This is the location relevant to the lower-left corner of the Merger and component and is used to 
+        //identify clicks by user within the lower left quadrant of the Merger Component.
+        private const int upperArea = 350;
+        private const int lowerArea = 350;
+
         //CONSTRUCTOR
         public Merger(int ID, Point componentLocation, double CurrentFlow)
             : base(ID,componentLocation,CurrentFlow)
         {
-
+            upperLocation = componentLocation;
+            lowerLocation = new Point(componentLocation.X, componentLocation.Y - 12);
+            //the reason we create the lowerLocation reference point with Y component with -12 is because the images roughly have
+            //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
         }
 
         //METHODS:
@@ -87,6 +94,32 @@ namespace PipeLine_System
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// The UpperContainsPoint and LowerContainsPoint methods return a true if the given input parameters which are mouse-clicks
+        /// are located in the top left quadrant of the image for the UpperContainsPoint method and if they are located in the lower
+        /// left quadrant of the image in the LowerContainsPoint method. Otherwise they return a false.
+        /// </summary>
+        /// <param name="xmouse"></param>
+        /// <param name="ymouse"></param>
+        /// <returns>True or False</returns>
+        public bool UpperContainsPoint(int xmouse, int ymouse)
+        {
+            return (xmouse - upperLocation.X) * (upperLocation.Y - ymouse) <= upperArea;
+        }
+
+        public bool LowerContainsPoint(int xmouse, int ymouse)
+        {
+            return (xmouse - lowerLocation.X) * (lowerLocation.Y - ymouse) <= upperArea;
+        }
+
+        public override string ToString()
+        {
+            //MG_ID_PX_PY_CURRENTFLOW_INPIPELINE1_INPIPELINE2_OUTPIPELINE_UPPERLOCATION(X,Y)_LOWERLOCATION(X,Y)
+            return "MG_" + base.ToString() + String.Format("_{0}_{1}_{2}_{3}_{4}_{5}_{6}", 
+                this.inPipeline1.getId().ToString(), this.inPipeline2.getId().ToString(), this.outPipeline.getId().ToString(),
+                this.upperLocation.X.ToString(), this.upperLocation.Y.ToString(), this.lowerLocation.X.ToString(), this.lowerLocation.Y.ToString());
         }
     }
 }

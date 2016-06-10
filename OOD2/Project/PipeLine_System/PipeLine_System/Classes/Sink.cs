@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace PipeLine_System
 {
-    class Sink: Component
+    public class Sink: Component
     {
         private Component startComponent;
         /*The Sink class is a child class of the Component class and inherits the properties and methods of the Component class. This class
@@ -37,7 +37,7 @@ namespace PipeLine_System
 
         /*The following method adds an incoming pipeline neighbor to the Sink. If successful, it returns true otherwise
          * it returns a false.*/
-        public bool addInPipeLine1(PipeLine InPipeLine)
+        public bool addInPipeLine(PipeLine InPipeLine)
         {
             if (InPipeLine != null)
             {

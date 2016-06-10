@@ -7,15 +7,15 @@ using System.Drawing;
 
 namespace PipeLine_System
 {
-    class AdjustableSpliter : Spliter
+    public class AdjustableSpliter : Spliter
     {
         int upperPercent;
 
         //CONSTRUCTOR
-        public AdjustableSpliter(int ID, Point componentLocation, double CurrentFlow) :
+        public AdjustableSpliter(int ID, Point componentLocation, double CurrentFlow, int upperPercent) :
             base(ID, componentLocation, CurrentFlow)
-        { 
-        
+        {
+            this.upperPercent = upperPercent;
         }
     }
 }
