@@ -50,5 +50,10 @@ namespace PipeLine_System
                 return false;
             }
         }
+
+        public override string ToString()
+        {
+            return "PU_" + base.ToString() + String.Format("_{0}_{1}", this.capacity.ToString(), this.outPipeLine.getId().ToString());
+        }
     }
 }

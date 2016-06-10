@@ -31,5 +31,10 @@ namespace PipeLine_System
         private Component compEnd;
         private bool danger;
         //Constructors
+
+        public int getId()
+        {
+            return this.id;
+        }
     }
 }

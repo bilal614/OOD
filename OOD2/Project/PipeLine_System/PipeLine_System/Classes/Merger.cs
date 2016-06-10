@@ -102,5 +102,13 @@ namespace PipeLine_System
         {
             return (xmouse - lowerLocation.X) * (lowerLocation.Y - ymouse) <= upperArea;
         }
+
+        public override string ToString()
+        {
+            //MG_ID_PX_PY_CURRENTFLOW_INPIPELINE1_INPIPELINE2_OUTPIPELINE_UPPERLOCATION(X,Y)_LOWERLOCATION(X,Y)
+            return "MG_" + base.ToString() + String.Format("_{0}_{1}_{2}_{3}_{4}_{5}_{6}", 
+                this.inPipeline1.getId().ToString(), this.inPipeline2.getId().ToString(), this.outPipeline.getId().ToString(),
+                this.upperLocation.X.ToString(), this.upperLocation.Y.ToString(), this.lowerLocation.X.ToString(), this.lowerLocation.Y.ToString());
+        }
     }
 }
