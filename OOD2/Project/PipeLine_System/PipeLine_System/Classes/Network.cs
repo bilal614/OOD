@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace PipeLine_System
 {
@@ -16,6 +17,17 @@ namespace PipeLine_System
         {
             components = new List<Component>();
             pipelines = new List<PipeLine>();
+        }
+        public Component FindComponent(Point p)
+        {
+            foreach (var item in components)
+            {
+                if (item.ContainsPoint(p.X,p.Y))
+                {
+                    return item;
+                }
+            }
+            return null;
         }
         public bool Addcomponent(Component c)
         {
