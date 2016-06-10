@@ -20,11 +20,12 @@ namespace PipeLine_System
          * drawing screen.
          */
         private int id;
-        private Point location;
+        private Point location;//location.X and location.Y represent the upper-left corner of the Component image from where it will be 
+        //drawn on the drawing screen 
         private double currentFlow;
         /*the radius of every Component (that is why it is static), because the relative size of the
         Components on the drawing screen is similar so we can use this value as Radius for all Components*/
-        public const int Radius = 40; //The const can not be masked as static?? Please checked again --- Thanh
+        public const int Area = 40; //The const can not be masked as static?? Please checked again --- Thanh
         /*
          * CONSTRUCTOR
         */
@@ -39,6 +40,11 @@ namespace PipeLine_System
          * an event which would be raised if the current-flow of the Component is changed. If so the current-flow of the neighbors are changed
          * by invoking their current-flow change event as well. 
          */
+        public Point GetLocation()
+        {
+            return location;
+        }
+
         bool updateCurrentFlow()
         {
             //needs to be implemented 
@@ -47,15 +53,16 @@ namespace PipeLine_System
 
         /// <summary>
         /// checks if the point (xmouse,ymouse) is on this Component.
-        /// In other words: it checks if the distance between the center of this Component and the point (xmouse,ymouse)
-        /// is less than or equal to the Radius of the Component.
+        /// In other words: it checks if the distance between the top-left corner of this Component and the point (xmouse,ymouse)
+        /// is less than or equal to the Area of the Component. Which would mean that the mouse click was contained in the Area
+        /// that was designated by the constant Area from the top-left corner as reference point.
         /// </summary>
         /// <param name="xmouse"></param>
         /// <param name="ymouse"></param>
         /// <returns></returns>
         public virtual bool ContainsPoint(int xmouse, int ymouse)
         {
-            return (this.location.X - xmouse) * (this.location.X - xmouse) + (this.location.Y - ymouse) * (this.location.Y - ymouse) <= Radius * Radius;
+            return (xmouse - this.location.X) * (this.location.Y - ymouse) <= Area;
         }
     }
 }

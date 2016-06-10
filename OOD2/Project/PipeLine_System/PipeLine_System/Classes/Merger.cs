@@ -23,9 +23,13 @@ namespace PipeLine_System
         private PipeLine inPipeline1;
         private PipeLine inPipeline2;
         private PipeLine outPipeline;
-        private Point upperLocation;
-        private Point lowerLocation;
-        
+        private Point upperLocation;//This is the location relevant to the upper-left corner of the Merger and component and is used to 
+        //identify clicks by user within the top left quadrant of the Merger Component.
+        private Point lowerLocation;//This is the location relevant to the lower-left corner of the Merger and component and is used to 
+        //identify clicks by user within the lower left quadrant of the Merger Component.
+        private const int upperArea = 20;
+        private const int lowerArea = 20;
+
         //CONSTRUCTOR
         public Merger(int ID, Point componentLocation, double CurrentFlow)
             : base(ID,componentLocation,CurrentFlow)
@@ -87,6 +91,16 @@ namespace PipeLine_System
             {
                 return false;
             }
+        }
+
+        public bool UpperContainsPoint(int xmouse, int ymouse)
+        {
+            return (xmouse - upperLocation.X) * (upperLocation.Y - ymouse) <= upperArea;
+        }
+
+        public bool LowerContainsPoint(int xmouse, int ymouse)
+        {
+            return (xmouse - lowerLocation.X) * (lowerLocation.Y - ymouse) <= upperArea;
         }
     }
 }
