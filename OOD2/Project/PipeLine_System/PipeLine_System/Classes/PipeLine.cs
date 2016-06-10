@@ -53,8 +53,7 @@ namespace PipeLine_System
             {
                 resultSt += String.Format("_{0}_{1}", p.X.ToString(), p.Y.ToString());
             }
-            return resultSt;
-           
+            return resultSt;      
         }
     }
 }
