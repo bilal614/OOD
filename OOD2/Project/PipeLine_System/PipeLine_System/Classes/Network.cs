@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace PipeLine_System
 {
@@ -100,6 +101,51 @@ namespace PipeLine_System
                 return true;
             //}
             //return false;
+        }
+
+        /// <summary>
+        /// All Components are drawn on the graphics gr, using the images in the Imagelist il
+        /// (il.Images[0] for the Pump; il.Images[1] for the Sink, etc.)
+        /// </summary>
+        /// <param name="gr"></param>
+        /// <param name="il"></param>
+        public bool DrawAllComponents(Graphics gr, ImageList il)
+        {
+            foreach (Component c in components)
+            {
+                if (c.GetType().ToString() == "Pump")
+                {
+                    gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList 
+                    //is of the Pump 
+                }
+                else if (c.GetType().ToString() == "Sink")
+                {
+                    gr.DrawImage(il.Images[1], c.GetLocation());//assuming the second image in the imageList 
+                    //is of the Sink 
+                }
+                else if (c.GetType().ToString() == "Merger")
+                {
+                    gr.DrawImage(il.Images[2], c.GetLocation());//assuming the third image in the imageList 
+                    //is of the Merger 
+                }
+                else if (c.GetType().ToString() == "Spliter")
+                {
+                    gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
+                    //is of the Splitter 
+                }
+                else if (c.GetType().ToString() == "AdjustableSpliter")
+                {
+                    gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
+                    //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
+                }
+                else
+                {
+                    return false; //in case that not all Components were drawn on the drawing screen
+                    //the function should return a false, also each component in the list of components
+                    //must be a specific component type: pump, sink, merger, splitter or adjustable splitter 
+                }
+            }
+            return true;
         }
         
     }
