@@ -111,41 +111,50 @@ namespace PipeLine_System
         /// <param name="il"></param>
         public bool DrawAllComponents(Graphics gr, ImageList il)
         {
-            foreach (Component c in components)
+            try
             {
-                if (c.GetType().ToString() == "Pump")
+                foreach (Component c in components)
                 {
-                    gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList 
-                    //is of the Pump 
+                    if (c.GetType().ToString() == "Pump")
+                    {
+                        gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList 
+                        //is of the Pump 
+                    }
+                    else if (c.GetType().ToString() == "Sink")
+                    {
+                        gr.DrawImage(il.Images[1], c.GetLocation());//assuming the second image in the imageList 
+                        //is of the Sink 
+                    }
+                    else if (c.GetType().ToString() == "Merger")
+                    {
+                        gr.DrawImage(il.Images[2], c.GetLocation());//assuming the third image in the imageList 
+                        //is of the Merger 
+                    }
+                    else if (c.GetType().ToString() == "Spliter")
+                    {
+                        gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
+                        //is of the Splitter 
+                    }
+                    else if (c.GetType().ToString() == "AdjustableSpliter")
+                    {
+                        gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
+                        //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
+                    }
+                    else
+                    {
+                        return false; //in case that not all Components were drawn on the drawing screen
+                        //the function should return a false, also each component in the list of components
+                        //must be a specific component type: pump, sink, merger, splitter or adjustable splitter 
+                    }
                 }
-                else if (c.GetType().ToString() == "Sink")
-                {
-                    gr.DrawImage(il.Images[1], c.GetLocation());//assuming the second image in the imageList 
-                    //is of the Sink 
-                }
-                else if (c.GetType().ToString() == "Merger")
-                {
-                    gr.DrawImage(il.Images[2], c.GetLocation());//assuming the third image in the imageList 
-                    //is of the Merger 
-                }
-                else if (c.GetType().ToString() == "Spliter")
-                {
-                    gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
-                    //is of the Splitter 
-                }
-                else if (c.GetType().ToString() == "AdjustableSpliter")
-                {
-                    gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
-                    //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
-                }
-                else
-                {
-                    return false; //in case that not all Components were drawn on the drawing screen
-                    //the function should return a false, also each component in the list of components
-                    //must be a specific component type: pump, sink, merger, splitter or adjustable splitter 
-                }
+                return true;
             }
-            return true;
+            catch (ArgumentNullException e) 
+            {
+                //message box is only for our own feedback when error occurs
+                MessageBox.Show("One of your components location Point is null or un-initialized.");
+            }
+            return false;
         }
         
     }
