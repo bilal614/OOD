@@ -30,14 +30,25 @@ namespace PipeLine_System
             }
             return null;
         }
+
+        /// <summary>
+        /// This function first checks to see if the Component c has any overlap with the locations of the 
+        /// other Components in the list of Components. If not it adds the Component c to the list of 
+        /// Components and returns true. Otherwise it returns a false.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public bool Addcomponent(Component c)
         {
-            foreach (var item in components)
+            if (CheckOverLap(c))
             {
-                components.Add(item);
+                return false;
+            }
+            else
+            {
+                components.Add(c);
                 return true;
             }
-            return false;
         }
 
         public bool RemoveComponent(Component c)
@@ -53,11 +64,30 @@ namespace PipeLine_System
             return false;
         }
 
+        /// <summary>
+        /// This function checks if the Component c given in the argument has any overlap with any of the 
+        /// Component location in the List of Components.
+        /// </summary>
+        /// <param name="c">Component c to check for overlap</param>
+        /// <returns>Returns true if there is an overlap and false if there is no overlap.</returns>
         public bool CheckOverLap(Component c)
         {
             foreach (var item in components)
             {
-                if (c.GetLocation() == item.GetLocation())
+                /*In this condition we check that the point location of component c is not contained in Component
+                 * item's area by 30+x from item's location.X and by y-30 from item's location.Y. 
+                 */
+                if (item.GetLocation().X <= c.GetLocation().X && c.GetLocation().X <= (item.GetLocation().X + 30) &&
+                    item.GetLocation().Y - 30 <= c.GetLocation().Y && c.GetLocation().Y <= item.GetLocation().Y)
+                {
+                    return true;
+                }
+
+                /*This condition we check the reverse that the point location of component item is not contained in 
+                 * Component c's area by 30+x from c's location.X and by y-30 from c's location.Y. 
+                 */
+                if (c.GetLocation().X <= item.GetLocation().X && item.GetLocation().X <= (c.GetLocation().X + 30) &&
+                    c.GetLocation().Y - 30 <= item.GetLocation().Y && item.GetLocation().Y <= c.GetLocation().Y)
                 {
                     return true;
                 }
@@ -71,7 +101,8 @@ namespace PipeLine_System
             {
                 if (P.getId() == item.getId())
                 {
-                    GetExceedPipeline().Remove(item);
+                    GetExceedPipeline().Remove(item);//???? this will remove all the pipelines that have
+                    //exceeded their allowed flows
                     return true;
                 }
             }
