@@ -101,7 +101,7 @@ namespace PipeLine_System
             {
                 if (P.getId() == item.getId())
                 {
-                    GetExceedPipeline().Remove(item);//???? this will remove all the pipelines that have
+                     pipelines.Remove(item);//???? this will remove all the pipelines that have
                     //exceeded their allowed flows
                     return true;
                 }
