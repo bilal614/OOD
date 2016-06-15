@@ -122,7 +122,7 @@ namespace PipeLine_System
 
                     }
 
-
+                    // I am gonna do something
                     components.Remove(c);
                     sys.refreshDrawing();
                     return true;
