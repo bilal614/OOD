@@ -66,6 +66,7 @@ namespace PipeLine_System
         /// <returns>Returns true if there is an overlap and false if there is no overlap.</returns>
         public bool CheckOverLap(Component c)
         {
+            bool returnValue1 = false, returnValue2 = false;
             foreach (var item in components)
             {
                 /*In this condition we check that the point location of component c is not contained in Component
@@ -74,7 +75,7 @@ namespace PipeLine_System
                 if (item.GetLocation().X <= c.GetLocation().X && c.GetLocation().X <= (item.GetLocation().X + 30) &&
                     item.GetLocation().Y - 30 <= c.GetLocation().Y && c.GetLocation().Y <= item.GetLocation().Y)
                 {
-                    return true;
+                    returnValue1 = true;
                 }
 
                 /*This condition we check the reverse that the point location of component item is not contained in 
@@ -82,6 +83,11 @@ namespace PipeLine_System
                  */
                 if (c.GetLocation().X <= item.GetLocation().X && item.GetLocation().X <= (c.GetLocation().X + 30) &&
                     c.GetLocation().Y - 30 <= item.GetLocation().Y && item.GetLocation().Y <= c.GetLocation().Y)
+                {
+                    returnValue2 = true;
+                }
+
+                if (returnValue1 == true && returnValue2 == true)
                 {
                     return true;
                 }
