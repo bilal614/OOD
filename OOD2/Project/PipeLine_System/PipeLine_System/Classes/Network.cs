@@ -17,7 +17,7 @@ namespace PipeLine_System
         private List<PipeLine> exceeding_pipeline;
         PipeLineSystem sys; 
 
-
+        //bla blablaba
 
         public Network()
         {
@@ -96,11 +96,12 @@ namespace PipeLine_System
         }
         public bool RemovePipeline(PipeLine P)
         {
+            
             foreach (PipeLine pipe in pipelines)
             {
                 if (pipe == P)
                 {
-                    pipelines.Remove(P);
+                    pipelines.Remove(pipe);
                     //   P.CompEnd.updateCurrentFlow_Neighbors();
 
                     sys.refreshDrawing();
@@ -111,19 +112,18 @@ namespace PipeLine_System
         }
 
         public bool RemoveComponent(Component comp)
-        {
+        { 
             foreach (Component c in components)
             {
                 if (comp == c)
                 {
-                    foreach (PipeLine pipelist in GetPipelineOfComponent(c))
+                    foreach (PipeLine pipefromlist in GetPipelineOfComponent(c))
                     {
-                        RemovePipeline(pipelist);
+                        RemovePipeline(pipefromlist);
 
                     }
 
-                    // I am gonna do something
-                    // I am adding comments
+              
                     components.Remove(c);
                     sys.refreshDrawing();
                     return true;
@@ -152,7 +152,18 @@ namespace PipeLine_System
         }
         public List<PipeLine> GetPipelineOfComponent(Component cop)
         {
-            return null;
+           Neigbor_pipelines = new List<PipeLine>();
+           foreach (PipeLine np in pipelines)
+           {
+               if (np.CompEnd == cop || np.CompStart == cop)
+               {
+                   Neigbor_pipelines.Add(np);
+
+               }
+
+           }
+
+           return Neigbor_pipelines;
         }
         public List<Component> GetListOfComponents() 
         {
