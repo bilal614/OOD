@@ -123,6 +123,7 @@ namespace PipeLine_System
                     }
 
                     // I am gonna do something
+                    // I am adding comments
                     components.Remove(c);
                     sys.refreshDrawing();
                     return true;
