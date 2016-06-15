@@ -25,10 +25,14 @@ namespace PipeLine_System
         public Point startLocation;
         public Point endLocation;
         private double currentFlow;
+        public double CurrentFlow { get; set; }
         private double safeLimit;
+        public double SafeLimit { get; set; }
         private List<Point> clickLocation;
         private Component compStart;
+        public Component CompStart{get;set;}
         private Component compEnd;
+        public Component CompEnd { get; set; }
         private bool danger;
         //Constructors
         public PipeLine(int id, double safeLimit)

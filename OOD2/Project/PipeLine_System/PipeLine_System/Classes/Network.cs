@@ -13,9 +13,15 @@ namespace PipeLine_System
     {
         private List<Component> components;
         private List<PipeLine> pipelines;
+        private List<PipeLine> Neigbor_pipelines;
+        private List<PipeLine> exceeding_pipeline;
+        PipeLineSystem sys; 
+
+
 
         public Network()
         {
+            sys = new PipeLineSystem();
             components = new List<Component>();
             pipelines = new List<PipeLine>();
         }
@@ -51,19 +57,7 @@ namespace PipeLine_System
             }
         }
 
-        public bool RemoveComponent(Component c)
-        {
-            foreach (var item in components)
-            {
-                if (c.GetComponentId() == item.GetComponentId())
-                {
-                    GetListOfComponents().Remove(item);
-                    return true;
-                }
-            }
-            return false;
-        }
-
+      
         /// <summary>
         /// This function checks if the Component c given in the argument has any overlap with any of the 
         /// Component location in the List of Components.
@@ -94,22 +88,62 @@ namespace PipeLine_System
             }
             return false;
         }
-
         public bool RemovePipeline(PipeLine P)
         {
-            foreach (var item in pipelines)
+            foreach (PipeLine pipe in pipelines)
             {
-                if (P.getId() == item.getId())
+                if (pipe == P)
                 {
-                     pipelines.Remove(item);
-                    //exceeded their allowed flows
+                    pipelines.Remove(P);
+                    //   P.CompEnd.updateCurrentFlow_Neighbors();
+
+                    sys.refreshDrawing();
                     return true;
                 }
             }
             return false;
         }
 
+        public bool RemoveComponent(Component comp)
+        {
+            foreach (Component c in components)
+            {
+                if (comp == c)
+                {
+                    foreach (PipeLine pipelist in GetPipelineOfComponent(c))
+                    {
+                        RemovePipeline(pipelist);
+
+                    }
+
+
+                    components.Remove(c);
+                    sys.refreshDrawing();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+            
+       
         public List<PipeLine> GetExceedPipeline() 
+        {
+            exceeding_pipeline = new List<PipeLine>();
+            foreach (PipeLine pipe in pipelines)
+            {
+                if (pipe.CurrentFlow >= pipe.SafeLimit)
+                {
+                    exceeding_pipeline.Add(pipe);
+
+                }
+
+            }
+            return exceeding_pipeline; 
+        
+
+        }
+        public List<PipeLine> GetPipelineOfComponent(Component cop)
         {
             return null;
         }

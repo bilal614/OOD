@@ -22,5 +22,6 @@ namespace PipeLine_System
         public void SaveNetwork() { }
         public void DrawComponent(Graphics gr, List<Image> image, Component compnt) { }
         public void drawLine(Graphics gr) { }
+        public void refreshDrawing() { }
     }
 }
