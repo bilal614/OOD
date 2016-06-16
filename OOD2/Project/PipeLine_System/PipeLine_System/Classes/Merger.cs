@@ -118,9 +118,34 @@ namespace PipeLine_System
 
         public override string ToString()
         {
+            string inPipeline1, inPipeline2, outPipeline = null;
+            if(this.inPipeline1 == null)
+            {
+                inPipeline1 = "unknown";
+            }
+            else
+            {
+                inPipeline1 = this.inPipeline1.getId().ToString();
+            }
+            if (this.inPipeline2 == null)
+            {
+                inPipeline2 = "unknown";
+            }
+            else
+            {
+                inPipeline2 = this.inPipeline2.getId().ToString();
+            }
+            if (this.outPipeline == null)
+            {
+                outPipeline = "unknown";
+            }
+            else
+            {
+                outPipeline = this.inPipeline1.getId().ToString();
+            }
             //MG_ID_PX_PY_CURRENTFLOW_INPIPELINE1_INPIPELINE2_OUTPIPELINE_UPPERLOCATION(X,Y)_LOWERLOCATION(X,Y)
             return "MG_" + base.ToString() + String.Format("_{0}_{1}_{2}_{3}_{4}_{5}_{6}", 
-                this.inPipeline1.getId().ToString(), this.inPipeline2.getId().ToString(), this.outPipeline.getId().ToString(),
+                inPipeline1, inPipeline2, outPipeline,
                 this.upperLocation.X.ToString(), this.upperLocation.Y.ToString(), this.lowerLocation.X.ToString(), this.lowerLocation.Y.ToString());
         }
     }

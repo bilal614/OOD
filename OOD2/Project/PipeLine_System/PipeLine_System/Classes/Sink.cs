@@ -49,5 +49,19 @@ namespace PipeLine_System
                 return false;
             }
         }
+
+        public override string ToString()
+        {
+            string inPipeline = null;
+            if (this.inPipeLine == null)
+            {
+                inPipeline = "unknown";
+            }
+            else
+            {
+                inPipeline = this.inPipeLine.getId().ToString();
+            }
+            return "SK_" + base.ToString() + String.Format("_{0}_{1}", inPipeline);
+        }
     }
 }

@@ -39,6 +39,10 @@ namespace PipeLine_System
         {
             this.id = id;
             this.safeLimit = safeLimit;
+            this.startLocation.X = 0;
+            this.endLocation.X = 0;
+            this.startLocation.Y = 0;
+            this.endLocation.Y = 0;
         }
 
         /// <summary>
@@ -87,6 +91,7 @@ namespace PipeLine_System
         {
             //ID_STARTLOCA(X,Y)_ENDLOCA(X,Y)_CURRENTFLOW_SAFELIMIT_COMPSTART_COMPEND_DANGER_LIST_CLICKEDLOCATION
             String resultSt = null;
+            //Working on checking for null comps
             resultSt += String.Format("{0}_{1}_{2}_{3}_{4}_{5}_{6}_{7}_{8}_{9}",
             id.ToString(), startLocation.X.ToString(), startLocation.Y.ToString(), endLocation.X.ToString(), endLocation.X.ToString(),
             currentFlow.ToString(), safeLimit.ToString(),this.compStart.GetComponentId().ToString(), this.compEnd.GetComponentId().ToString(), danger.ToString());//Need the methods get comps

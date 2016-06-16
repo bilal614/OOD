@@ -53,7 +53,16 @@ namespace PipeLine_System
 
         public override string ToString()
         {
-            return "PU_" + base.ToString() + String.Format("_{0}_{1}", this.capacity.ToString(), this.outPipeLine.getId().ToString());
+            string outId = null;
+            if(this.outPipeLine == null)
+            {
+                outId = "unknown";
+            }
+            else
+            {
+                outId = this.outPipeLine.getId().ToString();
+            }
+            return "PU_" + base.ToString() + String.Format("_{0}_{1}", this.capacity.ToString(), outId);
         }
     }
 }

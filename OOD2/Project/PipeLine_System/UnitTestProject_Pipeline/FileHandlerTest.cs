@@ -12,7 +12,7 @@ namespace UnitTestProject_Pipeline
         [TestMethod]
         public void TestWriteToFile()
         { 
-            FileHandler f = new FileHandler("../../PipeLine_System/NetworkFiles/Network_02.txt");
+            FileHandler f = new FileHandler("E:\\GIT\\OOD\\OOD2\\Project\\PipeLine_System\\PipeLine_System\\NetworkFiles\\Network_02.txt");
             Network nw = new Network();
             Component p = new Pump(1, new Point(100, 200), 150.5);
             nw.Addcomponent(p);
@@ -25,9 +25,9 @@ namespace UnitTestProject_Pipeline
             p = new AdjustableSpliter(5, new Point(300, 500), 30, 56);
             List<PipeLine> pipelines = new List<PipeLine>();
             PipeLine pi = new PipeLine(6,100);
-            //pipelines.Add(pi);
+            pipelines.Add(pi);
             pi = new PipeLine(100, 200);
-            //pipleines.Add(pi);
+            pipelines.Add(pi);
             f.WriteToFile(nw);
         }
             

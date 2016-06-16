@@ -17,8 +17,6 @@ namespace PipeLine_System
         private List<PipeLine> exceeding_pipeline;
         PipeLineSystem sys; 
 
-        //bla blablaba
-
         public Network()
         {
             sys = new PipeLineSystem();
@@ -94,6 +92,7 @@ namespace PipeLine_System
             }
             return false;
         }
+
         public bool RemovePipeline(PipeLine P)
         {
             
@@ -132,8 +131,7 @@ namespace PipeLine_System
 
             return false;
         }
-            
-       
+
         public List<PipeLine> GetExceedPipeline() 
         {
             exceeding_pipeline = new List<PipeLine>();
@@ -144,11 +142,8 @@ namespace PipeLine_System
                     exceeding_pipeline.Add(pipe);
 
                 }
-
             }
             return exceeding_pipeline; 
-        
-
         }
         public List<PipeLine> GetPipelineOfComponent(Component cop)
         {
@@ -158,11 +153,8 @@ namespace PipeLine_System
                if (np.CompEnd == cop || np.CompStart == cop)
                {
                    Neigbor_pipelines.Add(np);
-
                }
-
            }
-
            return Neigbor_pipelines;
         }
         public List<Component> GetListOfComponents() 
