@@ -62,6 +62,7 @@
             this.lbMax = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ASpiter_UpValue)).BeginInit();
             this.panelRightFill.SuspendLayout();
@@ -222,6 +223,7 @@
             this.btnSpliter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSpliter, "Spliter");
             this.btnSpliter.UseVisualStyleBackColor = true;
+            this.btnSpliter.Click += new System.EventHandler(this.btnSpliter_Click);
             this.btnSpliter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSpliter_MouseDown);
             // 
             // btnMerger
@@ -238,6 +240,7 @@
             this.btnMerger.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnMerger, "Merger");
             this.btnMerger.UseVisualStyleBackColor = true;
+            this.btnMerger.Click += new System.EventHandler(this.btnMerger_Click);
             this.btnMerger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMerger_MouseDown);
             // 
             // btnPump
@@ -253,7 +256,9 @@
             this.btnPump.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnPump, "Pump");
             this.btnPump.UseVisualStyleBackColor = true;
+            this.btnPump.Click += new System.EventHandler(this.btnPump_Click);
             this.btnPump.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPump_MouseDown);
+            this.btnPump.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnPump_MouseUp);
             // 
             // groupBox2
             // 
@@ -333,6 +338,8 @@
             this.panelDrawing.TabIndex = 4;
             this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
             this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
+            this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
+            this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
             // panelLineLeft
             // 
@@ -446,6 +453,16 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Paint Sprayer-32.png");
+            this.imageList1.Images.SetKeyName(1, "Water Tower Filled-32.png");
+            this.imageList1.Images.SetKeyName(2, "Merger-32-2.png");
+            this.imageList1.Images.SetKeyName(3, "Spliter-32.png");
+            this.imageList1.Images.SetKeyName(4, "AdjustableSpliter.png");
+            // 
             // PipeLineApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -504,6 +521,7 @@
         private System.Windows.Forms.Label lbMax;
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

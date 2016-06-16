@@ -13,13 +13,17 @@ namespace PipeLine_System
     public partial class PipeLineApp : Form
     {
         Graphics gr;
+      //private ImageList imageList = new ImageList();
+        
+        private Network network = new Network();
         public PipeLineApp()
         {
             InitializeComponent();
-            gr = panelDrawing.CreateGraphics();
-        }
-     
+        //  gr = panelDrawing.CreateGraphics();
+
+        }    
         //Global variables
+
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
             DialogResult dr = openFileDialog1.ShowDialog();
@@ -34,8 +38,8 @@ namespace PipeLine_System
         }
 
         private void btnPump_MouseDown(object sender, MouseEventArgs e)
-        {
-            btnPump.DoDragDrop(btnPump.Image, DragDropEffects.Move);
+        {           
+              
         }
 
         private void panelDrawing_DragEnter(object sender, DragEventArgs e)
@@ -48,30 +52,31 @@ namespace PipeLine_System
             int xPos = e.X;
             int yPos = e.Y;
 
-            PictureBox pic = new PictureBox();
-            pic.Image = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
-            Point clientPoint = panelDrawing.PointToClient(new Point(e.X, e.Y));        
-            gr.DrawImage(pic.Image, clientPoint.X, clientPoint.Y);
+            //PictureBox pic = new PictureBox();
+            //pic.Image = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
+            //Point clientPoint = panelDrawing.PointToClient(new Point(e.X, e.Y));
+            //gr.DrawImage(pic.Image, clientPoint.X, clientPoint.Y);
+
         }
 
         private void btnMerger_MouseDown(object sender, MouseEventArgs e)
         {
-            btnMerger.DoDragDrop(btnMerger.Image, DragDropEffects.Move);
+          //  btnMerger.DoDragDrop(btnMerger.Image, DragDropEffects.Move);
         }
 
         private void btnSpliter_MouseDown(object sender, MouseEventArgs e)
         {
-            btnSpliter.DoDragDrop(btnSpliter.Image, DragDropEffects.Move);
+            // btnSpliter.DoDragDrop(btnSpliter.Image, DragDropEffects.Move);
         }
 
         private void btnAdjustSpliter_MouseDown(object sender, MouseEventArgs e)
         {
-            btnAdjustSpliter.DoDragDrop(btnAdjustSpliter.Image, DragDropEffects.Move);
+            //btnAdjustSpliter.DoDragDrop(btnAdjustSpliter.Image, DragDropEffects.Move);
         }
 
         private void btnSink_MouseDown(object sender, MouseEventArgs e)
         {
-            btnSink.DoDragDrop(btnSink.Image, DragDropEffects.Move);
+           // btnSink.DoDragDrop(btnSink.Image, DragDropEffects.Move);
         }
 
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
@@ -85,6 +90,38 @@ namespace PipeLine_System
                 down = down - counter;
                 tb_DownValue.Text = down.ToString();
             }
+        }
+
+        private void btnSpliter_Click(object sender, EventArgs e)
+        {
+           // network.DrawAllComponents(gr,null);
+        }
+
+        private void btnMerger_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void btnPump_MouseUp(object sender, MouseEventArgs e)
+        {
+            network.Addcomponent(new Pump(1,e.Location,20)); // values are only for testin!
+            this.Refresh();           
+        }
+
+        private void panelDrawing_Paint(object sender, PaintEventArgs e)
+        {
+            gr = e.Graphics;
+            network.DrawAllComponents(gr, imageList1);
+        }
+
+        private void btnPump_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

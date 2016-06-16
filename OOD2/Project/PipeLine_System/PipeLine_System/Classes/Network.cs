@@ -190,9 +190,9 @@ namespace PipeLine_System
             {
                 foreach (Component c in components)
                 {
-                    if (c.GetType().ToString() == "Pump")
+                    if (c is Pump)
                     {
-                        gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList 
+                         gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList                   
                         //is of the Pump 
                     }
                     else if (c.GetType().ToString() == "Sink")
