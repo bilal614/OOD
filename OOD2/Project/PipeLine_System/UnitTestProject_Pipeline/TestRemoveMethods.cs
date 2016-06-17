@@ -1,17 +1,18 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using PipeLine_System;
 using System.Drawing;
-using System.Collections.Generic;
-
 namespace UnitTestProject_Pipeline
 {
-    [TestClass]
-    public class FileHandlerTest
+    class TestRemoveMethods
     {
         [TestMethod]
         public void TestWriteToFile()
-        { 
+        {
             FileHandler f = new FileHandler("E:\\GIT\\OOD\\OOD2\\Project\\PipeLine_System\\PipeLine_System\\NetworkFiles\\Network_02.txt");
             Network nw = new Network();
             Component c1 = new Pump(1, new Point(100, 200), 150.5);
@@ -27,10 +28,8 @@ namespace UnitTestProject_Pipeline
             PipeLine pi = new PipeLine(6, 100, c1, c2);
             nw.AddPipeLine(pi);
             pi = new PipeLine(100, 200, c3, c4);
-            nw.AddPipeLine(pi);
-            f.WriteToFile(nw);
-            
+            nw.AddPipeLine(pi); 
+            //Test Remove
         }
-            
     }
 }

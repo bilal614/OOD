@@ -100,7 +100,7 @@ namespace PipeLine_System
                 if (pipe == P)
                 {
                     pipelines.Remove(pipe);
-                    //   P.CompEnd.updateCurrentFlow_Neighbors();
+                  //  P.CompEnd.updateCurrentFlow_Neighbors();
 
                     sys.refreshDrawing();
                     return true;

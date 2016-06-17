@@ -44,7 +44,24 @@ namespace PipeLine_System
             this.startLocation.Y = 0;
             this.endLocation.Y = 0;
         }
-
+        /// <summary>
+        /// Alternative constructor which allows to create a pipeline with CompStart and CompEnd
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="safeLimit"></param>
+        /// <param name="compEnd"></param>
+        /// <param name="compStart"></param>
+        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart)
+        {
+            this.id = id;
+            this.safeLimit = safeLimit;
+            this.startLocation.X = 0;
+            this.endLocation.X = 0;
+            this.startLocation.Y = 0;
+            this.endLocation.Y = 0;
+            this.compEnd = compEnd;
+            this.compStart = compStart;
+        }
         /// <summary>
         /// set the start location from the screen.
         /// The overlaped need to be checked before this method is call
