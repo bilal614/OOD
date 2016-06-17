@@ -1,20 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PipeLine_System;
+using System.Collections.Generic;
 using System.Drawing;
+
 namespace UnitTestProject_Pipeline
 {
-    class TestRemoveMethods
+    [TestClass]
+    public class TestRemove
     {
         [TestMethod]
-        public void TestWriteToFile()
+        public void TestRemoveComp()
         {
-            FileHandler f = new FileHandler("E:\\GIT\\OOD\\OOD2\\Project\\PipeLine_System\\PipeLine_System\\NetworkFiles\\Network_02.txt");
             Network nw = new Network();
+            List<PipeLine> pipes = new List<PipeLine>();
             Component c1 = new Pump(1, new Point(100, 200), 150.5);
             nw.Addcomponent(c1);
             Component c2 = new Sink(2, new Point(253, 500), 350);
@@ -27,8 +26,13 @@ namespace UnitTestProject_Pipeline
             nw.Addcomponent(c5);
             PipeLine pi = new PipeLine(6, 100, c1, c2);
             nw.AddPipeLine(pi);
+
             pi = new PipeLine(100, 200, c3, c4);
-            nw.AddPipeLine(pi); 
+            nw.AddPipeLine(pi);
+            pipes.Add(pi);
+            int expected = 0;
+            nw.RemovePipeline(pi);
+            Assert.AreEqual(expected, pipes.Count);
             //Test Remove
         }
     }
