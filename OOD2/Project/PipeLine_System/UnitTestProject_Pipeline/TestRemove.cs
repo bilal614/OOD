@@ -27,7 +27,7 @@ namespace UnitTestProject_Pipeline
             PipeLine pi = new PipeLine(6, 100, c1, c2);
             nw.AddPipeLine(pi);
 
-            pi = new PipeLine(100, 200, c3, c4);
+            //pi = new PipeLine(100, 200, c3, c4);
            // nw.AddPipeLine(pi);
            // pipelines.Add(pi);
 
