@@ -109,7 +109,7 @@ namespace PipeLine_System
 
         public override string ToString()
         {
-            string s_outPipeline1, s_outPipeLine2, s_inPipeLine;
+            string s_outPipeline1, s_outPipeLine2, s_inPipeLine = null;
             if(this.outPipeLine1 == null)
             {
                 s_outPipeline1 = "-1";
@@ -132,7 +132,7 @@ namespace PipeLine_System
             }
             //TYPE_ID_PX_PY_CURRENTFLOW_UPPEROUT_LOWEROUT_INPIPELINE_OUTPIPELINE1_OUTPIPELINE2_UPPERLOCATION(X,Y)_LOWERLOCATION(X,Y)
             return "SP_" + base.ToString() + String.Format("_{0}_{1}_{2}_{3}_{4}_{5}_{6}_{7}_{8}_{9}",
-                inPipeline.getId().ToString(), outPipeLine1.getId().ToString(), outPipeLine2.getId().ToString(),
+                s_inPipeLine, s_outPipeline1, s_outPipeLine2,
                 upperLocation.X.ToString(), upperLocation.Y.ToString(), lowerLocation.X.ToString(), lowerLocation.Y.ToString());
         }
     }
