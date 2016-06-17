@@ -108,11 +108,14 @@ namespace PipeLine_System
             this.Refresh(); 
         }
 
-
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
             gr = e.Graphics;
             network.DrawAllComponents(gr, imageList1);
+        }
+
+        private void btnPump_Click(object sender, EventArgs e)
+        {
         }
 
     }
