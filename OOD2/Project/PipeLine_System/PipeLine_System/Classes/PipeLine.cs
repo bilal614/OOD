@@ -44,14 +44,36 @@ namespace PipeLine_System
             this.startLocation.Y = 0;
             this.endLocation.Y = 0;
         }
-        /// <summary>
+       /// <summary>
+       /// Contructor to allow create infor for all
+       /// </summary>
+       /// <param name="id"></param>
+       /// <param name="StartLoca"></param>
+       /// <param name="EndLoca"></param>
+       /// <param name="currentFlow"></param>
+       /// <param name="safeLimit"></param>
+       /// <param name="clickLocations"></param>
+       /// <param name="compEnd"></param>
+       /// <param name="compStart"></param>
+        public PipeLine(int id, Point StartLoca, Point EndLoca, double currentFlow,  double safeLimit, List<Point> clickLocations,  Component compEnd, Component compStart)
+        {
+            this.id = id;
+            this.startLocation = StartLoca;
+            this.endLocation = EndLoca;
+            this.currentFlow = currentFlow;
+            this.safeLimit = safeLimit;
+            this.clickLocation = clickLocations;
+            this.compEnd = compEnd;
+            this.compStart = compStart;
+        }
+         /// <summary>
         /// Alternative constructor which allows to create a pipeline with CompStart and CompEnd
         /// </summary>
         /// <param name="id"></param>
         /// <param name="safeLimit"></param>
         /// <param name="compEnd"></param>
         /// <param name="compStart"></param>
-        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart)
+        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart, Point StartLocation, Point EndLocation, )
         {
             this.id = id;
             this.safeLimit = safeLimit;
