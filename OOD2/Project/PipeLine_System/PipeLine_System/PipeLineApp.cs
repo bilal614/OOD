@@ -108,7 +108,6 @@ namespace PipeLine_System
             this.Refresh(); 
         }
 
-
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
             gr = e.Graphics;
