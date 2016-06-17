@@ -55,7 +55,6 @@ namespace PipeLine_System
             }
         }
 
-      
         /// <summary>
         /// This function checks if the Component c given in the argument has any overlap with any of the 
         /// Component location in the List of Components.

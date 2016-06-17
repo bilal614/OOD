@@ -242,7 +242,6 @@
             this.btnMerger.UseVisualStyleBackColor = true;
             this.btnMerger.Click += new System.EventHandler(this.btnMerger_Click);
             this.btnMerger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMerger_MouseDown);
-            this.btnMerger.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMerger_MouseUp);
             // 
             // btnPump
             // 
@@ -259,7 +258,6 @@
             this.btnPump.UseVisualStyleBackColor = true;
             this.btnPump.Click += new System.EventHandler(this.btnPump_Click);
             this.btnPump.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPump_MouseDown);
-            this.btnPump.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnPump_MouseUp);
             // 
             // groupBox2
             // 
