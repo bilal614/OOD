@@ -137,7 +137,7 @@ namespace PipeLine_System
 
                             foreach (Component c in network.GetListOfComponents())
                             {
-                                if (c.ContainsPoint(e.X, e.Y))
+                                if (c.ContainsPoint(e.X, e.Y) && c != tempPipeLine.CompStart)
                                 {
                                     tempPipeLine.CompEnd = c;
                                     network.AddPipeLine(tempPipeLine);

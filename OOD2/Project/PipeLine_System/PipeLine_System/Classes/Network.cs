@@ -233,15 +233,22 @@ namespace PipeLine_System
         }
         public bool DrawAllPipeLines(Graphics gr)
         {
-            foreach (PipeLine p in pipelines)
-            { 
-                List<Point> points = p.getMiddleLocation();
-                gr.DrawLine(Pens.Black, p.CompStart.GetLocation(),points[0]);
-                for (int i = 0; i < points.Count - 1 ; i++)
+            try
+            {
+                foreach (PipeLine p in pipelines)
                 {
-                    gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                    List<Point> points = p.getMiddleLocation();
+                    gr.DrawLine(Pens.Black, p.CompStart.GetLocation(), points[0]);
+                    for (int i = 0; i < points.Count - 1; i++)
+                    {
+                        gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                    }
+                    gr.DrawLine(Pens.Black, points[points.Count - 1], p.CompEnd.GetLocation());
                 }
-                gr.DrawLine(Pens.Black, points[points.Count - 1], p.CompEnd.GetLocation());
+            }
+            catch
+            {
+                MessageBox.Show("Some of the pipelines are not connected to a component.");
             }
             return true;
         }

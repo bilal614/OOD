@@ -73,7 +73,7 @@ namespace PipeLine_System
         /// <param name="safeLimit"></param>
         /// <param name="compEnd"></param>
         /// <param name="compStart"></param>
-        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart, Point StartLocation, Point EndLocation, )
+        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart)
         {
             this.id = id;
             this.safeLimit = safeLimit;
@@ -96,6 +96,12 @@ namespace PipeLine_System
             this.startLocation.Y = location.Y;
         }
 
+        public Point getStartLocation()
+        {
+            Point p = new Point(startLocation.X, startLocation.Y - 5);
+            return p;
+        }
+
         /// <summary>
         /// Set the end location
         /// </summary>
@@ -104,6 +110,12 @@ namespace PipeLine_System
         {
             this.endLocation.X = location.X;
             this.startLocation.Y = location.Y;
+        }
+
+        public Point getEndLocation()
+        {
+            Point p = new Point(endLocation.X, endLocation.Y - 5);
+            return p;
         }
 
         /// <summary>
