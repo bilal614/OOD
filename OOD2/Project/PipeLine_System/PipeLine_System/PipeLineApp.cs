@@ -57,7 +57,6 @@ namespace PipeLine_System
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
         {
             decimal down = 100;
-
             tb_DownValue.Text = down + "";
             decimal counter = ASpiter_UpValue.Value;
             if (ASpiter_UpValue.Value <= down)
