@@ -212,7 +212,7 @@ namespace PipeLine_System
                     }
                     else if (c.GetType().ToString() == "AdjustableSpliter")
                     {
-                        gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
+                        gr.DrawImage(il.Images[4], c.GetLocation());//assuming the fourth image in the imageList 
                         //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
                     }
                     else

@@ -104,14 +104,10 @@ namespace PipeLine_System
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
-
+            network.Addcomponent(new Pump(1, e.Location, 20)); // values are only for testin!
+            this.Refresh(); 
         }
 
-        private void btnPump_MouseUp(object sender, MouseEventArgs e)
-        {
-            network.Addcomponent(new Pump(1,e.Location,20)); // values are only for testin!
-            this.Refresh();           
-        }
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
