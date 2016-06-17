@@ -32,11 +32,18 @@ namespace PipeLine_System
         }
 
         /// <summary>
-        /// Overriding contructors
+        /// Constructor
         /// </summary>
         /// <param name="ID"></param>
         /// <param name="componentLocation"></param>
         /// <param name="CurrentFlow"></param>
+        /// <param name="upperFlow"></param>
+        /// <param name="lowerFlow"></param>
+        /// <param name="inPipeLine"></param>
+        /// <param name="outPipeline1"></param>
+        /// <param name="outPipeline2"></param>
+        /// <param name="upperLocation"></param>
+        /// <param name="lowerLocation"></param>
         public Spliter(int ID, Point componentLocation, double CurrentFlow, double upperFlow, double lowerFlow, PipeLine inPipeLine,
             PipeLine outPipeline1, PipeLine outPipeline2, Point upperLocation, Point lowerLocation) :
             base(ID, componentLocation, CurrentFlow)
