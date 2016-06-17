@@ -52,11 +52,37 @@ namespace PipeLine_System
             }
             return false;
         }
+        /// <summary>
+        /// Read the list of network from the file
+        /// </summary>
+        /// <returns></returns>
         public Network ReadFromFile()
         {
+            FileStream fs =  null;                  
+            StreamReader sr = null;
             Network nw = new Network();
+            try
+            {
+                fs = new FileStream(this.path, FileMode.Open, FileAccess.Write);
+                sr = new StreamReader(fs);
+                String s = sr.ReadLine();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("something went wrong, IOException was thrown");
+            }
+            finally
+            {
+                if (sr != null) sr.Close();
+                if (fs != null) fs.Close();
+            }
             return nw;
         }
+        /// <summary>
+        /// Convert a information of components into a string
+        /// </summary>
+        /// <param name="component"></param>
+        /// <returns></returns>
         private String convertComponentToString(Component component)
         {
             string result = null;

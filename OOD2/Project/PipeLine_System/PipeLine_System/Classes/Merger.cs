@@ -39,6 +39,27 @@ namespace PipeLine_System
             //the reason we create the lowerLocation reference point with Y component with -12 is because the images roughly have
             //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
         }
+        /// <summary>
+        /// Alternative contructor
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="componentLocation"></param>
+        /// <param name="CurrentFlow"></param>
+        /// <param name="inPipeline1"></param>
+        /// <param name="inPipeLine2"></param>
+        /// <param name="outPipeLine"></param>
+        /// <param name="upperLoc"></param>
+        /// <param name="lowerLow"></param>
+        public Merger(int ID, Point componentLocation, double CurrentFlow, PipeLine inPipeline1, PipeLine inPipeLine2, PipeLine outPipeLine,
+            Point upperLoc, Point lowerLow)
+            : base(ID, componentLocation, CurrentFlow)
+        {
+            this.inPipeline1 = inPipeline1;
+            this.outPipeline = outPipeLine;
+            this.inPipeline2 = inPipeLine2;
+            this.upperLocation = upperLoc;
+            this.lowerLocation = lowerLow;
+        }
 
         //METHODS:
         /*The following methods return the outgoing and incoming pipeline neighbors of the Merger.*/

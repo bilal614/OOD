@@ -31,6 +31,31 @@ namespace PipeLine_System
             //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="componentLocation"></param>
+        /// <param name="CurrentFlow"></param>
+        /// <param name="upperFlow"></param>
+        /// <param name="lowerFlow"></param>
+        /// <param name="inPipeLine"></param>
+        /// <param name="outPipeline1"></param>
+        /// <param name="outPipeline2"></param>
+        /// <param name="upperLocation"></param>
+        /// <param name="lowerLocation"></param>
+        public Spliter(int ID, Point componentLocation, double CurrentFlow, double upperFlow, double lowerFlow, PipeLine inPipeLine,
+            PipeLine outPipeline1, PipeLine outPipeline2, Point upperLocation, Point lowerLocation) :
+            base(ID, componentLocation, CurrentFlow)
+        {
+            this.upperOut = upperFlow;
+            this.lowerOut = lowerFlow;
+            this.inPipeline = inPipeLine;
+            this.outPipeLine1 = outPipeline1;
+            this.outPipeLine2 = outPipeline2;
+            this.upperLocation = upperLocation;
+            this.lowerLocation = lowerLocation;
+        }
         //METHODS
         /*The following methods return the outgoing and incoming pipeline neighbors of the Splitter.*/
         public virtual PipeLine getOutPipeLine1()

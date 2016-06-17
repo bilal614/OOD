@@ -29,6 +29,19 @@ namespace PipeLine_System
         
         }
 
+        /// <summary>
+        /// Constructor with all infors for loading from file
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="componentLoctaion"></param>
+        /// <param name="CurrentFlow"></param>
+        /// <param name="outPipeline"></param>
+        public Pump(int ID, Point componentLoctaion, double CurrentFlow, PipeLine outPipeline)
+            :base(ID, componentLoctaion, CurrentFlow)
+        {
+            this.outPipeLine = outPipeline;
+        }
+
         //METHODS:
         /*The following methods return the outgoing pipeline neighbor of the Pump.*/
         public PipeLine getOutPipeLine()
