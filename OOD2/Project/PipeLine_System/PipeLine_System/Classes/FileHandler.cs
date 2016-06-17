@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -63,9 +64,15 @@ namespace PipeLine_System
             Network nw = new Network();
             try
             {
-                fs = new FileStream(this.path, FileMode.Open, FileAccess.Write);
+                fs = new FileStream(this.path, FileMode.Open, FileAccess.Read);
                 sr = new StreamReader(fs);
                 String s = sr.ReadLine();
+                if(s == "Components")
+                {
+                    s = sr.ReadLine();
+                    Component p = ConvertFromStringToComp(s);
+                    nw.Addcomponent(p);
+                }
             }
             catch (IOException)
             {
@@ -113,5 +120,22 @@ namespace PipeLine_System
             }
             return result;
         }
+        /// <summary>
+        /// Convert from string to component
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public Component ConvertFromStringToComp(String s)
+        {
+            Component p = null;
+            char[] separators = {'_'};
+            string[] ComponentInfor = s.Split(separators);
+            if(ComponentInfor[0] == "PU")
+            {
+                p = Pump.createPumpFromStringArray(ComponentInfor);
+            }
+            return p;
+        }
+
     }
 }

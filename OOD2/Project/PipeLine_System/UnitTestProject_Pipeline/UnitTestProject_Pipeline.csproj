@@ -54,7 +54,7 @@
     <Compile Include="FileHandlerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ComponentTests.cs" />
-    <Compile Include="TestRemoveMethods.cs" />
+    <Compile Include="TestRemove.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PipeLine_System\PipeLine_System.csproj">
