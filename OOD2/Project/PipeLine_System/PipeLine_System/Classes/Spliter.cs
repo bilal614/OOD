@@ -45,6 +45,10 @@ namespace PipeLine_System
         {
             return inPipeline;
         }
+        public override void SetFlow(double flow)
+        {
+            base.SetFlow(inPipeline.CurrentFlow);
+        }
         /*The following methods add incoming and outgoing pipeline neighbors to the Merger. If successful, it returns true otherwise
         * it returns a false.*/
         public virtual bool addOutPipeLine1(PipeLine OutPipeLine1)

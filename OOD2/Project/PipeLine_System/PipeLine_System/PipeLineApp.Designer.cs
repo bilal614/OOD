@@ -162,6 +162,7 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.button1, "Delete Pipeline / component");
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnLine
             // 
@@ -191,7 +192,7 @@
             this.btnSink.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSink, "Sink");
             this.btnSink.UseVisualStyleBackColor = true;
-            this.btnSink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSink_MouseDown);
+            this.btnSink.Click += new System.EventHandler(this.btnSink_Click);
             // 
             // btnAdjustSpliter
             // 
@@ -207,7 +208,7 @@
             this.btnAdjustSpliter.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnAdjustSpliter, "Adjustable spliter");
             this.btnAdjustSpliter.UseVisualStyleBackColor = true;
-            this.btnAdjustSpliter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAdjustSpliter_MouseDown);
+            this.btnAdjustSpliter.Click += new System.EventHandler(this.btnAdjustSpliter_Click);
             // 
             // btnSpliter
             // 
@@ -224,7 +225,6 @@
             this.toolTip.SetToolTip(this.btnSpliter, "Spliter");
             this.btnSpliter.UseVisualStyleBackColor = true;
             this.btnSpliter.Click += new System.EventHandler(this.btnSpliter_Click);
-            this.btnSpliter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnSpliter_MouseDown);
             // 
             // btnMerger
             // 
@@ -241,7 +241,6 @@
             this.toolTip.SetToolTip(this.btnMerger, "Merger");
             this.btnMerger.UseVisualStyleBackColor = true;
             this.btnMerger.Click += new System.EventHandler(this.btnMerger_Click);
-            this.btnMerger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMerger_MouseDown);
             // 
             // btnPump
             // 
@@ -257,7 +256,6 @@
             this.toolTip.SetToolTip(this.btnPump, "Pump");
             this.btnPump.UseVisualStyleBackColor = true;
             this.btnPump.Click += new System.EventHandler(this.btnPump_Click);
-            this.btnPump.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPump_MouseDown);
             // 
             // groupBox2
             // 

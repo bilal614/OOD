@@ -22,5 +22,10 @@ namespace PipeLine_System
         {
             return "A" + base.ToString() + String.Format("_{0}", upperPercent.ToString());
         }
+
+        public override void SetFlow(double flow)
+        {
+            base.SetFlow(getInPipeLine().CurrentFlow);
+        }
     }
 }

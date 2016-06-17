@@ -63,6 +63,16 @@ namespace PipeLine_System
             return true;
         }
 
+        public virtual void SetLocation(int x, int y)
+        {
+            location.X = x;
+            location.Y = y;
+        }
+        public virtual void SetFlow(double flow)
+        {
+            this.currentFlow = flow;
+        }
+
         /// <summary>
         /// checks if the point (xmouse,ymouse) is on this Component.
         /// In other words: it checks if the distance between the top-left corner of this Component and the point (xmouse,ymouse)
@@ -74,7 +84,7 @@ namespace PipeLine_System
         /// <returns></returns>
         public virtual bool ContainsPoint(int xmouse, int ymouse)
         {
-            int temp = (xmouse - this.location.X) * (this.location.Y - ymouse);
+            int temp = (xmouse - this.location.X) * (ymouse - this.location.Y);
             return temp <= Area && temp > 0;
         }
         /// <summary>

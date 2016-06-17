@@ -16,11 +16,10 @@ namespace PipeLine_System
       //private ImageList imageList = new ImageList();
         Component tempComponent = null;
         private Network network = new Network();
-        static int ID = 0; 
+        public bool deleteSelected = false;
         public PipeLineApp()
         {
             InitializeComponent();
-        //  gr = panelDrawing.CreateGraphics();
 
         }    
         //Global variables
@@ -36,10 +35,6 @@ namespace PipeLine_System
             {
                 MessageBox.Show("You choose cancel"," Pipe Line");
             }
-        }
-
-        private void btnPump_MouseDown(object sender, MouseEventArgs e)
-        {     
         }
 
         private void panelDrawing_DragEnter(object sender, DragEventArgs e)
@@ -59,26 +54,6 @@ namespace PipeLine_System
 
         }
 
-        private void btnMerger_MouseDown(object sender, MouseEventArgs e)
-        {
-          //  btnMerger.DoDragDrop(btnMerger.Image, DragDropEffects.Move);
-        }
-
-        private void btnSpliter_MouseDown(object sender, MouseEventArgs e)
-        {
-            // btnSpliter.DoDragDrop(btnSpliter.Image, DragDropEffects.Move);
-        }
-
-        private void btnAdjustSpliter_MouseDown(object sender, MouseEventArgs e)
-        {
-            //btnAdjustSpliter.DoDragDrop(btnAdjustSpliter.Image, DragDropEffects.Move);
-        }
-
-        private void btnSink_MouseDown(object sender, MouseEventArgs e)
-        {
-           // btnSink.DoDragDrop(btnSink.Image, DragDropEffects.Move);
-        }
-
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
         {
             decimal down = 100;
@@ -94,18 +69,73 @@ namespace PipeLine_System
 
         private void btnSpliter_Click(object sender, EventArgs e)
         {
-           // network.DrawAllComponents(gr,null);
+            Point p = new Point();
+            tempComponent = new Spliter(network.SetId(), p, 0);
+            deleteSelected = false;
         }
 
         private void btnMerger_Click(object sender, EventArgs e)
         {
-
+            Point p = new Point();
+            tempComponent = new Merger(network.SetId(), p, 0);
+            deleteSelected = false;
         }
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
-            network.DrawAllComponents(gr, imageList1);
-            this.Refresh(); 
+            try
+            {
+                if (deleteSelected == false)
+                {
+                    tempComponent.SetLocation(e.X, e.Y);
+                    if (tempComponent is Pump)
+                    {
+                        tempComponent.SetFlow(Convert.ToDouble(this.numericUpDown2.Value));
+                        network.Addcomponent(tempComponent);
+                        tempComponent = null;
+                    }
+                    else if (tempComponent is Merger)
+                    {
+                        //tempComponent.SetFlow(Convert.ToDouble(this.numericUpDown2.Value));
+                        network.Addcomponent(tempComponent);
+                        tempComponent = null;
+                    }
+                    else if (tempComponent is Spliter)
+                    {
+                        network.Addcomponent(tempComponent);
+                        tempComponent = null;
+                    }
+                    else if (tempComponent is AdjustableSpliter)
+                    {
+                        network.Addcomponent(tempComponent);
+                        tempComponent = null;
+                    }
+                    else if (tempComponent is Sink)
+                    {
+                        network.Addcomponent(tempComponent);
+                        tempComponent = null;
+                    }
+                }
+                else
+                {
+                    List<Component> tempCompList = network.GetListOfComponents();
+                    Component removeComponent = null;
+                    foreach (Component c in tempCompList)
+                    {
+                        if (c.ContainsPoint(e.X, e.Y))
+                        {
+                            removeComponent = c;
+                        }
+                    }
+                    tempCompList.Remove(removeComponent);
+                }
+                //network.DrawAllComponents(gr, imageList1);
+                this.Refresh();
+            }
+            catch
+            {
+                MessageBox.Show("Please select a component or pipeline to draw.");
+            }
         }
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
@@ -116,6 +146,28 @@ namespace PipeLine_System
 
         private void btnPump_Click(object sender, EventArgs e)
         {
+            Point p = new Point();
+            tempComponent = new Pump(network.SetId(), p, 0);
+            deleteSelected = false;
+        }
+
+        private void btnAdjustSpliter_Click(object sender, EventArgs e)
+        {
+            Point p = new Point();
+            tempComponent = new AdjustableSpliter(network.SetId(), p, 0, Convert.ToInt32(this.ASpiter_UpValue.Value));
+            deleteSelected = false;
+        }
+
+        private void btnSink_Click(object sender, EventArgs e)
+        {
+            Point p = new Point();
+            tempComponent = new Sink(network.SetId(), p, 0);
+            deleteSelected = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            deleteSelected = true;
         }
 
     }

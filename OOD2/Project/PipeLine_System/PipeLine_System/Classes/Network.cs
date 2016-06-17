@@ -185,13 +185,14 @@ namespace PipeLine_System
         /// <param name="il"></param>
         public bool DrawAllComponents(Graphics gr, ImageList il)
         {
+            Point p;
             try
             {
                 foreach (Component c in components)
                 {
                     if (c is Pump)
                     {
-                         gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList                   
+                        gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList                   
                         //is of the Pump 
                     }
                     else if (c is Sink)

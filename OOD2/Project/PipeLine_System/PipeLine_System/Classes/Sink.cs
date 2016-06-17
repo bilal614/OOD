@@ -49,6 +49,10 @@ namespace PipeLine_System
                 return false;
             }
         }
+        public override void SetFlow(double flow)
+        {
+            base.SetFlow(inPipeLine.CurrentFlow);
+        }
 
         public override string ToString()
         {

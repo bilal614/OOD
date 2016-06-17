@@ -95,6 +95,11 @@ namespace PipeLine_System
                 return false;
             }
         }
+        public override void SetFlow(double flow)
+        {
+            double Flow = inPipeline1.CurrentFlow + inPipeline2.CurrentFlow;
+            base.SetFlow(Flow);
+        }
 
         /// <summary>
         /// The UpperContainsPoint and LowerContainsPoint methods return a true if the given input parameters which are mouse-clicks
