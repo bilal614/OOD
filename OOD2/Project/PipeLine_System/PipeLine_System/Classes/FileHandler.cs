@@ -26,7 +26,7 @@ namespace PipeLine_System
             StreamWriter sw = null;
             //try
             //{
-                fs = new FileStream(this.path, FileMode.Append, FileAccess.Write);
+                fs = new FileStream(this.path, FileMode.Create, FileAccess.Write);
                 //try for FileMode : Open, Create, Truncate, Append
                 sw = new StreamWriter(fs);
                 sw.WriteLine("Components");

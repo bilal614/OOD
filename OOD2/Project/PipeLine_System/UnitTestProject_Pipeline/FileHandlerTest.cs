@@ -23,12 +23,12 @@ namespace UnitTestProject_Pipeline
             p = new Spliter(4, new Point(300, 205), 500);
             nw.Addcomponent(p);
             p = new AdjustableSpliter(5, new Point(300, 500), 30, 56);
-            List<PipeLine> pipelines = new List<PipeLine>();
             PipeLine pi = new PipeLine(6,100);
-            pipelines.Add(pi);
+            nw.AddPipeLine(pi);
             pi = new PipeLine(100, 200);
-            pipelines.Add(pi);
+            nw.AddPipeLine(pi);
             f.WriteToFile(nw);
+            
         }
             
     }
