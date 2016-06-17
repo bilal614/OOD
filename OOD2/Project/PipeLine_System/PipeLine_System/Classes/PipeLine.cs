@@ -96,11 +96,20 @@ namespace PipeLine_System
             id.ToString(), startLocation.X.ToString(), startLocation.Y.ToString(), endLocation.X.ToString(), endLocation.X.ToString(),
             currentFlow.ToString(), safeLimit.ToString(),this.compStart.GetComponentId().ToString(), this.compEnd.GetComponentId().ToString(), danger.ToString());//Need the methods get comps
 
-            foreach(var p in clickLocation)
+            if (clickLocation != null)
             {
-                resultSt += String.Format("_{0}_{1}", p.X.ToString(), p.Y.ToString());
+                foreach (var p in clickLocation)
+                {
+                    resultSt += String.Format("_{0}_{1}", p.X.ToString(), p.Y.ToString());
+                }
+              
             }
-            return resultSt;      
+            else
+            {
+                //-1 if the list is NULL
+                resultSt += "_-1";
+            }
+            return resultS;
         }
     }
 }
