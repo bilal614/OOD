@@ -13,7 +13,7 @@ namespace UnitTestProject_Pipeline
         public void TestRemoveComp()
         {
             Network nw = new Network();
-            List<PipeLine> pipes = new List<PipeLine>();
+            List<PipeLine> pipelines = new List<PipeLine>();
             Component c1 = new Pump(1, new Point(100, 200), 150.5);
             nw.Addcomponent(c1);
             Component c2 = new Sink(2, new Point(253, 500), 350);
@@ -29,10 +29,11 @@ namespace UnitTestProject_Pipeline
 
             pi = new PipeLine(100, 200, c3, c4);
             nw.AddPipeLine(pi);
-            pipes.Add(pi);
-            int expected = 0;
+            pipelines.Add(pi);
+        
             nw.RemovePipeline(pi);
-            Assert.AreEqual(expected, pipes.Count);
+            int expected = 0;
+            Assert.AreEqual(expected, pipelines.Count);
             //Test Remove
         }
     }
