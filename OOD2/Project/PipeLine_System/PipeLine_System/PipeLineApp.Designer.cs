@@ -63,6 +63,9 @@
             this.panelLeft = new System.Windows.Forms.Panel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ASpiter_UpValue)).BeginInit();
             this.panelRightFill.SuspendLayout();
@@ -71,6 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panelLeft.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNew
@@ -177,6 +182,7 @@
             this.btnLine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnLine, "Pineline");
             this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // btnSink
             // 
@@ -331,7 +337,7 @@
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawing.Location = new System.Drawing.Point(0, 0);
             this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(590, 517);
+            this.panelDrawing.Size = new System.Drawing.Size(590, 589);
             this.panelDrawing.TabIndex = 4;
             this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
             this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
@@ -344,7 +350,7 @@
             this.panelLineLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLineLeft.Location = new System.Drawing.Point(143, 0);
             this.panelLineLeft.Name = "panelLineLeft";
-            this.panelLineLeft.Size = new System.Drawing.Size(3, 517);
+            this.panelLineLeft.Size = new System.Drawing.Size(3, 589);
             this.panelLineLeft.TabIndex = 7;
             // 
             // panelRightFill
@@ -354,7 +360,7 @@
             this.panelRightFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRightFill.Location = new System.Drawing.Point(143, 0);
             this.panelRightFill.Name = "panelRightFill";
-            this.panelRightFill.Size = new System.Drawing.Size(590, 517);
+            this.panelRightFill.Size = new System.Drawing.Size(590, 589);
             this.panelRightFill.TabIndex = 8;
             // 
             // panelTop
@@ -431,6 +437,7 @@
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panelLeft.Controls.Add(this.groupBox3);
             this.panelLeft.Controls.Add(this.groupBox2);
             this.panelLeft.Controls.Add(this.groupBox1);
             this.panelLeft.Controls.Add(this.button1);
@@ -443,7 +450,7 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(143, 517);
+            this.panelLeft.Size = new System.Drawing.Size(143, 589);
             this.panelLeft.TabIndex = 6;
             // 
             // openFileDialog1
@@ -460,11 +467,39 @@
             this.imageList1.Images.SetKeyName(3, "Spliter-32.png");
             this.imageList1.Images.SetKeyName(4, "AdjustableSpliter.png");
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.numericUpDown4);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Location = new System.Drawing.Point(3, 516);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(126, 58);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "PipeLine Setting";
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Enabled = false;
+            this.numericUpDown4.Location = new System.Drawing.Point(60, 26);
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown4.TabIndex = 21;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 29);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Max:";
+            // 
             // PipeLineApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 517);
+            this.ClientSize = new System.Drawing.Size(733, 589);
             this.Controls.Add(this.panelLineLeft);
             this.Controls.Add(this.panelRightFill);
             this.Controls.Add(this.panelLeft);
@@ -480,6 +515,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panelLeft.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -519,6 +557,9 @@
         private System.Windows.Forms.Panel panelLeft;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label label7;
     }
 }
 

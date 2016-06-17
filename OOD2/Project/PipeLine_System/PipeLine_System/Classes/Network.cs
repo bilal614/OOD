@@ -231,10 +231,31 @@ namespace PipeLine_System
             }
             return false;
         }
+        public bool DrawAllPipeLines(Graphics gr)
+        {
+            foreach (PipeLine p in pipelines)
+            { 
+                List<Point> points = p.getMiddleLocation();
+                gr.DrawLine(Pens.Black, p.CompStart.GetLocation(),points[0]);
+                for (int i = 0; i < points.Count - 1 ; i++)
+                {
+                    gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                }
+                gr.DrawLine(Pens.Black, points[points.Count - 1], p.CompEnd.GetLocation());
+            }
+            return true;
+        }
+
         public int SetId()
         {
             int count = components.Count()+1; 
             return count;
-        }      
+        }
+
+        public int SetPipeLineId()
+        {
+            int count = pipelines.Count() + 1;
+            return count;
+        } 
     }
 }
