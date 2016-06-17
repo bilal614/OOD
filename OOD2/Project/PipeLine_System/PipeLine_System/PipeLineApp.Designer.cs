@@ -242,6 +242,7 @@
             this.btnMerger.UseVisualStyleBackColor = true;
             this.btnMerger.Click += new System.EventHandler(this.btnMerger_Click);
             this.btnMerger.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMerger_MouseDown);
+            this.btnMerger.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMerger_MouseUp);
             // 
             // btnPump
             // 

@@ -195,22 +195,22 @@ namespace PipeLine_System
                          gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList                   
                         //is of the Pump 
                     }
-                    else if (c.GetType().ToString() == "Sink")
+                    else if (c is Sink)
                     {
                         gr.DrawImage(il.Images[1], c.GetLocation());//assuming the second image in the imageList 
                         //is of the Sink 
                     }
-                    else if (c.GetType().ToString() == "Merger")
+                    else if (c is Merger)
                     {
                         gr.DrawImage(il.Images[2], c.GetLocation());//assuming the third image in the imageList 
                         //is of the Merger 
                     }
-                    else if (c.GetType().ToString() == "Spliter")
+                    else if (c is Spliter)
                     {
                         gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
                         //is of the Splitter 
                     }
-                    else if (c.GetType().ToString() == "AdjustableSpliter")
+                    else if (c is AdjustableSpliter)
                     {
                         gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
                         //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 

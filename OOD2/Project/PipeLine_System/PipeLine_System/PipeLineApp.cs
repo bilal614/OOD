@@ -12,18 +12,16 @@ namespace PipeLine_System
 {
     public partial class PipeLineApp : Form
     {
+        //Global variables
         Graphics gr;
-      //private ImageList imageList = new ImageList();
-        
-        private Network network = new Network();
+        private Network network;  
+
         public PipeLineApp()
         {
             InitializeComponent();
-        //  gr = panelDrawing.CreateGraphics();
-
+            network = new Network();
         }    
-        //Global variables
-
+  
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
             DialogResult dr = openFileDialog1.ShowDialog();
@@ -51,12 +49,6 @@ namespace PipeLine_System
         {
             int xPos = e.X;
             int yPos = e.Y;
-
-            //PictureBox pic = new PictureBox();
-            //pic.Image = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
-            //Point clientPoint = panelDrawing.PointToClient(new Point(e.X, e.Y));
-            //gr.DrawImage(pic.Image, clientPoint.X, clientPoint.Y);
-
         }
 
         private void btnMerger_MouseDown(object sender, MouseEventArgs e)
@@ -82,7 +74,6 @@ namespace PipeLine_System
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
         {
             decimal down = 100;
-
             tb_DownValue.Text = down + "";
             decimal counter = ASpiter_UpValue.Value;
             if (ASpiter_UpValue.Value <= down)
@@ -109,7 +100,7 @@ namespace PipeLine_System
 
         private void btnPump_MouseUp(object sender, MouseEventArgs e)
         {
-            network.Addcomponent(new Pump(1,e.Location,20)); // values are only for testin!
+            network.Addcomponent(new Pump(1,e.Location,20)); // Values are only for testin!
             this.Refresh();           
         }
 
@@ -122,6 +113,12 @@ namespace PipeLine_System
         private void btnPump_Click(object sender, EventArgs e)
         {
 
+        }
+        
+        private void btnMerger_MouseUp(object sender, MouseEventArgs e)
+        {
+            network.Addcomponent(new Merger(1, e.Location, 20));
+            this.Refresh();
         }
     }
 }
