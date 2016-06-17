@@ -230,6 +230,10 @@ namespace PipeLine_System
             }
             return false;
         }
-        
+        public int SetId()
+        {
+            int count = components.Count()+1; 
+            return count;
+        }      
     }
 }
