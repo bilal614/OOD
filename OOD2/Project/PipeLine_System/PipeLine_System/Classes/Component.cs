@@ -35,6 +35,13 @@ namespace PipeLine_System
             location = componentLocation;
             currentFlow = CurrentFlow;
         }
+
+        public Component(int ID)
+        {
+            currentFlow = 0;
+            id = ID;
+
+        }
          /*METHODS:
          * The Component class has the method updateCurrentFlow which takes no parameters and returns nothing. This method would be tied to 
          * an event which would be raised if the current-flow of the Component is changed. If so the current-flow of the neighbors are changed
