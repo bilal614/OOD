@@ -73,7 +73,7 @@ namespace PipeLine_System
         /// <param name="safeLimit"></param>
         /// <param name="compEnd"></param>
         /// <param name="compStart"></param>
-        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart, Point StartLocation, Point EndLocation, )
+        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart)
         {
             this.id = id;
             this.safeLimit = safeLimit;
