@@ -56,7 +56,7 @@ namespace PipeLine_System
             string outId = null;
             if(this.outPipeLine == null)
             {
-                outId = "unknown";
+                outId = "-1";
             }
             else
             {
