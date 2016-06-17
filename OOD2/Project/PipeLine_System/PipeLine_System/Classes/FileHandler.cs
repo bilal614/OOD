@@ -24,8 +24,8 @@ namespace PipeLine_System
         {
             FileStream fs = null;
             StreamWriter sw = null;
-            //try
-            //{
+            try
+            {
                 fs = new FileStream(this.path, FileMode.Create, FileAccess.Write);
                 //try for FileMode : Open, Create, Truncate, Append
                 sw = new StreamWriter(fs);
@@ -40,16 +40,16 @@ namespace PipeLine_System
                     sw.WriteLine(p.ToString());
                 }
 
-            //}
-            //catch (IOException)
-            //{
-            //    MessageBox.Show("Something went wrong with file hanlder, IOException was thrown");
-            //}
-            //finally
-            //{
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Something went wrong with file hanlder, IOException was thrown");
+            }
+            finally
+            {
                 if (sw != null) sw.Close();
                 if (fs != null) fs.Close();
-            //}
+            }
             return false;
         }
         public Network ReadFromFile()
