@@ -109,7 +109,7 @@ namespace PipeLine_System
                 //-1 if the list is NULL
                 resultSt += "_-1";
             }
-            return resultS;
+            return resultSt;
         }
     }
 }
