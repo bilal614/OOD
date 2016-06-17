@@ -61,7 +61,7 @@ namespace PipeLine_System
             {
                 inPipeline = this.inPipeLine.getId().ToString();
             }
-            return "SK_" + base.ToString() + String.Format("_{0}_{1}", inPipeline);
+            return "SK_" + base.ToString() + String.Format("_{0}", inPipeline);
         }
     }
 }

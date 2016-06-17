@@ -116,7 +116,7 @@ namespace PipeLine_System
             }
             else
             {
-                s_outPipeline1 = this.outPipeLine1.ToString();
+                s_outPipeline1 = this.outPipeLine1.getId().ToString();
             }
             if(this.outPipeLine2 == null)
             {
@@ -124,14 +124,19 @@ namespace PipeLine_System
             }
             else
             {
-                s_outPipeLine2 = this.outPipeLine2.ToString();
+                s_outPipeLine2 = this.outPipeLine2.getId().ToString();
             }
             if(this.inPipeline == null)
             {
-                s_inPipeLine = this.inPipeline.ToString();
+                s_inPipeLine = "-1";
+            }
+            else
+            {
+                s_inPipeLine = this.inPipeline.getId().ToString();
             }
             //TYPE_ID_PX_PY_CURRENTFLOW_UPPEROUT_LOWEROUT_INPIPELINE_OUTPIPELINE1_OUTPIPELINE2_UPPERLOCATION(X,Y)_LOWERLOCATION(X,Y)
             return "SP_" + base.ToString() + String.Format("_{0}_{1}_{2}_{3}_{4}_{5}_{6}_{7}_{8}_{9}",
+                upperOut.ToString(), lowerOut.ToString(),
                 s_inPipeLine, s_outPipeline1, s_outPipeLine2,
                 upperLocation.X.ToString(), upperLocation.Y.ToString(), lowerLocation.X.ToString(), lowerLocation.Y.ToString());
         }
