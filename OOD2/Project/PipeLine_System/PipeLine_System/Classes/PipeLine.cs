@@ -73,7 +73,7 @@ namespace PipeLine_System
         /// <param name="safeLimit"></param>
         /// <param name="compEnd"></param>
         /// <param name="compStart"></param>
-        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart, Point StartLocation, Point EndLocation, )
+        public PipeLine(int id, double safeLimit, Component compEnd, Component compStart)
         {
             this.id = id;
             this.safeLimit = safeLimit;
@@ -83,6 +83,7 @@ namespace PipeLine_System
             this.endLocation.Y = 0;
             this.compEnd = compEnd;
             this.compStart = compStart;
+            clickLocation = new List<Point>();
         }
         /// <summary>
         /// set the start location from the screen.
@@ -109,14 +110,15 @@ namespace PipeLine_System
         /// Added the clicked point in the middle of the line
         /// </summary>
         /// <param name="points"></param>
-        public void setMiddleLocations(List<Point> points)
+        public void setMiddleLocation(Point point)
         {
-            foreach (var p in points)
-            {
-                clickLocation.Add(p);
-            }
+            clickLocation.Add(point);
         }
-        
+
+        public List<Point> getMiddleLocation()
+        {
+            return clickLocation;
+        }
         /// <summary>
         /// get the id of the pipeline for reference in the files
         /// </summary>
