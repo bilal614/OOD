@@ -256,6 +256,7 @@
             this.btnPump.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnPump, "Pump");
             this.btnPump.UseVisualStyleBackColor = true;
+            this.btnPump.Click += new System.EventHandler(this.btnPump_Click);
             this.btnPump.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnPump_MouseDown);
             // 
             // groupBox2
