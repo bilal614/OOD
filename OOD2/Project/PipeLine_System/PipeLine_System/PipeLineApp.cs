@@ -14,8 +14,9 @@ namespace PipeLine_System
     {
         Graphics gr;
       //private ImageList imageList = new ImageList();
-        
+        Component tempComponent = null;
         private Network network = new Network();
+        static int ID = 0; 
         public PipeLineApp()
         {
             InitializeComponent();
@@ -38,8 +39,7 @@ namespace PipeLine_System
         }
 
         private void btnPump_MouseDown(object sender, MouseEventArgs e)
-        {           
-              
+        {     
         }
 
         private void panelDrawing_DragEnter(object sender, DragEventArgs e)
@@ -104,9 +104,7 @@ namespace PipeLine_System
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
-            network.Addcomponent(new Pump(1, e.Location, 20));
-            
-            // values are only for testin!
+            network.DrawAllComponents(gr, imageList1);
             this.Refresh(); 
         }
 
@@ -117,9 +115,5 @@ namespace PipeLine_System
             network.DrawAllComponents(gr, imageList1);
         }
 
-        private void btnPump_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
