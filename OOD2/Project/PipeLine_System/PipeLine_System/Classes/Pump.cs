@@ -77,5 +77,23 @@ namespace PipeLine_System
             }
             return "PU_" + base.ToString() + String.Format("_{0}_{1}", this.capacity.ToString(), outId);
         }
+
+        /// <summary>
+        /// Create an objects from string infors
+        /// </summary>
+        /// <param name="PumpInfors"></param>
+        /// <returns></returns>
+        static public Pump createPumpFromStringArray(string[] PumpInfors)
+        {
+            Pump p = null;
+            int id = Convert.ToInt16(PumpInfors[1]);
+            int x = Convert.ToInt32(PumpInfors[2]);
+            int y = Convert.ToInt32(PumpInfors[3]);
+            Point Location = new Point(x,y);
+            double CurrentFlow = Convert.ToDouble(PumpInfors[4]);
+            PipeLine outpineline = new PipeLine(Convert.ToInt32(PumpInfors[5]), 0);
+            p = new Pump(id, Location, CurrentFlow, outpineline);
+            return p;
+        }
     }
 }
