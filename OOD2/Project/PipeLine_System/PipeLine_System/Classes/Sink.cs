@@ -28,6 +28,11 @@ namespace PipeLine_System
         
         }
 
+        public Sink(int ID, Point componentLocation, double CurrentFlow) :
+            base(ID, componentLocation, CurrentFlow)
+        {
+
+        }
         //METHODS
         /*The following methods return the outgoing pipeline neighbor of the Sink.*/
         public PipeLine getInPipeLine1()
