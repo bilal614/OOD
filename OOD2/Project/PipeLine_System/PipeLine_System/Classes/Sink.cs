@@ -28,10 +28,17 @@ namespace PipeLine_System
         
         }
 
-        public Sink(int ID, Point componentLocation, double CurrentFlow) :
+        /// <summary>
+        /// Constructors 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="componentLocation"></param>
+        /// <param name="CurrentFlow"></param>
+        /// <param name="outPipeLine"></param>
+        public Sink(int ID, Point componentLocation, double CurrentFlow, PipeLine inPipeLine) :
             base(ID, componentLocation, CurrentFlow)
         {
-
+            this.inPipeLine = inPipeLine;
         }
         //METHODS
         /*The following methods return the outgoing pipeline neighbor of the Sink.*/
