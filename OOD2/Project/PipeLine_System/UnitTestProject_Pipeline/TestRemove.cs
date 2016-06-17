@@ -28,10 +28,11 @@ namespace UnitTestProject_Pipeline
             nw.AddPipeLine(pi);
 
             pi = new PipeLine(100, 200, c3, c4);
-            nw.AddPipeLine(pi);
-            pipelines.Add(pi);
-        
+           // nw.AddPipeLine(pi);
+           // pipelines.Add(pi);
+
             nw.RemovePipeline(pi);
+        
             int expected = 0;
             Assert.AreEqual(expected, pipelines.Count);
             //Test Remove
