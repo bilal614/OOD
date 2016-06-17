@@ -121,7 +121,7 @@ namespace PipeLine_System
             string inPipeline1, inPipeline2, outPipeline = null;
             if(this.inPipeline1 == null)
             {
-                inPipeline1 = "unknown";
+                inPipeline1 = "-1";
             }
             else
             {
@@ -129,7 +129,7 @@ namespace PipeLine_System
             }
             if (this.inPipeline2 == null)
             {
-                inPipeline2 = "unknown";
+                inPipeline2 = "-1";
             }
             else
             {
@@ -137,7 +137,7 @@ namespace PipeLine_System
             }
             if (this.outPipeline == null)
             {
-                outPipeline = "unknown";
+                outPipeline = "-1";
             }
             else
             {

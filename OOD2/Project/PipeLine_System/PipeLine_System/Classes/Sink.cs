@@ -55,7 +55,7 @@ namespace PipeLine_System
             string inPipeline = null;
             if (this.inPipeLine == null)
             {
-                inPipeline = "unknown";
+                inPipeline = "-1";
             }
             else
             {
