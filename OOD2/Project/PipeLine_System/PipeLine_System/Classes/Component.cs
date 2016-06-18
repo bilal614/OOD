@@ -20,6 +20,7 @@ namespace PipeLine_System
          * drawing screen.
          */
         private int id;
+        private List<PipeLine> PipeLines;
         private Point location;//location.X and location.Y represent the upper-left corner of the Component image from where it will be 
         //drawn on the drawing screen 
         private double currentFlow;
@@ -34,6 +35,7 @@ namespace PipeLine_System
             id = ID;
             location = componentLocation;
             currentFlow = CurrentFlow;
+            PipeLines = new List<PipeLine>();
         }
 
         public Component(int ID)

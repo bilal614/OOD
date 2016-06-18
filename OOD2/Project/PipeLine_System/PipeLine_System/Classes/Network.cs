@@ -225,7 +225,7 @@ namespace PipeLine_System
                 return true;
             }
             catch (ArgumentNullException e) 
-            {
+             {
                 //message box is only for our own feedback when error occurs
                 MessageBox.Show("One of your components location Point is null or un-initialized.");
             }
@@ -263,6 +263,15 @@ namespace PipeLine_System
         {
             int count = pipelines.Count() + 1;
             return count;
-        } 
+        }
+        public void inform_neighbor(PipeLine removing)
+        {
+           //Point startingcomp=  removing.CompStart.GetLocation();
+              Point endingcomp = removing.CompEnd.GetLocation();
+              
+         //todo/////
+            
+            
+        }             
     }
 }
