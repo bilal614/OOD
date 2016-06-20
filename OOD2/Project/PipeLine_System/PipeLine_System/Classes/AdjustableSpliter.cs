@@ -9,7 +9,7 @@ namespace PipeLine_System
 {
     public class AdjustableSpliter : Spliter
     {
-        int upperPercent;
+        double upperPercent;
 
         //CONSTRUCTOR
         public AdjustableSpliter(int ID, Point componentLocation, double CurrentFlow, int upperPercent) :
@@ -33,7 +33,7 @@ namespace PipeLine_System
         /// <param name="lowerLocation"></param>
         /// <param name="upperPercent"></param>
         public AdjustableSpliter(int ID, Point componentLocation, double CurrentFlow, double upperFlow, double lowerFlow, PipeLine inPipeLine,
-            PipeLine outPipeline1, PipeLine outPipeline2, Point upperLocation, Point lowerLocation, int upperPercent) :
+            PipeLine outPipeline1, PipeLine outPipeline2, Point upperLocation, Point lowerLocation, double upperPercent) :
             base(ID, componentLocation, CurrentFlow, upperFlow, lowerFlow,inPipeLine, outPipeline1, outPipeline2, upperLocation, lowerLocation)
         {
             this.upperPercent = upperPercent;
@@ -46,6 +46,30 @@ namespace PipeLine_System
         public override void SetFlow(double flow)
         {
             base.SetFlow(getInPipeLine().CurrentFlow);
+        }
+
+        public static AdjustableSpliter createSpliterFromStringArray(string[] ASpliterInfors)
+        {
+            AdjustableSpliter sp = null;
+            int id = Convert.ToInt16(ASpliterInfors[1]);
+            int x = Convert.ToInt32(ASpliterInfors[2]);
+            int y = Convert.ToInt32(ASpliterInfors[3]);
+            Point Location = new Point(x, y);
+            double CurrentFlow = Convert.ToDouble(ASpliterInfors[4]);
+            double upperFlow = Convert.ToDouble(ASpliterInfors[5]);
+            double lowerFlow = Convert.ToDouble(ASpliterInfors[6]);
+            PipeLine inpipeline = new PipeLine(Convert.ToInt32(ASpliterInfors[7]), 0);
+            PipeLine outpipeline1 = new PipeLine(Convert.ToInt32(ASpliterInfors[8]), 0);
+            PipeLine outpipeline2 = new PipeLine(Convert.ToInt32(ASpliterInfors[9]), 0);
+            int upperX = Convert.ToInt32(ASpliterInfors[10]);
+            int upperY = Convert.ToInt32(ASpliterInfors[11]);
+            Point UpperLocation = new Point(upperX, upperY);
+            int lowerX = Convert.ToInt32(ASpliterInfors[12]);
+            int lowerY = Convert.ToInt32(ASpliterInfors[13]);
+            Point LowerLocation = new Point(lowerX, lowerY);
+            double adjustPer = Convert.ToDouble(ASpliterInfors[14]);
+            sp = new AdjustableSpliter(id, Location, CurrentFlow, upperFlow, lowerFlow, inpipeline, outpipeline1, outpipeline2, UpperLocation, LowerLocation, adjustPer);
+            return sp;
         }
     }
 }

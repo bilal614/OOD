@@ -69,9 +69,17 @@ namespace PipeLine_System
                 String s = sr.ReadLine();
                 if(s == "Components")
                 {
+                    while (s != "Pipelines")
+                    {
+                        s = sr.ReadLine();
+                        Component p = ConvertFromStringToComp(s);
+                        nw.Addcomponent(p);
+                    }
                     s = sr.ReadLine();
-                    Component p = ConvertFromStringToComp(s);
-                    nw.Addcomponent(p);
+                }
+                while(s != null)
+                {
+
                 }
             }
             catch (IOException)
@@ -127,14 +135,31 @@ namespace PipeLine_System
         /// <returns></returns>
         private Component ConvertFromStringToComp(String s)
         {
-            Component p = null;
+            Component c = null;
             char[] separators = {'_'};
             string[] ComponentInfor = s.Split(separators);
-            if(ComponentInfor[0] == "PU")
+            string type = ComponentInfor[0];
+            if(type == "PU")
             {
-                p = Pump.createPumpFromStringArray(ComponentInfor);
+                c = Pump.createPumpFromStringArray(ComponentInfor);
             }
-            return p;
+            if(type == "SP")
+            {
+                c = Spliter.createSpliterFromStringArray(ComponentInfor);
+            }
+            if(type == "ASP")
+            {
+                c = AdjustableSpliter.createSpliterFromStringArray(ComponentInfor);
+            }
+            if(type == "MG")
+            {
+                c = Merger.createMergerFromStringArray(ComponentInfor);
+            }
+            if(type == "SK")
+            {
+                c = Sink.createSinkFromStringArray(ComponentInfor);
+            }
+            return c;
         }
 
     }

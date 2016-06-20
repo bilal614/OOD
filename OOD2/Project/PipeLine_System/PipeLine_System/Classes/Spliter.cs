@@ -174,7 +174,7 @@ namespace PipeLine_System
         /// </summary>
         /// <param name="SpliterInfors"></param>
         /// <returns></returns>
-        public static Spliter createMergerFromStringArray(string[] SpliterInfors)
+        public static Spliter createSpliterFromStringArray(string[] SpliterInfors)
         {
             Spliter sp = null;
             int id = Convert.ToInt16(SpliterInfors[1]);

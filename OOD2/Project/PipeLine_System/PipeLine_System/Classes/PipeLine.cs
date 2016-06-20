@@ -184,8 +184,19 @@ namespace PipeLine_System
             double SafeLimit = Convert.ToDouble(PipelineInfors[7]);
             Component compStart = new Component(Convert.ToInt32(PipelineInfors[8]));
             Component compEnd = new Component(Convert.ToInt32(PipelineInfors[9]));
+            bool danger = Convert.ToBoolean(PipelineInfors[10]);
+            int nrOfMiddlePoints = PipelineInfors.Length - 10;
+            List<Point> middlePoints = new List<Point>();
+            for (int i = 0; i < nrOfMiddlePoints/2; i++)
+            {
+                int tempX = Convert.ToInt32(PipelineInfors[11 + i]);
+                int tempY = Convert.ToInt32(PipelineInfors[11 + i + 1]);
+                Point tempPoint = new Point(tempX, tempY);
+                middlePoints.Add(tempPoint);
+            }
 
-            //p = new PipeLine(id, sTar );
+            p = new PipeLine(id, StartLocation, EndLocation, CurrentFlow, SafeLimit, middlePoints, compEnd, compStart);
+           
             return p;
         }
     }
