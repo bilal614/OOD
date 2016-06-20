@@ -37,5 +37,12 @@ namespace UnitTestProject_Pipeline
             Assert.AreEqual(expected, pipelines.Count);
             //Test Remove
         }
+
+
+
+
+
+
+
     }
 }

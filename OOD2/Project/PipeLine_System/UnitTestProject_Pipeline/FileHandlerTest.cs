@@ -31,6 +31,12 @@ namespace UnitTestProject_Pipeline
             f.WriteToFile(nw);
             
         }
-            
+        [TestMethod]
+        public void TesReadFromFile()
+        {
+            FileHandler f = new FileHandler("E:\\GIT\\OOD\\OOD2\\Project\\PipeLine_System\\PipeLine_System\\NetworkFiles\\Network_02.txt");
+            Network nw = f.ReadFromFile();
+
+        }   
     }
 }

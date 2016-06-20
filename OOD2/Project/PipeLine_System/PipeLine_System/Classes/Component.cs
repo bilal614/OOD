@@ -20,12 +20,13 @@ namespace PipeLine_System
          * drawing screen.
          */
         private int id;
+        private List<PipeLine> PipeLines;
         private Point location;//location.X and location.Y represent the upper-left corner of the Component image from where it will be 
         //drawn on the drawing screen 
         private double currentFlow;
         /*the radius of every Component (that is why it is static), because the relative size of the
         Components on the drawing screen is similar so we can use this value as Radius for all Components*/
-        public const int Area = 700; //The const can not be masked as static?? Please checked again --- Thanh
+        public const int Area = 1500; //The const can not be masked as static?? Please checked again --- Thanh
         /*
          * CONSTRUCTOR
         */
@@ -34,6 +35,7 @@ namespace PipeLine_System
             id = ID;
             location = componentLocation;
             currentFlow = CurrentFlow;
+            PipeLines = new List<PipeLine>();
         }
 
         public Component(int ID)

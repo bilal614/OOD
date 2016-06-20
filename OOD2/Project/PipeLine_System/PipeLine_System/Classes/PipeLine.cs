@@ -96,6 +96,12 @@ namespace PipeLine_System
             this.startLocation.Y = location.Y;
         }
 
+        public Point getStartLocation()
+        {
+            Point p = new Point(startLocation.X, startLocation.Y - 5);
+            return p;
+        }
+
         /// <summary>
         /// Set the end location
         /// </summary>
@@ -104,6 +110,12 @@ namespace PipeLine_System
         {
             this.endLocation.X = location.X;
             this.startLocation.Y = location.Y;
+        }
+
+        public Point getEndLocation()
+        {
+            Point p = new Point(endLocation.X, endLocation.Y - 5);
+            return p;
         }
 
         /// <summary>
