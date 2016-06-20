@@ -272,6 +272,40 @@ namespace PipeLine_System
          //todo/////
             
             
-        }             
+        }
+        /// <summary>
+        /// Find component basing on the id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Component GetComponent(int id)
+        {
+            Component returnComp = null;
+            foreach(var c in components)
+            {
+                if(c.GetComponentId() == id)
+                {
+                    returnComp = c;
+                }
+            }
+            return returnComp;
+        }
+        /// <summary>
+        /// Find pipeline basing on the id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public PipeLine GetPipeline(int id)
+        {
+            PipeLine returnPipeline = null;
+            foreach(var p in pipelines)
+            {
+                if(p.getId() == id)
+                {
+                    returnPipeline = p;
+                }
+            }
+            return returnPipeline;
+        }
     }
 }
