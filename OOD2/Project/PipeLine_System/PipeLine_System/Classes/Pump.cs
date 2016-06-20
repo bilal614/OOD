@@ -79,7 +79,7 @@ namespace PipeLine_System
         }
 
         /// <summary>
-        /// Create an objects from string infors
+        /// Create an object of type Pump from string infors
         /// </summary>
         /// <param name="PumpInfors"></param>
         /// <returns></returns>
@@ -91,8 +91,8 @@ namespace PipeLine_System
             int y = Convert.ToInt32(PumpInfors[3]);
             Point Location = new Point(x,y);
             double CurrentFlow = Convert.ToDouble(PumpInfors[4]);
-            PipeLine outpineline = new PipeLine(Convert.ToInt32(PumpInfors[5]), 0);
-            p = new Pump(id, Location, CurrentFlow, outpineline);
+            PipeLine outpipeline = new PipeLine(Convert.ToInt32(PumpInfors[5]), 0);
+            p = new Pump(id, Location, CurrentFlow, outpipeline);
             return p;
         }
     }

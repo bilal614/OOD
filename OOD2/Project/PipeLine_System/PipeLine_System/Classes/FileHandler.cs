@@ -125,7 +125,7 @@ namespace PipeLine_System
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public Component ConvertFromStringToComp(String s)
+        private Component ConvertFromStringToComp(String s)
         {
             Component p = null;
             char[] separators = {'_'};

@@ -164,5 +164,29 @@ namespace PipeLine_System
             }
             return resultSt;
         }
+
+        /// <summary>
+        /// Create an object of type Pipeline from string infors
+        /// </summary>
+        /// <param name="SinkInfors"></param>
+        /// <returns></returns>
+        public static PipeLine createSinkFromStringArray(string[] PipelineInfors)
+        {
+            PipeLine p = null;
+            int id = Convert.ToInt16(PipelineInfors[1]);
+            int Start_Loc_X = Convert.ToInt32(PipelineInfors[2]);
+            int Start_Loc_Y = Convert.ToInt32(PipelineInfors[3]);
+            Point StartLocation = new Point(Start_Loc_X, Start_Loc_Y);
+            int End_Loc_X = Convert.ToInt32(PipelineInfors[4]);
+            int End_Loc_Y = Convert.ToInt32(PipelineInfors[5]);
+            Point EndLocation = new Point(End_Loc_X, End_Loc_Y);
+            double CurrentFlow = Convert.ToDouble(PipelineInfors[6]);
+            double SafeLimit = Convert.ToDouble(PipelineInfors[7]);
+            Component compStart = new Component(Convert.ToInt32(PipelineInfors[8]));
+            Component compEnd = new Component(Convert.ToInt32(PipelineInfors[9]));
+
+            //p = new PipeLine(id, sTar );
+            return p;
+        }
     }
 }
