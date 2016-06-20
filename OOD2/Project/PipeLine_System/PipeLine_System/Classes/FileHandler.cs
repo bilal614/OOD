@@ -69,18 +69,25 @@ namespace PipeLine_System
                 String s = sr.ReadLine();
                 if(s == "Components")
                 {
+                    s = sr.ReadLine();
                     while (s != "Pipelines")
                     {
-                        s = sr.ReadLine();
                         Component p = ConvertFromStringToComp(s);
                         nw.Addcomponent(p);
+                        s = sr.ReadLine();
                     }
-                    s = sr.ReadLine();
                 }
-                while(s != null)
+                if (s == "Pipelines")
                 {
-
+                    s = sr.ReadLine();
+                    while (s != null)
+                    {
+                        PipeLine p = ConvertStringToPipeLine(s);
+                        nw.AddPipeLine(p);
+                        s = sr.ReadLine();
+                    }
                 }
+                nw.updateNetwork();
             }
             catch (IOException)
             {
@@ -162,5 +169,20 @@ namespace PipeLine_System
             return c;
         }
 
+        /// <summary>
+        /// Convert from string to pipeline
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private PipeLine ConvertStringToPipeLine(String s)
+        {
+            PipeLine p = null;
+            char[] separators = { '_' };
+            string[] ComponentInfor = s.Split(separators);
+            p = PipeLine.createPipeLineFromStringArray(ComponentInfor);
+            return p;
+        }
+        
+      
     }
 }

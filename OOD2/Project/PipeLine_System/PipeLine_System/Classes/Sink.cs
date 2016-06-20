@@ -42,7 +42,7 @@ namespace PipeLine_System
         }
         //METHODS
         /*The following methods return the outgoing pipeline neighbor of the Sink.*/
-        public PipeLine getInPipeLine1()
+        public PipeLine getInPipeLine()
         {
             return inPipeLine;
         }

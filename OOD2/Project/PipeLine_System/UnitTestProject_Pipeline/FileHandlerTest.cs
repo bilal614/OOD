@@ -22,7 +22,7 @@ namespace UnitTestProject_Pipeline
             nw.Addcomponent(c3);
             Component c4 = new Spliter(4, new Point(300, 205), 500);
             nw.Addcomponent(c4);
-            Component c5 = new AdjustableSpliter(5, new Point(300, 500), 30, 56);
+            Component c5 = new AdjustableSpliter(5, new Point(500, 500), 30, 56);
             nw.Addcomponent(c5);
             PipeLine pi = new PipeLine(6, 100, c1, c2);
             nw.AddPipeLine(pi);
@@ -36,7 +36,6 @@ namespace UnitTestProject_Pipeline
         {
             FileHandler f = new FileHandler("E:\\GIT\\OOD\\OOD2\\Project\\PipeLine_System\\PipeLine_System\\NetworkFiles\\Network_02.txt");
             Network nw = f.ReadFromFile();
-
         }   
     }
 }
