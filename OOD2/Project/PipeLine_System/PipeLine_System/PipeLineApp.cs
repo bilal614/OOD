@@ -170,12 +170,19 @@ namespace PipeLine_System
                                 if (c.ContainsPoint(e.X, e.Y) && c != tempPipeLine.CompStart)
                                 {
                                     temporaryComponent = c;
+                                    break;
                                 }
                             }
                             if (temporaryComponent != null)
                             {
                                 tempPipeLine.CompEnd = temporaryComponent;
-                                network.AddPipeLine(tempPipeLine);
+                                if (network.AddPipeLine(tempPipeLine))
+                                {
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Number of pipelines connected to components exceeded.");
+                                }
                                 tempPipeLine = null;
                             }
                             else

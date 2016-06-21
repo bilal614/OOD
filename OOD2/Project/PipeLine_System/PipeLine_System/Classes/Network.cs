@@ -166,13 +166,90 @@ namespace PipeLine_System
         }
         public bool AddPipeLine(PipeLine p)
         {
+            bool toAddOrNot = true;
+            int count = 0;
+            foreach (PipeLine pl in this.GetListOfPipeline())
+            {
+                if (pl.CompStart is Pump)//to avoid multiple connections from pump
+                {
+                    if (p.CompStart == pl.CompStart)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
 
+                if (pl.CompEnd is Sink)
+                {
+                    if (p.CompEnd == pl.CompEnd)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
+
+                if (pl.CompStart is Merger)
+                {
+                    if (p.CompStart == pl.CompStart)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
+                if (pl.CompEnd is Merger)
+                {
+                    if (p.CompEnd == pl.CompEnd)
+                    {
+                        count++;
+                    }
+                }
+
+                if (pl.CompStart is Spliter)
+                {
+                    if (p.CompStart == pl.CompStart)
+                    {
+                        count++;
+                    }
+                }
+                if (pl.CompEnd is Spliter)
+                {
+                    if (p.CompEnd == pl.CompEnd)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
+
+                if (pl.CompStart is AdjustableSpliter)
+                {
+                    if (p.CompStart == pl.CompStart)
+                    {
+                        count++;
+                    }
+                }
+                if (pl.CompEnd is AdjustableSpliter)
+                {
+                    if (p.CompEnd == pl.CompEnd)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
+            }
+
+            if (count >= 2)
+            {
+                toAddOrNot = false;
+            }
             //foreach (var item in pipelines)
             //{
                 //item.startLocation =  
                 //item.endLocation = 
+            if (toAddOrNot)
+            {
                 pipelines.Add(p);
-                return true;
+            }
+            return toAddOrNot;
             //}
             //return false;
         }
@@ -238,12 +315,19 @@ namespace PipeLine_System
                 foreach (PipeLine p in pipelines)
                 {
                     List<Point> points = p.getMiddleLocation();
-                    gr.DrawLine(Pens.Black, p.CompStart.GetLocation(), points[0]);
-                    for (int i = 0; i < points.Count - 1; i++)
+                    if (points.Count > 0)
                     {
-                        gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                        gr.DrawLine(Pens.Black, p.CompStart.GetLocation(), points[0]);
+                        for (int i = 0; i < points.Count - 1; i++)
+                        {
+                            gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                        }
+                        gr.DrawLine(Pens.Black, points[points.Count - 1], p.CompEnd.GetLocation());
                     }
-                    gr.DrawLine(Pens.Black, points[points.Count - 1], p.CompEnd.GetLocation());
+                    else
+                    {
+                        gr.DrawLine(Pens.Black, p.CompStart.GetLocation(), p.CompEnd.GetLocation());
+                    }
                 }
             }
             catch
