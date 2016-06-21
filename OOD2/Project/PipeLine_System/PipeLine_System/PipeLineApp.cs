@@ -93,6 +93,7 @@ namespace PipeLine_System
             Point p = new Point();
             tempComponent = new Spliter(network.SetId(), p, 0);
             deleteSelected = false;
+            tempPipeLine = null;
         }
 
         private void btnMerger_Click(object sender, EventArgs e)
@@ -100,6 +101,7 @@ namespace PipeLine_System
             Point p = new Point();
             tempComponent = new Merger(network.SetId(), p, 0);
             deleteSelected = false;
+            tempPipeLine = null;
         }
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
@@ -142,6 +144,12 @@ namespace PipeLine_System
 
                     if (tempPipeLine != null)
                     {
+                        /*if (tempPipeLine == null && btnDelete.Focused)
+                        {
+                            tempPipeLine = new PipeLine(network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
+                            deleteSelected = false;
+                            tempComponent = null;
+                        }*/
                         if (tempPipeLine.CompStart == null)
                         {
                             foreach (Component c in network.GetListOfComponents())
@@ -149,26 +157,33 @@ namespace PipeLine_System
                                 if (c.ContainsPoint(e.X, e.Y))
                                 {
                                     tempPipeLine.CompStart = c;
+                                    break;
                                 }
                             }
                         }
                         else if (tempPipeLine.CompStart != null && tempPipeLine.CompEnd == null)
                         {
+                            Component temporaryComponent = null;
 
                             foreach (Component c in network.GetListOfComponents())
                             {
                                 if (c.ContainsPoint(e.X, e.Y) && c != tempPipeLine.CompStart)
                                 {
-                                    tempPipeLine.CompEnd = c;
-                                    network.AddPipeLine(tempPipeLine);
-                                    tempPipeLine = null;
-                                }
-                                else
-                                {
-                                    Point pnt = new Point(e.X, e.Y);
-                                    tempPipeLine.setMiddleLocation(pnt);
+                                    temporaryComponent = c;
                                 }
                             }
+                            if (temporaryComponent != null)
+                            {
+                                tempPipeLine.CompEnd = temporaryComponent;
+                                network.AddPipeLine(tempPipeLine);
+                                tempPipeLine = null;
+                            }
+                            else
+                            {
+                                Point pnt = new Point(e.X, e.Y);
+                                tempPipeLine.setMiddleLocation(pnt);
+                            }
+
                         }
                     }
                 }
@@ -206,6 +221,7 @@ namespace PipeLine_System
             Point p = new Point();
             tempComponent = new Pump(network.SetId(), p, 0);
             deleteSelected = false;
+            tempPipeLine = null;
         }
 
         private void btnAdjustSpliter_Click(object sender, EventArgs e)
@@ -213,6 +229,7 @@ namespace PipeLine_System
             Point p = new Point();
             tempComponent = new AdjustableSpliter(network.SetId(), p, 0, Convert.ToInt32(this.ASpiter_UpValue.Value));
             deleteSelected = false;
+            tempPipeLine = null;
         }
 
         private void btnSink_Click(object sender, EventArgs e)
@@ -220,16 +237,20 @@ namespace PipeLine_System
             Point p = new Point();
             tempComponent = new Sink(network.SetId(), p, 0);
             deleteSelected = false;
+            tempPipeLine = null;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             deleteSelected = true;
+            tempComponent = null;
         }
 
         private void btnLine_Click(object sender, EventArgs e)
         {
             tempPipeLine = new PipeLine(network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
+            deleteSelected = false;
+            tempComponent = null;
         }
 
         private void btnExit_Click(object sender, EventArgs e)

@@ -36,7 +36,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnLine = new System.Windows.Forms.Button();
             this.btnSink = new System.Windows.Forms.Button();
             this.btnAdjustSpliter = new System.Windows.Forms.Button();
@@ -158,20 +158,20 @@
             this.toolTip.SetToolTip(this.btnSave, "Save drawing network");
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(21, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 31);
-            this.button1.TabIndex = 19;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.button1, "Delete Pipeline / component");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Location = new System.Drawing.Point(21, 281);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(92, 31);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnDelete, "Delete Pipeline / component");
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnLine
             // 
@@ -442,7 +442,7 @@
             this.panelLeft.Controls.Add(this.groupBox3);
             this.panelLeft.Controls.Add(this.groupBox2);
             this.panelLeft.Controls.Add(this.groupBox1);
-            this.panelLeft.Controls.Add(this.button1);
+            this.panelLeft.Controls.Add(this.btnDelete);
             this.panelLeft.Controls.Add(this.btnLine);
             this.panelLeft.Controls.Add(this.btnSink);
             this.panelLeft.Controls.Add(this.btnAdjustSpliter);
@@ -532,7 +532,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnSink;
         private System.Windows.Forms.Button btnAdjustSpliter;
