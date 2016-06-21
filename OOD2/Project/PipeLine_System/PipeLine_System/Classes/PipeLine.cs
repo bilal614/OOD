@@ -25,14 +25,30 @@ namespace PipeLine_System
         public Point startLocation;
         public Point endLocation;
         private double currentFlow;
-        public double CurrentFlow { get; set; }
+        //public double CurrentFlow { get; set; }
+        public double CurrentFlow
+        {
+            get { return currentFlow; }
+            set { currentFlow = value; }
+        }
         private double safeLimit;
         public double SafeLimit { get; set; }
         private List<Point> clickLocation;
+        //These properties are not correct - discuss in meeting???
         private Component compStart;
-        public Component CompStart{get;set;}
+        //public Component CompStart{get;set;}
+        public Component CompStart
+        {
+            get { return compStart; }
+            set { compStart = value; }
+        }
         private Component compEnd;
-        public Component CompEnd { get; set; }
+        //public Component CompEnd { get; set; }
+        public Component CompEnd
+        {
+            get { return compEnd; }
+            set { compEnd = value; }
+        }
         private bool danger;
         //Constructors
         public PipeLine(int id, double safeLimit)

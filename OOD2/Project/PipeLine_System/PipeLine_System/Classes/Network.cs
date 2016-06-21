@@ -324,6 +324,7 @@ namespace PipeLine_System
             if(c is Spliter || c is AdjustableSpliter)
             {
                 Spliter sp = null;
+                sp = (Spliter)c;
                 if (c is AdjustableSpliter)
                 {
                     sp = (AdjustableSpliter)c;
