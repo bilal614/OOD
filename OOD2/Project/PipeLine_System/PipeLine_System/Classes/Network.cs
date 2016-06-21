@@ -272,6 +272,101 @@ namespace PipeLine_System
          //todo/////
             
             
-        }             
+        }
+        /// <summary>
+        /// Find component basing on the id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private Component GetComponent(int id)
+        {
+            Component returnComp = null;
+            foreach(var c in components)
+            {
+                if(c.GetComponentId() == id)
+                {
+                    returnComp = c;
+                }
+            }
+            return returnComp;
+        }
+        /// <summary>
+        /// Find pipeline basing on the id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private PipeLine GetPipeline(int id)
+        {
+            PipeLine returnPipeline = null;
+            foreach(var p in pipelines)
+            {
+                if(p.getId() == id)
+                {
+                    returnPipeline = p;
+                }
+            }
+            return returnPipeline;
+        }
+
+
+        /// <summary>
+        /// Update Pipelines of Comps depending type of com
+        /// </summary>
+        /// <param name="c"></param>
+        private void UpdatePipelinesOfComps(Component c)
+        {
+            if(c is Pump)
+            {
+               Pump p = (Pump)c;
+               PipeLine outPipeLine = GetPipeline(p.getOutPipeLine().getId());
+               p.addOutPipeLine(outPipeLine);
+            }
+            if(c is Spliter || c is AdjustableSpliter)
+            {
+                Spliter sp = null;
+                if (c is AdjustableSpliter)
+                {
+                    sp = (AdjustableSpliter)c;
+                }
+                PipeLine inPipeLine = GetPipeline(sp.getInPipeLine().getId());
+                sp.addInPipeLine(inPipeLine);
+                PipeLine outPipeLine1 = GetPipeline(sp.getOutPipeLine1().getId());
+                sp.addOutPipeLine1(outPipeLine1);
+                PipeLine outPipeLine2 = GetPipeline(sp.getOutPipeLine2().getId());
+                sp.addOutPipeLine2(outPipeLine2);
+            }
+            if(c is Merger)
+            {
+                Merger mg = (Merger)c;
+                PipeLine outPipeline = GetPipeline(mg.getOutPipeLine().getId());
+                mg.addOutPipeLine(outPipeline);
+                PipeLine inPipeline1 = GetPipeline(mg.getInPipeLine1().getId());
+                mg.addInPipeLine1(inPipeline1);
+                PipeLine intPipeline2 = GetPipeline(mg.getInPipeLine2().getId());
+                mg.addInPipeLine2(intPipeline2);
+            }
+            if (c is Sink)
+            {
+                Sink sk = (Sink)c;
+                PipeLine inPipeline = GetPipeline(sk.getInPipeLine().getId());
+                sk.addInPipeLine(inPipeline);
+            }
+        }
+        /// <summary>
+        /// Update the full infors of comps and pipelines base on their id
+        /// </summary>
+        /// <param name="nw"></param>
+        public void updateNetwork()
+        {
+            foreach(var c in components)
+            {
+                UpdatePipelinesOfComps(c);
+            }
+            foreach(var p in pipelines)
+            {
+                p.CompStart = GetComponent(p.CompStart.GetComponentId());
+                p.CompEnd = GetComponent(p.CompEnd.GetComponentId());
+            }
+        }
     }
 }

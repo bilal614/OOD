@@ -42,7 +42,7 @@ namespace PipeLine_System
         }
         //METHODS
         /*The following methods return the outgoing pipeline neighbor of the Sink.*/
-        public PipeLine getInPipeLine1()
+        public PipeLine getInPipeLine()
         {
             return inPipeLine;
         }
@@ -78,6 +78,24 @@ namespace PipeLine_System
                 inPipeline = this.inPipeLine.getId().ToString();
             }
             return "SK_" + base.ToString() + String.Format("_{0}", inPipeline);
+        }
+
+        /// <summary>
+        /// Create an object of type Sink from string infors
+        /// </summary>
+        /// <param name="SinkInfors"></param>
+        /// <returns></returns>
+        public static Sink createSinkFromStringArray(string[] SinkInfors)
+        {
+            Sink s = null;
+            int id = Convert.ToInt16(SinkInfors[1]);
+            int x = Convert.ToInt32(SinkInfors[2]);
+            int y = Convert.ToInt32(SinkInfors[3]);
+            Point Location = new Point(x, y);
+            double CurrentFlow = Convert.ToDouble(SinkInfors[4]);
+            PipeLine inpipeline = new PipeLine(Convert.ToInt32(SinkInfors[5]), 0);
+            s = new Sink(id, Location, CurrentFlow, inpipeline);
+            return s;
         }
     }
 }

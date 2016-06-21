@@ -164,5 +164,40 @@ namespace PipeLine_System
             }
             return resultSt;
         }
+
+        /// <summary>
+        /// Create an object of type Pipeline from string infors
+        /// </summary>
+        /// <param name="SinkInfors"></param>
+        /// <returns></returns>
+        public static PipeLine createPipeLineFromStringArray(string[] PipelineInfors)
+        {
+            PipeLine p = null;
+            int id = Convert.ToInt16(PipelineInfors[0]);
+            int Start_Loc_X = Convert.ToInt32(PipelineInfors[1]);
+            int Start_Loc_Y = Convert.ToInt32(PipelineInfors[2]);
+            Point StartLocation = new Point(Start_Loc_X, Start_Loc_Y);
+            int End_Loc_X = Convert.ToInt32(PipelineInfors[3]);
+            int End_Loc_Y = Convert.ToInt32(PipelineInfors[4]);
+            Point EndLocation = new Point(End_Loc_X, End_Loc_Y);
+            double CurrentFlow = Convert.ToDouble(PipelineInfors[5]);
+            double SafeLimit = Convert.ToDouble(PipelineInfors[6]);
+            Component compStart = new Component(Convert.ToInt32(PipelineInfors[7]));
+            Component compEnd = new Component(Convert.ToInt32(PipelineInfors[8]));
+            bool danger = Convert.ToBoolean(PipelineInfors[9]);
+            int nrOfMiddlePoints = PipelineInfors.Length - 9;
+            List<Point> middlePoints = new List<Point>();
+            for (int i = 0; i < nrOfMiddlePoints/2; i++)
+            {
+                int tempX = Convert.ToInt32(PipelineInfors[10 + i]);
+                int tempY = Convert.ToInt32(PipelineInfors[10 + i + 1]);
+                Point tempPoint = new Point(tempX, tempY);
+                middlePoints.Add(tempPoint);
+            }
+
+            p = new PipeLine(id, StartLocation, EndLocation, CurrentFlow, SafeLimit, middlePoints, compEnd, compStart);
+           
+            return p;
+        }
     }
 }

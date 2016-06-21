@@ -174,5 +174,31 @@ namespace PipeLine_System
                 inPipeline1, inPipeline2, outPipeline,
                 this.upperLocation.X.ToString(), this.upperLocation.Y.ToString(), this.lowerLocation.X.ToString(), this.lowerLocation.Y.ToString());
         }
+
+        /// <summary>
+        /// Create an object of type Merger from string infors
+        /// </summary>
+        /// <param name="MergerInfors"></param>
+        /// <returns></returns>
+        public static Merger createMergerFromStringArray(string[] MergerInfors)
+        {
+            Merger mg = null;
+            int id = Convert.ToInt16(MergerInfors[1]);
+            int x = Convert.ToInt32(MergerInfors[2]);
+            int y = Convert.ToInt32(MergerInfors[3]);
+            Point Location = new Point(x, y);
+            double CurrentFlow = Convert.ToDouble(MergerInfors[4]);
+            PipeLine inpipeline1 = new PipeLine(Convert.ToInt32(MergerInfors[5]), 0);
+            PipeLine inpipeline2 = new PipeLine(Convert.ToInt32(MergerInfors[6]), 0);
+            PipeLine outpipeline = new PipeLine(Convert.ToInt32(MergerInfors[7]), 0);
+            int upperX = Convert.ToInt32(MergerInfors[8]);
+            int upperY = Convert.ToInt32(MergerInfors[9]);
+            Point UpperLocation = new Point(upperX, upperY);
+            int lowerX = Convert.ToInt32(MergerInfors[10]);
+            int lowerY = Convert.ToInt32(MergerInfors[11]);
+            Point LowerLocation = new Point(lowerX, lowerY);
+            mg = new Merger(id, Location, CurrentFlow, inpipeline1, inpipeline2, outpipeline, UpperLocation, LowerLocation);
+            return mg;
+        }
     }
 }

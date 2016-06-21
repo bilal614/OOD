@@ -70,9 +70,24 @@ namespace PipeLine_System
                 if(s == "Components")
                 {
                     s = sr.ReadLine();
-                    Component p = ConvertFromStringToComp(s);
-                    nw.Addcomponent(p);
+                    while (s != "Pipelines")
+                    {
+                        Component p = ConvertFromStringToComp(s);
+                        nw.Addcomponent(p);
+                        s = sr.ReadLine();
+                    }
                 }
+                if (s == "Pipelines")
+                {
+                    s = sr.ReadLine();
+                    while (s != null)
+                    {
+                        PipeLine p = ConvertStringToPipeLine(s);
+                        nw.AddPipeLine(p);
+                        s = sr.ReadLine();
+                    }
+                }
+                nw.updateNetwork();
             }
             catch (IOException)
             {
@@ -125,17 +140,49 @@ namespace PipeLine_System
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public Component ConvertFromStringToComp(String s)
+        private Component ConvertFromStringToComp(String s)
         {
-            Component p = null;
+            Component c = null;
             char[] separators = {'_'};
             string[] ComponentInfor = s.Split(separators);
-            if(ComponentInfor[0] == "PU")
+            string type = ComponentInfor[0];
+            if(type == "PU")
             {
-                p = Pump.createPumpFromStringArray(ComponentInfor);
+                c = Pump.createPumpFromStringArray(ComponentInfor);
             }
-            return p;
+            if(type == "SP")
+            {
+                c = Spliter.createSpliterFromStringArray(ComponentInfor);
+            }
+            if(type == "ASP")
+            {
+                c = AdjustableSpliter.createSpliterFromStringArray(ComponentInfor);
+            }
+            if(type == "MG")
+            {
+                c = Merger.createMergerFromStringArray(ComponentInfor);
+            }
+            if(type == "SK")
+            {
+                c = Sink.createSinkFromStringArray(ComponentInfor);
+            }
+            return c;
         }
 
+        /// <summary>
+        /// Convert from string to pipeline
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private PipeLine ConvertStringToPipeLine(String s)
+        {
+            PipeLine p = null;
+            char[] separators = { '_' };
+            string[] ComponentInfor = s.Split(separators);
+            p = PipeLine.createPipeLineFromStringArray(ComponentInfor);
+            return p;
+        }
+        
+      
     }
 }

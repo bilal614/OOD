@@ -169,5 +169,32 @@ namespace PipeLine_System
                 s_inPipeLine, s_outPipeline1, s_outPipeLine2,
                 upperLocation.X.ToString(), upperLocation.Y.ToString(), lowerLocation.X.ToString(), lowerLocation.Y.ToString());
         }
+        /// <summary>
+        ///  Create an object of type Spliter from string infors
+        /// </summary>
+        /// <param name="SpliterInfors"></param>
+        /// <returns></returns>
+        public static Spliter createSpliterFromStringArray(string[] SpliterInfors)
+        {
+            Spliter sp = null;
+            int id = Convert.ToInt16(SpliterInfors[1]);
+            int x = Convert.ToInt32(SpliterInfors[2]);
+            int y = Convert.ToInt32(SpliterInfors[3]);
+            Point Location = new Point(x, y);
+            double CurrentFlow = Convert.ToDouble(SpliterInfors[4]);
+            double upperFlow = Convert.ToDouble(SpliterInfors[5]);
+            double lowerFlow = Convert.ToDouble(SpliterInfors[6]);
+            PipeLine inpipeline = new PipeLine(Convert.ToInt32(SpliterInfors[7]), 0);
+            PipeLine outpipeline1 = new PipeLine(Convert.ToInt32(SpliterInfors[8]), 0);
+            PipeLine outpipeline2 = new PipeLine(Convert.ToInt32(SpliterInfors[9]), 0);
+            int upperX = Convert.ToInt32(SpliterInfors[10]);
+            int upperY = Convert.ToInt32(SpliterInfors[11]);
+            Point UpperLocation = new Point(upperX, upperY);
+            int lowerX = Convert.ToInt32(SpliterInfors[12]);
+            int lowerY = Convert.ToInt32(SpliterInfors[13]);
+            Point LowerLocation = new Point(lowerX, lowerY);
+            sp = new Spliter(id, Location, CurrentFlow, upperFlow, lowerFlow, inpipeline, outpipeline1, outpipeline2, UpperLocation, LowerLocation);
+            return sp;
+        }
     }
 }
