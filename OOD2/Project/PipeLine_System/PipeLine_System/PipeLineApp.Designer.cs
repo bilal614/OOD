@@ -61,11 +61,12 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lbMax = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ASpiter_UpValue)).BeginInit();
             this.panelRightFill.SuspendLayout();
@@ -107,6 +108,7 @@
             this.btnOpen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnOpen, "Open drawing network form file");
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // btnExit
             // 
@@ -122,6 +124,7 @@
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnExit, "Exit application");
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnSaveAs
             // 
@@ -142,6 +145,7 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -339,8 +343,6 @@
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(590, 589);
             this.panelDrawing.TabIndex = 4;
-            this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
-            this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
@@ -453,20 +455,6 @@
             this.panelLeft.Size = new System.Drawing.Size(143, 589);
             this.panelLeft.TabIndex = 6;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Paint Sprayer-32.png");
-            this.imageList1.Images.SetKeyName(1, "Water Tower Filled-32.png");
-            this.imageList1.Images.SetKeyName(2, "Merger-32-2.png");
-            this.imageList1.Images.SetKeyName(3, "Spliter-32.png");
-            this.imageList1.Images.SetKeyName(4, "AdjustableSpliter.png");
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.numericUpDown4);
@@ -494,6 +482,20 @@
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "Max:";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Paint Sprayer-32.png");
+            this.imageList1.Images.SetKeyName(1, "Water Tower Filled-32.png");
+            this.imageList1.Images.SetKeyName(2, "Merger-32-2.png");
+            this.imageList1.Images.SetKeyName(3, "Spliter-32.png");
+            this.imageList1.Images.SetKeyName(4, "AdjustableSpliter.png");
             // 
             // PipeLineApp
             // 
@@ -560,6 +562,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

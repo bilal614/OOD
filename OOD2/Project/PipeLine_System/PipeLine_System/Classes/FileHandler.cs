@@ -40,6 +40,7 @@ namespace PipeLine_System
                 {
                     sw.WriteLine(p.ToString());
                 }
+                return true;
 
             }
             catch (IOException)
@@ -156,7 +157,7 @@ namespace PipeLine_System
             }
             if(type == "ASP")
             {
-                c = AdjustableSpliter.createSpliterFromStringArray(ComponentInfor);
+                c = AdjustableSpliter.createAdjustableSpliterFromStringArray(ComponentInfor);
             }
             if(type == "MG")
             {

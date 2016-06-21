@@ -48,7 +48,7 @@ namespace PipeLine_System
             base.SetFlow(getInPipeLine().CurrentFlow);
         }
 
-        public static AdjustableSpliter createSpliterFromStringArray(string[] ASpliterInfors)
+        public static AdjustableSpliter createAdjustableSpliterFromStringArray(string[] ASpliterInfors)
         {
             AdjustableSpliter sp = null;
             int id = Convert.ToInt16(ASpliterInfors[1]);

@@ -9,12 +9,39 @@ namespace PipeLine_System
 {
     public class PipeLineSystem
     {
-        public static bool saved = false;
-        public static Network currentNetwork = null;
-        public static FileHandler fileHandler = null;
-        public static Component tempComponent = null;
-        public static PipeLine tempPipeLine = null;
+        //Instances variables
+        private static bool saved = false;
+        private static Network currentNetwork = null;
+        private static FileHandler fileHandler = null;
+        private static Component tempComponent = null;
+        private static PipeLine tempPipeLine = null;
 
+        //Properties
+        public static bool Saved
+        {
+            get { return saved; }
+            set { saved = value; }
+        }
+        public static Network Network
+        {
+            get { return currentNetwork; }
+            set { currentNetwork = value; }
+        }
+        public static FileHandler FileHander
+        {
+            get { return fileHandler; }
+            set { fileHandler = value; }
+        }
+        public static Component TempComponent
+        {
+            get { return tempComponent; }
+            set { tempComponent = value; }
+        }
+        public static PipeLine TempPipeline
+        {
+            get { return tempPipeLine; }
+            set { tempPipeLine = value; }
+        }
         public bool OpenNetwork()
         {
             return false;

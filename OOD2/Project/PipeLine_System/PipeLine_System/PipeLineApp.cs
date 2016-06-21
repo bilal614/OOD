@@ -12,6 +12,7 @@ namespace PipeLine_System
 {
     public partial class PipeLineApp : Form
     {
+        
         Graphics gr;
       //private ImageList imageList = new ImageList();
         Component tempComponent = null;
@@ -22,39 +23,58 @@ namespace PipeLine_System
         {
             InitializeComponent();
 
-        }    
+        }
+        #region Save/SaveAs/Opem
         //Global variables
-
         private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "Text file|*.txt";
+            saveFileDialog1.Title = "Save an text File";
+            DialogResult dr = saveFileDialog1.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                FileHandler temp = new FileHandler(saveFileDialog1.FileName);
+                PipeLineSystem.FileHander = temp;
+                //PipeLineSystem.FileHander.WriteToFile(PipeLineSystem.Network);
+                //Need to be edited after discuss with Bilal
+                if (PipeLineSystem.FileHander.WriteToFile(network))
+                {
+                    btnSave.Enabled = true;
+                    btnSaveAs.Enabled = false;
+                    PipeLineSystem.Saved = true;
+                    MessageBox.Show("Your drawing is saved successfully");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("You choose cancel", " Pipe Line");
+            }
+        }
+        private void btnOpen_Click(object sender, EventArgs e)
         {
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == DialogResult.OK)
             {
                 FileHandler temp = new FileHandler(openFileDialog1.FileName);
+                PipeLineSystem.FileHander = temp;
+                PipeLineSystem.Network = PipeLineSystem.FileHander.ReadFromFile();
+
+                if (PipeLineSystem.Network != null)
+                {
+                   PipeLineSystem.Saved = true;
+                    //Draw all components methods
+                   PipeLineSystem.Network.DrawAllComponents(gr, imageList1);
+                   MessageBox.Show("Your drawing is loaded");
+                }
+
             }
             else
             {
-                MessageBox.Show("You choose cancel"," Pipe Line");
+                MessageBox.Show("You choose cancel", " Pipe Line");
             }
         }
-
-        private void panelDrawing_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = e.AllowedEffect;
-        }
-
-        private void panelDrawing_DragDrop(object sender, DragEventArgs e)
-        {
-            int xPos = e.X;
-            int yPos = e.Y;
-
-            //PictureBox pic = new PictureBox();
-            //pic.Image = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
-            //Point clientPoint = panelDrawing.PointToClient(new Point(e.X, e.Y));
-            //gr.DrawImage(pic.Image, clientPoint.X, clientPoint.Y);
-
-        }
-
+        #endregion
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
         {
             decimal down = 100;
@@ -211,6 +231,13 @@ namespace PipeLine_System
         {
             tempPipeLine = new PipeLine(network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+     
 
     }
 }
