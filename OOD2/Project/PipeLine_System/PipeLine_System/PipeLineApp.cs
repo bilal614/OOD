@@ -144,12 +144,6 @@ namespace PipeLine_System
 
                     if (tempPipeLine != null)
                     {
-                        /*if (tempPipeLine == null && btnDelete.Focused)
-                        {
-                            tempPipeLine = new PipeLine(network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
-                            deleteSelected = false;
-                            tempComponent = null;
-                        }*/
                         if (tempPipeLine.CompStart == null)
                         {
                             foreach (Component c in network.GetListOfComponents())
@@ -207,7 +201,6 @@ namespace PipeLine_System
                     }
                     tempCompList.Remove(removeComponent);
                 }
-                //network.DrawAllComponents(gr, imageList1);
                 this.Refresh();
             }
             catch
