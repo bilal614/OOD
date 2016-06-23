@@ -118,8 +118,9 @@ namespace PipeLine_System
         }
         public override void SetFlow(double flow)
         {
-            double Flow = inPipeline1.CurrentFlow + inPipeline2.CurrentFlow;
-            base.SetFlow(Flow);
+            /*double Flow = inPipeline1.CurrentFlow + inPipeline2.CurrentFlow;
+            base.SetFlow(Flow);*/
+            base.SetFlow(flow);
         }
 
         /// <summary>

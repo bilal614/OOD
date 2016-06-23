@@ -256,6 +256,8 @@ namespace PipeLine_System
             {
                 foreach (Component c in components)
                 {
+                    Font f = new Font("Arial", 12);
+                    gr.DrawString(c.GetFlow().ToString(), f, Brushes.Black, c.GetLocation().X, c.GetLocation().Y - 20);
                     if (c is Pump)
                     {
                         gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList                   
@@ -452,35 +454,69 @@ namespace PipeLine_System
 
         public void UpdateCurrentFlowOfNetwork()
         {
-            foreach (PipeLine p in GetListOfPipeline())
+            try
             {
-                if (p.CompStart is Pump)
+                foreach (PipeLine p in GetListOfPipeline())
                 {
-                    p.CompEnd.SetFlow(p.CompStart.GetFlow());
-                }
-            }
-
-            foreach (PipeLine p in GetListOfPipeline())
-            {
-                if (p.CompStart is Spliter)
-                {
-                    p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
-                }
-            }
-
-            foreach (PipeLine p in GetListOfPipeline())
-            {
-                if (p.CompStart is Merger)
-                {
-                    Merger temp = p;
-                    foreach (PipeLine pi in GetListOfPipeline())
+                    if (p.CompStart is Pump)
                     {
-                        if (pi = temp)
-                        { 
-                        
-                        }
+                        p.CompEnd.SetFlow(p.CompStart.GetFlow());
                     }
                 }
+
+                foreach (PipeLine p in GetListOfPipeline())
+                {
+                    if (p.CompStart is AdjustableSpliter)
+                    {
+                        double upperFlow = 0, lowerFlow = 0;
+                        AdjustableSpliter temp = (AdjustableSpliter)p.CompStart;
+                        PipeLine p1 = null, p2 = null;
+                        foreach (PipeLine pi in GetListOfPipeline())
+                        {
+                            if (pi.CompStart == temp)
+                            {
+                                if (upperFlow == 0)
+                                {
+                                    p1 = pi;
+                                    upperFlow = (100 - temp.GetUpperPercent()) * temp.GetFlow();
+                                }
+
+                                if (lowerFlow == 0)
+                                {
+                                    p2 = pi;
+                                    lowerFlow = temp.GetUpperPercent() * temp.GetFlow();
+                                }
+                            }
+                        }
+                        p1.CompEnd.SetFlow(upperFlow);
+                        p2.CompEnd.SetFlow(lowerFlow);
+                    }
+                    if (p.CompStart is Spliter)
+                    {
+                        p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
+                    }
+                }
+
+                foreach (PipeLine p in GetListOfPipeline())
+                {
+                    if (p.CompStart is Merger)
+                    {
+                        double mergerCurrentFlow = 0;
+                        Merger temp = (Merger)p.CompStart;
+                        foreach (PipeLine pi in GetListOfPipeline())
+                        {
+                            if (pi.CompEnd == temp)
+                            {
+                                mergerCurrentFlow += pi.CompEnd.GetFlow();
+                            }
+                        }
+                        p.CompEnd.SetFlow(mergerCurrentFlow);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Current flow update error.");
             }
         }
     }
