@@ -26,7 +26,7 @@ namespace PipeLine_System
         private double currentFlow;
         /*the radius of every Component (that is why it is static), because the relative size of the
         Components on the drawing screen is similar so we can use this value as Radius for all Components*/
-        public const int Area = 1000; 
+        public const int Area = 750; 
         /*
          * CONSTRUCTOR
         */
@@ -57,6 +57,11 @@ namespace PipeLine_System
         public Point GetLocation()
         {
             return location;
+        }
+
+        public double GetFlow()
+        {
+            return currentFlow;
         }
 
         public bool updateCurrentFlow()
