@@ -15,9 +15,9 @@ namespace PipeLine_System
         
         Graphics gr;
       //private ImageList imageList = new ImageList();
-        Component tempComponent = null;
-        PipeLine tempPipeLine = null;
-        private Network network = new Network();
+        //Component tempComponent = null;
+        //PipeLine tempPipeLine = null;
+        //private Network network = new Network();
         public bool deleteSelected = false;
         public PipeLineApp()
         {
@@ -37,7 +37,7 @@ namespace PipeLine_System
                 PipeLineSystem.FileHander = temp;
                 //PipeLineSystem.FileHander.WriteToFile(PipeLineSystem.Network);
                 //Need to be edited after discuss with Bilal
-                if (PipeLineSystem.FileHander.WriteToFile(network))
+                if (PipeLineSystem.FileHander.WriteToFile(PipeLineSystem.Network))
                 {
                     btnSave.Enabled = true;
                     btnSaveAs.Enabled = false;
@@ -91,17 +91,17 @@ namespace PipeLine_System
         private void btnSpliter_Click(object sender, EventArgs e)
         {
             Point p = new Point();
-            tempComponent = new Spliter(network.SetId(), p, 0);
+            PipeLineSystem.TempComponent = new Spliter(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
-            tempPipeLine = null;
+            PipeLineSystem.TempPipeline = null;
         }
 
         private void btnMerger_Click(object sender, EventArgs e)
         {
             Point p = new Point();
-            tempComponent = new Merger(network.SetId(), p, 0);
+            PipeLineSystem.TempComponent = new Merger(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
-            tempPipeLine = null;
+            PipeLineSystem.TempPipeline = null;
         }
 
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
@@ -110,58 +110,58 @@ namespace PipeLine_System
             {
                 if (deleteSelected == false)
                 {
-                    if (tempComponent != null)
+                    if (PipeLineSystem.TempComponent != null)
                     {
-                        tempComponent.SetLocation(e.X, e.Y);
-                        if (tempComponent is Pump)
+                        PipeLineSystem.TempComponent.SetLocation(e.X, e.Y);
+                        if (PipeLineSystem.TempComponent is Pump)
                         {
-                            tempComponent.SetFlow(Convert.ToDouble(this.numericUpDown2.Value));
-                            network.Addcomponent(tempComponent);
-                            tempComponent = null;
+                            PipeLineSystem.TempComponent.SetFlow(Convert.ToDouble(this.numericUpDown2.Value));
+                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
+                            PipeLineSystem.TempComponent = null;
                         }
-                        else if (tempComponent is Merger)
+                        else if (PipeLineSystem.TempComponent is Merger)
                         {
                             //tempComponent.SetFlow(Convert.ToDouble(this.numericUpDown2.Value));
-                            network.Addcomponent(tempComponent);
-                            tempComponent = null;
+                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
+                            PipeLineSystem.TempComponent = null;
                         }
-                        else if (tempComponent is Spliter)
+                        else if (PipeLineSystem.TempComponent is Spliter)
                         {
-                            network.Addcomponent(tempComponent);
-                            tempComponent = null;
+                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
+                            PipeLineSystem.TempComponent = null;
                         }
-                        else if (tempComponent is AdjustableSpliter)
+                        else if (PipeLineSystem.TempComponent is AdjustableSpliter)
                         {
-                            network.Addcomponent(tempComponent);
-                            tempComponent = null;
+                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
+                            PipeLineSystem.TempComponent = null;
                         }
-                        else if (tempComponent is Sink)
+                        else if (PipeLineSystem.TempComponent is Sink)
                         {
-                            network.Addcomponent(tempComponent);
-                            tempComponent = null;
+                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
+                            PipeLineSystem.TempComponent = null;
                         }
                     }
 
-                    if (tempPipeLine != null)
+                    if (PipeLineSystem.TempPipeline != null)
                     {
-                        if (tempPipeLine.CompStart == null)
+                        if (PipeLineSystem.TempPipeline.CompStart == null)
                         {
-                            foreach (Component c in network.GetListOfComponents())
+                            foreach (Component c in PipeLineSystem.Network.GetListOfComponents())
                             {
                                 if (c.ContainsPoint(e.X, e.Y))
                                 {
-                                    tempPipeLine.CompStart = c;
+                                    PipeLineSystem.TempPipeline.CompStart = c;
                                     break;
                                 }
                             }
                         }
-                        else if (tempPipeLine.CompStart != null && tempPipeLine.CompEnd == null)
+                        else if (PipeLineSystem.TempPipeline.CompStart != null && PipeLineSystem.TempPipeline.CompEnd == null)
                         {
                             Component temporaryComponent = null;
 
-                            foreach (Component c in network.GetListOfComponents())
+                            foreach (Component c in PipeLineSystem.Network.GetListOfComponents())
                             {
-                                if (c.ContainsPoint(e.X, e.Y) && c != tempPipeLine.CompStart)
+                                if (c.ContainsPoint(e.X, e.Y) && c != PipeLineSystem.TempPipeline.CompStart)
                                 {
                                     temporaryComponent = c;
                                     break;
@@ -169,20 +169,20 @@ namespace PipeLine_System
                             }
                             if (temporaryComponent != null)
                             {
-                                tempPipeLine.CompEnd = temporaryComponent;
-                                if (network.AddPipeLine(tempPipeLine))
+                                PipeLineSystem.TempPipeline.CompEnd = temporaryComponent;
+                                if (PipeLineSystem.Network.AddPipeLine(PipeLineSystem.TempPipeline))
                                 {
                                 }
                                 else
                                 {
                                     MessageBox.Show("Number of pipelines connected to components exceeded.");
                                 }
-                                tempPipeLine = null;
+                                PipeLineSystem.TempPipeline = null;
                             }
                             else
                             {
                                 Point pnt = new Point(e.X, e.Y);
-                                tempPipeLine.setMiddleLocation(pnt);
+                                PipeLineSystem.TempPipeline.setMiddleLocation(pnt);
                             }
 
                         }
@@ -190,7 +190,7 @@ namespace PipeLine_System
                 }
                 else
                 {
-                    List<Component> tempCompList = network.GetListOfComponents();
+                    List<Component> tempCompList = PipeLineSystem.Network.GetListOfComponents();
                     Component removeComponent = null;
                     foreach (Component c in tempCompList)
                     {
@@ -212,45 +212,45 @@ namespace PipeLine_System
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
             gr = e.Graphics;
-            network.DrawAllComponents(gr, imageList1);
-            network.DrawAllPipeLines(gr);
+            PipeLineSystem.Network.DrawAllComponents(gr, imageList1);
+            PipeLineSystem.Network.DrawAllPipeLines(gr);
         }
 
         private void btnPump_Click(object sender, EventArgs e)
         {
             Point p = new Point();
-            tempComponent = new Pump(network.SetId(), p, 0);
+            PipeLineSystem.TempComponent = new Pump(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
-            tempPipeLine = null;
+            PipeLineSystem.TempPipeline = null;
         }
 
         private void btnAdjustSpliter_Click(object sender, EventArgs e)
         {
             Point p = new Point();
-            tempComponent = new AdjustableSpliter(network.SetId(), p, 0, Convert.ToInt32(this.ASpiter_UpValue.Value));
+            PipeLineSystem.TempComponent = new AdjustableSpliter(PipeLineSystem.Network.SetId(), p, 0, Convert.ToInt32(this.ASpiter_UpValue.Value));
             deleteSelected = false;
-            tempPipeLine = null;
+            PipeLineSystem.TempPipeline = null;
         }
 
         private void btnSink_Click(object sender, EventArgs e)
         {
             Point p = new Point();
-            tempComponent = new Sink(network.SetId(), p, 0);
+            PipeLineSystem.TempComponent = new Sink(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
-            tempPipeLine = null;
+            PipeLineSystem.TempPipeline = null;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             deleteSelected = true;
-            tempComponent = null;
+            PipeLineSystem.TempComponent = null;
         }
 
         private void btnLine_Click(object sender, EventArgs e)
         {
-            tempPipeLine = new PipeLine(network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
+            PipeLineSystem.TempPipeline = new PipeLine(PipeLineSystem.Network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
             deleteSelected = false;
-            tempComponent = null;
+            PipeLineSystem.TempComponent = null;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
