@@ -284,6 +284,7 @@ namespace PipeLine_System
                     }
                     else if (c is Spliter)
                     {
+                        Point locationPoint = c.GetLocation();
                         gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
                         //is of the Splitter 
                     }
