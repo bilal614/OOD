@@ -35,7 +35,6 @@ namespace PipeLine_System
             {
                 FileHandler temp = new FileHandler(saveFileDialog1.FileName);
                 PipeLineSystem.FileHander = temp;
-                //PipeLineSystem.FileHander.WriteToFile(PipeLineSystem.Network);
                 //Need to be edited after discuss with Bilal
                 if (PipeLineSystem.FileHander.WriteToFile(PipeLineSystem.Network))
                 {
