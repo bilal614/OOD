@@ -23,7 +23,7 @@ namespace PipeLine_System
         private List<PipeLine> PipeLines;
         private Point location;//location.X and location.Y represent the upper-left corner of the Component image from where it will be 
         //drawn on the drawing screen 
-        private double currentFlow;
+        protected double currentFlow;
         /*the radius of every Component (that is why it is static), because the relative size of the
         Components on the drawing screen is similar so we can use this value as Radius for all Components*/
         public const int Area = 750; 

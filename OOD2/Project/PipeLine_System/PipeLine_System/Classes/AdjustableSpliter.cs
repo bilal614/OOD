@@ -49,10 +49,23 @@ namespace PipeLine_System
             base.SetFlow(flow);
         }
 
+<<<<<<< HEAD
         public double GetUpperPercent()
         {
             return upperPercent;
         }
+=======
+        public double GetOutUpperFlow()
+        {
+            return this.currentFlow * this.upperPercent;
+        }
+
+        public double GetOutLowerFlow()
+        {
+            return this.currentFlow - this.GetOutLowerFlow();
+        }
+        
+>>>>>>> d373d169f4a75a2f24ed785ee6e3568aa84d0980
         public static AdjustableSpliter createAdjustableSpliterFromStringArray(string[] ASpliterInfors)
         {
             AdjustableSpliter sp = null;
