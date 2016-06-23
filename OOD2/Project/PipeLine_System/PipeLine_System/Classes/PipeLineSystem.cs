@@ -11,7 +11,7 @@ namespace PipeLine_System
     {
         //Instances variables
         private static bool saved = false;
-        private static Network currentNetwork = null;
+        private static Network currentNetwork = new Network();
         private static FileHandler fileHandler = null;
         private static Component tempComponent = null;
         private static PipeLine tempPipeLine = null;
