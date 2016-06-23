@@ -207,30 +207,31 @@ namespace PipeLine_System
 
                 if (pl.CompStart is Spliter)
                 {
-                    if (p.CompStart == pl.CompStart)
+                    if (pl.CompStart is AdjustableSpliter)
+                    {
+                        AdjustableSpliter temp = (AdjustableSpliter)pl.CompStart;
+                        if (p.CompStart == temp)
+                        {
+                            count++;
+                        }
+                    }
+                    else if (p.CompStart == pl.CompStart)
                     {
                         count++;
                     }
                 }
                 if (pl.CompEnd is Spliter)
                 {
-                    if (p.CompEnd == pl.CompEnd)
+                    if (pl.CompEnd is AdjustableSpliter)
                     {
-                        toAddOrNot = false;
-                        break;
+                        AdjustableSpliter temp = (AdjustableSpliter)pl.CompEnd;
+                        if (p.CompEnd == temp)
+                        {
+                            toAddOrNot = false;
+                            break;
+                        }
                     }
-                }
-
-                if (pl.CompStart is AdjustableSpliter)
-                {
-                    if (p.CompStart == pl.CompStart)
-                    {
-                        count++;
-                    }
-                }
-                if (pl.CompEnd is AdjustableSpliter)
-                {
-                    if (p.CompEnd == pl.CompEnd)
+                    else if (p.CompEnd == pl.CompEnd)
                     {
                         toAddOrNot = false;
                         break;
