@@ -337,7 +337,7 @@
             // panelDrawing
             // 
             this.panelDrawing.AllowDrop = true;
-            this.panelDrawing.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panelDrawing.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawing.Location = new System.Drawing.Point(0, 0);
             this.panelDrawing.Name = "panelDrawing";
@@ -490,7 +490,7 @@
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.TransparentColor = System.Drawing.Color.White;
             this.imageList1.Images.SetKeyName(0, "Paint Sprayer-32.png");
             this.imageList1.Images.SetKeyName(1, "Water Tower Filled-32.png");
             this.imageList1.Images.SetKeyName(2, "Merger-32-2.png");

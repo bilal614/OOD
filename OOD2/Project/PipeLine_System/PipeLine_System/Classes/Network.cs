@@ -266,7 +266,7 @@ namespace PipeLine_System
             {
                 foreach (Component c in components)
                 {
-                    Font f = new Font("Arial", 12);
+                    Font f = new Font("Arial", 10);
                     gr.DrawString(c.GetFlow().ToString(), f, Brushes.Black, c.GetLocation().X, c.GetLocation().Y - 20);
                     if (c is Pump)
                     {
@@ -325,16 +325,16 @@ namespace PipeLine_System
                     List<Point> points = p.getMiddleLocation();
                     if (points.Count > 0)
                     {
-                        gr.DrawLine(Pens.Black, p.CompStart.GetLocation(), points[0]);
+                        gr.DrawLine(Pens.Black, p.getStartLocation(), points[0]);
                         for (int i = 0; i < points.Count - 1; i++)
                         {
                             gr.DrawLine(Pens.Black, points[i], points[i + 1]);
                         }
-                        gr.DrawLine(Pens.Black, points[points.Count - 1], p.CompEnd.GetLocation());
+                        gr.DrawLine(Pens.Black, points[points.Count - 1], p.getEndLocation());
                     }
                     else
                     {
-                        gr.DrawLine(Pens.Black, p.CompStart.GetLocation(), p.CompEnd.GetLocation());
+                        gr.DrawLine(Pens.Black, p.getStartLocation(), p.getEndLocation());
                     }
                 }
             }
@@ -461,6 +461,7 @@ namespace PipeLine_System
                 p.CompEnd = GetComponent(p.CompEnd.GetComponentId());
             }
         }
+
 
         public void UpdateCurrentFlowOfNetwork()
         {

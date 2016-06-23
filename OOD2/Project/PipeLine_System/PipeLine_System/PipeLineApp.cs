@@ -24,7 +24,7 @@ namespace PipeLine_System
             InitializeComponent();
 
         }
-        #region Save/SaveAs/Opem
+        #region Save/SaveAs/Open
         //Global variables
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
@@ -154,6 +154,7 @@ namespace PipeLine_System
                                 if (c.ContainsPoint(e.X, e.Y))
                                 {
                                     PipeLineSystem.TempPipeline.CompStart = c;
+                                    PipeLineSystem.TempPipeline.setStartLocation(c.GetLocation());
                                     break;
                                 }
                             }
@@ -173,6 +174,7 @@ namespace PipeLine_System
                             if (temporaryComponent != null)
                             {
                                 PipeLineSystem.TempPipeline.CompEnd = temporaryComponent;
+                                PipeLineSystem.TempPipeline.setEndLocation(temporaryComponent.GetLocation());
                                 if (PipeLineSystem.Network.AddPipeLine(PipeLineSystem.TempPipeline))
                                 {
                                 }

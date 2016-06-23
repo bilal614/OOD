@@ -25,7 +25,7 @@ namespace PipeLine_System
         public Point startLocation;
         public Point endLocation;
         private double currentFlow;
-        //public double CurrentFlow { get; set; }
+       
         public double CurrentFlow
         {
             get { return currentFlow; }
@@ -34,16 +34,16 @@ namespace PipeLine_System
         private double safeLimit;
         public double SafeLimit { get; set; }
         private List<Point> clickLocation;
-        //These properties are not correct - discuss in meeting???
+   
         private Component compStart;
-        //public Component CompStart{get;set;}
+     
         public Component CompStart
         {
             get { return compStart; }
             set { compStart = value; }
         }
         private Component compEnd;
-        //public Component CompEnd { get; set; }
+       
         public Component CompEnd
         {
             get { return compEnd; }
@@ -108,13 +108,13 @@ namespace PipeLine_System
         /// <param name="location"></param>
         public void setStartLocation(Point location)
         {
-            this.startLocation.X = location.X;
-            this.startLocation.Y = location.Y;
+            this.startLocation.X = location.X + 25;
+            this.startLocation.Y = location.Y + 25;
         }
 
         public Point getStartLocation()
         {
-            Point p = new Point(startLocation.X, startLocation.Y - 5);
+            Point p = this.startLocation;
             return p;
         }
 
@@ -124,13 +124,13 @@ namespace PipeLine_System
         /// <param name="location"></param>
         public void setEndLocation(Point location)
         {
-            this.endLocation.X = location.X;
-            this.startLocation.Y = location.Y;
+            this.endLocation.X = location.X + 5;
+            this.endLocation.Y = location.Y + 10;
         }
 
         public Point getEndLocation()
         {
-            Point p = new Point(endLocation.X, endLocation.Y - 5);
+            Point p = this.endLocation;
             return p;
         }
 
