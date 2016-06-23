@@ -143,6 +143,26 @@ namespace PipeLine_System
             return temp <= lowerArea && temp > 0;
         }
 
+        public void SetUpperLocation(Point compLocation)
+        {
+            this.upperLocation.X = compLocation.X + 2;
+            this.upperLocation.Y = compLocation.Y - 20;
+
+        }
+        public Point GetUpperLocation()
+        {
+            return this.upperLocation;
+        }
+        public void SetLowerLocation(Point compLocation)
+        {
+            this.lowerLocation.X = compLocation.X + 2;
+            this.lowerLocation.Y = compLocation.Y + 20;
+        }
+        public Point GetLowerLocation()
+        {
+            return this.lowerLocation;
+        }
+
         public override string ToString()
         {
             string inPipeline1, inPipeline2, outPipeline = null;
