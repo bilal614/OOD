@@ -174,7 +174,7 @@ namespace PipeLine_System
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Number of pipelines connected to components exceeded.");
+                                    MessageBox.Show("Not allowed to connect those components.");
                                 }
                                 PipeLineSystem.TempPipeline = null;
                             }

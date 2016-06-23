@@ -168,7 +168,7 @@ namespace PipeLine_System
         public bool AddPipeLine(PipeLine p)
         {
             bool toAddOrNot = true;
-            int count = 0;
+            int count1 = 0, count2 = 0;
             foreach (PipeLine pl in this.GetListOfPipeline())
             {
                 if (pl.CompStart is Pump)//to avoid multiple connections from pump
@@ -201,37 +201,20 @@ namespace PipeLine_System
                 {
                     if (p.CompEnd == pl.CompEnd)
                     {
-                        count++;
+                        count1++;
                     }
                 }
 
                 if (pl.CompStart is Spliter)
                 {
-                    if (pl.CompStart is AdjustableSpliter)
+                    if (p.CompStart == pl.CompStart)
                     {
-                        AdjustableSpliter temp = (AdjustableSpliter)pl.CompStart;
-                        if (p.CompStart == temp)
-                        {
-                            count++;
-                        }
-                    }
-                    else if (p.CompStart == pl.CompStart)
-                    {
-                        count++;
+                        count2++;
                     }
                 }
                 if (pl.CompEnd is Spliter)
                 {
-                    if (pl.CompEnd is AdjustableSpliter)
-                    {
-                        AdjustableSpliter temp = (AdjustableSpliter)pl.CompEnd;
-                        if (p.CompEnd == temp)
-                        {
-                            toAddOrNot = false;
-                            break;
-                        }
-                    }
-                    else if (p.CompEnd == pl.CompEnd)
+                    if (p.CompEnd == pl.CompEnd)
                     {
                         toAddOrNot = false;
                         break;
@@ -239,7 +222,7 @@ namespace PipeLine_System
                 }
             }
 
-            if (count >= 2)
+            if (count1 >= 2 || count2 >= 2)
             {
                 toAddOrNot = false;
             }
@@ -464,6 +447,40 @@ namespace PipeLine_System
             {
                 p.CompStart = GetComponent(p.CompStart.GetComponentId());
                 p.CompEnd = GetComponent(p.CompEnd.GetComponentId());
+            }
+        }
+
+        public void UpdateCurrentFlowOfNetwork()
+        {
+            foreach (PipeLine p in GetListOfPipeline())
+            {
+                if (p.CompStart is Pump)
+                {
+                    p.CompEnd.SetFlow(p.CompStart.GetFlow());
+                }
+            }
+
+            foreach (PipeLine p in GetListOfPipeline())
+            {
+                if (p.CompStart is Spliter)
+                {
+                    p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
+                }
+            }
+
+            foreach (PipeLine p in GetListOfPipeline())
+            {
+                if (p.CompStart is Merger)
+                {
+                    Merger temp = p;
+                    foreach (PipeLine pi in GetListOfPipeline())
+                    {
+                        if (pi = temp)
+                        { 
+                        
+                        }
+                    }
+                }
             }
         }
     }
