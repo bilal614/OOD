@@ -468,20 +468,20 @@ namespace PipeLine_System
                 }
             }
 
-            foreach (PipeLine p in GetListOfPipeline())
-            {
-                if (p.CompStart is Merger)
-                {
-                    Merger temp = p;
-                    foreach (PipeLine pi in GetListOfPipeline())
-                    {
-                        if (pi = temp)
-                        { 
+            //foreach (PipeLine p in GetListOfPipeline())
+            //{
+            //    if (p.CompStart is Merger)
+            //    {
+            //        Merger temp = p;
+            //        foreach (PipeLine pi in GetListOfPipeline())
+            //        {
+            //            if (pi = temp)
+            //            { 
                         
-                        }
-                    }
-                }
-            }
+            //            }
+            //        }
+            //    }
+            //}
         }
     }
 }
