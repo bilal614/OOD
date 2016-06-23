@@ -164,6 +164,7 @@ namespace PipeLine_System
         {
             return pipelines; 
         }
+     
         public bool AddPipeLine(PipeLine p)
         {
             bool toAddOrNot = true;
@@ -241,10 +242,14 @@ namespace PipeLine_System
             {
                 toAddOrNot = false;
             }
-            //foreach (var item in pipelines)
-            //{
-                //item.startLocation =  
-                //item.endLocation = 
+            if (p.CompStart is Sink)
+            {
+                toAddOrNot = false;
+            }
+            if (p.CompEnd is Pump)
+            {
+                toAddOrNot = false;
+            }
             if (toAddOrNot)
             {
                 pipelines.Add(p);
