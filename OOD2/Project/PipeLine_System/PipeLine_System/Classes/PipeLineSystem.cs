@@ -172,7 +172,6 @@ namespace PipeLine_System
                 {
                     mg.SetUpperLocation(compEnd.GetLocation());
                     PipeLineSystem.TempPipeline.setEndLocation(mg.GetUpperLocation());
-
                 }
                 else
                 {

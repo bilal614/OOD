@@ -22,8 +22,8 @@ namespace PipeLine_System
 
         //Instance variables
         private int id;
-        public Point startLocation;
-        public Point endLocation;
+        private Point startLocation;
+        private Point endLocation;
         private double currentFlow;
        
         public double CurrentFlow
