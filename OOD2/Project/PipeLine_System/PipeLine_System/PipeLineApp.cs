@@ -63,7 +63,7 @@ namespace PipeLine_System
                 {
                    PipeLineSystem.Saved = true;
                     //Draw all components methods
-                   PipeLineSystem.Network.DrawAllComponents(gr, imageList1);
+                   this.Refresh();
                    MessageBox.Show("Your drawing is loaded");
                 }
 

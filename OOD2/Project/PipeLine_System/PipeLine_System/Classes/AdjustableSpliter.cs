@@ -48,6 +48,16 @@ namespace PipeLine_System
             base.SetFlow(getInPipeLine().CurrentFlow);
         }
 
+        public double GetOutUpperFlow()
+        {
+            return this.currentFlow * this.upperPercent;
+        }
+
+        public double GetOutLowerFlow()
+        {
+            return this.currentFlow - this.GetOutLowerFlow();
+        }
+        
         public static AdjustableSpliter createAdjustableSpliterFromStringArray(string[] ASpliterInfors)
         {
             AdjustableSpliter sp = null;
