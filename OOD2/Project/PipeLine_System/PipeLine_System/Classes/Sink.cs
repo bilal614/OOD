@@ -63,7 +63,7 @@ namespace PipeLine_System
         }
         public override void SetFlow(double flow)
         {
-            base.SetFlow(inPipeLine.CurrentFlow);
+            base.SetFlow(flow);
         }
 
         public override string ToString()

@@ -45,9 +45,14 @@ namespace PipeLine_System
 
         public override void SetFlow(double flow)
         {
-            base.SetFlow(getInPipeLine().CurrentFlow);
+            /*base.SetFlow(getInPipeLine().CurrentFlow);*/
+            base.SetFlow(flow);
         }
 
+        public double GetUpperPercent()
+        {
+            return upperPercent;
+        }
         public double GetOutUpperFlow()
         {
             return this.currentFlow * this.upperPercent;

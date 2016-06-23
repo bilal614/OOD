@@ -89,6 +89,8 @@ namespace PipeLine_System
 
         private void btnSpliter_Click(object sender, EventArgs e)
         {
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown2.Enabled = false;
             Point p = new Point();
             PipeLineSystem.TempComponent = new Spliter(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
@@ -97,6 +99,8 @@ namespace PipeLine_System
 
         private void btnMerger_Click(object sender, EventArgs e)
         {
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown2.Enabled = false;
             Point p = new Point();
             PipeLineSystem.TempComponent = new Merger(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
@@ -200,6 +204,7 @@ namespace PipeLine_System
                     }
                     tempCompList.Remove(removeComponent);
                 }
+                
                 this.Refresh();
             }
             catch
@@ -210,6 +215,7 @@ namespace PipeLine_System
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
+            PipeLineSystem.Network.UpdateCurrentFlowOfNetwork();
             gr = e.Graphics;
             PipeLineSystem.Network.DrawAllComponents(gr, imageList1);
             PipeLineSystem.Network.DrawAllPipeLines(gr);
@@ -217,6 +223,8 @@ namespace PipeLine_System
 
         private void btnPump_Click(object sender, EventArgs e)
         {
+            this.numericUpDown1.Enabled = true;
+            this.numericUpDown2.Enabled = true;
             Point p = new Point();
             PipeLineSystem.TempComponent = new Pump(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
@@ -225,6 +233,8 @@ namespace PipeLine_System
 
         private void btnAdjustSpliter_Click(object sender, EventArgs e)
         {
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown2.Enabled = false;
             Point p = new Point();
             PipeLineSystem.TempComponent = new AdjustableSpliter(PipeLineSystem.Network.SetId(), p, 0, Convert.ToInt32(this.ASpiter_UpValue.Value));
             deleteSelected = false;
@@ -233,6 +243,8 @@ namespace PipeLine_System
 
         private void btnSink_Click(object sender, EventArgs e)
         {
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown2.Enabled = false;
             Point p = new Point();
             PipeLineSystem.TempComponent = new Sink(PipeLineSystem.Network.SetId(), p, 0);
             deleteSelected = false;
@@ -241,12 +253,16 @@ namespace PipeLine_System
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown2.Enabled = false;
             deleteSelected = true;
             PipeLineSystem.TempComponent = null;
         }
 
         private void btnLine_Click(object sender, EventArgs e)
         {
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown2.Enabled = false;
             PipeLineSystem.TempPipeline = new PipeLine(PipeLineSystem.Network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
             deleteSelected = false;
             PipeLineSystem.TempComponent = null;
