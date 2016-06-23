@@ -289,13 +289,18 @@ namespace PipeLine_System
                     }
                     else if (c is Spliter)
                     {
-                        gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
-                        //is of the Splitter 
-                    }
-                    else if (c is AdjustableSpliter)
-                    {
-                        gr.DrawImage(il.Images[4], c.GetLocation());//assuming the fourth image in the imageList 
-                        //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
+                        AdjustableSpliter temp;
+                        if (c is AdjustableSpliter)
+                        {
+                            temp = (AdjustableSpliter)c;
+                            gr.DrawImage(il.Images[4], temp.GetLocation());//assuming the fourth image in the imageList 
+                            //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
+                        }
+                        else
+                        {
+                            gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
+                            //is of the Splitter 
+                        }
                     }
                     else
                     {
