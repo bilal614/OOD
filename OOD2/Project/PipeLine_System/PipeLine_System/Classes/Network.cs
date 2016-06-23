@@ -112,7 +112,7 @@ namespace PipeLine_System
                     pipelines.Remove(pipe);
                   //  P.CompEnd.updateCurrentFlow_Neighbors();
 
-                    sys.refreshDrawing();
+                    //sys.refreshDrawing();
                     return true;
                 }
             }
@@ -133,7 +133,7 @@ namespace PipeLine_System
 
               
                     components.Remove(c);
-                    sys.refreshDrawing();
+                    //sys.refreshDrawing();
                     return true;
                 }
             }

@@ -96,7 +96,7 @@ namespace PipeLine_System
                         if (c.ContainsPoint(eX, eY))
                         {
                             PipeLineSystem.TempPipeline.CompStart = c;
-
+                            CalculateStartLocation();
                            
                             break;
                         }
@@ -111,13 +111,14 @@ namespace PipeLine_System
                         if (c.ContainsPoint(eX, eY) && c != PipeLineSystem.TempPipeline.CompStart)
                         {
                             temporaryComponent = c;
+                            
                             break;
                         }
                     }
                     if (temporaryComponent != null)
                     {
                         PipeLineSystem.TempPipeline.CompEnd = temporaryComponent;
-                        PipeLineSystem.TempPipeline.setEndLocation(temporaryComponent.GetLocation());
+                        CalculateEndLocation();
                         if (PipeLineSystem.Network.AddPipeLine(PipeLineSystem.TempPipeline))
                         {
                         }
@@ -137,20 +138,52 @@ namespace PipeLine_System
             }
         }
        
-
-        private void CalculateStartLocation()
+        private static void CalculateStartLocation()
         {
             Component compStart = PipeLineSystem.TempPipeline.CompStart;
-            if (compStart is Merger)
+            if (compStart is Spliter)
             {
-                Merger m = (Merger)compStart;
-                if(m.getInPipeLine1() == null)
+                Spliter sp = (Spliter)compStart;
+                if (sp.getOutPipeLine1() == null)
                 {
-                   PipeLineSystem.TempPipeline.setStartLocation(m.get);
+                   sp.SetUpperLocation(compStart.GetLocation());
+                   PipeLineSystem.TempPipeline.setStartLocation(sp.GetUpperLocation());
                    
                 }
+                else
+                {
+                    sp.SetLowerLocation(compStart.GetLocation());
+                    PipeLineSystem.TempPipeline.setStartLocation(sp.GetLowerLocation());
+                }
             }
-            PipeLineSystem.TempPipeline.setStartLocation(compStart.GetLocation());
+            else
+            {
+                PipeLineSystem.TempPipeline.setStartLocation(compStart.GetLocation());
+            }
+           
+        }
+        private static void CalculateEndLocation()
+        {
+            Component compEnd = PipeLineSystem.TempPipeline.CompEnd;
+            if (compEnd is Merger)
+            {
+                Merger mg = (Merger)compEnd;
+                if (mg.getInPipeLine1() == null)
+                {
+                    mg.SetUpperLocation(compEnd.GetLocation());
+                    PipeLineSystem.TempPipeline.setEndLocation(mg.GetUpperLocation());
+
+                }
+                else
+                {
+                    mg.SetLowerLocation(compEnd.GetLocation());
+                    PipeLineSystem.TempPipeline.setEndLocation(mg.GetLowerLocation());
+                }
+            }
+            else
+            {
+                PipeLineSystem.TempPipeline.setEndLocation(compEnd.GetLocation());
+            }
         }
     }
 }

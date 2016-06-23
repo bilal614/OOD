@@ -124,8 +124,8 @@ namespace PipeLine_System
         /// <param name="location"></param>
         public void setEndLocation(Point location)
         {
-            this.endLocation.X = location.X + 5;
-            this.endLocation.Y = location.Y + 10;
+            this.endLocation.X = location.X;
+            this.endLocation.Y = location.Y + 18;
         }
 
         public Point getEndLocation()

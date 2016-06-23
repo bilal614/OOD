@@ -145,8 +145,8 @@ namespace PipeLine_System
 
         public void SetUpperLocation(Point compLocation)
         {
-            this.upperLocation.X = compLocation.X + 2;
-            this.upperLocation.Y = compLocation.Y - 20;
+            this.upperLocation.X = compLocation.X;
+            this.upperLocation.Y = compLocation.Y;
 
         }
         public Point GetUpperLocation()
@@ -155,8 +155,8 @@ namespace PipeLine_System
         }
         public void SetLowerLocation(Point compLocation)
         {
-            this.lowerLocation.X = compLocation.X + 2;
-            this.lowerLocation.Y = compLocation.Y + 20;
+            this.lowerLocation.X = compLocation.X;
+            this.lowerLocation.Y = compLocation.Y + 10;
         }
         public Point GetLowerLocation()
         {
