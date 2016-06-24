@@ -191,8 +191,6 @@ namespace PipeLine_System
             PipeLineSystem.TempComponent = null;
             PipeLineSystem.Network.RemoveComponent(ToBeDeleted);
             panelDrawing.Refresh();
-
-          
         }
 
         private void btnLine_Click(object sender, EventArgs e)
