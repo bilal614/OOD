@@ -22,8 +22,8 @@ namespace PipeLine_System
 
         //Instance variables
         private int id;
-        public Point startLocation;
-        public Point endLocation;
+        private Point startLocation;
+        private Point endLocation;
         private double currentFlow;
        
         public double CurrentFlow
@@ -108,8 +108,8 @@ namespace PipeLine_System
         /// <param name="location"></param>
         public void setStartLocation(Point location)
         {
-            this.startLocation.X = location.X + 25;
-            this.startLocation.Y = location.Y + 25;
+            this.startLocation.X = location.X + 26;
+            this.startLocation.Y = location.Y + 18;
         }
 
         public Point getStartLocation()
@@ -124,8 +124,8 @@ namespace PipeLine_System
         /// <param name="location"></param>
         public void setEndLocation(Point location)
         {
-            this.endLocation.X = location.X + 5;
-            this.endLocation.Y = location.Y + 10;
+            this.endLocation.X = location.X;
+            this.endLocation.Y = location.Y + 18;
         }
 
         public Point getEndLocation()

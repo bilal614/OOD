@@ -112,6 +112,7 @@ namespace PipeLine_System
                     pipe.CurrentFlow = 0;
                     UpdateCurrentFlowOfNetwork();
                     pipelines.Remove(pipe);
+<<<<<<< HEAD
                     // below will inform component that its pipeline has gone now.
                     foreach (var c in components)
                     {
@@ -119,6 +120,11 @@ namespace PipeLine_System
                     }
                     
                
+=======
+                  //  P.CompEnd.updateCurrentFlow_Neighbors();
+
+                    //sys.refreshDrawing();
+>>>>>>> 4a97d93dbf993faf4df35251262af5d679b43d62
                     return true;
                 }
             }
@@ -139,7 +145,11 @@ namespace PipeLine_System
 
                     
                     components.Remove(c);
+<<<<<<< HEAD
 
+=======
+                    //sys.refreshDrawing();
+>>>>>>> 4a97d93dbf993faf4df35251262af5d679b43d62
                     return true;
                 }
             }
@@ -328,19 +338,23 @@ namespace PipeLine_System
             {
                 foreach (PipeLine p in pipelines)
                 {
+                    Font f = new Font("Arial", 10);
+                    int textX = p.getStartLocation().X - 2;
+                    int textY = p.getStartLocation().Y + Math.Abs((p.getEndLocation().Y - p.getStartLocation().Y))/2;
+                    gr.DrawString(p.CurrentFlow.ToString(), f, Brushes.Blue, textX, textY);
                     List<Point> points = p.getMiddleLocation();
                     if (points.Count > 0)
                     {
-                        gr.DrawLine(Pens.Black, p.getStartLocation(), points[0]);
+                        gr.DrawLine(Pens.Brown, p.getStartLocation(), points[0]);
                         for (int i = 0; i < points.Count - 1; i++)
                         {
-                            gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                            gr.DrawLine(Pens.Brown, points[i], points[i + 1]);
                         }
-                        gr.DrawLine(Pens.Black, points[points.Count - 1], p.getEndLocation());
+                        gr.DrawLine(Pens.Brown, points[points.Count - 1], p.getEndLocation());
                     }
                     else
                     {
-                        gr.DrawLine(Pens.Black, p.getStartLocation(), p.getEndLocation());
+                        gr.DrawLine(Pens.Brown, p.getStartLocation(), p.getEndLocation());
                     }
                 }
             }

@@ -117,85 +117,9 @@ namespace PipeLine_System
                 ToBeDeleted = PipeLineSystem.Network.FindComponent(new Point(X, Y));
                 if (deleteSelected == false)
                 {
-                    if (PipeLineSystem.TempComponent != null)
-                    {
-                        PipeLineSystem.TempComponent.SetLocation(e.X, e.Y);
-                        if (PipeLineSystem.TempComponent is Pump)
-                        {
-                            PipeLineSystem.TempComponent.SetFlow(Convert.ToDouble(this.numericUpDown2.Value));
-                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
-                            PipeLineSystem.TempComponent = null;
-                        }
-                        else if (PipeLineSystem.TempComponent is Merger)
-                        {
-                            //tempComponent.SetFlow(Convert.ToDouble(this.numericUpDown2.Value));
-                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
-                            PipeLineSystem.TempComponent = null;
-                        }
-                        else if (PipeLineSystem.TempComponent is Spliter)
-                        {
-                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
-                            PipeLineSystem.TempComponent = null;
-                        }
-                        else if (PipeLineSystem.TempComponent is AdjustableSpliter)
-                        {
-                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
-                            PipeLineSystem.TempComponent = null;
-                        }
-                        else if (PipeLineSystem.TempComponent is Sink)
-                        {
-                            PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
-                            PipeLineSystem.TempComponent = null;
-                        }
-                    }
+                    PipeLineSystem.AddTempComponent(e.X, e.Y);
 
-                    if (PipeLineSystem.TempPipeline != null)
-                    {
-                        if (PipeLineSystem.TempPipeline.CompStart == null)
-                        {
-                            foreach (Component c in PipeLineSystem.Network.GetListOfComponents())
-                            {
-                                if (c.ContainsPoint(e.X, e.Y))
-                                {
-                                    PipeLineSystem.TempPipeline.CompStart = c;
-                                    PipeLineSystem.TempPipeline.setStartLocation(c.GetLocation());
-                                    break;
-                                }
-                            }
-                        }
-                        else if (PipeLineSystem.TempPipeline.CompStart != null && PipeLineSystem.TempPipeline.CompEnd == null)
-                        {
-                            Component temporaryComponent = null;
-
-                            foreach (Component c in PipeLineSystem.Network.GetListOfComponents())
-                            {
-                                if (c.ContainsPoint(e.X, e.Y) && c != PipeLineSystem.TempPipeline.CompStart)
-                                {
-                                    temporaryComponent = c;
-                                    break;
-                                }
-                            }
-                            if (temporaryComponent != null)
-                            {
-                                PipeLineSystem.TempPipeline.CompEnd = temporaryComponent;
-                                PipeLineSystem.TempPipeline.setEndLocation(temporaryComponent.GetLocation());
-                                if (PipeLineSystem.Network.AddPipeLine(PipeLineSystem.TempPipeline))
-                                {
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Not allowed to connect those components.");
-                                }
-                                PipeLineSystem.TempPipeline = null;
-                            }
-                            else
-                            {
-                                Point pnt = new Point(e.X, e.Y);
-                                PipeLineSystem.TempPipeline.setMiddleLocation(pnt);
-                            }
-
-                        }
-                    }
+                    PipeLineSystem.AddTempPipeline(e.X, e.Y);
                 }
                 else
                 {
