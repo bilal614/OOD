@@ -110,14 +110,14 @@ namespace PipeLine_System
                 if (pipe == P)
                 {
                     pipe.CurrentFlow = 0;
-                    UpdateCurrentFlowOfNetwork();
+                    
                     pipelines.Remove(pipe);
                     // below will inform component that its pipeline has gone now.
                     foreach (var c in components)
                     {
                         UpdatePipelinesOfComps(c);
                     }
-                    
+                    UpdateCurrentFlowOfNetwork();
                
                     return true;
                 }
