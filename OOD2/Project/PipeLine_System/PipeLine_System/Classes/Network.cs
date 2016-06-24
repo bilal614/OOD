@@ -478,7 +478,6 @@ namespace PipeLine_System
                         p.CompEnd.SetFlow(p.CompStart.GetFlow());
                     }
                 }
-
                 foreach (PipeLine p in GetListOfPipeline())
                 {
                     if (p.CompStart is AdjustableSpliter)
