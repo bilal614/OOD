@@ -495,6 +495,21 @@ namespace PipeLine_System
             }
         }
 
+        public void RemoveAll()
+        {
+            int nrOfComp = components.Count - 1;
+            for (int i = nrOfComp; i >= 0; i--)
+            {
+                components.Remove(components[i]);
+            }
+            int nrOfPipeLine = pipelines.Count - 1;
+            for (int i = nrOfPipeLine; i >= 0; i--)
+            {
+                pipelines.Remove(pipelines[i]);
+            }
+
+        }
+
         /// <summary>
         /// Update the currentflow of all neighbors when pipeline is added
         /// </summary>

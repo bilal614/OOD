@@ -12,6 +12,7 @@ namespace PipeLine_System
     {
         //Instances variables
         public static bool Saved = false;
+        public static bool SavedAs = false;
         public static Network Network = new Network();
         public static FileHandler FileHandler = null;
         public static Component TempComponent = null;
@@ -24,7 +25,14 @@ namespace PipeLine_System
         public static bool FirstPumpAdded = false;
         public static bool FirstAdjustSplitterAdded = false;
         public static bool FirstPipeLineAdded = false;
-               public static void AddTempComponent(int eX, int eY, double currentFlow, double upperPct)
+        /// <summary>
+        /// Add temperory component 
+        /// </summary>
+        /// <param name="eX"></param>
+        /// <param name="eY"></param>
+        /// <param name="currentFlow"></param>
+        /// <param name="upperPct"></param>
+        public static void AddTempComponent(int eX, int eY, double currentFlow, double upperPct)
         {
             if (PipeLineSystem.TempComponent != null)
             {
@@ -63,7 +71,11 @@ namespace PipeLine_System
                 }
             }
         }
-
+        /// <summary>
+        /// Add temp pipeline
+        /// </summary>
+        /// <param name="eX"></param>
+        /// <param name="eY"></param>
         public static void AddTempPipeline(int eX, int eY)
         {
             if (PipeLineSystem.TempPipeline != null)
@@ -117,6 +129,9 @@ namespace PipeLine_System
             }
         }
        
+        /// <summary>
+        /// Caclulate the start location of the TempPipeline in term of the start comp is spliter
+        /// </summary>
         private static void CalculateStartLocation()
         {
             Component compStart = PipeLineSystem.TempPipeline.CompStart;
@@ -149,6 +164,9 @@ namespace PipeLine_System
             }
            
         }
+        /// <summary>
+        /// Caculate the end location of the temp pipeline in term of the endcomp is merger
+        /// </summary>
         private static void CalculateEndLocation()
         {
             Component compEnd = PipeLineSystem.TempPipeline.CompEnd;
@@ -178,6 +196,53 @@ namespace PipeLine_System
             {
                 PipeLineSystem.TempPipeline.setEndLocation(compEnd.GetLocation());
             }
+        }
+
+        /// <summary>
+        /// Save as a drawing network
+        /// </summary>
+        /// <param name="saveFileDialog1"></param>
+        /// <returns></returns>
+        public static bool SaveAsDrawing(SaveFileDialog saveFileDialog1)
+        {
+            bool result = false;
+            saveFileDialog1.Filter = "Text file|*.txt";
+            saveFileDialog1.Title = "Save an text File";
+            DialogResult dr = saveFileDialog1.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                FileHandler temp = new FileHandler(saveFileDialog1.FileName);
+                PipeLineSystem.FileHandler = temp;
+                if (PipeLineSystem.FileHandler.WriteToFile(PipeLineSystem.Network))
+                {
+
+                    PipeLineSystem.SavedAs = true;
+                    PipeLineSystem.Saved = true;
+                    result = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("You choose cancel");
+            }
+            return result;
+        }
+        /// <summary>
+        /// Save network drawing
+        /// </summary>
+        /// <returns></returns>
+        public static bool SaveDrawing()
+        {
+            bool result = false;
+            if (PipeLineSystem.Saved == false)
+            {
+                if (PipeLineSystem.FileHandler.WriteToFile(PipeLineSystem.Network))
+                {
+                    PipeLineSystem.Saved = true;
+                    result = true;
+                }
+            }
+            return result;
         }
     }
 }

@@ -23,26 +23,13 @@ namespace PipeLine_System
         //Global variables
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "Text file|*.txt";
-            saveFileDialog1.Title = "Save an text File";
-            DialogResult dr = saveFileDialog1.ShowDialog();
-            if (dr == DialogResult.OK)
+            if (PipeLineSystem.SaveAsDrawing(saveFileDialog1))
             {
-                FileHandler temp = new FileHandler(saveFileDialog1.FileName);
-                PipeLineSystem.FileHandler = temp;
-                //Need to be edited after discuss with Bilal
-                if (PipeLineSystem.FileHandler.WriteToFile(PipeLineSystem.Network))
-                {
-                    btnSaveAs.Enabled = false;
-                    PipeLineSystem.Saved = true;
-                    MessageBox.Show("Your drawing is saved successfully");
-                }
+                btnSaveAs.Enabled = false;
+                MessageBox.Show("Your drawing is saved successfully");
+            }
 
-            }
-            else
-            {
-                MessageBox.Show("You choose cancel");
-            }
+
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
@@ -56,6 +43,8 @@ namespace PipeLine_System
                 if (PipeLineSystem.Network != null)
                 {
                    PipeLineSystem.Saved = true;
+                   this.btnSaveAs.Enabled = false;
+                   this.btnSave.Enabled = false;
                     //Draw all components methods
                    this.Refresh();
                    MessageBox.Show("Your drawing is loaded");
@@ -69,21 +58,45 @@ namespace PipeLine_System
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if(PipeLineSystem.Saved == false)
-            {
-                if (PipeLineSystem.FileHandler.WriteToFile(PipeLineSystem.Network))
-                {
-                    btnSave.Enabled = false;
-                    btnSaveAs.Enabled = false;
-                    PipeLineSystem.Saved = true;
-                    MessageBox.Show("Your drawing is saved successfully");
-                }
-            }
+           if(PipeLineSystem.SaveDrawing())
+           {
+               btnSave.Enabled = false;
+               btnSaveAs.Enabled = false;
+               MessageBox.Show("Your drawing is saved successfully");
+           }
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            PipeLineSystem.Network = null;
+            if(PipeLineSystem.Network.GetListOfComponents().Count != 0 && PipeLineSystem.Saved == false)
+            {
+                DialogResult dialogResult = MessageBox.Show("The current drawing has not saved yet? Would you like to save it  ", "Save your network?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if(PipeLineSystem.SavedAs == false)
+                    {
+                        if (PipeLineSystem.SaveAsDrawing(saveFileDialog1))
+                        {
+                            btnSaveAs.Enabled = false;
+                            MessageBox.Show("Your drawing is saved successfully");
+                        }
+                    }
+                    else
+                    {
+                        if (PipeLineSystem.SaveDrawing())
+                        {
+                            btnSave.Enabled = false;
+                            btnSaveAs.Enabled = false;
+                            MessageBox.Show("Your drawing is saved successfully");
+                        }
+                    }
+                  
+                }
+            }
+            PipeLineSystem.Network.RemoveAll();
             this.Refresh();
+            btnSaveAs.Enabled = true;
+            PipeLineSystem.SavedAs = false;
+            btnSave.Enabled = false;
         }
         #endregion
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
@@ -146,7 +159,13 @@ namespace PipeLine_System
                     tempCompList.Remove(removeComponent);
                 }
                 
+                //enable the save button
+                if(PipeLineSystem.Saved == false && PipeLineSystem.SavedAs == true)
+                {
+                    btnSave.Enabled = true;
+                }
                 this.Refresh();
+                
             }
             catch
             {
@@ -222,6 +241,7 @@ namespace PipeLine_System
         {
             this.numericUpDown1.Enabled = false;
             this.numericUpDown2.Enabled = false;
+            this.numericUpDown4.Enabled = true;
             if (PipeLineSystem.FirstPipeLineAdded == false)
             {
                 MessageBox.Show("Please fill in the capacity of the pipeline in the setting box");
