@@ -340,20 +340,15 @@ namespace PipeLine_System
             {
                 foreach (PipeLine p in pipelines)
                 {
-                    List<Point> points = p.getMiddleLocation();
-                    if (points.Count > 0)
+                    if(p.CurrentFlow > p.SafeLimit)
                     {
-                        gr.DrawLine(Pens.Black, p.getStartLocation(), points[0]);
-                        for (int i = 0; i < points.Count - 1; i++)
-                        {
-                            gr.DrawLine(Pens.Black, points[i], points[i + 1]);
-                        }
-                        gr.DrawLine(Pens.Black, points[points.Count - 1], p.getEndLocation());
+                        PipeLine.DrawPipeline(gr, p, Pens.Red);
                     }
                     else
                     {
-                        gr.DrawLine(Pens.Black, p.getStartLocation(), p.getEndLocation());
+                        PipeLine.DrawPipeline(gr, p, Pens.Black);
                     }
+                   
                 }
             }
             catch
@@ -505,6 +500,9 @@ namespace PipeLine_System
             }
         }
 
+        /// <summary>
+        /// Remove all pipelines and comps.
+        /// </summary>
         public void RemoveAll()
         {
             int nrOfComp = components.Count - 1;
@@ -532,6 +530,7 @@ namespace PipeLine_System
                     if (p.CompStart is Pump)
                     {
                         p.CompEnd.SetFlow(p.CompStart.GetFlow());
+                        p.CurrentFlow = p.CompStart.GetFlow();
                     }
                 }
 
@@ -549,6 +548,7 @@ namespace PipeLine_System
                             {
                                 upperFlow = temp.GetOutUpperFlow();
                                 p1 = p;
+                                p1.CurrentFlow = upperFlow;
                                 countSplitters++;
                             }
 
@@ -556,6 +556,7 @@ namespace PipeLine_System
                             {
                                 lowerFlow = temp.GetOutLowerFlow();
                                 p2 = p;
+                                p2.CurrentFlow = lowerFlow;
                             }
                             if (p1 != null)
                             {
@@ -569,6 +570,7 @@ namespace PipeLine_System
                         else
                         {
                             p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
+                            p.CurrentFlow = p.CompStart.GetFlow() / 2;
                         }
                     }
                 }
@@ -587,8 +589,10 @@ namespace PipeLine_System
                             }
                         }
                         p.CompEnd.SetFlow(mergerCurrentFlow);
+                        p.CurrentFlow = p.CompStart.GetFlow();
                     }
                 }
+
             }
             catch
             {

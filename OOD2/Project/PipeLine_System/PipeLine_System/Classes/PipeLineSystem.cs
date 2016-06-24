@@ -77,7 +77,7 @@ namespace PipeLine_System
         /// </summary>
         /// <param name="eX"></param>
         /// <param name="eY"></param>
-        public static void AddTempPipeline(int eX, int eY)
+        public static void AddTempPipeline(int eX, int eY, double safeLimit)
         {
             if (PipeLineSystem.TempPipeline != null)
             {
@@ -127,6 +127,8 @@ namespace PipeLine_System
                     }
 
                 }
+                //update safeLimit
+                PipeLineSystem.TempPipeline.SafeLimit = safeLimit;
             }
         }
        
@@ -198,7 +200,19 @@ namespace PipeLine_System
                 PipeLineSystem.TempPipeline.setEndLocation(compEnd.GetLocation());
             }
         }
-
+        public static void RemoveSelectedComponent(int eX, int eY)
+        {
+            List<Component> tempCompList = PipeLineSystem.Network.GetListOfComponents();
+            Component removeComponent = null;
+            foreach (Component c in tempCompList)
+            {
+                if (c.ContainsPoint(eX, eX))
+                {
+                    removeComponent = c;
+                }
+            }
+            tempCompList.Remove(removeComponent);
+        }
         /// <summary>
         /// Save as a drawing network
         /// </summary>
@@ -245,5 +259,6 @@ namespace PipeLine_System
             }
             return result;
         }
+       
     }
 }

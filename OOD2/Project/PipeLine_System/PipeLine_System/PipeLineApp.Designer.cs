@@ -482,6 +482,11 @@
             // 
             this.numericUpDown4.Enabled = false;
             this.numericUpDown4.Location = new System.Drawing.Point(60, 26);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            0});
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(55, 20);
             this.numericUpDown4.TabIndex = 21;
@@ -519,6 +524,7 @@
             this.Controls.Add(this.panelLeft);
             this.Name = "PipeLineApp";
             this.Text = "Pipeline";
+            this.Load += new System.EventHandler(this.PipeLineApp_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ASpiter_UpValue)).EndInit();
