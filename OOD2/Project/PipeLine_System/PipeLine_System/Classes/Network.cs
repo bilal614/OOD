@@ -507,6 +507,7 @@ namespace PipeLine_System
                     }
                 }
 
+                int countSplitters = 0;
                 foreach (PipeLine p in GetListOfPipeline())
                 {
                     if (p.CompStart is Spliter)
@@ -514,17 +515,30 @@ namespace PipeLine_System
                         if (p.CompStart is AdjustableSpliter)
                         {
                             double upperFlow = 0, lowerFlow = 0;
-                            AdjustableSpliter temp = (AdjustableSpliter)p.CompStart;
                             PipeLine p1 = null, p2 = null;
-                            foreach (PipeLine pi in GetListOfPipeline())
+                            AdjustableSpliter temp = (AdjustableSpliter)p.CompStart;
+                            if (p.CompStart == temp && countSplitters == 0)
+                            {
+                                upperFlow = temp.GetOutUpperFlow();
+                                p1 = p;
+                                countSplitters++;
+                            }
+
+                            if (p1 != p && p.CompStart == temp && countSplitters == 1)
+                            {
+                                lowerFlow = temp.GetOutLowerFlow();
+                                p2 = p;
+                            }
+                            /*foreach (PipeLine pi in GetListOfPipeline())
                             {
                                 if (pi.CompStart == temp)
                                 {
-                                    if (upperFlow == 0)
+                                    if (countSplitters == 0)
                                     {
                                         p1 = pi;
                                         upperFlow = ((100 - temp.GetUpperPercent()) / 100) * temp.GetFlow();
                                         upperFlow = 0;
+                                        countSplitters++;
                                     }
 
                                     if (lowerFlow == 0)
@@ -533,9 +547,15 @@ namespace PipeLine_System
                                         lowerFlow = (temp.GetUpperPercent() / 100) * temp.GetFlow();
                                     }
                                 }
+                            }*/
+                            if (p1 != null)
+                            {
+                                p1.CompEnd.SetFlow(upperFlow);
                             }
-                            p1.CompEnd.SetFlow(upperFlow);
-                            p2.CompEnd.SetFlow(lowerFlow);
+                            if (p2 != null)
+                            {
+                                p2.CompEnd.SetFlow(lowerFlow);
+                            }
                         }
                         else
                         {
