@@ -401,6 +401,7 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Pump Setting";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numericUpDown2
             // 
@@ -435,6 +436,7 @@
             this.lbMax.Size = new System.Drawing.Size(30, 13);
             this.lbMax.TabIndex = 20;
             this.lbMax.Text = "Max:";
+            this.lbMax.Click += new System.EventHandler(this.lbMax_Click);
             // 
             // panelLeft
             // 

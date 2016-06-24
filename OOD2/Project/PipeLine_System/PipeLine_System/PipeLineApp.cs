@@ -186,7 +186,7 @@ namespace PipeLine_System
         {
             this.numericUpDown1.Enabled = false;
             this.numericUpDown2.Enabled = false;
-            deleteSelected = true;
+          //  deleteSelected = true;
             PipeLineSystem.TempComponent = null;
             PipeLineSystem.Network.RemoveComponent(ToBeDeleted);
             panelDrawing.Refresh();
@@ -206,6 +206,16 @@ namespace PipeLine_System
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lbMax_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
      
