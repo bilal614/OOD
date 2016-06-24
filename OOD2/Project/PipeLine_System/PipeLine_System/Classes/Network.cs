@@ -104,7 +104,7 @@ namespace PipeLine_System
 
         public bool RemovePipeline(PipeLine P)
         {
-            
+
             foreach (PipeLine pipe in pipelines)
             {
                 if (pipe == P)
@@ -112,14 +112,14 @@ namespace PipeLine_System
                     pipe.CurrentFlow = 0;
                     UpdateCurrentFlowOfNetwork();
                     pipelines.Remove(pipe);
-
+                    // below will inform component that its pipeline has gone now.
                     foreach (var c in components)
                     {
                         UpdatePipelinesOfComps(c);
                     }
-                    
-               
-                   return true;
+
+
+                    return true;
                 }
             }
             return false;
@@ -146,6 +146,7 @@ namespace PipeLine_System
 
             return false;
         }
+
 
         public List<PipeLine> GetExceedPipeline() 
         {
@@ -328,23 +329,19 @@ namespace PipeLine_System
             {
                 foreach (PipeLine p in pipelines)
                 {
-                    Font f = new Font("Arial", 10);
-                    int textX = p.getStartLocation().X - 2;
-                    int textY = p.getStartLocation().Y + Math.Abs((p.getEndLocation().Y - p.getStartLocation().Y))/2;
-                    gr.DrawString(p.CurrentFlow.ToString(), f, Brushes.Blue, textX, textY);
                     List<Point> points = p.getMiddleLocation();
                     if (points.Count > 0)
                     {
-                        gr.DrawLine(Pens.Brown, p.getStartLocation(), points[0]);
+                        gr.DrawLine(Pens.Black, p.getStartLocation(), points[0]);
                         for (int i = 0; i < points.Count - 1; i++)
                         {
-                            gr.DrawLine(Pens.Brown, points[i], points[i + 1]);
+                            gr.DrawLine(Pens.Black, points[i], points[i + 1]);
                         }
-                        gr.DrawLine(Pens.Brown, points[points.Count - 1], p.getEndLocation());
+                        gr.DrawLine(Pens.Black, points[points.Count - 1], p.getEndLocation());
                     }
                     else
                     {
-                        gr.DrawLine(Pens.Brown, p.getStartLocation(), p.getEndLocation());
+                        gr.DrawLine(Pens.Black, p.getStartLocation(), p.getEndLocation());
                     }
                 }
             }
@@ -450,18 +447,34 @@ namespace PipeLine_System
             if(c is Merger)
             {
                 Merger mg = (Merger)c;
-                PipeLine outPipeline = GetPipeline(mg.getOutPipeLine().getId());
-                mg.addOutPipeLine(outPipeline);
-                PipeLine inPipeline1 = GetPipeline(mg.getInPipeLine1().getId());
-                mg.addInPipeLine1(inPipeline1);
-                PipeLine intPipeline2 = GetPipeline(mg.getInPipeLine2().getId());
-                mg.addInPipeLine2(intPipeline2);
+                if (mg.getOutPipeLine() != null)
+                {
+                    PipeLine outPipeline = GetPipeline(mg.getOutPipeLine().getId());
+                    mg.addOutPipeLine(outPipeline);
+                }
+                else { mg.addOutPipeLine(null); }
+                if (mg.getInPipeLine1() != null)
+                {
+                    PipeLine inPipeline1 = GetPipeline(mg.getInPipeLine1().getId());
+                    mg.addInPipeLine1(inPipeline1);
+                }
+                else { mg.addInPipeLine1(null); }
+                if (mg.getInPipeLine2() != null)
+                {
+                    PipeLine intPipeline2 = GetPipeline(mg.getInPipeLine2().getId());
+                    mg.addInPipeLine2(intPipeline2);
+                }
+                else { mg.addInPipeLine2(null); }
             }
             if (c is Sink)
             {
                 Sink sk = (Sink)c;
-                PipeLine inPipeline = GetPipeline(sk.getInPipeLine().getId());
-                sk.addInPipeLine(inPipeline);
+                if (sk.getInPipeLine() != null)
+                {
+                    PipeLine inPipeline = GetPipeline(sk.getInPipeLine().getId());
+                    sk.addInPipeLine(inPipeline);
+                }
+                else { sk.addInPipeLine(null); }
             }
         }
         /// <summary>
