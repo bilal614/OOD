@@ -117,7 +117,8 @@ namespace PipeLine_System
                 ToBeDeleted = PipeLineSystem.Network.FindComponent(new Point(X, Y));
                 if (deleteSelected == false)
                 {
-                    PipeLineSystem.AddTempComponent(e.X, e.Y);
+                    double pumpFlow = Convert.ToDouble(numericUpDown1.Value);
+                    PipeLineSystem.AddTempComponent(e.X, e.Y, pumpFlow);
 
                     PipeLineSystem.AddTempPipeline(e.X, e.Y);
                 }

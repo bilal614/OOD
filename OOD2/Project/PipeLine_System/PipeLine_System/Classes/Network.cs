@@ -112,14 +112,22 @@ namespace PipeLine_System
                     pipe.CurrentFlow = 0;
                     
                     pipelines.Remove(pipe);
+<<<<<<< HEAD
                     // below will inform component that its pipeline has gone now.
+=======
+
+>>>>>>> 3daf2d7a341dcfa58028299797b0b133f0701b46
                     foreach (var c in components)
                     {
                         UpdatePipelinesOfComps(c);
                     }
                     UpdateCurrentFlowOfNetwork();
                
+<<<<<<< HEAD
                     return true;
+=======
+                   return true;
+>>>>>>> 3daf2d7a341dcfa58028299797b0b133f0701b46
                 }
             }
             return false;
@@ -495,7 +503,7 @@ namespace PipeLine_System
         }
 
 
-        public void UpdateCurrentFlowOfNetwork()
+       public void UpdateCurrentFlowOfNetwork()
         {
             try
             {
@@ -539,6 +547,7 @@ namespace PipeLine_System
                         p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
                     }
                 }
+
                 foreach (PipeLine p in GetListOfPipeline())
                 {
                     if (p.CompStart is Merger)
@@ -549,8 +558,6 @@ namespace PipeLine_System
                         {
                             if (pi.CompEnd == temp)
                             {
-
-
                                 mergerCurrentFlow += pi.CompEnd.GetFlow();
                             }
                         }
@@ -562,7 +569,6 @@ namespace PipeLine_System
             {
                 MessageBox.Show("Current flow update error.");
             }
-
         }
     }
 }
