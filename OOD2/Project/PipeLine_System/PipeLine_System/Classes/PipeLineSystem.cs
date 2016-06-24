@@ -52,7 +52,7 @@ namespace PipeLine_System
 
         }
 
-        public static void AddTempComponent(int eX, int eY, double currentFlow)
+        public static void AddTempComponent(int eX, int eY, double currentFlow, double upperPct)
         {
             if (PipeLineSystem.TempComponent != null)
             {
@@ -70,14 +70,20 @@ namespace PipeLine_System
                 }
                 else if (PipeLineSystem.TempComponent is Spliter)
                 {
-                    PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
-                    PipeLineSystem.TempComponent = null;
+                    if (PipeLineSystem.TempComponent is AdjustableSpliter)
+                    {
+                        AdjustableSpliter tempSp = (AdjustableSpliter)PipeLineSystem.TempComponent;
+                        tempSp.SetUpperPercent(upperPct);
+                        PipeLineSystem.Network.Addcomponent(tempSp);
+                        PipeLineSystem.TempComponent = null;
+                    }
+                    else
+                    {
+                        PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
+                        PipeLineSystem.TempComponent = null;
+                    }
                 }
-                else if (PipeLineSystem.TempComponent is AdjustableSpliter)
-                {
-                    PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
-                    PipeLineSystem.TempComponent = null;
-                }
+                
                 else if (PipeLineSystem.TempComponent is Sink)
                 {
                     PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
