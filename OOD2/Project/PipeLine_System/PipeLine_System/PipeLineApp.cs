@@ -19,6 +19,7 @@ namespace PipeLine_System
         //PipeLine tempPipeLine = null;
         //private Network network = new Network();
         public bool deleteSelected = false;
+        public Component ToBeDeleted = null;
         public PipeLineApp()
         {
             InitializeComponent();
@@ -111,6 +112,9 @@ namespace PipeLine_System
         {
             try
             {
+                int X = e.X;
+                int Y = e.Y;
+                ToBeDeleted = PipeLineSystem.Network.FindComponent(new Point(X, Y));
                 if (deleteSelected == false)
                 {
                     PipeLineSystem.AddTempComponent(e.X, e.Y);
@@ -183,6 +187,10 @@ namespace PipeLine_System
             this.numericUpDown2.Enabled = false;
             deleteSelected = true;
             PipeLineSystem.TempComponent = null;
+            PipeLineSystem.Network.RemoveComponent(ToBeDeleted);
+            panelDrawing.Refresh();
+
+          
         }
 
         private void btnLine_Click(object sender, EventArgs e)

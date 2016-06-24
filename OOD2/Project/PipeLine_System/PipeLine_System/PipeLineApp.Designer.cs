@@ -86,7 +86,7 @@
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(276, 18);
+            this.btnNew.Location = new System.Drawing.Point(276, 8);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(54, 52);
             this.btnNew.TabIndex = 18;
@@ -101,7 +101,7 @@
             this.btnOpen.FlatAppearance.BorderSize = 0;
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(336, 18);
+            this.btnOpen.Location = new System.Drawing.Point(336, 8);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(56, 52);
             this.btnOpen.TabIndex = 18;
@@ -117,7 +117,7 @@
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(521, 18);
+            this.btnExit.Location = new System.Drawing.Point(521, 8);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(57, 52);
             this.btnExit.TabIndex = 18;
@@ -133,7 +133,7 @@
             this.btnSaveAs.FlatAppearance.BorderSize = 0;
             this.btnSaveAs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
-            this.btnSaveAs.Location = new System.Drawing.Point(458, 18);
+            this.btnSaveAs.Location = new System.Drawing.Point(458, 8);
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.Size = new System.Drawing.Size(57, 52);
             this.btnSaveAs.TabIndex = 18;
@@ -150,7 +150,7 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(398, 18);
+            this.btnSave.Location = new System.Drawing.Point(398, 8);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(54, 52);
             this.btnSave.TabIndex = 18;
@@ -377,14 +377,14 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(590, 91);
+            this.panelTop.Size = new System.Drawing.Size(590, 81);
             this.panelTop.TabIndex = 0;
             // 
             // panelLine
             // 
             this.panelLine.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelLine.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelLine.Location = new System.Drawing.Point(0, 88);
+            this.panelLine.Location = new System.Drawing.Point(0, 78);
             this.panelLine.Name = "panelLine";
             this.panelLine.Size = new System.Drawing.Size(590, 3);
             this.panelLine.TabIndex = 1;

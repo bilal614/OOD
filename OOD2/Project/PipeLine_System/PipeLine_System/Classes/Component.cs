@@ -68,6 +68,7 @@ namespace PipeLine_System
         {
             //needs to be implemented 
             return true;
+
         }
 
         public virtual void SetLocation(int x, int y)
