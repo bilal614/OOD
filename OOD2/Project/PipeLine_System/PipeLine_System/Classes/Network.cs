@@ -34,7 +34,17 @@ namespace PipeLine_System
             }
             return null;
         }
-
+        public PipeLine FindPipeLine(Point p)
+        {
+            foreach (var item in pipelines)
+            {
+                if (item.ContainPoints(p.X, p.Y))
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
         /// <summary>
         /// This function first checks to see if the Component c has any overlap with the locations of the 
         /// other Components in the list of Components. If not it adds the Component c to the list of 

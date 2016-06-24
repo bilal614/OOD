@@ -95,6 +95,9 @@ namespace PipeLine_System
             int temp = (xmouse - this.location.X) * (ymouse - this.location.Y);
             return temp <= Area && temp > 0;
         }
+
+        public virtual void UpdateSelfFlow()
+        {}
         /// <summary>
         /// Override the ToString methods 
         /// This is used for file handler

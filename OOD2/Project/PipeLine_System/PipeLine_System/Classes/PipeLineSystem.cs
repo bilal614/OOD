@@ -18,8 +18,9 @@ namespace PipeLine_System
         public static Component TempComponent = null;
         public static PipeLine TempPipeline = null;
         public static bool DeleteSelected = false;
-        public static Component ToBeDeleted = null;
-
+        public static Component CompToBeDeleted = null;
+        public static PipeLine PipeLineToBeDeleted = null;
+        public static int DeleteClicked = 0;
         //Added components and pipeline for the first time, using these following variable
         //to prompt user about addding their input
         public static bool FirstPumpAdded = false;

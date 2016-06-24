@@ -101,6 +101,14 @@ namespace PipeLine_System
             this.compStart = compStart;
             clickLocation = new List<Point>();
         }
+
+        public bool ContainPoints(int x, int y)
+        {
+            if (((x - startLocation.X) / (endLocation.X - startLocation.X)) == ((y - startLocation.Y) / (endLocation.Y - startLocation.Y)))
+            { return true; }
+            else { return false; }
+
+        }
         /// <summary>
         /// set the start location from the screen.
         /// The overlaped need to be checked before this method is call

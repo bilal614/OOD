@@ -88,7 +88,8 @@ namespace PipeLine_System
                 return false;
             }
         }
-
+        public override void UpdateSelfFlow()
+        { inPipeline1.CurrentFlow = 0; }
         public bool addInPipeLine2(PipeLine InPipeLine2)
         {
             if (InPipeLine2 != null)
@@ -193,7 +194,7 @@ namespace PipeLine_System
                 inPipeline1, inPipeline2, outPipeline,
                 this.upperLocation.X.ToString(), this.upperLocation.Y.ToString(), this.lowerLocation.X.ToString(), this.lowerLocation.Y.ToString());
         }
-
+        
         /// <summary>
         /// Create an object of type Merger from string infors
         /// </summary>

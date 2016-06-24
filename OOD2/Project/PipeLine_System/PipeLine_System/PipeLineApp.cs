@@ -135,9 +135,19 @@ namespace PipeLine_System
         {
             try
             {
-                int X = e.X;
-                int Y = e.Y;
-                PipeLineSystem.ToBeDeleted = PipeLineSystem.Network.FindComponent(new Point(X, Y));
+                if (PipeLineSystem.DeleteClicked == 1)
+                {
+                    int X = e.X;
+                    int Y = e.Y;
+                    PipeLineSystem.CompToBeDeleted = PipeLineSystem.Network.FindComponent(new Point(X, Y));
+                    PipeLineSystem.PipeLineToBeDeleted = PipeLineSystem.Network.FindPipeLine(new Point(X, Y));
+                    if (PipeLineSystem.PipeLineToBeDeleted != null)
+                    { PipeLineSystem.Network.RemovePipeline(PipeLineSystem.PipeLineToBeDeleted); }
+                    if (PipeLineSystem.CompToBeDeleted != null)
+                    { PipeLineSystem.Network.RemoveComponent(PipeLineSystem.CompToBeDeleted); }
+                    PipeLineSystem.DeleteClicked = 0;
+                    panelDrawing.Refresh();
+                }
                 if (PipeLineSystem.DeleteSelected == false)
                 {
                     double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
@@ -229,12 +239,12 @@ namespace PipeLine_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.numericUpDown1.Enabled = false;
-            this.numericUpDown2.Enabled = false;
+            //this.numericUpDown1.Enabled = false;
+            //this.numericUpDown2.Enabled = false;
+            PipeLineSystem.DeleteClicked = 1;
           //  deleteSelected = true;
             PipeLineSystem.TempComponent = null;
-            PipeLineSystem.Network.RemoveComponent(PipeLineSystem.ToBeDeleted);
-            panelDrawing.Refresh();
+          
         }
 
         private void btnLine_Click(object sender, EventArgs e)
