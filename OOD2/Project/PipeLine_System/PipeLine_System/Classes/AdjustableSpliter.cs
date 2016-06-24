@@ -49,6 +49,10 @@ namespace PipeLine_System
             base.SetFlow(flow);
         }
 
+        public void SetUpperPercent(double pct)
+        {
+            this.upperPercent = pct;
+        }
         public double GetUpperPercent()
         {
             return upperPercent;

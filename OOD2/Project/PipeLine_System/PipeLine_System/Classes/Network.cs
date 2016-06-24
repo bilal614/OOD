@@ -509,34 +509,38 @@ namespace PipeLine_System
 
                 foreach (PipeLine p in GetListOfPipeline())
                 {
-                    if (p.CompStart is AdjustableSpliter)
-                    {
-                        double upperFlow = 0, lowerFlow = 0;
-                        AdjustableSpliter temp = (AdjustableSpliter)p.CompStart;
-                        PipeLine p1 = null, p2 = null;
-                        foreach (PipeLine pi in GetListOfPipeline())
-                        {
-                            if (pi.CompStart == temp)
-                            {
-                                if (upperFlow == 0)
-                                {
-                                    p1 = pi;
-                                    upperFlow = (100 - temp.GetUpperPercent()) * temp.GetFlow();
-                                }
-
-                                if (lowerFlow == 0)
-                                {
-                                    p2 = pi;
-                                    lowerFlow = temp.GetUpperPercent() * temp.GetFlow();
-                                }
-                            }
-                        }
-                        p1.CompEnd.SetFlow(upperFlow);
-                        p2.CompEnd.SetFlow(lowerFlow);
-                    }
                     if (p.CompStart is Spliter)
                     {
-                        p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
+                        if (p.CompStart is AdjustableSpliter)
+                        {
+                            double upperFlow = 0, lowerFlow = 0;
+                            AdjustableSpliter temp = (AdjustableSpliter)p.CompStart;
+                            PipeLine p1 = null, p2 = null;
+                            foreach (PipeLine pi in GetListOfPipeline())
+                            {
+                                if (pi.CompStart == temp)
+                                {
+                                    if (upperFlow == 0)
+                                    {
+                                        p1 = pi;
+                                        upperFlow = ((100 - temp.GetUpperPercent()) / 100) * temp.GetFlow();
+                                        upperFlow = 0;
+                                    }
+
+                                    if (lowerFlow == 0)
+                                    {
+                                        p2 = pi;
+                                        lowerFlow = (temp.GetUpperPercent() / 100) * temp.GetFlow();
+                                    }
+                                }
+                            }
+                            p1.CompEnd.SetFlow(upperFlow);
+                            p2.CompEnd.SetFlow(lowerFlow);
+                        }
+                        else
+                        {
+                            p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
+                        }
                     }
                 }
 
