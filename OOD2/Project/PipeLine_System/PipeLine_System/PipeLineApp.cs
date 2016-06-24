@@ -14,16 +14,10 @@ namespace PipeLine_System
     {
         
         Graphics gr;
-      //private ImageList imageList = new ImageList();
-        //Component tempComponent = null;
-        //PipeLine tempPipeLine = null;
-        //private Network network = new Network();
-        public bool deleteSelected = false;
-        public Component ToBeDeleted = null;
+       
         public PipeLineApp()
         {
             InitializeComponent();
-
         }
         #region Save/SaveAs/Open
         //Global variables
@@ -35,11 +29,10 @@ namespace PipeLine_System
             if (dr == DialogResult.OK)
             {
                 FileHandler temp = new FileHandler(saveFileDialog1.FileName);
-                PipeLineSystem.FileHander = temp;
+                PipeLineSystem.FileHandler = temp;
                 //Need to be edited after discuss with Bilal
-                if (PipeLineSystem.FileHander.WriteToFile(PipeLineSystem.Network))
+                if (PipeLineSystem.FileHandler.WriteToFile(PipeLineSystem.Network))
                 {
-                    btnSave.Enabled = true;
                     btnSaveAs.Enabled = false;
                     PipeLineSystem.Saved = true;
                     MessageBox.Show("Your drawing is saved successfully");
@@ -48,7 +41,7 @@ namespace PipeLine_System
             }
             else
             {
-                MessageBox.Show("You choose cancel", " Pipe Line");
+                MessageBox.Show("You choose cancel");
             }
         }
         private void btnOpen_Click(object sender, EventArgs e)
@@ -57,8 +50,8 @@ namespace PipeLine_System
             if (dr == DialogResult.OK)
             {
                 FileHandler temp = new FileHandler(openFileDialog1.FileName);
-                PipeLineSystem.FileHander = temp;
-                PipeLineSystem.Network = PipeLineSystem.FileHander.ReadFromFile();
+                PipeLineSystem.FileHandler = temp;
+                PipeLineSystem.Network = PipeLineSystem.FileHandler.ReadFromFile();
 
                 if (PipeLineSystem.Network != null)
                 {
@@ -71,8 +64,26 @@ namespace PipeLine_System
             }
             else
             {
-                MessageBox.Show("You choose cancel", " Pipe Line");
+                MessageBox.Show("You choose cancel");
             }
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(PipeLineSystem.Saved == false)
+            {
+                if (PipeLineSystem.FileHandler.WriteToFile(PipeLineSystem.Network))
+                {
+                    btnSave.Enabled = false;
+                    btnSaveAs.Enabled = false;
+                    PipeLineSystem.Saved = true;
+                    MessageBox.Show("Your drawing is saved successfully");
+                }
+            }
+        }
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            PipeLineSystem.Network = null;
+            this.Refresh();
         }
         #endregion
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
@@ -93,7 +104,7 @@ namespace PipeLine_System
             this.numericUpDown2.Enabled = false;
             Point p = new Point();
             PipeLineSystem.TempComponent = new Spliter(PipeLineSystem.Network.SetId(), p, 0);
-            deleteSelected = false;
+            PipeLineSystem.DeleteSelected = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -103,7 +114,7 @@ namespace PipeLine_System
             this.numericUpDown2.Enabled = false;
             Point p = new Point();
             PipeLineSystem.TempComponent = new Merger(PipeLineSystem.Network.SetId(), p, 0);
-            deleteSelected = false;
+            PipeLineSystem.DeleteSelected = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -113,13 +124,12 @@ namespace PipeLine_System
             {
                 int X = e.X;
                 int Y = e.Y;
-                ToBeDeleted = PipeLineSystem.Network.FindComponent(new Point(X, Y));
-                if (deleteSelected == false)
+                PipeLineSystem.ToBeDeleted = PipeLineSystem.Network.FindComponent(new Point(X, Y));
+                if (PipeLineSystem.DeleteSelected == false)
                 {
                     double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
                     double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
                     PipeLineSystem.AddTempComponent(e.X, e.Y, pumpFlow, upperPercent);
-
                     PipeLineSystem.AddTempPipeline(e.X, e.Y);
                 }
                 else
@@ -146,19 +156,29 @@ namespace PipeLine_System
 
         private void panelDrawing_Paint(object sender, PaintEventArgs e)
         {
-            PipeLineSystem.Network.UpdateCurrentFlowOfNetwork();
-            gr = e.Graphics;
-            PipeLineSystem.Network.DrawAllComponents(gr, imageList1);
-            PipeLineSystem.Network.DrawAllPipeLines(gr);
+            if(PipeLineSystem.Network != null)
+            {
+                PipeLineSystem.Network.UpdateCurrentFlowOfNetwork();
+                gr = e.Graphics;
+                PipeLineSystem.Network.DrawAllComponents(gr, imageList1);
+                PipeLineSystem.Network.DrawAllPipeLines(gr);
+            }
         }
 
         private void btnPump_Click(object sender, EventArgs e)
         {
             this.numericUpDown1.Enabled = true;
             this.numericUpDown2.Enabled = true;
+          
+            if(PipeLineSystem.FirstPumpAdded == false)
+            {
+                MessageBox.Show("Please fill in the capacity and current flow of the pump in the pump setting box");
+                PipeLineSystem.FirstPumpAdded = true;
+            }
+           
             Point p = new Point();
             PipeLineSystem.TempComponent = new Pump(PipeLineSystem.Network.SetId(), p, 0);
-            deleteSelected = false;
+            PipeLineSystem.DeleteSelected = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -166,9 +186,15 @@ namespace PipeLine_System
         {
             this.numericUpDown1.Enabled = false;
             this.numericUpDown2.Enabled = false;
+            if(PipeLineSystem.FirstAdjustSplitterAdded == false)
+            {
+                MessageBox.Show("Please fill in the percentage of the spliter in the spliter setting box");
+                PipeLineSystem.FirstAdjustSplitterAdded = true;
+            }
+          
             Point p = new Point();
             PipeLineSystem.TempComponent = new AdjustableSpliter(PipeLineSystem.Network.SetId(), p, 0, Convert.ToInt32(this.ASpiter_UpValue.Value));
-            deleteSelected = false;
+            PipeLineSystem.DeleteSelected = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -178,7 +204,7 @@ namespace PipeLine_System
             this.numericUpDown2.Enabled = false;
             Point p = new Point();
             PipeLineSystem.TempComponent = new Sink(PipeLineSystem.Network.SetId(), p, 0);
-            deleteSelected = false;
+            PipeLineSystem.DeleteSelected = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -188,7 +214,7 @@ namespace PipeLine_System
             this.numericUpDown2.Enabled = false;
           //  deleteSelected = true;
             PipeLineSystem.TempComponent = null;
-            PipeLineSystem.Network.RemoveComponent(ToBeDeleted);
+            PipeLineSystem.Network.RemoveComponent(PipeLineSystem.ToBeDeleted);
             panelDrawing.Refresh();
         }
 
@@ -196,8 +222,13 @@ namespace PipeLine_System
         {
             this.numericUpDown1.Enabled = false;
             this.numericUpDown2.Enabled = false;
+            if (PipeLineSystem.FirstPipeLineAdded == false)
+            {
+                MessageBox.Show("Please fill in the capacity of the pipeline in the setting box");
+                PipeLineSystem.FirstPipeLineAdded = true;
+            }
             PipeLineSystem.TempPipeline = new PipeLine(PipeLineSystem.Network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
-            deleteSelected = false;
+            PipeLineSystem.DeleteSelected = false;
             PipeLineSystem.TempComponent = null;
         }
 
@@ -206,15 +237,9 @@ namespace PipeLine_System
             this.Close();
         }
 
-        private void lbMax_Click(object sender, EventArgs e)
-        {
+      
 
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+       
 
      
 

@@ -26,9 +26,8 @@ namespace PipeLine_System
             base(ID, componentLocation, CurrentFlow)
         {
             upperLocation = componentLocation;
-            lowerLocation = new Point(componentLocation.X, componentLocation.Y + 12);
-            //the reason we create the lowerLocation reference point with Y component with -12 is because the images roughly have
-            //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
+            lowerLocation = new Point(componentLocation.X, componentLocation.Y);
+           
         }
 
         /// <summary>

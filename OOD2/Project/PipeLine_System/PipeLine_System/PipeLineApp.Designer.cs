@@ -93,6 +93,7 @@
             this.btnNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnNew, "New drawing network");
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnOpen
             // 
@@ -157,6 +158,7 @@
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnSave, "Save drawing network");
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -401,12 +403,16 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Pump Setting";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numericUpDown2
             // 
             this.numericUpDown2.Enabled = false;
             this.numericUpDown2.Location = new System.Drawing.Point(60, 52);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1874919424,
+            2328306,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(55, 20);
             this.numericUpDown2.TabIndex = 23;
@@ -424,6 +430,11 @@
             // 
             this.numericUpDown1.Enabled = false;
             this.numericUpDown1.Location = new System.Drawing.Point(60, 26);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            276447232,
+            23283,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
             this.numericUpDown1.TabIndex = 21;
@@ -436,7 +447,6 @@
             this.lbMax.Size = new System.Drawing.Size(30, 13);
             this.lbMax.TabIndex = 20;
             this.lbMax.Text = "Max:";
-            this.lbMax.Click += new System.EventHandler(this.lbMax_Click);
             // 
             // panelLeft
             // 

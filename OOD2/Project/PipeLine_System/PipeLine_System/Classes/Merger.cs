@@ -34,10 +34,8 @@ namespace PipeLine_System
         public Merger(int ID, Point componentLocation, double CurrentFlow)
             : base(ID,componentLocation,CurrentFlow)
         {
-            upperLocation = componentLocation;
-            lowerLocation = new Point(componentLocation.X, componentLocation.Y + 12);
-            //the reason we create the lowerLocation reference point with Y component with -12 is because the images roughly have
-            //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
+            upperLocation = this.GetUpperLocation();
+            lowerLocation = this.GetLowerLocation();
         }
         /// <summary>
         /// Alternative contructor

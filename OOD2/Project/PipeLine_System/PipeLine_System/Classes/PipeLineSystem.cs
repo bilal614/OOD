@@ -11,48 +11,20 @@ namespace PipeLine_System
     public class PipeLineSystem
     {
         //Instances variables
-        private static bool saved = false;
-        private static Network currentNetwork = new Network();
-        private static FileHandler fileHandler = null;
-        private static Component tempComponent = null;
-        private static PipeLine tempPipeLine = null;
+        public static bool Saved = false;
+        public static Network Network = new Network();
+        public static FileHandler FileHandler = null;
+        public static Component TempComponent = null;
+        public static PipeLine TempPipeline = null;
+        public static bool DeleteSelected = false;
+        public static Component ToBeDeleted = null;
 
-        //Properties
-        public static bool Saved
-        {
-            get { return saved; }
-            set { saved = value; }
-        }
-        public static Network Network
-        {
-            get { return currentNetwork; }
-            set { currentNetwork = value; }
-        }
-        public static FileHandler FileHander
-        {
-            get { return fileHandler; }
-            set { fileHandler = value; }
-        }
-        public static Component TempComponent
-        {
-            get { return tempComponent; }
-            set { tempComponent = value; }
-        }
-        public static PipeLine TempPipeline
-        {
-            get { return tempPipeLine; }
-            set { tempPipeLine = value; }
-        }
-        public bool OpenNetwork()
-        {
-            return false;
-        }
-        public void SaveNetwork() 
-        {
-
-        }
-
-        public static void AddTempComponent(int eX, int eY, double currentFlow, double upperPct)
+        //Added components and pipeline for the first time, using these following variable
+        //to prompt user about addding their input
+        public static bool FirstPumpAdded = false;
+        public static bool FirstAdjustSplitterAdded = false;
+        public static bool FirstPipeLineAdded = false;
+               public static void AddTempComponent(int eX, int eY, double currentFlow, double upperPct)
         {
             if (PipeLineSystem.TempComponent != null)
             {
@@ -152,7 +124,7 @@ namespace PipeLine_System
             {
                 Spliter sp = (Spliter)compStart;
                 int count = 0;
-                foreach(var p in currentNetwork.GetListOfPipeline())
+                foreach(var p in Network.GetListOfPipeline())
                 {
                     if(p.CompStart == compStart)
                     {
@@ -184,7 +156,7 @@ namespace PipeLine_System
             {
                 Merger mg = (Merger)compEnd; 
                 int count = 0;               
-                foreach(var p in currentNetwork.GetListOfPipeline())
+                foreach(var p in Network.GetListOfPipeline())
                 {
                     if (p.CompEnd == compEnd)
                     {

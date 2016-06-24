@@ -52,6 +52,7 @@ namespace PipeLine_System
             else
             {
                 components.Add(c);
+                PipeLineSystem.Saved = false;
                 return true;
             }
         }
@@ -254,6 +255,7 @@ namespace PipeLine_System
             if (toAddOrNot)
             {
                 pipelines.Add(p);
+                PipeLineSystem.Saved = false;
             }
             return toAddOrNot;
             //}
@@ -268,7 +270,6 @@ namespace PipeLine_System
         /// <param name="il"></param>
         public bool DrawAllComponents(Graphics gr, ImageList il)
         {
-            Point p;
             try
             {
                 foreach (Component c in components)
@@ -316,7 +317,7 @@ namespace PipeLine_System
                 }
                 return true;
             }
-            catch (ArgumentNullException e) 
+            catch (ArgumentNullException) 
              {
                 //message box is only for our own feedback when error occurs
                 MessageBox.Show("One of your components location Point is null or un-initialized.");

@@ -162,7 +162,7 @@ namespace PipeLine_System
             String resultSt = null;
             //Working on checking for null comps
             resultSt += String.Format("{0}_{1}_{2}_{3}_{4}_{5}_{6}_{7}_{8}_{9}",
-            id.ToString(), startLocation.X.ToString(), startLocation.Y.ToString(), endLocation.X.ToString(), endLocation.X.ToString(),
+            id.ToString(), startLocation.X.ToString(), startLocation.Y.ToString(), endLocation.X.ToString(), endLocation.Y.ToString(),
             currentFlow.ToString(), safeLimit.ToString(),this.compStart.GetComponentId().ToString(), this.compEnd.GetComponentId().ToString(), danger.ToString());//Need the methods get comps
 
             if (clickLocation != null)
