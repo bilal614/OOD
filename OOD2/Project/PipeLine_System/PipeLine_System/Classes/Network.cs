@@ -118,7 +118,6 @@ namespace PipeLine_System
                         UpdatePipelinesOfComps(c);
                     }
 
-
                     return true;
                 }
             }
