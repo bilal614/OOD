@@ -52,13 +52,14 @@ namespace PipeLine_System
 
         }
 
-        public static void AddTempComponent(int eX, int eY)
+        public static void AddTempComponent(int eX, int eY, double currentFlow)
         {
             if (PipeLineSystem.TempComponent != null)
             {
                 PipeLineSystem.TempComponent.SetLocation(eX, eY);
                 if (PipeLineSystem.TempComponent is Pump)
                 {
+                    PipeLineSystem.TempComponent.SetFlow(currentFlow);
                     PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
                     PipeLineSystem.TempComponent = null;
                 }
