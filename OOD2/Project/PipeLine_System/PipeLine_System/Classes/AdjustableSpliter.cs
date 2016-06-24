@@ -59,12 +59,12 @@ namespace PipeLine_System
         }
         public double GetOutUpperFlow()
         {
-            return this.currentFlow * this.upperPercent;
+            return this.currentFlow * (this.upperPercent / 100);
         }
 
         public double GetOutLowerFlow()
         {
-            return this.currentFlow - this.GetOutLowerFlow();
+            return this.currentFlow - this.GetOutUpperFlow();
         }
         
         public static AdjustableSpliter createAdjustableSpliterFromStringArray(string[] ASpliterInfors)
