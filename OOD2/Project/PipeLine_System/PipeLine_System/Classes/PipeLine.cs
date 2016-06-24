@@ -22,17 +22,33 @@ namespace PipeLine_System
 
         //Instance variables
         private int id;
-        public Point startLocation;
-        public Point endLocation;
+        private Point startLocation;
+        private Point endLocation;
         private double currentFlow;
-        public double CurrentFlow { get; set; }
+       
+        public double CurrentFlow
+        {
+            get { return currentFlow; }
+            set { currentFlow = value; }
+        }
         private double safeLimit;
         public double SafeLimit { get; set; }
         private List<Point> clickLocation;
+   
         private Component compStart;
-        public Component CompStart{get;set;}
+     
+        public Component CompStart
+        {
+            get { return compStart; }
+            set { compStart = value; }
+        }
         private Component compEnd;
-        public Component CompEnd { get; set; }
+       
+        public Component CompEnd
+        {
+            get { return compEnd; }
+            set { compEnd = value; }
+        }
         private bool danger;
         //Constructors
         public PipeLine(int id, double safeLimit)
@@ -92,13 +108,13 @@ namespace PipeLine_System
         /// <param name="location"></param>
         public void setStartLocation(Point location)
         {
-            this.startLocation.X = location.X;
-            this.startLocation.Y = location.Y;
+            this.startLocation.X = location.X + 26;
+            this.startLocation.Y = location.Y + 18;
         }
 
         public Point getStartLocation()
         {
-            Point p = new Point(startLocation.X, startLocation.Y - 5);
+            Point p = this.startLocation;
             return p;
         }
 
@@ -109,12 +125,12 @@ namespace PipeLine_System
         public void setEndLocation(Point location)
         {
             this.endLocation.X = location.X;
-            this.startLocation.Y = location.Y;
+            this.endLocation.Y = location.Y + 18;
         }
 
         public Point getEndLocation()
         {
-            Point p = new Point(endLocation.X, endLocation.Y - 5);
+            Point p = this.endLocation;
             return p;
         }
 

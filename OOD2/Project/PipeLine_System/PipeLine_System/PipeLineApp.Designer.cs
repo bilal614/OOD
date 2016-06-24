@@ -36,7 +36,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSaveAs = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnLine = new System.Windows.Forms.Button();
             this.btnSink = new System.Windows.Forms.Button();
             this.btnAdjustSpliter = new System.Windows.Forms.Button();
@@ -61,11 +61,12 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lbMax = new System.Windows.Forms.Label();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ASpiter_UpValue)).BeginInit();
             this.panelRightFill.SuspendLayout();
@@ -85,7 +86,7 @@
             this.btnNew.FlatAppearance.BorderSize = 0;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(276, 18);
+            this.btnNew.Location = new System.Drawing.Point(276, 8);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(54, 52);
             this.btnNew.TabIndex = 18;
@@ -100,13 +101,14 @@
             this.btnOpen.FlatAppearance.BorderSize = 0;
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(336, 18);
+            this.btnOpen.Location = new System.Drawing.Point(336, 8);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(56, 52);
             this.btnOpen.TabIndex = 18;
             this.btnOpen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnOpen, "Open drawing network form file");
             this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // btnExit
             // 
@@ -115,13 +117,14 @@
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
-            this.btnExit.Location = new System.Drawing.Point(521, 18);
+            this.btnExit.Location = new System.Drawing.Point(521, 8);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(57, 52);
             this.btnExit.TabIndex = 18;
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip.SetToolTip(this.btnExit, "Exit application");
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnSaveAs
             // 
@@ -130,7 +133,7 @@
             this.btnSaveAs.FlatAppearance.BorderSize = 0;
             this.btnSaveAs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSaveAs.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveAs.Image")));
-            this.btnSaveAs.Location = new System.Drawing.Point(458, 18);
+            this.btnSaveAs.Location = new System.Drawing.Point(458, 8);
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.Size = new System.Drawing.Size(57, 52);
             this.btnSaveAs.TabIndex = 18;
@@ -142,11 +145,12 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Enabled = false;
             this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(398, 18);
+            this.btnSave.Location = new System.Drawing.Point(398, 8);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(54, 52);
             this.btnSave.TabIndex = 18;
@@ -154,20 +158,20 @@
             this.toolTip.SetToolTip(this.btnSave, "Save drawing network");
             this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(21, 281);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 31);
-            this.button1.TabIndex = 19;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip.SetToolTip(this.button1, "Delete Pipeline / component");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.Location = new System.Drawing.Point(21, 281);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(92, 31);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip.SetToolTip(this.btnDelete, "Delete Pipeline / component");
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnLine
             // 
@@ -333,14 +337,12 @@
             // panelDrawing
             // 
             this.panelDrawing.AllowDrop = true;
-            this.panelDrawing.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panelDrawing.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawing.Location = new System.Drawing.Point(0, 0);
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(590, 589);
             this.panelDrawing.TabIndex = 4;
-            this.panelDrawing.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragDrop);
-            this.panelDrawing.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDrawing_DragEnter);
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
@@ -375,14 +377,14 @@
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(590, 91);
+            this.panelTop.Size = new System.Drawing.Size(590, 81);
             this.panelTop.TabIndex = 0;
             // 
             // panelLine
             // 
             this.panelLine.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panelLine.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelLine.Location = new System.Drawing.Point(0, 88);
+            this.panelLine.Location = new System.Drawing.Point(0, 78);
             this.panelLine.Name = "panelLine";
             this.panelLine.Size = new System.Drawing.Size(590, 3);
             this.panelLine.TabIndex = 1;
@@ -399,6 +401,7 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Pump Setting";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // numericUpDown2
             // 
@@ -433,6 +436,7 @@
             this.lbMax.Size = new System.Drawing.Size(30, 13);
             this.lbMax.TabIndex = 20;
             this.lbMax.Text = "Max:";
+            this.lbMax.Click += new System.EventHandler(this.lbMax_Click);
             // 
             // panelLeft
             // 
@@ -440,7 +444,7 @@
             this.panelLeft.Controls.Add(this.groupBox3);
             this.panelLeft.Controls.Add(this.groupBox2);
             this.panelLeft.Controls.Add(this.groupBox1);
-            this.panelLeft.Controls.Add(this.button1);
+            this.panelLeft.Controls.Add(this.btnDelete);
             this.panelLeft.Controls.Add(this.btnLine);
             this.panelLeft.Controls.Add(this.btnSink);
             this.panelLeft.Controls.Add(this.btnAdjustSpliter);
@@ -452,20 +456,6 @@
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(143, 589);
             this.panelLeft.TabIndex = 6;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Paint Sprayer-32.png");
-            this.imageList1.Images.SetKeyName(1, "Water Tower Filled-32.png");
-            this.imageList1.Images.SetKeyName(2, "Merger-32-2.png");
-            this.imageList1.Images.SetKeyName(3, "Spliter-32.png");
-            this.imageList1.Images.SetKeyName(4, "AdjustableSpliter.png");
             // 
             // groupBox3
             // 
@@ -494,6 +484,20 @@
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "Max:";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.White;
+            this.imageList1.Images.SetKeyName(0, "Paint Sprayer-32.png");
+            this.imageList1.Images.SetKeyName(1, "Water Tower Filled-32.png");
+            this.imageList1.Images.SetKeyName(2, "Merger-32-2.png");
+            this.imageList1.Images.SetKeyName(3, "Spliter-32.png");
+            this.imageList1.Images.SetKeyName(4, "AdjustableSpliter.png");
             // 
             // PipeLineApp
             // 
@@ -530,7 +534,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnLine;
         private System.Windows.Forms.Button btnSink;
         private System.Windows.Forms.Button btnAdjustSpliter;
@@ -560,6 +564,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

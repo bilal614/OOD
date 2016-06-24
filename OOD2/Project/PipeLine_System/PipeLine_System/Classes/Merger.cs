@@ -35,7 +35,7 @@ namespace PipeLine_System
             : base(ID,componentLocation,CurrentFlow)
         {
             upperLocation = componentLocation;
-            lowerLocation = new Point(componentLocation.X, componentLocation.Y - 12);
+            lowerLocation = new Point(componentLocation.X, componentLocation.Y + 12);
             //the reason we create the lowerLocation reference point with Y component with -12 is because the images roughly have
             //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
         }
@@ -118,8 +118,9 @@ namespace PipeLine_System
         }
         public override void SetFlow(double flow)
         {
-            double Flow = inPipeline1.CurrentFlow + inPipeline2.CurrentFlow;
-            base.SetFlow(Flow);
+            /*double Flow = inPipeline1.CurrentFlow + inPipeline2.CurrentFlow;
+            base.SetFlow(Flow);*/
+            base.SetFlow(flow);
         }
 
         /// <summary>
@@ -140,6 +141,26 @@ namespace PipeLine_System
         {
             int temp = (xmouse - lowerLocation.X) * (lowerLocation.Y - ymouse);
             return temp <= lowerArea && temp > 0;
+        }
+
+        public void SetUpperLocation(Point compLocation)
+        {
+            this.upperLocation.X = compLocation.X;
+            this.upperLocation.Y = compLocation.Y;
+
+        }
+        public Point GetUpperLocation()
+        {
+            return this.upperLocation;
+        }
+        public void SetLowerLocation(Point compLocation)
+        {
+            this.lowerLocation.X = compLocation.X;
+            this.lowerLocation.Y = compLocation.Y + 10;
+        }
+        public Point GetLowerLocation()
+        {
+            return this.lowerLocation;
         }
 
         public override string ToString()

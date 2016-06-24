@@ -46,6 +46,7 @@ namespace PipeLine_System
         {
             if (CheckOverLap(c))
             {
+                MessageBox.Show("Cannot draw component over another component.");
                 return false;
             }
             else
@@ -64,45 +65,60 @@ namespace PipeLine_System
         public bool CheckOverLap(Component c)
         {
             bool returnValue1 = false, returnValue2 = false;
-            foreach (var item in components)
+            if (GetListOfComponents().Count > 0)
             {
-                /*In this condition we check that the point location of component c is not contained in Component
-                 * item's area by 30+x from item's location.X and by y-30 from item's location.Y. 
-                 */
-                if (item.GetLocation().X <= c.GetLocation().X && c.GetLocation().X <= (item.GetLocation().X + 30) &&
-                    item.GetLocation().Y - 30 <= c.GetLocation().Y && c.GetLocation().Y <= item.GetLocation().Y)
+                foreach (Component com in components)
                 {
-                    returnValue1 = true;
-                }
+                    /*In this condition we check that the point location of component c is not contained in Component
+                     * item's area by 30+x from item's location.X and by y-30 from item's location.Y. 
+                     */
+                    Point ofCom = com.GetLocation();
+                    Point ofC = c.GetLocation();
+                    if (ofCom.X <= ofC.X && ofC.X <= (ofCom.X + 30) &&
+                        ofCom.Y <= ofC.Y && ofC.Y <= (ofCom.Y + 30))
+                    {
+                        returnValue1 = true;
+                    }
 
-                /*This condition we check the reverse that the point location of component item is not contained in 
-                 * Component c's area by 30+x from c's location.X and by y-30 from c's location.Y. 
-                 */
-                if (c.GetLocation().X <= item.GetLocation().X && item.GetLocation().X <= (c.GetLocation().X + 30) &&
-                    c.GetLocation().Y - 30 <= item.GetLocation().Y && item.GetLocation().Y <= c.GetLocation().Y)
-                {
-                    returnValue2 = true;
-                }
+                    /*This condition we check the reverse that the point location of component item is not contained in 
+                     * Component c's area by 30+x from c's location.X and by y-30 from c's location.Y. 
+                     */
+                    if (ofC.X <= ofCom.X && ofCom.X <= (ofC.X + 30) &&
+                        ofC.Y <= ofCom.Y && ofCom.Y <= ofC.Y + 30)
+                    {
+                        returnValue2 = true;
+                    }
 
-                if (returnValue1 == true && returnValue2 == true)
-                {
-                    return true;
+                    if (returnValue1 == true || returnValue2 == true)
+                    {
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         public bool RemovePipeline(PipeLine P)
         {
-            
+
             foreach (PipeLine pipe in pipelines)
             {
                 if (pipe == P)
                 {
+                    pipe.CurrentFlow = 0;
+                    
                     pipelines.Remove(pipe);
-                  //  P.CompEnd.updateCurrentFlow_Neighbors();
+                    // below will inform component that its pipeline has gone now.
+                    foreach (var c in components)
+                    {
+                        UpdatePipelinesOfComps(c);
+                    }
 
-                    sys.refreshDrawing();
+                    UpdateCurrentFlowOfNetwork();
                     return true;
                 }
             }
@@ -121,15 +137,16 @@ namespace PipeLine_System
 
                     }
 
-              
+                    
                     components.Remove(c);
-                    sys.refreshDrawing();
+
                     return true;
                 }
             }
 
             return false;
         }
+
 
         public List<PipeLine> GetExceedPipeline() 
         {
@@ -164,15 +181,81 @@ namespace PipeLine_System
         {
             return pipelines; 
         }
+     
         public bool AddPipeLine(PipeLine p)
         {
+            bool toAddOrNot = true;
+            int count1 = 0, count2 = 0;
+            foreach (PipeLine pl in this.GetListOfPipeline())
+            {
+                if (pl.CompStart is Pump)//to avoid multiple connections from pump
+                {
+                    if (p.CompStart == pl.CompStart)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
 
-            //foreach (var item in pipelines)
-            //{
-                //item.startLocation =  
-                //item.endLocation = 
+                if (pl.CompEnd is Sink)
+                {
+                    if (p.CompEnd == pl.CompEnd)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
+
+                if (pl.CompStart is Merger)
+                {
+                    if (p.CompStart == pl.CompStart)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
+                if (pl.CompEnd is Merger)
+                {
+                    if (p.CompEnd == pl.CompEnd)
+                    {
+                        count1++;
+                    }
+                }
+
+                if (pl.CompStart is Spliter)
+                {
+                    if (p.CompStart == pl.CompStart)
+                    {
+                        count2++;
+                    }
+                }
+                if (pl.CompEnd is Spliter)
+                {
+                    if (p.CompEnd == pl.CompEnd)
+                    {
+                        toAddOrNot = false;
+                        break;
+                    }
+                }
+            }
+
+            if (count1 >= 2 || count2 >= 2)
+            {
+                toAddOrNot = false;
+            }
+            if (p.CompStart is Sink)
+            {
+                toAddOrNot = false;
+            }
+            if (p.CompEnd is Pump)
+            {
+                toAddOrNot = false;
+            }
+            if (toAddOrNot)
+            {
                 pipelines.Add(p);
-                return true;
+            }
+            return toAddOrNot;
             //}
             //return false;
         }
@@ -190,6 +273,8 @@ namespace PipeLine_System
             {
                 foreach (Component c in components)
                 {
+                    Font f = new Font("Arial", 10);
+                    gr.DrawString(c.GetFlow().ToString(), f, Brushes.Black, c.GetLocation().X, c.GetLocation().Y - 20);
                     if (c is Pump)
                     {
                         gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList                   
@@ -207,14 +292,21 @@ namespace PipeLine_System
                     }
                     else if (c is Spliter)
                     {
-                        gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
-                        //is of the Splitter 
+                        AdjustableSpliter temp;
+                        if (c is AdjustableSpliter)
+                        {
+                            temp = (AdjustableSpliter)c;
+                            gr.DrawImage(il.Images[4], temp.GetLocation());//assuming the fourth image in the imageList 
+                            //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
+                        }
+                        else
+                        {
+                            gr.DrawImage(il.Images[3], c.GetLocation());//assuming the fourth image in the imageList 
+                            //is of the Splitter 
+                        }
+                                           
                     }
-                    else if (c is AdjustableSpliter)
-                    {
-                        gr.DrawImage(il.Images[4], c.GetLocation());//assuming the fourth image in the imageList 
-                        //is of the Adjustable Splitter. Splitter and Adjustable Splitter have the same image 
-                    }
+                    
                     else
                     {
                         return false; //in case that not all Components were drawn on the drawing screen
@@ -238,12 +330,19 @@ namespace PipeLine_System
                 foreach (PipeLine p in pipelines)
                 {
                     List<Point> points = p.getMiddleLocation();
-                    gr.DrawLine(Pens.Black, p.CompStart.GetLocation(), points[0]);
-                    for (int i = 0; i < points.Count - 1; i++)
+                    if (points.Count > 0)
                     {
-                        gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                        gr.DrawLine(Pens.Black, p.getStartLocation(), points[0]);
+                        for (int i = 0; i < points.Count - 1; i++)
+                        {
+                            gr.DrawLine(Pens.Black, points[i], points[i + 1]);
+                        }
+                        gr.DrawLine(Pens.Black, points[points.Count - 1], p.getEndLocation());
                     }
-                    gr.DrawLine(Pens.Black, points[points.Count - 1], p.CompEnd.GetLocation());
+                    else
+                    {
+                        gr.DrawLine(Pens.Black, p.getStartLocation(), p.getEndLocation());
+                    }
                 }
             }
             catch
@@ -264,15 +363,7 @@ namespace PipeLine_System
             int count = pipelines.Count() + 1;
             return count;
         }
-        public void inform_neighbor(PipeLine removing)
-        {
-           //Point startingcomp=  removing.CompStart.GetLocation();
-              Point endingcomp = removing.CompEnd.GetLocation();
-              
-         //todo/////
-            
-            
-        }
+      
         /// <summary>
         /// Find component basing on the id
         /// </summary>
@@ -318,38 +409,72 @@ namespace PipeLine_System
             if(c is Pump)
             {
                Pump p = (Pump)c;
-               PipeLine outPipeLine = GetPipeline(p.getOutPipeLine().getId());
-               p.addOutPipeLine(outPipeLine);
+               if (p.getOutPipeLine() != null)
+               {
+                   PipeLine outPipeLine = GetPipeline(p.getOutPipeLine().getId());
+                   p.addOutPipeLine(outPipeLine);
+               }
+               else { p.addOutPipeLine(null); }
+
             }
             if(c is Spliter || c is AdjustableSpliter)
             {
                 Spliter sp = null;
+                sp = (Spliter)c;
                 if (c is AdjustableSpliter)
                 {
                     sp = (AdjustableSpliter)c;
                 }
-                PipeLine inPipeLine = GetPipeline(sp.getInPipeLine().getId());
-                sp.addInPipeLine(inPipeLine);
+                if (sp.getInPipeLine() != null)
+                {
+                    PipeLine inPipeLine = GetPipeline(sp.getInPipeLine().getId());
+                    sp.addInPipeLine(inPipeLine);
+                }
+                else { sp.addInPipeLine(null); }
+                if (sp.getOutPipeLine1() != null)
+                {
                 PipeLine outPipeLine1 = GetPipeline(sp.getOutPipeLine1().getId());
                 sp.addOutPipeLine1(outPipeLine1);
+                }
+                else { sp.addOutPipeLine1(null); }
+                if (sp.getOutPipeLine2() != null)
+                {
                 PipeLine outPipeLine2 = GetPipeline(sp.getOutPipeLine2().getId());
                 sp.addOutPipeLine2(outPipeLine2);
+                }
+                else { sp.addOutPipeLine2(null); }
             }
             if(c is Merger)
             {
                 Merger mg = (Merger)c;
-                PipeLine outPipeline = GetPipeline(mg.getOutPipeLine().getId());
-                mg.addOutPipeLine(outPipeline);
-                PipeLine inPipeline1 = GetPipeline(mg.getInPipeLine1().getId());
-                mg.addInPipeLine1(inPipeline1);
-                PipeLine intPipeline2 = GetPipeline(mg.getInPipeLine2().getId());
-                mg.addInPipeLine2(intPipeline2);
+                if (mg.getOutPipeLine() != null)
+                {
+                    PipeLine outPipeline = GetPipeline(mg.getOutPipeLine().getId());
+                    mg.addOutPipeLine(outPipeline);
+                }
+                else { mg.addOutPipeLine(null); }
+                if (mg.getInPipeLine1() != null)
+                {
+                    PipeLine inPipeline1 = GetPipeline(mg.getInPipeLine1().getId());
+                    mg.addInPipeLine1(inPipeline1);
+                }
+                else { mg.addInPipeLine1(null); }
+                if (mg.getInPipeLine2() != null)
+                {
+                    PipeLine intPipeline2 = GetPipeline(mg.getInPipeLine2().getId());
+                    mg.addInPipeLine2(intPipeline2);
+                }
+                else { mg.addInPipeLine2(null); }
             }
             if (c is Sink)
             {
                 Sink sk = (Sink)c;
-                PipeLine inPipeline = GetPipeline(sk.getInPipeLine().getId());
-                sk.addInPipeLine(inPipeline);
+                if (sk.getInPipeLine() != null)
+                {
+                    PipeLine inPipeline = GetPipeline(sk.getInPipeLine().getId());
+                    sk.addInPipeLine(inPipeline);
+                }
+                else { sk.addInPipeLine(null); }
             }
         }
         /// <summary>
@@ -366,6 +491,79 @@ namespace PipeLine_System
             {
                 p.CompStart = GetComponent(p.CompStart.GetComponentId());
                 p.CompEnd = GetComponent(p.CompEnd.GetComponentId());
+            }
+        }
+
+
+       public void UpdateCurrentFlowOfNetwork()
+        {
+            try
+            {
+                foreach (PipeLine p in GetListOfPipeline())
+                {
+                    if (p.CompStart is Pump)
+                    {
+                        p.CompEnd.SetFlow(p.CompStart.GetFlow());
+                    }
+                }
+
+                foreach (PipeLine p in GetListOfPipeline())
+                {
+                    if (p.CompStart is Spliter)
+                    {
+                        if (p.CompStart is AdjustableSpliter)
+                        {
+                            double upperFlow = 0, lowerFlow = 0;
+                            AdjustableSpliter temp = (AdjustableSpliter)p.CompStart;
+                            PipeLine p1 = null, p2 = null;
+                            foreach (PipeLine pi in GetListOfPipeline())
+                            {
+                                if (pi.CompStart == temp)
+                                {
+                                    if (upperFlow == 0)
+                                    {
+                                        p1 = pi;
+                                        upperFlow = ((100 - temp.GetUpperPercent()) / 100) * temp.GetFlow();
+                                        upperFlow = 0;
+                                    }
+
+                                    if (lowerFlow == 0)
+                                    {
+                                        p2 = pi;
+                                        lowerFlow = (temp.GetUpperPercent() / 100) * temp.GetFlow();
+                                    }
+                                }
+                            }
+                            p1.CompEnd.SetFlow(upperFlow);
+                            p2.CompEnd.SetFlow(lowerFlow);
+                        }
+                        else
+                        {
+                            p.CompEnd.SetFlow(p.CompStart.GetFlow() / 2);
+                        }
+                    }
+                }
+
+                foreach (PipeLine p in GetListOfPipeline())
+                {
+                    if (p.CompStart is Merger)
+                    {
+                        double mergerCurrentFlow = 0;
+                        Merger temp = (Merger)p.CompStart;
+                        foreach (PipeLine pi in GetListOfPipeline())
+                        {
+                            if (pi.CompEnd == temp)
+                            {
+                                mergerCurrentFlow += pi.CompEnd.GetFlow();
+                            }
+                        }
+                        p.CompEnd.SetFlow(mergerCurrentFlow);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Current flow update error.");
             }
         }
     }

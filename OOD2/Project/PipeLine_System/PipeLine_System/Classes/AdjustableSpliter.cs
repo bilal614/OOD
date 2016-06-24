@@ -45,10 +45,29 @@ namespace PipeLine_System
 
         public override void SetFlow(double flow)
         {
-            base.SetFlow(getInPipeLine().CurrentFlow);
+            /*base.SetFlow(getInPipeLine().CurrentFlow);*/
+            base.SetFlow(flow);
         }
 
-        public static AdjustableSpliter createSpliterFromStringArray(string[] ASpliterInfors)
+        public void SetUpperPercent(double pct)
+        {
+            this.upperPercent = pct;
+        }
+        public double GetUpperPercent()
+        {
+            return upperPercent;
+        }
+        public double GetOutUpperFlow()
+        {
+            return this.currentFlow * this.upperPercent;
+        }
+
+        public double GetOutLowerFlow()
+        {
+            return this.currentFlow - this.GetOutLowerFlow();
+        }
+        
+        public static AdjustableSpliter createAdjustableSpliterFromStringArray(string[] ASpliterInfors)
         {
             AdjustableSpliter sp = null;
             int id = Convert.ToInt16(ASpliterInfors[1]);

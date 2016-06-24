@@ -26,7 +26,7 @@ namespace PipeLine_System
             base(ID, componentLocation, CurrentFlow)
         {
             upperLocation = componentLocation;
-            lowerLocation = new Point(componentLocation.X, componentLocation.Y - 12);
+            lowerLocation = new Point(componentLocation.X, componentLocation.Y + 12);
             //the reason we create the lowerLocation reference point with Y component with -12 is because the images roughly have
             //a height of 24 pixels, so we want the lowerLocation to be from mid-lower left edge of the image 
         }
@@ -72,7 +72,8 @@ namespace PipeLine_System
         }
         public override void SetFlow(double flow)
         {
-            base.SetFlow(inPipeline.CurrentFlow);
+            /*base.SetFlow(inPipeline.CurrentFlow);*/
+            base.SetFlow(flow);
         }
         /*The following methods add incoming and outgoing pipeline neighbors to the Merger. If successful, it returns true otherwise
         * it returns a false.*/
@@ -135,6 +136,25 @@ namespace PipeLine_System
             return temp <= lowerArea && temp > 0;
         }
 
+        public void SetUpperLocation(Point compLocation)
+        {
+            this.upperLocation.X = compLocation.X;
+            this.upperLocation.Y = compLocation.Y;
+
+        }
+        public Point GetUpperLocation()
+        {
+            return this.upperLocation;
+        }
+        public void SetLowerLocation(Point compLocation)
+        {
+            this.lowerLocation.X = compLocation.X;
+            this.lowerLocation.Y = compLocation.Y + 10;
+        }
+        public Point GetLowerLocation()
+        {
+            return this.lowerLocation;
+        }
 
         public override string ToString()
         {
