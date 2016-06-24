@@ -109,10 +109,16 @@ namespace PipeLine_System
             {
                 if (pipe == P)
                 {
+                    pipe.CurrentFlow = 0;
+                    UpdateCurrentFlowOfNetwork();
                     pipelines.Remove(pipe);
-                  //  P.CompEnd.updateCurrentFlow_Neighbors();
-
-                    sys.refreshDrawing();
+                    // below will inform component that its pipeline has gone now.
+                    foreach (var c in components)
+                    {
+                        UpdatePipelinesOfComps(c);
+                    }
+                    
+               
                     return true;
                 }
             }
@@ -131,9 +137,9 @@ namespace PipeLine_System
 
                     }
 
-              
+                    
                     components.Remove(c);
-                    sys.refreshDrawing();
+
                     return true;
                 }
             }
@@ -356,15 +362,7 @@ namespace PipeLine_System
             int count = pipelines.Count() + 1;
             return count;
         }
-        public void inform_neighbor(PipeLine removing)
-        {
-           //Point startingcomp=  removing.CompStart.GetLocation();
-              Point endingcomp = removing.CompEnd.GetLocation();
-              
-         //todo/////
-            
-            
-        }
+      
         /// <summary>
         /// Find component basing on the id
         /// </summary>
@@ -410,8 +408,13 @@ namespace PipeLine_System
             if(c is Pump)
             {
                Pump p = (Pump)c;
-               PipeLine outPipeLine = GetPipeline(p.getOutPipeLine().getId());
-               p.addOutPipeLine(outPipeLine);
+               if (p.getOutPipeLine() != null)
+               {
+                   PipeLine outPipeLine = GetPipeline(p.getOutPipeLine().getId());
+                   p.addOutPipeLine(outPipeLine);
+               }
+               else { p.addOutPipeLine(null); }
+
             }
             if(c is Spliter || c is AdjustableSpliter)
             {
@@ -421,12 +424,24 @@ namespace PipeLine_System
                 {
                     sp = (AdjustableSpliter)c;
                 }
-                PipeLine inPipeLine = GetPipeline(sp.getInPipeLine().getId());
-                sp.addInPipeLine(inPipeLine);
+                if (sp.getInPipeLine() != null)
+                {
+                    PipeLine inPipeLine = GetPipeline(sp.getInPipeLine().getId());
+                    sp.addInPipeLine(inPipeLine);
+                }
+                else { sp.addInPipeLine(null); }
+                if (sp.getOutPipeLine1() != null)
+                {
                 PipeLine outPipeLine1 = GetPipeline(sp.getOutPipeLine1().getId());
                 sp.addOutPipeLine1(outPipeLine1);
+                }
+                else { sp.addOutPipeLine1(null); }
+                if (sp.getOutPipeLine2() != null)
+                {
                 PipeLine outPipeLine2 = GetPipeline(sp.getOutPipeLine2().getId());
                 sp.addOutPipeLine2(outPipeLine2);
+                }
+                else { sp.addOutPipeLine2(null); }
             }
             if(c is Merger)
             {
@@ -517,6 +532,8 @@ namespace PipeLine_System
                         {
                             if (pi.CompEnd == temp)
                             {
+
+
                                 mergerCurrentFlow += pi.CompEnd.GetFlow();
                             }
                         }
