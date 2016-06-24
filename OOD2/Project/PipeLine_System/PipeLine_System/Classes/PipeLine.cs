@@ -108,7 +108,7 @@ namespace PipeLine_System
         /// <param name="location"></param>
         public void setStartLocation(Point location)
         {
-            this.startLocation.X = location.X + 26;
+            this.startLocation.X = location.X + 28;
             this.startLocation.Y = location.Y + 18;
         }
 

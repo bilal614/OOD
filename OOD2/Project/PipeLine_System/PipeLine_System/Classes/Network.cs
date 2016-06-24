@@ -494,7 +494,9 @@ namespace PipeLine_System
             }
         }
 
-
+        /// <summary>
+        /// Update the currentflow of all neighbors when pipeline is added
+        /// </summary>
        public void UpdateCurrentFlowOfNetwork()
         {
             try
@@ -529,25 +531,6 @@ namespace PipeLine_System
                                 lowerFlow = temp.GetOutLowerFlow();
                                 p2 = p;
                             }
-                            /*foreach (PipeLine pi in GetListOfPipeline())
-                            {
-                                if (pi.CompStart == temp)
-                                {
-                                    if (countSplitters == 0)
-                                    {
-                                        p1 = pi;
-                                        upperFlow = ((100 - temp.GetUpperPercent()) / 100) * temp.GetFlow();
-                                        upperFlow = 0;
-                                        countSplitters++;
-                                    }
-
-                                    if (lowerFlow == 0)
-                                    {
-                                        p2 = pi;
-                                        lowerFlow = (temp.GetUpperPercent() / 100) * temp.GetFlow();
-                                    }
-                                }
-                            }*/
                             if (p1 != null)
                             {
                                 p1.CompEnd.SetFlow(upperFlow);

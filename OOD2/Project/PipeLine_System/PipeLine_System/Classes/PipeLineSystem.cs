@@ -151,7 +151,15 @@ namespace PipeLine_System
             if (compStart is Spliter)
             {
                 Spliter sp = (Spliter)compStart;
-                if (sp.getOutPipeLine1() == null)
+                int count = 0;
+                foreach(var p in currentNetwork.GetListOfPipeline())
+                {
+                    if(p.CompStart == compStart)
+                    {
+                        count++;
+                    }
+                }
+                if (count == 0)
                 {
                    sp.SetUpperLocation(compStart.GetLocation());
                    PipeLineSystem.TempPipeline.setStartLocation(sp.GetUpperLocation());
@@ -174,8 +182,16 @@ namespace PipeLine_System
             Component compEnd = PipeLineSystem.TempPipeline.CompEnd;
             if (compEnd is Merger)
             {
-                Merger mg = (Merger)compEnd;
-                if (mg.getInPipeLine1() == null)
+                Merger mg = (Merger)compEnd; 
+                int count = 0;               
+                foreach(var p in currentNetwork.GetListOfPipeline())
+                {
+                    if (p.CompEnd == compEnd)
+                    {
+                        count++;
+                    }
+                }
+                if (count == 0)
                 {
                     mg.SetUpperLocation(compEnd.GetLocation());
                     PipeLineSystem.TempPipeline.setEndLocation(mg.GetUpperLocation());

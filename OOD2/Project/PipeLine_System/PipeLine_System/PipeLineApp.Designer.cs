@@ -341,7 +341,7 @@
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDrawing.Location = new System.Drawing.Point(0, 0);
             this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(590, 589);
+            this.panelDrawing.Size = new System.Drawing.Size(590, 579);
             this.panelDrawing.TabIndex = 4;
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
@@ -352,7 +352,7 @@
             this.panelLineLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLineLeft.Location = new System.Drawing.Point(143, 0);
             this.panelLineLeft.Name = "panelLineLeft";
-            this.panelLineLeft.Size = new System.Drawing.Size(3, 589);
+            this.panelLineLeft.Size = new System.Drawing.Size(3, 579);
             this.panelLineLeft.TabIndex = 7;
             // 
             // panelRightFill
@@ -362,7 +362,7 @@
             this.panelRightFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRightFill.Location = new System.Drawing.Point(143, 0);
             this.panelRightFill.Name = "panelRightFill";
-            this.panelRightFill.Size = new System.Drawing.Size(590, 589);
+            this.panelRightFill.Size = new System.Drawing.Size(590, 579);
             this.panelRightFill.TabIndex = 8;
             // 
             // panelTop
@@ -454,7 +454,7 @@
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(143, 589);
+            this.panelLeft.Size = new System.Drawing.Size(143, 579);
             this.panelLeft.TabIndex = 6;
             // 
             // groupBox3
@@ -503,7 +503,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 589);
+            this.ClientSize = new System.Drawing.Size(733, 579);
             this.Controls.Add(this.panelLineLeft);
             this.Controls.Add(this.panelRightFill);
             this.Controls.Add(this.panelLeft);

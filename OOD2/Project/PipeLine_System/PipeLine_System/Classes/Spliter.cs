@@ -139,7 +139,7 @@ namespace PipeLine_System
         public void SetUpperLocation(Point compLocation)
         {
             this.upperLocation.X = compLocation.X;
-            this.upperLocation.Y = compLocation.Y;
+            this.upperLocation.Y = compLocation.Y - 10;
 
         }
         public Point GetUpperLocation()
