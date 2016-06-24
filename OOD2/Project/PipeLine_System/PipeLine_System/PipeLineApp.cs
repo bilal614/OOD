@@ -130,7 +130,7 @@ namespace PipeLine_System
             PipeLineSystem.DeleteSelected = false;
             PipeLineSystem.TempPipeline = null;
         }
-
+        //
         private void panelDrawing_MouseUp(object sender, MouseEventArgs e)
         {
             try
