@@ -18,6 +18,7 @@ namespace PipeLine_System
         public PipeLineApp()
         {
             InitializeComponent();
+           
         }
         #region Save/SaveAs/Open
         //Global variables
@@ -47,6 +48,7 @@ namespace PipeLine_System
                    this.btnSave.Enabled = false;
                     //Draw all components methods
                    this.Refresh();
+                   checkForEnableDrawingPipeline();
                    MessageBox.Show("Your drawing is loaded");
                 }
 
@@ -97,6 +99,7 @@ namespace PipeLine_System
             btnSaveAs.Enabled = true;
             PipeLineSystem.SavedAs = false;
             btnSave.Enabled = false;
+
         }
         #endregion
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
@@ -143,29 +146,22 @@ namespace PipeLine_System
                     double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
                     double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
                     PipeLineSystem.AddTempComponent(e.X, e.Y, pumpFlow, upperPercent);
-                    PipeLineSystem.AddTempPipeline(e.X, e.Y);
+                    double safeLimit = Convert.ToDouble(this.numericUpDown4.Value);
+                    PipeLineSystem.AddTempPipeline(e.X, e.Y, safeLimit);
                 }
                 else
                 {
-                    List<Component> tempCompList = PipeLineSystem.Network.GetListOfComponents();
-                    Component removeComponent = null;
-                    foreach (Component c in tempCompList)
-                    {
-                        if (c.ContainsPoint(e.X, e.Y))
-                        {
-                            removeComponent = c;
-                        }
-                    }
-                    tempCompList.Remove(removeComponent);
+                    //Raima, I moved the code of remove in to system class in following function 
+                    //, you can extend it here
+                    PipeLineSystem.RemoveSelectedComponent(e.X, e.Y);
                 }
-                
                 //enable the save button
                 if(PipeLineSystem.Saved == false && PipeLineSystem.SavedAs == true)
                 {
                     btnSave.Enabled = true;
                 }
+                checkForEnableDrawingPipeline();
                 this.Refresh();
-                
             }
             catch
             {
@@ -257,6 +253,26 @@ namespace PipeLine_System
             this.Close();
         }
 
+        private void PipeLineApp_Load(object sender, EventArgs e)
+        {
+            btnLine.Enabled = false;
+            numericUpDown4.Enabled = false;
+        }
+
+        /// <summary>
+        /// Precondition for allowing to draw pipeline
+        /// </summary>
+        private void checkForEnableDrawingPipeline()
+        {
+            if (PipeLineSystem.Network.GetListOfComponents().Count >= 0)
+            {
+                btnLine.Enabled = true;
+            }
+            else
+            {
+                btnLine.Enabled = false;
+            }
+        }
       
 
        

@@ -32,7 +32,11 @@ namespace PipeLine_System
             set { currentFlow = value; }
         }
         private double safeLimit;
-        public double SafeLimit { get; set; }
+        public double SafeLimit
+        {
+            get { return safeLimit; }
+            set { safeLimit = value; }
+        }
         private List<Point> clickLocation;
    
         private Component compStart;
@@ -214,6 +218,24 @@ namespace PipeLine_System
             p = new PipeLine(id, StartLocation, EndLocation, CurrentFlow, SafeLimit, middlePoints, compEnd, compStart);
            
             return p;
+        }
+
+        public static void DrawPipeline(Graphics gr, PipeLine p, Pen pen)
+        {
+            List<Point> points = p.getMiddleLocation();
+            if (points.Count > 0)
+            {
+                gr.DrawLine(pen, p.getStartLocation(), points[0]);
+                for (int i = 0; i < points.Count - 1; i++)
+                {
+                    gr.DrawLine(pen, points[i], points[i + 1]);
+                }
+                gr.DrawLine(pen, points[points.Count - 1], p.getEndLocation());
+            }
+            else
+            {
+                gr.DrawLine(pen, p.getStartLocation(), p.getEndLocation());
+            }
         }
     }
 }
