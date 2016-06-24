@@ -104,30 +104,22 @@ namespace PipeLine_System
 
         public bool RemovePipeline(PipeLine P)
         {
-            
+
             foreach (PipeLine pipe in pipelines)
             {
                 if (pipe == P)
                 {
                     pipe.CurrentFlow = 0;
-                    
+                    UpdateCurrentFlowOfNetwork();
                     pipelines.Remove(pipe);
-<<<<<<< HEAD
                     // below will inform component that its pipeline has gone now.
-=======
-
->>>>>>> 3daf2d7a341dcfa58028299797b0b133f0701b46
                     foreach (var c in components)
                     {
                         UpdatePipelinesOfComps(c);
                     }
-                    UpdateCurrentFlowOfNetwork();
-               
-<<<<<<< HEAD
+
+
                     return true;
-=======
-                   return true;
->>>>>>> 3daf2d7a341dcfa58028299797b0b133f0701b46
                 }
             }
             return false;
