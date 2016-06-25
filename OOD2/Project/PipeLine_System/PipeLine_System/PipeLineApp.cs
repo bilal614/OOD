@@ -79,6 +79,7 @@ namespace PipeLine_System
             Point p = new Point();
             PipeLineSystem.TempComponent = new Spliter(PipeLineSystem.Network.SetId(), p, 0);
             PipeLineSystem.DeleteSelected = false;
+            PipeLineSystem.Added = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -89,6 +90,7 @@ namespace PipeLine_System
             Point p = new Point();
             PipeLineSystem.TempComponent = new Merger(PipeLineSystem.Network.SetId(), p, 0);
             PipeLineSystem.DeleteSelected = false;
+            PipeLineSystem.Added = false;
             PipeLineSystem.TempPipeline = null;
         }
         //
@@ -111,7 +113,7 @@ namespace PipeLine_System
                     panelDrawing.Refresh();
                 }
                 //Need to check this again
-                if (PipeLineSystem.DeleteSelected == false && PipeLineSystem.Updated == 0)
+                if (PipeLineSystem.Added == false)
                 {
                     double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
                     double pumpMaxFlow = Convert.ToDouble(numericUpDown1.Value);
@@ -129,7 +131,7 @@ namespace PipeLine_System
                 {
                     //Raima, I moved the code of remove in to system class in following function 
                     //, you can extend it here
-                    PipeLineSystem.RemoveSelectedComponent(e.X, e.Y);
+                    //PipeLineSystem.RemoveSelectedComponent(e.X, e.Y);
                 }
                 //enable the save button
                 if(PipeLineSystem.Saved == false && PipeLineSystem.SavedAs == true)
@@ -137,8 +139,32 @@ namespace PipeLine_System
                     btnSave.Enabled = true;
                 }
                 PipeLineSystem.checkForEnableDrawingPipeline(btnLine);
-                
-                
+
+                if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 0)
+                {
+                    double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
+                    numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
+                    if (pumpFlow > PipeLineSystem.UpdatePump.GetCapacity())
+                    {
+                        MessageBox.Show("Current flow cannot exceed maximum flow.");
+                    }
+                    else
+                    {
+                        PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
+                        ///foreach(var p in get) set a gain
+                        PipeLineSystem.UpdatePump = null;
+                        PipeLineSystem.Updated = 0;
+                      
+                    }
+                }
+                if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 0)
+                {
+                    double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
+                    PipeLineSystem.UpdateSpliter.SetUpperPercent(upperPercent);
+                    PipeLineSystem.UpdateSpliter = null;
+                    PipeLineSystem.Updated = 0;
+
+                }
 
                 this.Refresh();
             }   
@@ -177,6 +203,7 @@ namespace PipeLine_System
             Point p = new Point();
             PipeLineSystem.TempComponent = new Pump(PipeLineSystem.Network.SetId(), p, 0);
             PipeLineSystem.DeleteSelected = false;
+            PipeLineSystem.Added = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -193,6 +220,7 @@ namespace PipeLine_System
             Point p = new Point();
             PipeLineSystem.TempComponent = new AdjustableSpliter(PipeLineSystem.Network.SetId(), p, 0, Convert.ToInt32(this.ASpiter_UpValue.Value));
             PipeLineSystem.DeleteSelected = false;
+            PipeLineSystem.Added = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -203,6 +231,7 @@ namespace PipeLine_System
             Point p = new Point();
             PipeLineSystem.TempComponent = new Sink(PipeLineSystem.Network.SetId(), p, 0);
             PipeLineSystem.DeleteSelected = false;
+            PipeLineSystem.Added = false;
             PipeLineSystem.TempPipeline = null;
         }
 
@@ -228,6 +257,7 @@ namespace PipeLine_System
             }
             PipeLineSystem.TempPipeline = new PipeLine(PipeLineSystem.Network.SetPipeLineId(), Convert.ToDouble(this.numericUpDown4.Value), null, null);
             PipeLineSystem.DeleteSelected = false;
+            PipeLineSystem.Added = false;
             PipeLineSystem.TempComponent = null;
         }
 
@@ -244,8 +274,7 @@ namespace PipeLine_System
         
         private void panelDrawing_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            PipeLineSystem.Updated++;
-            if (PipeLineSystem.Updated == 1)
+            if (PipeLineSystem.Updated == 0)
             {
                 foreach (var c in PipeLineSystem.Network.GetListOfComponents())
                 {
@@ -261,6 +290,10 @@ namespace PipeLine_System
                                 PipeLineSystem.UpdatePump = (Pump)c;
                                 numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
                             }
+                            else
+                            {
+                                PipeLineSystem.Updated = 0;
+                            }
                         }
                         if (c is AdjustableSpliter)
                         {
@@ -269,39 +302,20 @@ namespace PipeLine_System
                             {
                                 PipeLineSystem.UpdateSpliter = (AdjustableSpliter)c;
                             }
+                            else
+                            {
+                                PipeLineSystem.Updated = 0;
+                            }
                         }
                     }
 
                 }
-            }
-            if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 1)
-            {
-                double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
-                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
-                if (pumpFlow > PipeLineSystem.UpdatePump.GetCapacity())
-                {
-                   MessageBox.Show("Current flow cannot exceed maximum flow.");
-                }
-                else
-                {
-                    PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
-                    PipeLineSystem.UpdatePump = null;
-                    PipeLineSystem.Updated = 0;
-                    this.Refresh();
-                }
-            }
-            if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 1)
-            {
-                double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
-                PipeLineSystem.UpdateSpliter.SetUpperPercent(upperPercent);
-                PipeLineSystem.UpdateSpliter = null;
-                PipeLineSystem.Updated = 0;
-                this.Refresh();
-            }
+            }        
             PipeLineSystem.Updated++;
             
         }
 
+      
        
       
 

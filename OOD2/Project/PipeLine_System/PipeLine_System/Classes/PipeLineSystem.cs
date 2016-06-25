@@ -18,6 +18,7 @@ namespace PipeLine_System
         public static Component TempComponent = null;
         public static PipeLine TempPipeline = null;
         public static bool DeleteSelected = false;
+        public static bool Added = false;
         public static Component CompToBeDeleted = null;
         public static PipeLine PipeLineToBeDeleted = null;
         public static int DeleteClicked = 0;

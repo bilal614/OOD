@@ -63,6 +63,7 @@ namespace PipeLine_System
             {
                 components.Add(c);
                 PipeLineSystem.Saved = false;
+                PipeLineSystem.Added = true;
                 return true;
             }
         }
@@ -266,6 +267,7 @@ namespace PipeLine_System
             {
                 pipelines.Add(p);
                 PipeLineSystem.Saved = false;
+                PipeLineSystem.Added = true;
             }
             return toAddOrNot;
             //}
