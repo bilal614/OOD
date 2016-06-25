@@ -110,7 +110,8 @@ namespace PipeLine_System
                     PipeLineSystem.DeleteClicked = 0;
                     panelDrawing.Refresh();
                 }
-                if (PipeLineSystem.DeleteSelected == false)
+                //Need to check this again
+                if (PipeLineSystem.DeleteSelected == false && PipeLineSystem.Updated == 0)
                 {
                     double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
                     double pumpMaxFlow = Convert.ToDouble(numericUpDown1.Value);
@@ -243,7 +244,8 @@ namespace PipeLine_System
         
         private void panelDrawing_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (PipeLineSystem.Updated == 0)
+            PipeLineSystem.Updated++;
+            if (PipeLineSystem.Updated == 1)
             {
                 foreach (var c in PipeLineSystem.Network.GetListOfComponents())
                 {
@@ -272,7 +274,7 @@ namespace PipeLine_System
 
                 }
             }
-            if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 0)
+            if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 1)
             {
                 double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
                 numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
@@ -285,17 +287,19 @@ namespace PipeLine_System
                     PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
                     PipeLineSystem.UpdatePump = null;
                     PipeLineSystem.Updated = 0;
+                    this.Refresh();
                 }
             }
-            if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 0)
+            if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 1)
             {
                 double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
                 PipeLineSystem.UpdateSpliter.SetUpperPercent(upperPercent);
                 PipeLineSystem.UpdateSpliter = null;
                 PipeLineSystem.Updated = 0;
+                this.Refresh();
             }
             PipeLineSystem.Updated++;
-            this.Refresh();
+            
         }
 
        
