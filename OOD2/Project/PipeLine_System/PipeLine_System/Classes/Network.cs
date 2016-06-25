@@ -116,7 +116,6 @@ namespace PipeLine_System
 
         public bool RemovePipeline(PipeLine P)
         {
-
             foreach (PipeLine pipe in pipelines)
             {
                 if (pipe == P)
@@ -147,15 +146,11 @@ namespace PipeLine_System
                     {
                         RemovePipeline(pipefromlist);
 
-                    }
-
-                    
+                    }                    
                     components.Remove(c);
-
                     return true;
                 }
             }
-
             return false;
         }
 
@@ -377,7 +372,7 @@ namespace PipeLine_System
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        private Component GetComponent(int id)
+        public Component GetComponent(int id)
         {
             Component returnComp = null;
             foreach(var c in components)
@@ -394,7 +389,7 @@ namespace PipeLine_System
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        private PipeLine GetPipeline(int id)
+        public PipeLine GetPipeline(int id)
         {
             PipeLine returnPipeline = null;
             foreach(var p in pipelines)
@@ -611,5 +606,16 @@ namespace PipeLine_System
                 MessageBox.Show("Current flow update error.");
             }
         }
+
+       public void UpdateComponent(Component c)
+       {
+           for (int i = 0; i < components.Count; i++)
+           {
+               if (components[i].GetComponentId() == c.GetComponentId())
+               {
+                   components[i] = c;
+               }
+           }
+       }
     }
 }

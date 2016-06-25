@@ -124,7 +124,7 @@ namespace PipeLine_System
 
                         throw new Classes.CustomExceptions("Current flow cannot exceed maximum flow.");
                     }
-                    PipeLineSystem.AddTempComponent(e.X, e.Y, pumpFlow, upperPercent, safeLimit);
+                    PipeLineSystem.AddTempComponent(e.X, e.Y, pumpFlow, upperPercent, pumpMaxFlow);
                     PipeLineSystem.AddTempPipeline(e.X, e.Y, safeLimit);
                 }
                 else
@@ -140,32 +140,7 @@ namespace PipeLine_System
                 }
                 PipeLineSystem.checkForEnableDrawingPipeline(btnLine);
 
-                if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 0)
-                {
-                    double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
-                    numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
-                    if (pumpFlow > PipeLineSystem.UpdatePump.GetCapacity())
-                    {
-                        MessageBox.Show("Current flow cannot exceed maximum flow.");
-                    }
-                    else
-                    {
-                        PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
-                        ///foreach(var p in get) set a gain
-                        PipeLineSystem.UpdatePump = null;
-                        PipeLineSystem.Updated = 0;
-                      
-                    }
-                }
-                if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 0)
-                {
-                    double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
-                    PipeLineSystem.UpdateSpliter.SetUpperPercent(upperPercent);
-                    PipeLineSystem.UpdateSpliter = null;
-                    PipeLineSystem.Updated = 0;
-
-                }
-
+                
                 this.Refresh();
             }   
             catch(Classes.CustomExceptions ex)
@@ -301,6 +276,7 @@ namespace PipeLine_System
                             if (dialogResult == DialogResult.Yes)
                             {
                                 PipeLineSystem.UpdateSpliter = (AdjustableSpliter)c;
+                               
                             }
                             else
                             {
@@ -310,9 +286,34 @@ namespace PipeLine_System
                     }
 
                 }
-            }        
+            }
             PipeLineSystem.Updated++;
-            
+            if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 1)
+            {
+                double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
+                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
+                if (pumpFlow > PipeLineSystem.UpdatePump.GetCapacity())
+                {
+                    MessageBox.Show("Current flow cannot exceed maximum flow.");
+                }
+                else
+                {
+                    PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
+                    PipeLineSystem.Network.UpdateComponent(PipeLineSystem.UpdatePump);
+                    PipeLineSystem.UpdatePump = null;
+                    PipeLineSystem.Updated = 0;
+                    this.numericUpDown1.Enabled = true;
+                }
+            }
+            if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 0)
+            {
+                double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
+                PipeLineSystem.UpdateSpliter.SetUpperPercent(upperPercent);
+                PipeLineSystem.Network.UpdateComponent(PipeLineSystem.UpdateSpliter);
+                PipeLineSystem.UpdateSpliter = null;
+                PipeLineSystem.Updated = 0;
+            }
+            this.Refresh();
         }
 
       
