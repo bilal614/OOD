@@ -129,17 +129,19 @@ namespace PipeLine_System
                 }
                 else
                 {
-                    //Raima, I moved the code of remove in to system class in following function 
-                    //, you can extend it here
                     //PipeLineSystem.RemoveSelectedComponent(e.X, e.Y);
                 }
                 //enable the save button
-                if(PipeLineSystem.Saved == false && PipeLineSystem.SavedAs == true)
+                if(PipeLineSystem.Saved == false)
                 {
                     btnSave.Enabled = true;
                 }
+                //only allow saved when save as is done
+                if(PipeLineSystem.SavedAs == false)
+                {
+                    btnSave.Enabled = false;
+                }
                 PipeLineSystem.checkForEnableDrawingPipeline(btnLine);
-
                 
                 this.Refresh();
             }   
@@ -249,71 +251,19 @@ namespace PipeLine_System
         
         private void panelDrawing_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (PipeLineSystem.Updated == 0)
+            try
             {
-                foreach (var c in PipeLineSystem.Network.GetListOfComponents())
-                {
-                    if (c.ContainsPoint(e.X, e.Y))
-                    {
-                        if (c is Pump)
-                        {
-                            DialogResult dialogResult = MessageBox.Show("You want to change your current flow? Put the new input and click on this pump again to update it ", "Update your pump's current flow?", MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                numericUpDown2.Enabled = true;
-                                numericUpDown1.Enabled = false;
-                                PipeLineSystem.UpdatePump = (Pump)c;
-                                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
-                            }
-                            else
-                            {
-                                PipeLineSystem.Updated = 0;
-                            }
-                        }
-                        if (c is AdjustableSpliter)
-                        {
-                            DialogResult dialogResult = MessageBox.Show("You want to change your splitter setting? Put the new input and click on this spliter again to update it ", "Update your adjustable spliter?", MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                PipeLineSystem.UpdateSpliter = (AdjustableSpliter)c;
-                               
-                            }
-                            else
-                            {
-                                PipeLineSystem.Updated = 0;
-                            }
-                        }
-                    }
-
-                }
-            }
-            PipeLineSystem.Updated++;
-            if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 1)
-            {
+                PipeLineSystem.UpdateComponentSelected(e.X, e.Y, numericUpDown1, numericUpDown2);
+                PipeLineSystem.Updated++;
                 double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
-                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
-                if (pumpFlow > PipeLineSystem.UpdatePump.GetCapacity())
-                {
-                    MessageBox.Show("Current flow cannot exceed maximum flow.");
-                }
-                else
-                {
-                    PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
-                    PipeLineSystem.Network.UpdateComponent(PipeLineSystem.UpdatePump);
-                    PipeLineSystem.UpdatePump = null;
-                    PipeLineSystem.Updated = 0;
-                    this.numericUpDown1.Enabled = true;
-                }
-            }
-            if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 0)
-            {
                 double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
-                PipeLineSystem.UpdateSpliter.SetUpperPercent(upperPercent);
-                PipeLineSystem.Network.UpdateComponent(PipeLineSystem.UpdateSpliter);
-                PipeLineSystem.UpdateSpliter = null;
-                PipeLineSystem.Updated = 0;
+                PipeLineSystem.UpdateComponent(numericUpDown1, pumpFlow, upperPercent);
+                this.Refresh();
             }
-            this.Refresh();
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
       

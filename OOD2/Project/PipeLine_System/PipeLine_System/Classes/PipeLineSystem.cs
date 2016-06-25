@@ -354,6 +354,74 @@ namespace PipeLine_System
                 btnLine.Enabled = false;
             }
         }
+
+        public static void UpdateComponentSelected(int eX, int eY, NumericUpDown numericUpDown1, NumericUpDown numericUpDown2)
+        {
+            if (PipeLineSystem.Updated == 0)
+            {
+                foreach (var c in PipeLineSystem.Network.GetListOfComponents())
+                {
+                    if (c.ContainsPoint(eX, eY))
+                    {
+                        if (c is Pump)
+                        {
+                            DialogResult dialogResult = MessageBox.Show("You want to change your current flow? Put the new input and double click on this pump again to update it ", "Update your pump's current flow?", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                numericUpDown2.Enabled = true;
+                                numericUpDown1.Enabled = false;
+                                PipeLineSystem.UpdatePump = (Pump)c;
+                                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
+                            }
+                            else
+                            {
+                                PipeLineSystem.Updated = 0;
+                            }
+                        }
+                        if (c is AdjustableSpliter)
+                        {
+                            DialogResult dialogResult = MessageBox.Show("You want to change your splitter setting? Put the new input and click on this spliter again to update it ", "Update your adjustable spliter?", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                PipeLineSystem.UpdateSpliter = (AdjustableSpliter)c;
+                            }
+                            else
+                            {
+                                PipeLineSystem.Updated = 0;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        public static void UpdateComponent(NumericUpDown numericUpDown1, double pumpFlow, double UpperPercent)
+        {
+            if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 1)
+            {
+               
+                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
+                if (pumpFlow > PipeLineSystem.UpdatePump.GetCapacity())
+                {
+                    MessageBox.Show("Current flow cannot exceed maximum flow.");
+                }
+                else
+                {
+                    PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
+                    PipeLineSystem.Network.UpdateComponent(PipeLineSystem.UpdatePump);
+                    PipeLineSystem.UpdatePump = null;
+                    PipeLineSystem.Updated = 0;
+                    numericUpDown1.Enabled = true;
+                }
+            }
+            if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 0)
+            {
+                PipeLineSystem.UpdateSpliter.SetUpperPercent(UpperPercent);
+                PipeLineSystem.Network.UpdateComponent(PipeLineSystem.UpdateSpliter);
+                PipeLineSystem.UpdateSpliter = null;
+                PipeLineSystem.Updated = 0;
+            }
+        }
        
     }
 }
