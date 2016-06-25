@@ -130,7 +130,7 @@ namespace PipeLine_System
                         UpdatePipelinesOfComps(c);
                     }
 
-                    UpdateCurrentFlowOfNetwork();
+                    //UpdateCurrentFlowOfNetwork(); //don't need this the network is updated when the form refreshes
                     return true;
                 }
             }

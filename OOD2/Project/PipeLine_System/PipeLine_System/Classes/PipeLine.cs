@@ -106,12 +106,63 @@ namespace PipeLine_System
             clickLocation = new List<Point>();
         }
 
+        private bool withinRange(int nmbr, int bound1, int bound2)
+        {
+            bool inRange = false;
+            if ((nmbr > bound1 && nmbr < bound2) || (nmbr < bound1 && nmbr > bound2))
+            {
+                inRange = true;
+            }
+            return inRange;
+        }
+
+        private bool checkSlope(int x, int y, int startX, int startY, int endX, int endY)
+        {
+            bool onSlope = false;
+            if (((y - startY) / (x - startX)) == ((endY - startY) / (endX - startX)))
+            {
+                onSlope = true;
+            }
+            return onSlope;
+        }
+
         public bool ContainPoints(int x, int y)
         {
-            if (((x - startLocation.X) / (endLocation.X - startLocation.X)) == ((y - startLocation.Y) / (endLocation.Y - startLocation.Y)))
+            if (clickLocation.Count > 0)
+            {
+                for (int i = 0; i < clickLocation.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        if (withinRange(x, startLocation.X, clickLocation[i].X) && withinRange(y, startLocation.Y, clickLocation[i].Y))
+                        {
+                            if(checkSlope(x,y,startLocation.X,startLocation.Y,clickLocation[i].X,clickLocation[i].Y))
+                            { return true; }
+                        }
+                    }
+                    if (i > 0 && i < clickLocation.Count - 1)
+                    {
+                        if (withinRange(x, clickLocation[i - 1].X, clickLocation[i].X) && withinRange(y, clickLocation[i-1].Y, clickLocation[i].Y))
+                        {
+                            if(checkSlope(x,y,clickLocation[i-1].X,clickLocation[i-1].Y,clickLocation[i].X,clickLocation[i].Y))
+                            { return true; }
+                        }
+                    }
+                    if (i == (clickLocation.Count - 1))
+                    {
+                        if (withinRange(x, clickLocation[i].X, endLocation.X) && withinRange(y, clickLocation[i].Y, endLocation.Y))
+                        {
+                            if (checkSlope(x, y, clickLocation[i].X, clickLocation[i].Y, endLocation.X, endLocation.Y))
+                            { return true; }
+                        }
+                        
+                    }
+                }
+            }
+            /*if (((x - startLocation.X) / (endLocation.X - startLocation.X)) == ((y - startLocation.Y) / (endLocation.Y - startLocation.Y)))
             { return true; }
-            else { return false; }
-
+            else { return false; }*/
+            return false;
         }
         /// <summary>
         /// set the start location from the screen.
