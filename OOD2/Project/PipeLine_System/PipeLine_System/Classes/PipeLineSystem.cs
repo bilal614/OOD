@@ -118,6 +118,8 @@ namespace PipeLine_System
                         {
                             MessageBox.Show("Not allowed to connect those components.");
                         }
+                        //update safeLimit
+                        PipeLineSystem.TempPipeline.SafeLimit = safeLimit;
                         PipeLineSystem.TempPipeline = null;
                     }
                     else
@@ -127,8 +129,6 @@ namespace PipeLine_System
                     }
 
                 }
-                //update safeLimit
-                PipeLineSystem.TempPipeline.SafeLimit = safeLimit;
             }
         }
        

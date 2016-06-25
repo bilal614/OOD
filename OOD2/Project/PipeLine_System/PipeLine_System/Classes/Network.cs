@@ -525,12 +525,22 @@ namespace PipeLine_System
         {
             try
             {
+                double mergerFlow = 0;
                 foreach (PipeLine p in GetListOfPipeline())
                 {
                     if (p.CompStart is Pump)
                     {
-                        p.CompEnd.SetFlow(p.CompStart.GetFlow());
-                        p.CurrentFlow = p.CompStart.GetFlow();
+                        if (p.CompEnd is Merger)
+                        {
+                            mergerFlow += p.CompStart.GetFlow();
+                            p.CompEnd.SetFlow(mergerFlow);
+                            p.CurrentFlow = p.CompStart.GetFlow();
+                        }
+                        else
+                        {
+                            p.CompEnd.SetFlow(p.CompStart.GetFlow());
+                            p.CurrentFlow = p.CompStart.GetFlow();
+                        }
                     }
                 }
 
@@ -579,16 +589,16 @@ namespace PipeLine_System
                 {
                     if (p.CompStart is Merger)
                     {
-                        double mergerCurrentFlow = 0;
+                        //double mergerCurrentFlow = 0;
                         Merger temp = (Merger)p.CompStart;
-                        foreach (PipeLine pi in GetListOfPipeline())
+                        /*foreach (PipeLine pi in GetListOfPipeline())
                         {
                             if (pi.CompEnd == temp)
                             {
-                                mergerCurrentFlow += pi.CompEnd.GetFlow();
+                                mergerCurrentFlow = pi.CompEnd.GetFlow();
                             }
-                        }
-                        p.CompEnd.SetFlow(mergerCurrentFlow);
+                        }*/
+                        p.CompEnd.SetFlow(p.CompStart.GetFlow());
                         p.CurrentFlow = p.CompStart.GetFlow();
                     }
                 }
