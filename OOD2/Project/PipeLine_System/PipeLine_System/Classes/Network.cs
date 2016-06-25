@@ -284,8 +284,8 @@ namespace PipeLine_System
             {
                 foreach (Component c in components)
                 {
-                    Font f = new Font("Arial", 10);
-                    gr.DrawString(c.GetFlow().ToString(), f, Brushes.Black, c.GetLocation().X, c.GetLocation().Y - 20);
+                    Font f = new Font("Arial", 8, FontStyle.Bold);
+                    gr.DrawString(c.GetFlow().ToString(), f, Brushes.Brown, c.GetLocation().X, c.GetLocation().Y - 20);
                     if (c is Pump)
                     {
                         gr.DrawImage(il.Images[0], c.GetLocation());//assuming the first image in the imageList                   

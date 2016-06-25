@@ -228,9 +228,22 @@ namespace PipeLine_System
             return p;
         }
 
+        /// <summary>
+        /// Draw a pipeline
+        /// </summary>
+        /// <param name="gr"></param>
+        /// <param name="p"></param>
+        /// <param name="pen"></param>
         public static void DrawPipeline(Graphics gr, PipeLine p, Pen pen)
         {
             List<Point> points = p.getMiddleLocation();
+            Font f = new Font("Arial", 8, FontStyle.Bold);
+            int YText = 0;
+            int XText = 0;
+            XText = (p.startLocation.X + p.endLocation.X) / 2;
+            YText = (p.startLocation.Y + p.endLocation.Y) / 2;
+          
+            gr.DrawString(p.CurrentFlow.ToString() + "/" + p.SafeLimit.ToString(), f, Brushes.Black, new Point(XText,YText));
             if (points.Count > 0)
             {
                 gr.DrawLine(pen, p.getStartLocation(), points[0]);
