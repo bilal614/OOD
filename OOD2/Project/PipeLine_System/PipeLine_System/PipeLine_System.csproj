@@ -55,7 +55,6 @@
     <Compile Include="Classes\Sink.cs" />
     <Compile Include="Classes\Spliter.cs" />
     <Compile Include="Classes\PipeLineSystem.cs" />
-    <Compile Include="CustomException.cs" />
     <Compile Include="PipeLineApp.cs">
       <SubType>Form</SubType>
     </Compile>
