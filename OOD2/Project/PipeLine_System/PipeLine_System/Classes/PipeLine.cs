@@ -291,8 +291,8 @@ namespace PipeLine_System
             Font f = new Font("Arial", 8, FontStyle.Bold);
             int YText = 0;
             int XText = 0;
-            XText = (p.startLocation.X + p.endLocation.X) / 2;
-            YText = (p.startLocation.Y + p.endLocation.Y) / 2;
+            XText = (p.startLocation.X + p.endLocation.X) / 2 + 2;
+            YText = (p.startLocation.Y + p.endLocation.Y) / 2 + 2;
           
             gr.DrawString(p.CurrentFlow.ToString() + "/" + p.SafeLimit.ToString(), f, Brushes.Black, new Point(XText,YText));
             if (points.Count > 0)
