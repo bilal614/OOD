@@ -138,6 +138,11 @@ namespace PipeLine_System
         {
             try
             {
+                if (numericUpDown2.Value > numericUpDown1.Value)
+                {
+
+                    throw new Classes.CustomExceptions("Current flow cannot exceed maximum flow.");
+                }
                 if (PipeLineSystem.DeleteClicked == 1)
                 {
                     int X = e.X;
@@ -172,6 +177,10 @@ namespace PipeLine_System
                 }
                 checkForEnableDrawingPipeline();
                 this.Refresh();
+            }    
+            catch(Classes.CustomExceptions ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             catch
             {

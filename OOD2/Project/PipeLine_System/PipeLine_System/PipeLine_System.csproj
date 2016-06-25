@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Classes\AdjustableSpliter.cs" />
     <Compile Include="Classes\Component.cs" />
+    <Compile Include="Classes\CustomExceptions.cs" />
     <Compile Include="Classes\FileHandler.cs" />
     <Compile Include="Classes\Merger.cs" />
     <Compile Include="Classes\Network.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Classes\Sink.cs" />
     <Compile Include="Classes\Spliter.cs" />
     <Compile Include="Classes\PipeLineSystem.cs" />
+    <Compile Include="CustomException.cs" />
     <Compile Include="PipeLineApp.cs">
       <SubType>Form</SubType>
     </Compile>
