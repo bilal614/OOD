@@ -34,28 +34,15 @@ namespace PipeLine_System
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            DialogResult dr = openFileDialog1.ShowDialog();
-            if (dr == DialogResult.OK)
+            PipeLineSystem.AddNewNetwork(saveFileDialog1, btnSave, btnSaveAs);
+            if (PipeLineSystem.OpenNetwork(openFileDialog1, btnLine))
             {
-                FileHandler temp = new FileHandler(openFileDialog1.FileName);
-                PipeLineSystem.FileHandler = temp;
-                PipeLineSystem.Network = PipeLineSystem.FileHandler.ReadFromFile();
-
-                if (PipeLineSystem.Network != null)
-                {
-                   PipeLineSystem.Saved = true;
-                   this.btnSaveAs.Enabled = false;
-                   this.btnSave.Enabled = false;
-                    //Draw all components methods
-                   this.Refresh();
-                   checkForEnableDrawingPipeline();
-                   MessageBox.Show("Your drawing is loaded");
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("You choose cancel");
+                PipeLineSystem.Saved = true;
+                this.btnSaveAs.Enabled = false;
+                this.btnSave.Enabled = false;
+                //Draw all components methods
+                MessageBox.Show("Your drawing is loaded");
+                this.Refresh();
             }
         }
         private void btnSave_Click(object sender, EventArgs e)
@@ -69,37 +56,8 @@ namespace PipeLine_System
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            if(PipeLineSystem.Network.GetListOfComponents().Count != 0 && PipeLineSystem.Saved == false)
-            {
-                DialogResult dialogResult = MessageBox.Show("The current drawing has not saved yet? Would you like to save it  ", "Save your network?", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    if(PipeLineSystem.SavedAs == false)
-                    {
-                        if (PipeLineSystem.SaveAsDrawing(saveFileDialog1))
-                        {
-                            btnSaveAs.Enabled = false;
-                            MessageBox.Show("Your drawing is saved successfully");
-                        }
-                    }
-                    else
-                    {
-                        if (PipeLineSystem.SaveDrawing())
-                        {
-                            btnSave.Enabled = false;
-                            btnSaveAs.Enabled = false;
-                            MessageBox.Show("Your drawing is saved successfully");
-                        }
-                    }
-                  
-                }
-            }
-            PipeLineSystem.Network.RemoveAll();
+            PipeLineSystem.AddNewNetwork(saveFileDialog1, btnSave, btnSaveAs);
             this.Refresh();
-            btnSaveAs.Enabled = true;
-            PipeLineSystem.SavedAs = false;
-            btnSave.Enabled = false;
-
         }
         #endregion
         private void ASpiter_UpValue_ValueChanged(object sender, EventArgs e)
@@ -175,7 +133,7 @@ namespace PipeLine_System
                 {
                     btnSave.Enabled = true;
                 }
-                checkForEnableDrawingPipeline();
+                PipeLineSystem.checkForEnableDrawingPipeline(btnLine);
                 this.Refresh();
             }    
             catch(Classes.CustomExceptions ex)
@@ -278,20 +236,7 @@ namespace PipeLine_System
             numericUpDown4.Enabled = false;
         }
 
-        /// <summary>
-        /// Precondition for allowing to draw pipeline
-        /// </summary>
-        private void checkForEnableDrawingPipeline()
-        {
-            if (PipeLineSystem.Network.GetListOfComponents().Count >= 0)
-            {
-                btnLine.Enabled = true;
-            }
-            else
-            {
-                btnLine.Enabled = false;
-            }
-        }
+       
       
 
        

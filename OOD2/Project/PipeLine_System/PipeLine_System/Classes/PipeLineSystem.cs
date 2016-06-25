@@ -259,6 +259,94 @@ namespace PipeLine_System
             }
             return result;
         }
+
+        public static bool OpenNetwork(OpenFileDialog openFileDialog1, Button btnLine)
+        {
+            DialogResult dr = openFileDialog1.ShowDialog();
+            FileHandler temp = new FileHandler(openFileDialog1.FileName);
+            PipeLineSystem.FileHandler = temp;
+            PipeLineSystem.Network = PipeLineSystem.FileHandler.ReadFromFile();      
+            if (dr == DialogResult.OK)
+            {
+                if (PipeLineSystem.Network != null)
+                {
+                    PipeLineSystem.Saved = true;
+                    PipeLineSystem.checkForEnableDrawingPipeline(btnLine);
+
+                    return true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("You choose cancel");
+            }
+           
+
+            return false;
+        }
+
+        /// <summary>
+        /// Add new network
+        /// </summary>
+        /// <param name="saveFileDialog1"></param>
+        /// <param name="btnSave"></param>
+        /// <param name="btnSaveAs"></param>
+        public static void AddNewNetwork(SaveFileDialog saveFileDialog1, Button btnSave, Button btnSaveAs)
+        {
+            if (PipeLineSystem.Network.GetListOfComponents().Count != 0 && PipeLineSystem.Saved == false)
+            {
+                DialogResult dialogResult = MessageBox.Show("The current drawing has not saved yet? Would you like to save it  ", "Save your network?", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (PipeLineSystem.SavedAs == false)
+                    {
+                        if (PipeLineSystem.SaveAsDrawing(saveFileDialog1))
+                        {
+                            btnSaveAs.Enabled = false;
+                            MessageBox.Show("Your drawing is saved successfully");
+                        }
+                    }
+                    else
+                    {
+                        if (PipeLineSystem.SaveDrawing())
+                        {
+                            btnSave.Enabled = false;
+                            btnSaveAs.Enabled = false;
+                            MessageBox.Show("Your drawing is saved successfully");
+                        }
+                    }
+                }
+                if (dialogResult == DialogResult.No)
+                {
+                    PipeLineSystem.Network.RemoveAll();
+                    btnSaveAs.Enabled = true;
+                    PipeLineSystem.SavedAs = false;
+                    btnSave.Enabled = false;
+                }
+            }
+            else
+            {
+                PipeLineSystem.Network.RemoveAll();
+                btnSaveAs.Enabled = true;
+                PipeLineSystem.SavedAs = false;
+                btnSave.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Precondition for allowing to draw pipeline
+        /// </summary>
+        public static void checkForEnableDrawingPipeline(Button btnLine)
+        {
+            if (PipeLineSystem.Network.GetListOfComponents().Count >= 0)
+            {
+                btnLine.Enabled = true;
+            }
+            else
+            {
+                btnLine.Enabled = false;
+            }
+        }
        
     }
 }
