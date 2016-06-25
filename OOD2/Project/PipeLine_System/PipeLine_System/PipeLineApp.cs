@@ -96,11 +96,7 @@ namespace PipeLine_System
         {
             try
             {
-                if (numericUpDown2.Value > numericUpDown1.Value)
-                {
-
-                    throw new Classes.CustomExceptions("Current flow cannot exceed maximum flow.");
-                }
+               
                 if (PipeLineSystem.DeleteClicked == 1)
                 {
                     int X = e.X;
@@ -117,9 +113,15 @@ namespace PipeLine_System
                 if (PipeLineSystem.DeleteSelected == false)
                 {
                     double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
-                    double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
-                    PipeLineSystem.AddTempComponent(e.X, e.Y, pumpFlow, upperPercent);
+                    double pumpMaxFlow = Convert.ToDouble(numericUpDown1.Value);
                     double safeLimit = Convert.ToDouble(this.numericUpDown4.Value);
+                    double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
+                    if (pumpFlow > pumpMaxFlow)
+                    {
+
+                        throw new Classes.CustomExceptions("Current flow cannot exceed maximum flow.");
+                    }
+                    PipeLineSystem.AddTempComponent(e.X, e.Y, pumpFlow, upperPercent, safeLimit);
                     PipeLineSystem.AddTempPipeline(e.X, e.Y, safeLimit);
                 }
                 else
@@ -134,8 +136,11 @@ namespace PipeLine_System
                     btnSave.Enabled = true;
                 }
                 PipeLineSystem.checkForEnableDrawingPipeline(btnLine);
+                
+                
+
                 this.Refresh();
-            }    
+            }   
             catch(Classes.CustomExceptions ex)
             {
                 MessageBox.Show(ex.Message);
@@ -234,6 +239,63 @@ namespace PipeLine_System
         {
             btnLine.Enabled = false;
             numericUpDown4.Enabled = false;
+        }
+        
+        private void panelDrawing_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (PipeLineSystem.Updated == 0)
+            {
+                foreach (var c in PipeLineSystem.Network.GetListOfComponents())
+                {
+                    if (c.ContainsPoint(e.X, e.Y))
+                    {
+                        if (c is Pump)
+                        {
+                            DialogResult dialogResult = MessageBox.Show("You want to change your current flow? Put the new input and click on this pump again to update it ", "Update your pump's current flow?", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                numericUpDown2.Enabled = true;
+                                numericUpDown1.Enabled = false;
+                                PipeLineSystem.UpdatePump = (Pump)c;
+                                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
+                            }
+                        }
+                        if (c is AdjustableSpliter)
+                        {
+                            DialogResult dialogResult = MessageBox.Show("You want to change your splitter setting? Put the new input and click on this spliter again to update it ", "Update your adjustable spliter?", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                PipeLineSystem.UpdateSpliter = (AdjustableSpliter)c;
+                            }
+                        }
+                    }
+
+                }
+            }
+            if (PipeLineSystem.UpdatePump != null && PipeLineSystem.Updated > 0)
+            {
+                double pumpFlow = Convert.ToDouble(numericUpDown2.Value);
+                numericUpDown1.Value = (decimal)PipeLineSystem.UpdatePump.GetCapacity();
+                if (pumpFlow > PipeLineSystem.UpdatePump.GetCapacity())
+                {
+                   MessageBox.Show("Current flow cannot exceed maximum flow.");
+                }
+                else
+                {
+                    PipeLineSystem.UpdatePump.SetFlow(pumpFlow);
+                    PipeLineSystem.UpdatePump = null;
+                    PipeLineSystem.Updated = 0;
+                }
+            }
+            if (PipeLineSystem.UpdateSpliter != null && PipeLineSystem.Updated > 0)
+            {
+                double upperPercent = Convert.ToDouble(this.ASpiter_UpValue.Value);
+                PipeLineSystem.UpdateSpliter.SetUpperPercent(upperPercent);
+                PipeLineSystem.UpdateSpliter = null;
+                PipeLineSystem.Updated = 0;
+            }
+            PipeLineSystem.Updated++;
+            this.Refresh();
         }
 
        

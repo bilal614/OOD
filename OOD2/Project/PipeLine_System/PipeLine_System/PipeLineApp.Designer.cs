@@ -346,6 +346,7 @@
             this.panelDrawing.Size = new System.Drawing.Size(590, 579);
             this.panelDrawing.TabIndex = 4;
             this.panelDrawing.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDrawing_Paint);
+            this.panelDrawing.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseDoubleClick);
             this.panelDrawing.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelDrawing_MouseUp);
             // 
             // panelLineLeft

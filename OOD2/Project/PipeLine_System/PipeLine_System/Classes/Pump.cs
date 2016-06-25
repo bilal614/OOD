@@ -64,7 +64,14 @@ namespace PipeLine_System
                 return false;
             }
         }
-
+        public void SetMaxFlow(double maxFlow)
+        {
+            this.capacity = maxFlow;
+        }
+        public double GetCapacity()
+        {
+            return this.capacity;
+        }
         public override string ToString()
         {
             string outId = null;

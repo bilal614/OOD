@@ -26,6 +26,11 @@ namespace PipeLine_System
         public static bool FirstPumpAdded = false;
         public static bool FirstAdjustSplitterAdded = false;
         public static bool FirstPipeLineAdded = false;
+       
+        //Update pumps or adjustatble spliter 
+        public static int Updated = 0;
+        public static Pump UpdatePump = null;
+        public static AdjustableSpliter UpdateSpliter = null;
         /// <summary>
         /// Add temperory component 
         /// </summary>
@@ -33,7 +38,7 @@ namespace PipeLine_System
         /// <param name="eY"></param>
         /// <param name="currentFlow"></param>
         /// <param name="upperPct"></param>
-        public static void AddTempComponent(int eX, int eY, double currentFlow, double upperPct)
+        public static void AddTempComponent(int eX, int eY, double currentFlow, double upperPct, double pumpMaxFlow)
         {
             if (PipeLineSystem.TempComponent != null)
             {
@@ -41,6 +46,7 @@ namespace PipeLine_System
                 if (PipeLineSystem.TempComponent is Pump)
                 {
                     PipeLineSystem.TempComponent.SetFlow(currentFlow);
+                    ((Pump)PipeLineSystem.TempComponent).SetMaxFlow(pumpMaxFlow);
                     PipeLineSystem.Network.Addcomponent(PipeLineSystem.TempComponent);
                     PipeLineSystem.TempComponent = null;
                 }
