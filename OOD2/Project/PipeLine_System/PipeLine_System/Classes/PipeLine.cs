@@ -109,7 +109,7 @@ namespace PipeLine_System
         private bool withinRange(int nmbr, int bound1, int bound2)
         {
             bool inRange = false;
-            if ((nmbr > bound1 && nmbr < bound2) || (nmbr < bound1 && nmbr > bound2))
+            if ((nmbr >= bound1 && nmbr <= bound2) || (nmbr <= bound1 && nmbr >= bound2))
             {
                 inRange = true;
             }
@@ -119,6 +119,10 @@ namespace PipeLine_System
         private bool checkSlope(int x, int y, int startX, int startY, int endX, int endY)
         {
             bool onSlope = false;
+            if ((x - startX) == 0)
+            {
+                return true;
+            }
             if (((y - startY) / (x - startX)) == ((endY - startY) / (endX - startX)))
             {
                 onSlope = true;
