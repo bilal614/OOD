@@ -1,0 +1,13 @@
+During the course of this project we came across many challenges, and a lot of the time our implementation of 
+the project turned out to be different than we had anticipated. However I feel that we were able to cope with
+all the challanges by discussing with each other all the different solutions with each other and coming up
+with the best solution we saw possible. 
+
+I believe the planning process in relation to especially composing the class diagrams helped give us a blueprint
+for how the project would be implemented later on. The time spent on planning and documentation, I think saved 
+us a lot of time in the implementation stage. The implementation was not entirely as we had envisioned in our
+planning, but it was built on the planning framework that we had made for it. This project has been an immense
+learning experience and more than the technical knowledge I believe I have gained a better understanding of how 
+to solve problems in synchronisation with and input from my group members. Many ideas put together produce a 
+better solution than individual ones.   
+ 
