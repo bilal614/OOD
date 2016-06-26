@@ -275,12 +275,13 @@ namespace PipeLine_System
             Component compStart = new Component(Convert.ToInt32(PipelineInfors[7]));
             Component compEnd = new Component(Convert.ToInt32(PipelineInfors[8]));
             bool danger = Convert.ToBoolean(PipelineInfors[9]);
-            int nrOfMiddlePoints = PipelineInfors.Length - 9;
+            int nrOfMiddlePoints = PipelineInfors.Length - 10;
             List<Point> middlePoints = new List<Point>();
-            for (int i = 0; i < nrOfMiddlePoints/2; i++)
+            for (int i = 0; i < nrOfMiddlePoints; i++)
             {
                 int tempX = Convert.ToInt32(PipelineInfors[10 + i]);
-                int tempY = Convert.ToInt32(PipelineInfors[10 + i + 1]);
+                i++;
+                int tempY = Convert.ToInt32(PipelineInfors[10 + i]);
                 Point tempPoint = new Point(tempX, tempY);
                 middlePoints.Add(tempPoint);
             }
