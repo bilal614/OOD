@@ -137,7 +137,7 @@ namespace PipeLine_System
                     btnSave.Enabled = true;
                 }
                 //only allow saved when save as is done
-                if(PipeLineSystem.SavedAs == false)
+                if(PipeLineSystem.SavedAs == true)
                 {
                     btnSave.Enabled = false;
                 }
