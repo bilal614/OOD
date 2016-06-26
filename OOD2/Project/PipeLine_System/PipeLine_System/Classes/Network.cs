@@ -121,7 +121,10 @@ namespace PipeLine_System
                 if (pipe == P)
                 {
                     pipe.CurrentFlow = 0;
-                    
+                    if (pipe.CompEnd != null)
+                    {
+                        pipe.CompEnd.SetFlow(0);
+                    }
                     pipelines.Remove(pipe);
                     // below will inform component that its pipeline has gone now.
                     foreach (var c in components)

@@ -169,9 +169,6 @@ namespace PipeLine_System
                     }
                 }
             }
-            /*if (((x - startLocation.X) / (endLocation.X - startLocation.X)) == ((y - startLocation.Y) / (endLocation.Y - startLocation.Y)))
-            { return true; }
-            else { return false; }*/
             return false;
         }
         /// <summary>
