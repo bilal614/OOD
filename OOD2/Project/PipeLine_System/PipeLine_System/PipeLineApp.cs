@@ -219,11 +219,12 @@ namespace PipeLine_System
             PipeLineSystem.DeleteClicked = 1;
           //  deleteSelected = true;
             PipeLineSystem.TempComponent = null;
-          
+
         }
 
         private void btnLine_Click(object sender, EventArgs e)
         {
+            PipeLineSystem.TempPipeline = null;
             this.numericUpDown1.Enabled = false;
             this.numericUpDown2.Enabled = false;
             this.numericUpDown4.Enabled = true;

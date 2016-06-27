@@ -9,7 +9,6 @@ namespace PipeLine_System
 {
     public class Sink: Component
     {
-        private Component startComponent;
         /*The Sink class is a child class of the Component class and inherits the properties and methods of the Component class. This class
          * represents the sink component in the pipe-line network which acts as a point of consumption in the network. 
          */

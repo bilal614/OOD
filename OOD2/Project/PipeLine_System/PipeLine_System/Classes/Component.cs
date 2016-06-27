@@ -26,7 +26,7 @@ namespace PipeLine_System
         protected double currentFlow;
         /*the radius of every Component (that is why it is static), because the relative size of the
         Components on the drawing screen is similar so we can use this value as Radius for all Components*/
-        public const int Area = 625; 
+        public const int Area = 450; 
         /*
          * CONSTRUCTOR
         */
