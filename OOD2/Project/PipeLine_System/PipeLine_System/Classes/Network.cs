@@ -570,11 +570,29 @@ namespace PipeLine_System
                             }
                             if (p1 != null)
                             {
-                                p1.CompEnd.SetFlow(upperFlow);
+                                if (p1.CompEnd is Merger)
+                                {
+                                    mergerFlow += p1.CurrentFlow;
+                                    //mergerFlow += upperFlow;
+                                    p1.CompEnd.SetFlow(mergerFlow);
+                                }
+                                else
+                                {
+                                    p1.CompEnd.SetFlow(upperFlow);
+                                }
                             }
                             if (p2 != null)
                             {
-                                p2.CompEnd.SetFlow(lowerFlow);
+                                if (p2.CompEnd is Merger)
+                                {
+                                    mergerFlow += p2.CurrentFlow;
+                                    //mergerFlow += lowerFlow;
+                                    p2.CompEnd.SetFlow(mergerFlow);
+                                }
+                                else
+                                {
+                                    p2.CompEnd.SetFlow(lowerFlow);
+                                }
                             }
                         }
                         else
